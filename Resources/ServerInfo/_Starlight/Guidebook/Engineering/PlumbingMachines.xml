@@ -147,4 +147,35 @@
   </Box>
 
   The [color=#a4885c]Plumbing Disposal[/color] has one inlet which it uses to pull reagents into an internal buffer, which are then destroyed over time. Use it to cleanly remove unwanted reagents from a duct network.
+
+  <Box>
+    <GuideEntityEmbed Entity="PlumbingFluidPort" Caption=""/>
+  </Box>
+  <Box>
+    ## Fluid Connector Port
+  </Box>
+  <Box>
+    [color=#999999][italic]Docking storage tanks to the network[/italic][/color]
+  </Box>
+
+  The [color=#a4885c]Fluid Connector Port[/color] works like the atmospherics connector port, but for reagents. Wrench a storage tank (water tank, fuel tank, chemical barrel and so on) down on top of it and the tank joins the duct network. Tanks can be wrenched down anywhere, but they only connect when they sit on a port. The port has one duct connection on the side it faces.
+
+  Right-click the tank and use the [color=#a4885c]Valve[/color] menu to set it:
+  - [bold]Closed[/bold] (default): nothing flows.
+  - [bold]Supply[/bold]: other machines on the network can pull from the tank.
+  - [bold]Fill[/bold]: the tank pulls [bold]20u per update[/bold] from the network's outlets into itself.
+
+  Examining a tank shows its valve setting and whether it is docked.
+
+  <Box>
+    <GuideEntityEmbed Entity="PlumbingOneWayValve" Caption=""/>
+  </Box>
+  <Box>
+    ## One-Way Valve
+  </Box>
+  <Box>
+    [color=#999999][italic]Keeping reagents flowing in one direction[/italic][/color]
+  </Box>
+
+  The [color=#a4885c]One-Way Valve[/color] sits inline on a duct run and only lets reagents through in the direction of its arrow. It pulls [bold]20u per update[/bold] from the duct behind it into a small 20u buffer, and only machines on the duct in front of it can draw from that buffer. Nothing on the front side can pull back through it. Use it to stop a downstream machine from draining a supply line it shouldn't, or to keep two networks from mixing.
 </Document>

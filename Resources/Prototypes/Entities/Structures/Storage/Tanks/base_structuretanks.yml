@@ -63,6 +63,21 @@
   - type: ReagentTank
   - type: Transform
     noRot: true
+  # Serenity-start: dock with a fluid connector port. Anchors anywhere, only connects on a port.
+  - type: NodeContainer
+    nodes:
+      portable:
+        !type:PlumbingPortableNode
+        nodeGroupID: Plumbing
+  - type: PlumbingOutlet
+    solutionName: tank
+    outletNames:
+    - portable
+    enabled: false
+  - type: PlumbingDevice
+    updateInterval: 2
+  - type: PlumbingPortable
+  # Serenity-end
 
 # For highcap tanks
 - type: entity

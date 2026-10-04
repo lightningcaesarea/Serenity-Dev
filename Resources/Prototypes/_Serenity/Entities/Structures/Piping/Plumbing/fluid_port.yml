@@ -1,0 +1,45 @@
+# A plumbing counterpart to the atmos connector port. Wrench a storage tank down on top of it
+# and the tank joins the duct network; its Valve verb menu picks supply, fill or closed.
+# Tanks can be anchored anywhere, but only connect when they sit on a port.
+- type: entity
+  parent: PlumbingMachineBase
+  id: PlumbingFluidPort
+  name: fluid connector port
+  description: Connects a storage tank wrenched down on top of it to the plumbing network. Set the tank's valve to supply or fill.
+  components:
+  - type: Physics
+    bodyType: Static
+    canCollide: false
+  - type: Sprite
+    sprite: _Serenity/Structures/Piping/Plumbing/fluid_port.rsi
+    layers:
+    - state: fluidPort
+      map: [ "enum.SubfloorLayers.FirstLayer" ]
+  - type: NodeContainer
+    nodes:
+      port:
+        !type:PlumbingPortNode
+        nodeGroupID: Plumbing
+        pipeDirection: South
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: StaticPrice
+    price: 50
+
+- type: rcd
+  id: PlumbingRpldFluidPort
+  category: PlumbingSupply
+  sprite: /Textures/_Serenity/Interface/Radial/RPLD/fluid_port.png
+  mode: ConstructObject
+  prototype: PlumbingFluidPort
+  cost: 1
+  delay: 0
+  collisionMask: MachineMask
+  rotation: User
+  fx: EffectRCDConstruct0

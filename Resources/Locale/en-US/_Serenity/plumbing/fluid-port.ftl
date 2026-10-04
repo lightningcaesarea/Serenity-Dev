@@ -1,0 +1,11 @@
+plumbing-portable-verb-category = Valve
+plumbing-portable-verb-set = Set to {$mode}
+plumbing-portable-popup-set = You set the valve to {$mode}.
+
+plumbing-portable-mode-closed = closed
+plumbing-portable-mode-supply = supply
+plumbing-portable-mode-fill = fill
+
+plumbing-portable-examine-valve = The plumbing valve is set to [color=yellow]{$mode}[/color].
+plumbing-portable-examine-docked = It is [color=green]docked[/color] to a fluid connector port.
+plumbing-portable-examine-undocked = It is not docked to a fluid connector port. Wrench it down on top of one to connect it to the plumbing.
