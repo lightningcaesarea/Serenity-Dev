@@ -338,7 +338,7 @@
   components:
     - type: Slime
       splitInto: XenobiologySlimeBlack
-      extract: OilSlimeExtract
+      extract: BlackSlimeExtract # Serenity: was OilSlimeExtract
     - type: Sprite
       color: "#262626ff"
 

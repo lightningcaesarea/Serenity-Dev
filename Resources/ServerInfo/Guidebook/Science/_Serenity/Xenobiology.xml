@@ -1,0 +1,49 @@
+<Document>
+  # Xenobiology
+
+  Xenobiology is the branch of Science that breeds [bold]slimes[/bold], mutates them into new colours, and renders them down into [bold]extracts[/bold]. Extracts are worth research points, sell to Cargo for Federal Bills, and react with chemicals to make useful items and potions.
+
+  ## Getting started
+  <Box>
+    <GuideEntityEmbed Entity="XenobiologySlimeGray" Caption=""/>
+    <GuideEntityEmbed Entity="XenobiologyConsole" Caption=""/>
+    <GuideEntityEmbed Entity="SlimeProcessor" Caption=""/>
+  </Box>
+
+  - Research [color=#a4885c]Basic Xenobiology[/color] (Experimental, tier 1). It unlocks the [bold]slime scanner[/bold] and the boards for the [bold]xenobiology console[/bold] and the [bold]slime processor[/bold].
+  - Order a [bold]gray slime crate[/bold] from [color=orange]Cargo[/color] (Science category). Two gray slimes are enough to start a whole lab.
+  - Order [bold]monkey cubes[/bold] from Cargo (Livestock). Slimes eat monkeys.
+  - Build a pen with windows or grilles so the slimes stay put, and put the console where it can see the pen.
+
+  ## Breeding
+  - Slimes eat any monkey within a few tiles. Each bite feeds the slime.
+  - A well-fed slime [bold]splits[/bold]. Each child has a chance to [bold]mutate[/bold] into a new colour instead of copying its parent.
+  - Feed the console monkey cubes and it can place monkeys in the pen for you, pick slimes up and move them, and analyse them from a distance.
+  - The [bold]mutation potion[/bold] raises a slime's mutation chance and the [bold]stabilizer potion[/bold] lowers it. A slime pushed to the maximum mutation chance becomes a [color=#ff66cc]rainbow[/color] slime when it splits.
+
+  ## Colours and rarity
+  Each colour can only mutate into certain others, so rare colours take several generations.
+  - [bold]Basic:[/bold] gray
+  - [bold]Common:[/bold] orange, purple, blue, metal
+  - [bold]Uncommon:[/bold] yellow, dark purple, dark blue, silver, red, green, pink, gold
+  - [bold]Rare:[/bold] bluespace, sepia, cerulean, pyrite, oil, black, light pink, adamantine
+  - [bold]Exotic:[/bold] rainbow
+
+  ## Processing
+  - The slime processor pulls in any slime next to it that has taken at least [bold]200 damage[/bold]. Cold works well, so freeze them first.
+  - Each slime becomes several extracts of its colour.
+  - The processor pays [bold]research points[/bold] to the research server for every extract. Rarer colours pay much more, and the first extract of a new colour pays a large discovery bonus.
+  - Repeats of the same colour pay less each time, so a lab earns the most by breeding new colours, not by farming one.
+
+  ## Extracts
+  <Box>
+    <GuideEntityEmbed Entity="GraySlimeExtract" Caption=""/>
+    <GuideEntityEmbed Entity="GoldSlimeExtract" Caption=""/>
+    <GuideEntityEmbed Entity="RainbowSlimeExtract" Caption=""/>
+  </Box>
+  - Inject an extract with [bold]water[/bold], [bold]blood[/bold] or [bold]plasma[/bold] to set off its reaction. What happens depends on the colour and the chemical, and not every colour reacts to all three.
+  - Reactions make materials, items, and slime potions such as steroid (more extracts per slime), extract enhancer (more uses per extract), speed, fireproofing, and sentience.
+
+  ## Bounties
+  Cargo bounties sometimes ask for slime extracts by rarity. A sold extract bounty pays Federal Bills [bold]and[/bold] research points straight to the station's research server, so it is worth handing spare extracts to Cargo.
+</Document>

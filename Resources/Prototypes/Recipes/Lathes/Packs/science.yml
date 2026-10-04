@@ -24,6 +24,7 @@
   - DeviceQuantumSpinInverter
   - DeviceDesynchronizer
   - ClothingBackpackHarmpack
+  - HandheldSlimeScanner # Serenity
 
 - type: latheRecipePack
   id: ScienceClothing
@@ -79,6 +80,8 @@
   - AnalysisComputerCircuitboard
   - AnomalyVesselCircuitboard
   - AnomalyVesselExperimentalCircuitboard
+  - SlimeProcessorMachineCircuitboard # Serenity
+  - XenobiologyConsoleCircuitboard # Serenity
   - AnomalySynchronizerCircuitboard
   - APECircuitboard
   - ArtifactAnalyzerMachineCircuitboard

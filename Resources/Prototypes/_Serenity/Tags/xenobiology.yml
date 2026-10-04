@@ -1,0 +1,22 @@
+# Slime extract rarity. The slime processor's research payout and the extract cargo bounties both read these,
+# so every extract carries exactly one.
+
+# Gray
+- type: Tag
+  id: SlimeExtractTier0
+
+# Orange, purple, blue, metal
+- type: Tag
+  id: SlimeExtractTier1
+
+# Yellow, dark purple, dark blue, silver, red, green, pink, gold
+- type: Tag
+  id: SlimeExtractTier2
+
+# Bluespace, sepia, cerulean, pyrite, oil, black, light pink, adamantine
+- type: Tag
+  id: SlimeExtractTier3
+
+# Rainbow
+- type: Tag
+  id: SlimeExtractTier4

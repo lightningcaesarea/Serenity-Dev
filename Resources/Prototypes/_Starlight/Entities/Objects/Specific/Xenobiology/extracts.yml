@@ -29,6 +29,9 @@
   id: GraySlimeExtract
   name: gray slime extract
   components:
+    - type: Tag # Serenity
+      tags:
+      - SlimeExtractTier0
     - type: Sprite
       color: "#999999ff"
     - type: SlimeExtract
@@ -78,6 +81,9 @@
   id: OrangeSlimeExtract
   name: orange slime extract
   components:
+    - type: Tag # Serenity
+      tags:
+      - SlimeExtractTier1
     - type: Sprite
       color: "#f07a26ff"
     - type: SlimeExtract
@@ -136,6 +142,9 @@
   id: PurpleSlimeExtract
   name: purple slime extract
   components:
+    - type: Tag # Serenity
+      tags:
+      - SlimeExtractTier1
     - type: Sprite
       color: "#9721c2ff"
     - type: SlimeExtract
@@ -173,6 +182,9 @@
   id: BlueSlimeExtract
   name: blue slime extract
   components:
+    - type: Tag # Serenity
+      tags:
+      - SlimeExtractTier1
     - type: Sprite
       color: "#34cfebff"
     - type: SlimeExtract
@@ -275,6 +287,9 @@
   id: MetalSlimeExtract
   name: metal slime extract
   components:
+    - type: Tag # Serenity
+      tags:
+      - SlimeExtractTier1
     - type: Sprite
       color: "#5e5e5eff"
     - type: SlimeExtract
@@ -322,6 +337,9 @@
   id: YellowSlimeExtract
   name: yellow slime extract
   components:
+    - type: Tag # Serenity
+      tags:
+      - SlimeExtractTier2
     - type: Sprite
       color: "#ffeb52ff"
     - type: SlimeExtract
@@ -382,6 +400,9 @@
   id: DarkPurpleSlimeExtract
   name: dark purple slime extract
   components:
+    - type: Tag # Serenity
+      tags:
+      - SlimeExtractTier2
     - type: Sprite
       color: "#501466ff"
     - type: SlimeExtract
@@ -406,6 +427,9 @@
   id: DarkBlueSlimeExtract
   name: dark blue slime extract
   components:
+    - type: Tag # Serenity
+      tags:
+      - SlimeExtractTier2
     - type: Sprite
       color: "#132b6eff"
     - type: SlimeExtract
@@ -447,6 +471,9 @@
   id: SilverSlimeExtract
   name: silver slime extract
   components:
+    - type: Tag # Serenity
+      tags:
+      - SlimeExtractTier2
     - type: Sprite
       color: "#aab8bdff"
     - type: SlimeExtract
@@ -488,6 +515,9 @@
   id: BluespaceSlimeExtract
   name: bluespace slime extract
   components:
+    - type: Tag # Serenity
+      tags:
+      - SlimeExtractTier3
     - type: Sprite
       color: "#ffffffff"
     - type: SlimeExtract
@@ -538,6 +568,9 @@
   id: SepiaSlimeExtract
   name: sepia slime extract
   components:
+    - type: Tag # Serenity
+      tags:
+      - SlimeExtractTier3
     - type: Sprite
       color: "#c9b7a9ff"
     - type: SlimeExtract
@@ -562,6 +595,9 @@
   id: CeruleanSlimeExtract
   name: cerulean slime extract
   components:
+    - type: Tag # Serenity
+      tags:
+      - SlimeExtractTier3
     - type: Sprite
       color: "#5998b3ff"
     - type: SlimeExtract
@@ -587,6 +623,9 @@
   id: PyriteSlimeExtract
   name: pyrite slime extract
   components:
+    - type: Tag # Serenity
+      tags:
+      - SlimeExtractTier3
     - type: Sprite
       color: "#ebe15bff"
     - type: SlimeExtract
@@ -639,6 +678,9 @@
   id: RedSlimeExtract
   name: red slime extract
   components:
+    - type: Tag # Serenity
+      tags:
+      - SlimeExtractTier2
     - type: Sprite
       color: "#fc4e4eff"
     - type: SlimeExtract
@@ -677,6 +719,9 @@
   id: GreenSlimeExtract
   name: green slime extract
   components:
+    - type: Tag # Serenity
+      tags:
+      - SlimeExtractTier2
     - type: Sprite
       color: "#4efc4eff"
     - type: SlimeExtract
@@ -714,6 +759,9 @@
   id: PinkSlimeExtract
   name: pink slime extract
   components:
+    - type: Tag # Serenity
+      tags:
+      - SlimeExtractTier2
     - type: Sprite
       color: "#fc86cfff"
     - type: SlimeExtract
@@ -739,6 +787,9 @@
   id: GoldSlimeExtract
   name: gold slime extract
   components:
+    - type: Tag # Serenity
+      tags:
+      - SlimeExtractTier2
     - type: Sprite
       color: "#8a7b1cff"
     - type: SlimeExtract
@@ -795,6 +846,9 @@
   id: OilSlimeExtract
   name: oil slime extract
   components:
+    - type: Tag # Serenity
+      tags:
+      - SlimeExtractTier3
     - type: Sprite
       color: "#262626ff"
     - type: SlimeExtract
@@ -832,6 +886,9 @@
   id: BlackSlimeExtract
   name: black slime extract
   components:
+    - type: Tag # Serenity
+      tags:
+      - SlimeExtractTier3
     - type: Sprite
       color: "#111111ff"
     - type: SlimeExtract
@@ -856,6 +913,9 @@
   id: LightPinkSlimeExtract
   name: light pink slime extract
   components:
+    - type: Tag # Serenity
+      tags:
+      - SlimeExtractTier3
     - type: Sprite
       color: "#ff94d1ff"
     - type: SlimeExtract
@@ -892,6 +952,9 @@
   id: AdamantineSlimeExtract
   name: adamantine slime extract
   components:
+    - type: Tag # Serenity
+      tags:
+      - SlimeExtractTier3
     - type: Sprite
       color: "#407985ff"
     - type: SlimeExtract
@@ -916,6 +979,9 @@
   id: RainbowSlimeExtract
   name: rainbow slime extract
   components:
+    - type: Tag # Serenity
+      tags:
+      - SlimeExtractTier4
     - type: RgbLightController
       layers: [ 0 ]
     - type: PointLight
