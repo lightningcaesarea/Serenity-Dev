@@ -11,9 +11,9 @@
     bodyType: Static
     canCollide: false
   - type: Sprite
-    sprite: Structures/Piping/Atmospherics/gascanisterport.rsi
+    sprite: _Serenity/Structures/Piping/Plumbing/fluid_port.rsi
     layers:
-    - state: gasCanisterPort
+    - state: fluidPort
       map: [ "enum.SubfloorLayers.FirstLayer" ]
   - type: NodeContainer
     nodes:

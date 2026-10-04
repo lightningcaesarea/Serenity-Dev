@@ -1,4 +1,4 @@
 - files: ["fluid_port.png"]
   license: "CC-BY-SA-3.0"
-  copyright: "Copy of gascanisterport.rsi/gasCanisterPort.png, taken from https://github.com/tgstation/tgstation at commit 57cd1d59ca019dd0e7811ac451f295f818e573da"
+  copyright: "2x upscale of _Serenity/Structures/Piping/Plumbing/fluid_port.rsi, recoloured for Serenity from gascanisterport.rsi taken from https://github.com/tgstation/tgstation at commit 57cd1d59ca019dd0e7811ac451f295f818e573da"
   source: "https://github.com/tgstation/tgstation/tree/57cd1d59ca019dd0e7811ac451f295f818e573da"
