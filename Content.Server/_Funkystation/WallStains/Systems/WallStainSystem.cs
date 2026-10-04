@@ -134,6 +134,7 @@ public sealed partial class WallStainSystem : EntitySystem
 
         var stainUid = EntityUid.Invalid;
         WallStainComponent? stainComp = null;
+        var spawnedStain = false; // Serenity
 
         var children = Transform(wallUid).ChildEnumerator;
         while (children.MoveNext(out var child))
@@ -148,6 +149,7 @@ public sealed partial class WallStainSystem : EntitySystem
         if (stainUid == EntityUid.Invalid)
         {
             stainUid = Spawn("WallStain", Transform(wallUid).Coordinates);
+            spawnedStain = true; // Serenity
             _transform.SetParent(stainUid, wallUid);
 
             var baseOffset = new System.Numerics.Vector2(direction.X * 0.48f, direction.Y * 0.48f);
@@ -183,6 +185,10 @@ public sealed partial class WallStainSystem : EntitySystem
                 wallForensics.DNAs.UnionWith(dnas);
             }
         }
+
+        // Serenity - empty stains are no longer swept up by evaporation, so drop one we spawned but never filled.
+        if (spawnedStain && actualTransfer <= 0)
+            QueueDel(stainUid);
 
         // Starlight - TryAddSolution raises SolutionChangedEvent, which updates visuals once.
         return actualTransfer;
