@@ -954,6 +954,159 @@ namespace Content.Server.Database
 
         #endregion
 
+        #region Serenity character balances
+
+        public async Task<List<CharacterBalanceSummary>> GetCharacterBalances(Guid player, CancellationToken cancel)
+        {
+            await using var db = await GetDb(cancel);
+
+            return await db.DbContext.Profile
+                .Where(p => p.Preference.UserId == player)
+                .OrderBy(p => p.Slot)
+                .Select(p => new CharacterBalanceSummary(
+                    p.Slot,
+                    p.Id,
+                    p.CharacterName,
+                    p.SerenityBalance == null ? null : p.SerenityBalance.Balance,
+                    p.SerenityBalance == null ? 0 : p.SerenityBalance.StartingFunds))
+                .ToListAsync(cancel);
+        }
+
+        /// <summary>
+        /// Finds the character in <paramref name="slot"/> and returns its account, opening it with
+        /// <paramref name="startingBalance"/> (all of it starting funds) if it has never had one. Null if the slot
+        /// holds no character.
+        /// </summary>
+        public async Task<CharacterAccount?> EnsureCharacterBalance(Guid player, int slot, double startingBalance, string? reason)
+        {
+            // The only way to fail the insert below is another writer opening the account first; the retry then
+            // reads theirs.
+            for (var attempt = 0; ; attempt++)
+            {
+                await using var db = await GetDb();
+
+                try
+                {
+                    var profile = await db.DbContext.Profile
+                        .Where(p => p.Preference.UserId == player && p.Slot == slot)
+                        .Select(p => new { p.Id, Account = p.SerenityBalance })
+                        .SingleOrDefaultAsync();
+
+                    if (profile == null)
+                        return null;
+
+                    if (profile.Account is { } existing)
+                        return new CharacterAccount(profile.Id, existing.Balance, existing.StartingFunds);
+
+                    await using var tx = await db.DbContext.Database.BeginTransactionAsync();
+                    var now = DateTime.UtcNow;
+                    db.DbContext.CharacterBalance.Add(new CharacterBalance
+                    {
+                        ProfileId = profile.Id,
+                        Balance = startingBalance,
+                        StartingFunds = startingBalance,
+                        UpdatedAt = now,
+                    });
+                    db.DbContext.PlayerResourceTransaction.Add(new PlayerResourceTransaction
+                    {
+                        PlayerId = player,
+                        ProfileId = profile.Id,
+                        Resource = CharacterBalanceResource,
+                        Delta = startingBalance,
+                        BalanceAfter = startingBalance,
+                        CreatedAt = now,
+                        Reason = TrimReason(reason),
+                    });
+                    await db.DbContext.SaveChangesAsync();
+                    await tx.CommitAsync();
+                    return new CharacterAccount(profile.Id, startingBalance, startingBalance);
+                }
+                catch (DbUpdateException) when (attempt == 0)
+                {
+                    // fall through to one retry on a fresh context
+                }
+            }
+        }
+
+        /// <summary>
+        /// Adds <paramref name="delta"/> to a character's balance and <paramref name="startingFundsDelta"/> to its
+        /// starting funds, and appends a ledger row. Starting funds are kept between 0 and the balance. Null if the
+        /// character has no account (it was deleted, or has never spawned).
+        /// </summary>
+        /// <remarks>
+        /// A read-modify-write rather than an SQL increment: every write to a character's account goes through the
+        /// resource manager's single ordered queue, so there is never a second writer to race.
+        /// </remarks>
+        public async Task<CharacterAccount?> AdjustCharacterBalance(Guid player, int profileId, double delta, double startingFundsDelta, string? reason)
+        {
+            await using var db = await GetDb();
+            await using var tx = await db.DbContext.Database.BeginTransactionAsync();
+
+            var row = await db.DbContext.CharacterBalance.SingleOrDefaultAsync(b => b.ProfileId == profileId);
+            if (row == null)
+                return null;
+
+            var now = DateTime.UtcNow;
+            row.Balance += delta;
+            row.StartingFunds = Math.Clamp(row.StartingFunds + startingFundsDelta, 0, Math.Max(0, row.Balance));
+            row.UpdatedAt = now;
+
+            db.DbContext.PlayerResourceTransaction.Add(new PlayerResourceTransaction
+            {
+                PlayerId = player,
+                ProfileId = profileId,
+                Resource = CharacterBalanceResource,
+                Delta = delta,
+                BalanceAfter = row.Balance,
+                CreatedAt = now,
+                Reason = TrimReason(reason),
+            });
+
+            await db.DbContext.SaveChangesAsync();
+            await tx.CommitAsync();
+            return new CharacterAccount(profileId, row.Balance, row.StartingFunds);
+        }
+
+        /// <summary>
+        /// Sets a character's balance to an exact value and appends a ledger row with the real change. Starting funds
+        /// are cut down to the new balance if they exceed it. Null if the character has no account.
+        /// </summary>
+        public async Task<CharacterAccount?> SetCharacterBalance(Guid player, int profileId, double value, string? reason)
+        {
+            await using var db = await GetDb();
+            await using var tx = await db.DbContext.Database.BeginTransactionAsync();
+
+            var row = await db.DbContext.CharacterBalance.SingleOrDefaultAsync(b => b.ProfileId == profileId);
+            if (row == null)
+                return null;
+
+            var now = DateTime.UtcNow;
+            var before = row.Balance;
+            row.Balance = value;
+            row.StartingFunds = Math.Clamp(row.StartingFunds, 0, Math.Max(0, value));
+            row.UpdatedAt = now;
+
+            db.DbContext.PlayerResourceTransaction.Add(new PlayerResourceTransaction
+            {
+                PlayerId = player,
+                ProfileId = profileId,
+                Resource = CharacterBalanceResource,
+                Delta = value - before,
+                BalanceAfter = value,
+                CreatedAt = now,
+                Reason = TrimReason(reason),
+            });
+
+            await db.DbContext.SaveChangesAsync();
+            await tx.CommitAsync();
+            return new CharacterAccount(profileId, row.Balance, row.StartingFunds);
+        }
+
+        /// <summary>The ledger's resource id for per-character Federal Bills; the same key the economy systems use.</summary>
+        private const string CharacterBalanceResource = "credits";
+
+        #endregion
+
         public async Task UpdatePlayTimes(IReadOnlyCollection<PlayTimeUpdate> updates)
         {
             await using var db = await GetDb();

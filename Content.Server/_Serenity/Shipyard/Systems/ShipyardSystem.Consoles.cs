@@ -11,6 +11,8 @@ using Content.Server.Popups;
 using Content.Server.Radio.EntitySystems;
 using Content.Server.Stack;
 using Content.Server.StationRecords.Systems;
+using Content.Server._Serenity.Economy;
+using Content.Shared._Serenity.Economy;
 using Content.Shared._Serenity.Shipyard;
 using Content.Shared._Serenity.Shipyard.BUI;
 using Content.Shared._Serenity.Shipyard.Components;
@@ -48,6 +50,7 @@ public sealed partial class ShipyardSystem
     [Dependency] private SharedAccessSystem _access = default!;
     [Dependency] private SharedIdCardSystem _idCard = default!;
     [Dependency] private PopupSystem _popup = default!;
+    [Dependency] private BoundCashSystem _boundCash = default!; // Serenity: starting funds stay bound through a ship sale
     [Dependency] private UserInterfaceSystem _ui = default!;
     [Dependency] private RadioSystem _radio = default!;
     [Dependency] private ChatSystem _chat = default!;
@@ -147,6 +150,10 @@ public sealed partial class ShipyardSystem
 
         // Consume F-Bills from the slot; change stays in the slot if overpaid.
         var billEnt = component.BillSlot.ContainerSlot!.ContainedEntity!.Value;
+        // Serenity: paid with a character's starting funds? Remember whose, so selling can't launder them.
+        (int ProfileId, string OwnerName)? boundBy = TryComp<BoundCashComponent>(billEnt, out var boundCash)
+            ? (boundCash.ProfileId, boundCash.OwnerName)
+            : null;
         _stackSystem.SetCount(billEnt, billBalance - vessel.Price);
         // (SetCount to 0 auto-deletes the stack entity.)
 
@@ -171,6 +178,16 @@ public sealed partial class ShipyardSystem
         var userId = playerSession.UserId;
         AssignDeed(EnsureComp<ShuttleDeedComponent>(targetId), shuttle.Value, name, player, userId);
         AssignDeed(EnsureComp<ShuttleDeedComponent>(shuttle.Value), shuttle.Value, name, player, userId);
+        if (boundBy is { } bound) // Serenity
+        {
+            foreach (var deedEnt in new[] { targetId, shuttle.Value })
+            {
+                var deed = Comp<ShuttleDeedComponent>(deedEnt);
+                deed.BoundPaid = vessel.Price;
+                deed.BoundProfileId = bound.ProfileId;
+                deed.BoundOwnerName = bound.OwnerName;
+            }
+        }
         Dirty(targetId, Comp<ShuttleDeedComponent>(targetId));
         Dirty(shuttle.Value, Comp<ShuttleDeedComponent>(shuttle.Value));
 
@@ -242,12 +259,22 @@ public sealed partial class ShipyardSystem
             bill -= tax;
         }
 
+        // Serenity: whatever was paid in a character's starting funds comes back bound to that character.
+        var boundBack = deed.BoundProfileId != null ? Math.Min(bill, deed.BoundPaid) : 0;
+        if (boundBack > 0)
+        {
+            var boundEnt = Spawn("SpaceCashBound", Transform(uid).Coordinates);
+            if (TryComp<StackComponent>(boundEnt, out var boundStack))
+                _stackSystem.SetCount(boundEnt, boundBack, boundStack);
+            _boundCash.Bind(boundEnt, deed.BoundProfileId!.Value, deed.ShuttleOwner, deed.BoundOwnerName);
+        }
+
         // Spawn sale proceeds as Federal Bills at the console.
-        if (bill > 0)
+        if (bill - boundBack > 0)
         {
             var cashEnt = Spawn("SpaceCash", Transform(uid).Coordinates);
             if (TryComp<StackComponent>(cashEnt, out var cashStack))
-                _stackSystem.SetCount(cashEnt, bill, cashStack);
+                _stackSystem.SetCount(cashEnt, bill - boundBack, cashStack);
         }
 
         PlayConfirmSound(uid, component);

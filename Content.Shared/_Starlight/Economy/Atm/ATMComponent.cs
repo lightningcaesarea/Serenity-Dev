@@ -23,6 +23,8 @@ public enum ATMUIKey
 public sealed class ATMBuiState : BoundUserInterfaceState
 {
     public int Balance { get; init; }
+    /// <summary>Serenity: how much of <see cref="Balance"/> is starting funds, which can't be transferred.</summary>
+    public int StartingFunds { get; init; }
     public string? Message { get; init; }
     public bool IsError { get; init; }
 }

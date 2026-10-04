@@ -13,6 +13,9 @@ public static class LedgerReasons
     /// <summary>Credits earned or spent between connecting and the DB load finishing, applied once the load lands.</summary>
     public const string LoadMerge = "load-merge";
 
+    /// <summary>A character's account being opened with the starting balance the first time it spawns.</summary>
+    public const string StartingBalance = "starting-balance";
+
     public const string AtmDeposit = "atm-deposit";
     public const string AtmWithdraw = "atm-withdraw";
     public const string Donate = "donate";

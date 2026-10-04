@@ -132,6 +132,7 @@ internal static class ServerContentIoC
         // Same instance under the Serenity interface, which adds ledger reasons. IoC keys instances by
         // implementation type, so both registrations resolve to one object (same pattern as ChatManager).
         deps.Register<Content.Shared._Serenity.Economy.ISerenityPlayerResourcesManager, _Serenity.Economy.SerenityPlayerResourcesManager>();
+        deps.Register<_Serenity.Economy.ICharacterBalanceManager, _Serenity.Economy.SerenityPlayerResourcesManager>();
 
         // nulllink end
     }

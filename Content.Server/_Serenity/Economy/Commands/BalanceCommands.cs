@@ -10,25 +10,20 @@ using Content.Shared.Administration;
 using Content.Shared.Database;
 using Robust.Server.Player;
 using Robust.Shared.Console;
-using Robust.Shared.Network;
-using Robust.Shared.Player;
 
 namespace Content.Server._Serenity.Economy.Commands;
 
 /// <summary>
-/// Shared plumbing for the balance commands: player lookup, and reading/writing a balance whether
-/// the player is online (through the manager, so the in-memory cache stays coherent) or offline
-/// (straight to the DB).
+/// Shared plumbing for the balance commands. Money is per-character, so every balance is a character's: the
+/// manager routes a change through the in-round cache when that character is being played, and to the DB otherwise.
 /// </summary>
 public abstract partial class BaseBalanceCommand : LocalizedCommands
 {
     [Dependency] protected IPlayerLocator Locator = default!;
     [Dependency] protected IPlayerManager Players = default!;
     [Dependency] protected IServerDbManager Db = default!;
-    [Dependency] protected ISerenityPlayerResourcesManager Resources = default!;
+    [Dependency] protected ICharacterBalanceManager Balances = default!;
     [Dependency] protected IAdminLogManager AdminLog = default!;
-
-    protected const string Credits = "credits";
 
     protected async Task<LocatedPlayerData?> Locate(IConsoleShell shell, string nameOrId)
     {
@@ -38,46 +33,19 @@ public abstract partial class BaseBalanceCommand : LocalizedCommands
         return located;
     }
 
-    protected bool TryGetSession(NetUserId userId, out ICommonSession session)
-        => Players.TryGetSessionById(userId, out session!);
-
-    protected async Task<double> GetBalance(LocatedPlayerData located)
+    /// <summary>The player's character in <paramref name="slotArg"/>, or null (with an error printed).</summary>
+    protected async Task<CharacterBalanceSummary?> LocateCharacter(IConsoleShell shell, LocatedPlayerData located, string slotArg)
     {
-        if (TryGetSession(located.UserId, out var session)
-            && Resources.TryGetResource(session, Credits, out var live))
-            return live.Value;
-
-        var stored = await Db.GetPlayerResources(located.UserId.UserId);
-        return stored.GetValueOrDefault(Credits);
-    }
-
-    /// <summary>Apply a delta online-or-offline. Returns the resulting balance.</summary>
-    protected async Task<double> Adjust(LocatedPlayerData located, double delta, string reason)
-    {
-        if (TryGetSession(located.UserId, out var session))
+        if (!int.TryParse(slotArg, out var slot))
         {
-            Resources.TryUpdateResource(session, Credits, delta, reason);
-            Resources.TryGetResource(session, Credits, out var after);
-            return after ?? 0;
+            shell.WriteError(Loc.GetString("cmd-balance-bad-slot"));
+            return null;
         }
 
-        // The database adds the delta itself, so this can't overwrite a write that lands at the same moment
-        // (e.g. the player connecting and their own credits being loaded).
-        return await Db.AdjustPlayerResource(located.UserId.UserId, Credits, delta, reason);
-    }
-
-    /// <summary>Set the balance to an exact value online-or-offline. Returns the resulting balance.</summary>
-    protected async Task<double> SetBalance(LocatedPlayerData located, double value, string reason)
-    {
-        if (TryGetSession(located.UserId, out var session))
-        {
-            Resources.TrySetResource(session, Credits, value, reason);
-            Resources.TryGetResource(session, Credits, out var after);
-            return after ?? 0;
-        }
-
-        await Db.SetPlayerResource(located.UserId.UserId, Credits, value, reason);
-        return value;
+        var character = (await Balances.GetBalancesAsync(located.UserId)).FirstOrDefault(c => c.Slot == slot);
+        if (character == null)
+            shell.WriteError(Loc.GetString("cmd-balance-no-character", ("player", located.Username), ("slot", slot)));
+        return character;
     }
 
     protected static string Actor(IConsoleShell shell)
@@ -85,6 +53,19 @@ public abstract partial class BaseBalanceCommand : LocalizedCommands
 
     protected static string Fmt(double value)
         => value.ToString("0.##", CultureInfo.InvariantCulture);
+
+    protected static Dictionary<int, string> Names(IEnumerable<CharacterBalanceSummary> characters)
+        => characters.ToDictionary(c => c.ProfileId, c => c.Name);
+
+    /// <summary>One ledger row, naming the character it belongs to if it still exists.</summary>
+    protected static string FormatLedgerRow(PlayerResourceTransaction row, IReadOnlyDictionary<int, string> names)
+    {
+        var who = row.ProfileId is not { } id
+            ? "account"
+            : names.TryGetValue(id, out var name) ? name : $"deleted #{id}";
+
+        return $"  {row.CreatedAt:yyyy-MM-dd HH:mm:ss}  {(row.Delta >= 0 ? "+" : "")}{Fmt(row.Delta),10}  => {Fmt(row.BalanceAfter),10}  [{who}] {row.Reason ?? LedgerReasons.Unspecified}";
+    }
 }
 
 [AdminCommand(AdminFlags.Admin)]
@@ -103,24 +84,36 @@ public sealed partial class BalanceCommand : BaseBalanceCommand
         if (await Locate(shell, args[0]) is not { } located)
             return;
 
-        var online = TryGetSession(located.UserId, out _);
-        var balance = await GetBalance(located);
+        var online = Players.TryGetSessionById(located.UserId, out _);
+        var playing = Balances.GetActiveSlot(located.UserId);
+        var characters = await Balances.GetBalancesAsync(located.UserId);
         var ledger = await Db.GetPlayerResourceTransactions(located.UserId.UserId, 5);
 
         var sb = new StringBuilder();
         sb.AppendLine(Loc.GetString("cmd-balance-header",
             ("player", located.Username),
-            ("state", online ? "online" : "offline"),
-            ("balance", Fmt(balance))));
+            ("state", online ? "online" : "offline")));
 
+        foreach (var character in characters)
+        {
+            var balance = character.Balance is { } b
+                ? Fmt(b)
+                : Loc.GetString("cmd-balance-never-spawned", ("starting", Fmt(Balances.StartingBalance)));
+
+            sb.Append("  ").AppendLine(Loc.GetString("cmd-balance-character",
+                ("slot", character.Slot),
+                ("name", character.Name),
+                ("balance", balance),
+                ("playing", character.Slot == playing ? "yes" : "no")));
+        }
+
+        sb.AppendLine(Loc.GetString("cmd-balance-recent"));
+        var names = Names(characters);
         foreach (var row in ledger)
-            sb.AppendLine(FormatLedgerRow(row));
+            sb.AppendLine(FormatLedgerRow(row, names));
 
         shell.WriteLine(sb.ToString().TrimEnd());
     }
-
-    internal static string FormatLedgerRow(PlayerResourceTransaction row)
-        => $"  {row.CreatedAt:yyyy-MM-dd HH:mm:ss}  {(row.Delta >= 0 ? "+" : "")}{Fmt(row.Delta),10}  => {Fmt(row.BalanceAfter),10}  {row.Reason ?? LedgerReasons.Unspecified}";
 }
 
 [AdminCommand(AdminFlags.Admin)]
@@ -153,10 +146,11 @@ public sealed partial class BalanceLedgerCommand : BaseBalanceCommand
             return;
         }
 
+        var names = Names(await Balances.GetBalancesAsync(located.UserId));
         var sb = new StringBuilder();
         sb.AppendLine(Loc.GetString("cmd-balance-ledger-header", ("player", located.Username), ("count", ledger.Count)));
         foreach (var row in ledger)
-            sb.AppendLine(BalanceCommand.FormatLedgerRow(row));
+            sb.AppendLine(FormatLedgerRow(row, names));
         shell.WriteLine(sb.ToString().TrimEnd());
     }
 }
@@ -168,29 +162,35 @@ public sealed partial class BalanceAdjustCommand : BaseBalanceCommand
 
     public override async void Execute(IConsoleShell shell, string argStr, string[] args)
     {
-        if (args.Length < 3)
+        if (args.Length < 4)
         {
             shell.WriteLine(Help);
             return;
         }
 
-        if (!double.TryParse(args[1], NumberStyles.Float, CultureInfo.InvariantCulture, out var delta) || delta == 0)
+        if (!double.TryParse(args[2], NumberStyles.Float, CultureInfo.InvariantCulture, out var delta) || delta == 0)
         {
             shell.WriteError(Loc.GetString("cmd-balance-bad-amount"));
             return;
         }
 
-        if (await Locate(shell, args[0]) is not { } located)
+        if (await Locate(shell, args[0]) is not { } located
+            || await LocateCharacter(shell, located, args[1]) is not { } character)
             return;
 
-        var reason = LedgerReasons.Admin(Actor(shell), string.Join(' ', args.Skip(2)));
-        var after = await Adjust(located, delta, reason);
+        var note = string.Join(' ', args.Skip(3));
+        var after = await Balances.AdjustCharacterAsync(located.UserId, character.Slot, delta, LedgerReasons.Admin(Actor(shell), note));
+        if (after is not { } balance)
+        {
+            shell.WriteError(Loc.GetString("cmd-balance-failed"));
+            return;
+        }
 
         AdminLog.Add(LogType.Economy, LogImpact.High,
-            $"{Actor(shell)} adjusted {located.Username}'s credits by {Fmt(delta)} (now {Fmt(after)}). Reason: {string.Join(' ', args.Skip(2))}");
+            $"{Actor(shell)} adjusted {located.Username}'s character {character.Name} by {Fmt(delta)} (now {Fmt(balance)}). Reason: {note}");
 
         shell.WriteLine(Loc.GetString("cmd-balance-adjusted",
-            ("player", located.Username), ("delta", Fmt(delta)), ("balance", Fmt(after))));
+            ("player", located.Username), ("name", character.Name), ("delta", Fmt(delta)), ("balance", Fmt(balance))));
     }
 }
 
@@ -201,29 +201,35 @@ public sealed partial class BalanceSetCommand : BaseBalanceCommand
 
     public override async void Execute(IConsoleShell shell, string argStr, string[] args)
     {
-        if (args.Length < 3)
+        if (args.Length < 4)
         {
             shell.WriteLine(Help);
             return;
         }
 
-        if (!double.TryParse(args[1], NumberStyles.Float, CultureInfo.InvariantCulture, out var value) || value < 0)
+        if (!double.TryParse(args[2], NumberStyles.Float, CultureInfo.InvariantCulture, out var value) || value < 0)
         {
             shell.WriteError(Loc.GetString("cmd-balance-bad-amount"));
             return;
         }
 
-        if (await Locate(shell, args[0]) is not { } located)
+        if (await Locate(shell, args[0]) is not { } located
+            || await LocateCharacter(shell, located, args[1]) is not { } character)
             return;
 
-        var before = await GetBalance(located);
-        var reason = LedgerReasons.Admin(Actor(shell), string.Join(' ', args.Skip(2)));
-        var after = await SetBalance(located, value, reason);
+        var before = character.Balance ?? Balances.StartingBalance;
+        var note = string.Join(' ', args.Skip(3));
+        var after = await Balances.SetCharacterAsync(located.UserId, character.Slot, value, LedgerReasons.Admin(Actor(shell), note));
+        if (after is not { } balance)
+        {
+            shell.WriteError(Loc.GetString("cmd-balance-failed"));
+            return;
+        }
 
         AdminLog.Add(LogType.Economy, LogImpact.High,
-            $"{Actor(shell)} set {located.Username}'s credits to {Fmt(after)} (was {Fmt(before)}). Reason: {string.Join(' ', args.Skip(2))}");
+            $"{Actor(shell)} set {located.Username}'s character {character.Name} to {Fmt(balance)} (was {Fmt(before)}). Reason: {note}");
 
         shell.WriteLine(Loc.GetString("cmd-balance-set",
-            ("player", located.Username), ("before", Fmt(before)), ("balance", Fmt(after))));
+            ("player", located.Username), ("name", character.Name), ("before", Fmt(before)), ("balance", Fmt(balance))));
     }
 }

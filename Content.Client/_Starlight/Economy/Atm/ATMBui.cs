@@ -13,6 +13,7 @@ public sealed class ATMBui : BoundUserInterface
     private int _transferAmount;
     private string _transferRecipient = string.Empty;
     private int _currentBalance;
+    private int _transferable; // Serenity: balance minus starting funds
     public ATMBui(EntityUid owner, Enum uiKey) : base(owner, uiKey)
     {
 
@@ -56,7 +57,7 @@ public sealed class ATMBui : BoundUserInterface
         {
             View(ViewType.Transfer);
             _window.TransferButton.Disabled = string.IsNullOrWhiteSpace(_transferRecipient)
-                || _transferAmount <= 0 || _transferAmount > _currentBalance;
+                || _transferAmount <= 0 || _transferAmount > _transferable;
         };
 
         _window.WithdrawInput.OnTextChanged += _ =>
@@ -74,12 +75,12 @@ public sealed class ATMBui : BoundUserInterface
             if (!int.TryParse(_window.TransferAmountInput.Text, out _transferAmount))
                 _transferAmount = 0;
             _window.TransferButton.Disabled = string.IsNullOrWhiteSpace(_transferRecipient)
-                || _transferAmount <= 0 || _transferAmount > _currentBalance;
+                || _transferAmount <= 0 || _transferAmount > _transferable;
         };
 
         _window.TransferTargetInput.OnTextChanged += _ =>
             _window.TransferButton.Disabled = string.IsNullOrWhiteSpace(_transferRecipient = _window.TransferTargetInput.Text ?? string.Empty)
-                || _transferAmount <= 0 || _transferAmount > _currentBalance;
+                || _transferAmount <= 0 || _transferAmount > _transferable;
 
         _window.TransferButton.OnPressed += _ =>
         {
@@ -105,10 +106,17 @@ public sealed class ATMBui : BoundUserInterface
             return;
 
         _currentBalance = state.Balance;
+        _transferable = Math.Max(0, state.Balance - state.StartingFunds); // Serenity
         _window.BalanceLabel.Children.Clear();
 
         var balanceMsg = new FormattedMessage();
         balanceMsg.AddMarkupOrThrow(Loc.GetString("economy-atm-ui-balance", ("balance", state.Balance)));
+        // Serenity: starting funds withdraw as bills bound to this character and can't be transferred
+        if (state.StartingFunds > 0)
+        {
+            balanceMsg.PushNewline();
+            balanceMsg.AddMarkupOrThrow(Loc.GetString("economy-atm-ui-starting-funds", ("amount", state.StartingFunds)));
+        }
         _window.BalanceLabel.SetMessage(balanceMsg);
 
         _window.TransferHelpLabel.Children.Clear();
@@ -131,7 +139,7 @@ public sealed class ATMBui : BoundUserInterface
             || _amount <= 0 || _amount > _currentBalance;
 
         _window.TransferButton.Disabled = string.IsNullOrWhiteSpace(_transferRecipient)
-            || _transferAmount <= 0 || _transferAmount > _currentBalance;
+            || _transferAmount <= 0 || _transferAmount > _transferable;
     }
 
     private void View(ViewType type)
