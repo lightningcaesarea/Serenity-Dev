@@ -47,9 +47,9 @@ public sealed partial class DiscordAccountLinkManager
     /// </summary>
     public bool OAuthConfigured
         => _oauthClientId.Length > 0
-           && _oauthClientSecret.Length > 0
-           && Uri.TryCreate(_oauthRedirectUri, UriKind.Absolute, out var redirect)
-           && redirect.AbsolutePath == DiscordOAuth.CallbackPath;
+        && _oauthClientSecret.Length > 0
+        && Uri.TryCreate(_oauthRedirectUri, UriKind.Absolute, out var redirect)
+        && redirect.AbsolutePath == DiscordOAuth.CallbackPath;
 
     private void InitializeOAuth()
     {
