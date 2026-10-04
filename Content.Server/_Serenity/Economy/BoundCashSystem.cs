@@ -15,6 +15,6 @@ public sealed partial class BoundCashSystem : SharedBoundCashSystem
             return true;
 
         return _players.TryGetSessionByEntity(user, out var session)
-               && _balances.GetActiveProfileId(session.UserId) == cash.Comp.ProfileId;
+            && _balances.GetActiveProfileId(session.UserId) == cash.Comp.ProfileId;
     }
 }

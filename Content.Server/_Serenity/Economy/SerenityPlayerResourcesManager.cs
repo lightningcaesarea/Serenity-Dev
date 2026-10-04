@@ -73,7 +73,8 @@ public sealed partial class SerenityPlayerResourcesManager : SharedNullLinkPlaye
 
     public event Action<ICommonSession>? ActiveBalanceChanged;
 
-    public double StartingBalance { get; private set; }
+    // Read on use: this manager starts during IoC setup, before CVars are registered (e.g. in unit tests).
+    public double StartingBalance => _cfg.GetCVar(SerenityCCVars.CharacterStartingBalance);
 
     public override void Initialize()
     {
@@ -82,7 +83,6 @@ public sealed partial class SerenityPlayerResourcesManager : SharedNullLinkPlaye
         _initialized = true;
 
         base.Initialize();
-        _cfg.OnValueChanged(SerenityCCVars.CharacterStartingBalance, v => StartingBalance = v, true);
         _players.PlayerStatusChanged += OnPlayerStatusChanged;
         // Started from the main thread so continuations resume there and DB calls originate there.
         _worker = ProcessOpsAsync();
@@ -276,8 +276,8 @@ public sealed partial class SerenityPlayerResourcesManager : SharedNullLinkPlaye
     {
         session = default!;
         return _active.TryGetValue(user, out var active)
-               && active.Slot == slot
-               && _players.TryGetSessionById(user, out session!);
+            && active.Slot == slot
+            && _players.TryGetSessionById(user, out session!);
     }
 
     public async Task<double?> AdjustCharacterAsync(NetUserId user, int slot, double delta, string reason)
