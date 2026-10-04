@@ -1,0 +1,9 @@
+- type: cargoProduct
+  id: ScienceXenobiologySlimes
+  icon:
+    sprite: _Starlight/Mobs/XenoSlimes/slimes.rsi
+    state: base1
+  product: CrateNPCXenobiologySlime
+  cost: 3000
+  category: cargoproduct-category-name-science
+  group: market

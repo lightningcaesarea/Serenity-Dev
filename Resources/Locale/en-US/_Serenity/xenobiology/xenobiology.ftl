@@ -9,3 +9,5 @@ bounty-description-slime-extract-tier1 = A Federation xenobiology lab is short o
 bounty-description-slime-extract-tier2 = Researchers want second-generation slime mutations to study. Uncommon extracts only.
 bounty-description-slime-extract-tier3 = A Federation research institute will pay well for rare slime extracts, and share their findings with your science team.
 bounty-description-slime-extract-tier4 = Rainbow slime extracts are almost never seen outside a lab. Send one and name your price. We already named it.
+
+guide-entry-xenobiology = Xenobiology

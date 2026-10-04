@@ -1,0 +1,11 @@
+- type: entity
+  parent: CrateLivestock
+  id: CrateNPCXenobiologySlime
+  name: gray slime crate
+  description: A crate containing two gray xenobiology slimes, the starting stock for a slime lab.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage:
+        id: XenobiologySlimeGray
+        amount: 2
