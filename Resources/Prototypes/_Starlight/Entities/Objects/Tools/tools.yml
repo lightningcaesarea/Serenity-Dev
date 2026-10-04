@@ -1043,6 +1043,7 @@
     - PlumbingRpldDrain
     - PlumbingRpldDisposal
     - PlumbingRpldFluidPort # Serenity
+    - PlumbingRpldOneWayValve # Serenity
     - Deconstruct
   - type: LimitedCharges
     maxCharges: 45

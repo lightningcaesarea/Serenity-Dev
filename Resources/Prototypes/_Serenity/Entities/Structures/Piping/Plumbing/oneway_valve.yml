@@ -1,0 +1,74 @@
+# One-way valve: lets reagents flow from the inlet side to the outlet side but never back.
+# Built from the existing plumbing pieces: the inlet pulls from the upstream network into a small
+# buffer, and only the outlet side offers that buffer to other machines.
+- type: entity
+  parent: PlumbingMachineBase
+  id: PlumbingOneWayValve
+  name: one-way valve
+  description: Sits inline on a duct run and only lets reagents through in the direction of the arrow.
+  components:
+  - type: Physics
+    bodyType: Static
+    canCollide: false
+  - type: Sprite
+    sprite: _Serenity/Structures/Piping/Plumbing/oneway_valve.rsi
+    layers:
+    - state: onewayValve
+      map: [ "enum.SubfloorLayers.FirstLayer" ]
+  - type: PlumbingDevice
+    updateInterval: 2
+  - type: PlumbingInlet
+    solutionName: buffer
+  - type: PlumbingOutlet
+    solutionName: buffer
+  - type: Plungeable
+  - type: SolutionManager
+    solutions:
+    - SolutionPlumbingOneWayValveBuffer
+  - type: ExaminableSolution
+    solution: buffer
+  - type: NodeContainer
+    nodes:
+      inlet:
+        !type:PlumbingNode
+        nodeGroupID: Plumbing
+        pipeDirection: North
+      outlet:
+        !type:PlumbingNode
+        nodeGroupID: Plumbing
+        pipeDirection: South
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:SpillBehavior
+        solution: buffer
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: StaticPrice
+    price: 50
+
+- type: entity
+  parent: Solution
+  id: SolutionPlumbingOneWayValveBuffer
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Solution
+    id: buffer
+    solution:
+      maxVol: 20
+      canReact: false
+
+- type: rcd
+  id: PlumbingRpldOneWayValve
+  category: PlumbingSupply
+  sprite: /Textures/_Serenity/Interface/Radial/RPLD/oneway_valve.png
+  mode: ConstructObject
+  prototype: PlumbingOneWayValve
+  cost: 1
+  delay: 0
+  collisionMask: MachineMask
+  rotation: User
+  fx: EffectRCDConstruct0

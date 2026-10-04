@@ -166,4 +166,16 @@
   - [bold]Fill[/bold]: the tank pulls [bold]20u per update[/bold] from the network's outlets into itself.
 
   Examining a tank shows its valve setting and whether it is docked.
+
+  <Box>
+    <GuideEntityEmbed Entity="PlumbingOneWayValve" Caption=""/>
+  </Box>
+  <Box>
+    ## One-Way Valve
+  </Box>
+  <Box>
+    [color=#999999][italic]Keeping reagents flowing in one direction[/italic][/color]
+  </Box>
+
+  The [color=#a4885c]One-Way Valve[/color] sits inline on a duct run and only lets reagents through in the direction of its arrow. It pulls [bold]20u per update[/bold] from the duct behind it into a small 20u buffer, and only machines on the duct in front of it can draw from that buffer. Nothing on the front side can pull back through it. Use it to stop a downstream machine from draining a supply line it shouldn't, or to keep two networks from mixing.
 </Document>
