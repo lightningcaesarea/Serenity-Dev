@@ -21,6 +21,23 @@
   - Feed the console monkey cubes and it can place monkeys in the pen for you, pick slimes up and move them, and analyse them from a distance.
   - The [bold]mutation potion[/bold] raises a slime's mutation chance and the [bold]stabilizer potion[/bold] lowers it. A slime pushed to the maximum mutation chance becomes a [color=#ff66cc]rainbow[/color] slime when it splits.
 
+  ## Temperament
+  A fed slime is calm and only eats monkeys. A slime that [bold]starves out[/bold] with no monkey in reach turns [color=red]desperate[/color]: it feeds on any living person or animal nearby until it has eaten its fill.
+  - Freshly split slimes start out starving. Have monkeys ready before a big split, or you will have a pen of desperate slimes about a minute later.
+  - A desperate slime stops biting a person once they have taken about [bold]50 damage[/bold] and looks for someone else. Several hungry slimes on one person still add up fast.
+  - Slime bites deal [bold]cellular[/bold] damage, which needs proper treatment from Medical.
+  - [bold]Rare[/bold] and [bold]rainbow[/bold] slimes get hungry faster than common ones.
+  - The slime scanner and the console's analyse action show each slime's mood: Calm, Hungry, [color=red]Desperate[/color] or Docile.
+
+  ## Docility
+  <Box>
+    <GuideEntityEmbed Entity="SlimeDocilityPotion" Caption=""/>
+  </Box>
+  Inject a [bold]pink[/bold] slime extract with [bold]plasma[/bold] to make a [bold]docility potion[/bold]. Use it on a slime to calm it for good.
+  - A docile slime never turns desperate, even when starving.
+  - A docile slime can be [bold]picked up and carried[/bold].
+  - Docility is not passed on: when a docile slime splits, its children are ordinary slimes.
+
   ## Colours and rarity
   Each colour can only mutate into certain others, so rare colours take several generations.
   - [bold]Basic:[/bold] gray
@@ -42,7 +59,7 @@
     <GuideEntityEmbed Entity="RainbowSlimeExtract" Caption=""/>
   </Box>
   - Inject an extract with [bold]water[/bold], [bold]blood[/bold] or [bold]plasma[/bold] to set off its reaction. What happens depends on the colour and the chemical, and not every colour reacts to all three.
-  - Reactions make materials, items, and slime potions such as steroid (more extracts per slime), extract enhancer (more uses per extract), speed, fireproofing, and sentience.
+  - Reactions make materials, items, and slime potions such as steroid (more extracts per slime), extract enhancer (more uses per extract), speed, fireproofing, sentience, and docility.
 
   ## Bounties
   Cargo bounties sometimes ask for slime extracts by rarity. A sold extract bounty pays Federal Bills [bold]and[/bold] research points straight to the station's research server, so it is worth handing spare extracts to Cargo.

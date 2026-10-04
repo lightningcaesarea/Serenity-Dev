@@ -1,0 +1,26 @@
+- type: entity
+  parent: BaseItem
+  id: SlimeDocilityPotion
+  name: slime docility potion
+  description: Calms a slime for good. A docile slime never turns on the crew when starving, and can be picked up and carried.
+  components:
+    - type: SlimeDocilityPotion
+    - type: Sprite
+      sprite: _Starlight/Objects/Specific/Xenobiology/slime_potion.rsi
+      layers:
+        - state: slime_potion
+      color: "#f5a3d8ff"
+
+# Pink slime extract + plasma. Pink's extract lists this reaction; the slot was left empty upstream
+# until slimes had a temperament to calm.
+- type: extractReaction
+  id: PinkSlimeExtractPlasmaReaction
+  requirements:
+    Plasma: 1
+  effects:
+    - effect: !type:SpawnEntity
+        number: 1
+        entity: SlimeDocilityPotion
+      scalingFactor: 0
+      scalingOffset: 1
+  shouldDelete: true
