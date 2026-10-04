@@ -2,7 +2,7 @@
 
 - type: cargoBounty
   id: BountySlimeExtractTier1
-  reward: 2000
+  reward: 667
   researchPoints: 1000
   description: bounty-description-slime-extract-tier1
   entries:
@@ -14,7 +14,7 @@
 
 - type: cargoBounty
   id: BountySlimeExtractTier2
-  reward: 4000
+  reward: 1333
   researchPoints: 2500
   description: bounty-description-slime-extract-tier2
   entries:
@@ -26,7 +26,7 @@
 
 - type: cargoBounty
   id: BountySlimeExtractTier3
-  reward: 8000
+  reward: 2667
   researchPoints: 6000
   description: bounty-description-slime-extract-tier3
   entries:
@@ -38,7 +38,7 @@
 
 - type: cargoBounty
   id: BountySlimeExtractTier4
-  reward: 15000
+  reward: 5000
   researchPoints: 12000
   description: bounty-description-slime-extract-tier4
   entries:
