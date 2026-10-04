@@ -11,3 +11,11 @@ bounty-description-slime-extract-tier3 = A Federation research institute will pa
 bounty-description-slime-extract-tier4 = Rainbow slime extracts are almost never seen outside a lab. Send one and name your price. We already named it.
 
 guide-entry-xenobiology = Xenobiology
+
+slime-mood-calm = Calm
+slime-mood-hungry = Hungry
+slime-mood-desperate = [color=red]Desperate[/color]
+slime-mood-docile = Docile
+
+slime-docility-potion-applied = { $slime } settles down. It looks docile now.
+slime-docility-potion-already = { $slime } is already docile.

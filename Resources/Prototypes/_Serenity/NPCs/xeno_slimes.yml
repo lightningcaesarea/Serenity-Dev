@@ -1,0 +1,35 @@
+# A desperate slime picks the nearest living organic creature it may feed on, moves to it and takes one bite.
+# The plan repeats while the slime stays desperate. See SlimeTemperamentComponent.
+- type: htnCompound
+  id: SlimeDesperateEatCompound
+  branches:
+    - tasks:
+        - !type:HTNPrimitiveTask
+          operator: !type:SlimeFindDesperateTargetOperator
+            targetKey: EatTarget
+            targetMoveKey: TargetCoordinates
+
+        - !type:HTNPrimitiveTask
+          operator: !type:SetFloatOperator
+            targetKey: MovementRange
+            amount: 0.5
+
+        - !type:HTNPrimitiveTask
+          operator: !type:MoveToOperator
+            pathfindInPlanning: false
+
+        - !type:HTNPrimitiveTask
+          operator: !type:SlimeDesperateEatOperator
+            targetKey: EatTarget
+
+        - !type:HTNPrimitiveTask
+          operator: !type:SetFloatOperator
+            targetKey: IdleTime
+            amount: 1
+
+        - !type:HTNPrimitiveTask
+          operator: !type:WaitOperator
+            key: IdleTime
+          preconditions:
+            - !type:KeyExistsPrecondition
+              key: IdleTime

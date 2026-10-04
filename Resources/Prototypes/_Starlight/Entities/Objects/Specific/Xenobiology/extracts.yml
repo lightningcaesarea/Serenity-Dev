@@ -767,7 +767,7 @@
     - type: SlimeExtract
       extractReactions:
         - PinkSlimeExtractBloodReaction
-        #- PinkSlimeExtractPlasmaReaction Need to implement slime docility before we can implement the plasma reagent reaction
+        - PinkSlimeExtractPlasmaReaction # Serenity: docility potion, defined in _Serenity/.../Xenobiology/potions.yml
 
 - type: extractReaction
   id: PinkSlimeExtractBloodReaction

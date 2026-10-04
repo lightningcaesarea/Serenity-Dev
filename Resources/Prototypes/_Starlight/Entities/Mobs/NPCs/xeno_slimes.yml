@@ -30,6 +30,7 @@
             eyes_squint: Black
     - type: Hunger
       baseDecayRate: 1
+    - type: SlimeTemperament # Serenity: turns desperate when starved out
     - type: Slime
       damageOnEat:
         types:
@@ -212,6 +213,8 @@
   parent: XenobiologySlimeBase
   description: BLUESPACE
   components:
+    - type: Hunger # Serenity: rare slimes get hungry faster
+      baseDecayRate: 1.5
     - type: Slime
       splitInto: XenobiologySlimeBluespace
       extract: BluespaceSlimeExtract
@@ -224,6 +227,8 @@
   parent: XenobiologySlimeBase
   description: SEPIA
   components:
+    - type: Hunger # Serenity: rare slimes get hungry faster
+      baseDecayRate: 1.5
     - type: Slime
       splitInto: XenobiologySlimeSepia
       extract: SepiaSlimeExtract
@@ -236,6 +241,8 @@
   parent: XenobiologySlimeBase
   description: CERULEAN
   components:
+    - type: Hunger # Serenity: rare slimes get hungry faster
+      baseDecayRate: 1.5
     - type: Slime
       splitInto: XenobiologySlimeCerulean
       extract: CeruleanSlimeExtract
@@ -248,6 +255,8 @@
   parent: XenobiologySlimeBase
   description: PYRITE
   components:
+    - type: Hunger # Serenity: rare slimes get hungry faster
+      baseDecayRate: 1.5
     - type: Slime
       splitInto: XenobiologySlimePyrite
       extract: PyriteSlimeExtract
@@ -320,6 +329,8 @@
   parent: XenobiologySlimeBase
   description: OIL
   components:
+    - type: Hunger # Serenity: rare slimes get hungry faster
+      baseDecayRate: 1.5
     - type: Slime
       splitInto: XenobiologySlimeOil
       extract: OilSlimeExtract
@@ -336,6 +347,8 @@
   parent: XenobiologySlimeBase
   description: BLACK
   components:
+    - type: Hunger # Serenity: rare slimes get hungry faster
+      baseDecayRate: 1.5
     - type: Slime
       splitInto: XenobiologySlimeBlack
       extract: BlackSlimeExtract # Serenity: was OilSlimeExtract
@@ -348,6 +361,8 @@
   parent: XenobiologySlimeBase
   description: LIGHT PINK
   components:
+    - type: Hunger # Serenity: rare slimes get hungry faster
+      baseDecayRate: 1.5
     - type: Slime
       splitInto: XenobiologySlimeLightPink
       extract: LightPinkSlimeExtract
@@ -360,6 +375,8 @@
   parent: XenobiologySlimeBase
   description: ADAMANTINE
   components:
+    - type: Hunger # Serenity: rare slimes get hungry faster
+      baseDecayRate: 1.5
     - type: Slime
       splitInto: XenobiologySlimeAdamantine
       extract: AdamantineSlimeExtract
@@ -376,6 +393,8 @@
   parent: XenobiologySlimeBase
   description: RAINBOW
   components:
+    - type: Hunger # Serenity: rare slimes get hungry faster
+      baseDecayRate: 1.5
     - type: Slime
       splitInto: XenobiologySlimeRainbow
       extract: RainbowSlimeExtract

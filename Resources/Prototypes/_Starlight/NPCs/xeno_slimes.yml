@@ -36,6 +36,12 @@
 #        - !type:HTNCompoundTask
 #          task: SlimeGoToFeedingSpotCompound
 
+    # Serenity-start: starved-out slimes with no monkey in reach feed on crew
+    - tasks:
+        - !type:HTNCompoundTask
+          task: SlimeDesperateEatCompound
+    # Serenity-end
+
     - tasks:
         - !type:HTNCompoundTask
           task: IdleCompound
