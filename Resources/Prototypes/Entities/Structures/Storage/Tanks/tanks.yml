@@ -217,6 +217,7 @@
       solution: tank
     - type: ToggleableSolutionTransfer # Serenity: alt-click switches between filling and dispensing
       solution: tank
+      lightState: modelight # wheel lights show the mode
     # Serenity: the spray painter can make it look like any other storage tank
     - type: PaintableTankVisuals
       baseState: generictank-1

@@ -1,4 +1,5 @@
 using Robust.Shared.GameStates;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared._Serenity.Chemistry;
 
@@ -19,4 +20,28 @@ public sealed partial class ToggleableSolutionTransferComponent : Component
     /// <summary>True: containers used on this pour into it. False: they draw from it.</summary>
     [DataField, AutoNetworkedField]
     public bool Filling = true;
+
+    /// <summary>
+    /// White sprite state, in the entity's own RSI, drawn unshaded on top and tinted by mode.
+    /// Null for no mode light.
+    /// </summary>
+    [DataField]
+    public string? LightState;
+
+    [DataField]
+    public Color FillingLightColor = Color.FromHex("#4fe36a");
+
+    [DataField]
+    public Color DispensingLightColor = Color.FromHex("#ffa62b");
+}
+
+[Serializable, NetSerializable]
+public enum ToggleableSolutionTransferVisuals : byte
+{
+    Filling,
+}
+
+public enum ToggleableSolutionTransferLayers : byte
+{
+    Light,
 }

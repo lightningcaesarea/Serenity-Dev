@@ -12,6 +12,7 @@ namespace Content.Shared._Serenity.Chemistry;
 public sealed partial class ToggleableSolutionTransferSystem : EntitySystem
 {
     [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
 
     private static readonly SpriteSpecifier VerbIcon =
         new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/VerbIcons/refresh.svg.192dpi.png"));
@@ -94,6 +95,8 @@ public sealed partial class ToggleableSolutionTransferSystem : EntitySystem
 
     private void ApplyMode(Entity<ToggleableSolutionTransferComponent> ent)
     {
+        _appearance.SetData(ent, ToggleableSolutionTransferVisuals.Filling, ent.Comp.Filling);
+
         if (ent.Comp.Filling)
         {
             RemComp<DrainableSolutionComponent>(ent);
