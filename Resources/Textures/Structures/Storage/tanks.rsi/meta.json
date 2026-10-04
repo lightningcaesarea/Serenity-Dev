@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Taken from tgstation at commit https://github.com/tgstation/tgstation/commit/8442af39ee82b813194f71db82edd2923d97818d, watercooler Taken from paradise at https://github.com/ParadiseSS13/Paradise/commit/ae2258d9235752ac6d80ec11e36553fe3b6ae59e, highgenerictank-1 recoloured from highwatertank-2 for Serenity",
+  "copyright": "Taken from tgstation at commit https://github.com/tgstation/tgstation/commit/8442af39ee82b813194f71db82edd2923d97818d, watercooler Taken from paradise at https://github.com/ParadiseSS13/Paradise/commit/ae2258d9235752ac6d80ec11e36553fe3b6ae59e, highgenerictank-1 recoloured from highwatertank-2 for Serenity, generictank-<colour> and highgenerictank-<colour> recoloured from the generic tanks for Serenity",
   "size": {
     "x": 32,
     "y": 32
@@ -120,6 +120,84 @@
     },
     {
       "name": "highgenerictank-1"
+    },
+    {
+      "name": "generictank-blue"
+    },
+    {
+      "name": "generictank-white"
+    },
+    {
+      "name": "generictank-yellow"
+    },
+    {
+      "name": "generictank-green"
+    },
+    {
+      "name": "generictank-orange"
+    },
+    {
+      "name": "generictank-cyan"
+    },
+    {
+      "name": "generictank-pink"
+    },
+    {
+      "name": "generictank-purple"
+    },
+    {
+      "name": "highgenerictank-blue"
+    },
+    {
+      "name": "highgenerictank-white"
+    },
+    {
+      "name": "highgenerictank-yellow"
+    },
+    {
+      "name": "highgenerictank-green"
+    },
+    {
+      "name": "highgenerictank-orange"
+    },
+    {
+      "name": "highgenerictank-cyan"
+    },
+    {
+      "name": "highgenerictank-pink"
+    },
+    {
+      "name": "highgenerictank-purple"
+    },
+    {
+      "name": "generictank-red"
+    },
+    {
+      "name": "generictank-darkgreen"
+    },
+    {
+      "name": "generictank-brown"
+    },
+    {
+      "name": "generictank-black"
+    },
+    {
+      "name": "generictank-lightblue"
+    },
+    {
+      "name": "highgenerictank-red"
+    },
+    {
+      "name": "highgenerictank-darkgreen"
+    },
+    {
+      "name": "highgenerictank-brown"
+    },
+    {
+      "name": "highgenerictank-black"
+    },
+    {
+      "name": "highgenerictank-lightblue"
     }
   ]
 }

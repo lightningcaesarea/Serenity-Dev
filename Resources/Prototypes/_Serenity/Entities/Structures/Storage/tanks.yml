@@ -19,3 +19,397 @@
     fillBaseName: highwatertank-2-
   - type: PaintableTankVisuals
     baseState: highgenerictank-1
+  - type: Paintable
+    group: StorageTanksHighCapacity
+
+# Coloured generic tanks. Also the looks the spray painter offers for the generic tanks.
+
+- type: entity
+  parent: GenericTank
+  id: GenericTankBlue
+  suffix: Empty, Blue
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: generictank-blue
+      - state: watertank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: PaintableTankVisuals
+    baseState: generictank-blue
+
+- type: entity
+  parent: GenericTank
+  id: GenericTankWhite
+  suffix: Empty, White
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: generictank-white
+      - state: watertank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: PaintableTankVisuals
+    baseState: generictank-white
+
+- type: entity
+  parent: GenericTank
+  id: GenericTankYellow
+  suffix: Empty, Yellow
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: generictank-yellow
+      - state: watertank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: PaintableTankVisuals
+    baseState: generictank-yellow
+
+- type: entity
+  parent: GenericTank
+  id: GenericTankGreen
+  suffix: Empty, Green
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: generictank-green
+      - state: watertank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: PaintableTankVisuals
+    baseState: generictank-green
+
+- type: entity
+  parent: GenericTank
+  id: GenericTankOrange
+  suffix: Empty, Orange
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: generictank-orange
+      - state: watertank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: PaintableTankVisuals
+    baseState: generictank-orange
+
+- type: entity
+  parent: GenericTank
+  id: GenericTankCyan
+  suffix: Empty, Cyan
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: generictank-cyan
+      - state: watertank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: PaintableTankVisuals
+    baseState: generictank-cyan
+
+- type: entity
+  parent: GenericTank
+  id: GenericTankPink
+  suffix: Empty, Pink
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: generictank-pink
+      - state: watertank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: PaintableTankVisuals
+    baseState: generictank-pink
+
+- type: entity
+  parent: GenericTank
+  id: GenericTankPurple
+  suffix: Empty, Purple
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: generictank-purple
+      - state: watertank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: PaintableTankVisuals
+    baseState: generictank-purple
+
+- type: entity
+  parent: GenericTank
+  id: GenericTankRed
+  suffix: Empty, Red
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: generictank-red
+      - state: watertank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: PaintableTankVisuals
+    baseState: generictank-red
+
+- type: entity
+  parent: GenericTank
+  id: GenericTankDarkGreen
+  suffix: Empty, Dark green
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: generictank-darkgreen
+      - state: watertank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: PaintableTankVisuals
+    baseState: generictank-darkgreen
+
+- type: entity
+  parent: GenericTank
+  id: GenericTankBrown
+  suffix: Empty, Brown
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: generictank-brown
+      - state: watertank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: PaintableTankVisuals
+    baseState: generictank-brown
+
+- type: entity
+  parent: GenericTank
+  id: GenericTankBlack
+  suffix: Empty, Black
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: generictank-black
+      - state: watertank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: PaintableTankVisuals
+    baseState: generictank-black
+
+- type: entity
+  parent: GenericTank
+  id: GenericTankLightBlue
+  suffix: Empty, Light blue
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: generictank-lightblue
+      - state: watertank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: PaintableTankVisuals
+    baseState: generictank-lightblue
+
+- type: entity
+  parent: GenericTankHighCapacity
+  id: GenericTankHighCapacityBlue
+  suffix: Empty, Blue
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: highgenerictank-blue
+      - state: highwatertank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: PaintableTankVisuals
+    baseState: highgenerictank-blue
+
+- type: entity
+  parent: GenericTankHighCapacity
+  id: GenericTankHighCapacityWhite
+  suffix: Empty, White
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: highgenerictank-white
+      - state: highwatertank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: PaintableTankVisuals
+    baseState: highgenerictank-white
+
+- type: entity
+  parent: GenericTankHighCapacity
+  id: GenericTankHighCapacityYellow
+  suffix: Empty, Yellow
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: highgenerictank-yellow
+      - state: highwatertank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: PaintableTankVisuals
+    baseState: highgenerictank-yellow
+
+- type: entity
+  parent: GenericTankHighCapacity
+  id: GenericTankHighCapacityGreen
+  suffix: Empty, Green
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: highgenerictank-green
+      - state: highwatertank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: PaintableTankVisuals
+    baseState: highgenerictank-green
+
+- type: entity
+  parent: GenericTankHighCapacity
+  id: GenericTankHighCapacityOrange
+  suffix: Empty, Orange
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: highgenerictank-orange
+      - state: highwatertank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: PaintableTankVisuals
+    baseState: highgenerictank-orange
+
+- type: entity
+  parent: GenericTankHighCapacity
+  id: GenericTankHighCapacityCyan
+  suffix: Empty, Cyan
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: highgenerictank-cyan
+      - state: highwatertank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: PaintableTankVisuals
+    baseState: highgenerictank-cyan
+
+- type: entity
+  parent: GenericTankHighCapacity
+  id: GenericTankHighCapacityPink
+  suffix: Empty, Pink
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: highgenerictank-pink
+      - state: highwatertank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: PaintableTankVisuals
+    baseState: highgenerictank-pink
+
+- type: entity
+  parent: GenericTankHighCapacity
+  id: GenericTankHighCapacityPurple
+  suffix: Empty, Purple
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: highgenerictank-purple
+      - state: highwatertank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: PaintableTankVisuals
+    baseState: highgenerictank-purple
+
+- type: entity
+  parent: GenericTankHighCapacity
+  id: GenericTankHighCapacityRed
+  suffix: Empty, Red
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: highgenerictank-red
+      - state: highwatertank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: PaintableTankVisuals
+    baseState: highgenerictank-red
+
+- type: entity
+  parent: GenericTankHighCapacity
+  id: GenericTankHighCapacityDarkGreen
+  suffix: Empty, Dark green
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: highgenerictank-darkgreen
+      - state: highwatertank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: PaintableTankVisuals
+    baseState: highgenerictank-darkgreen
+
+- type: entity
+  parent: GenericTankHighCapacity
+  id: GenericTankHighCapacityBrown
+  suffix: Empty, Brown
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: highgenerictank-brown
+      - state: highwatertank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: PaintableTankVisuals
+    baseState: highgenerictank-brown
+
+- type: entity
+  parent: GenericTankHighCapacity
+  id: GenericTankHighCapacityBlack
+  suffix: Empty, Black
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: highgenerictank-black
+      - state: highwatertank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: PaintableTankVisuals
+    baseState: highgenerictank-black
+
+- type: entity
+  parent: GenericTankHighCapacity
+  id: GenericTankHighCapacityLightBlue
+  suffix: Empty, Light blue
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: highgenerictank-lightblue
+      - state: highwatertank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: PaintableTankVisuals
+    baseState: highgenerictank-lightblue

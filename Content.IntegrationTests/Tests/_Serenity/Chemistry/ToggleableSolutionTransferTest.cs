@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Content.Shared._Serenity.Chemistry;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
@@ -13,6 +14,7 @@ public sealed class ToggleableSolutionTransferTest
 {
     private static readonly EntProtoId[] GenericTanks = ["GenericTank", "GenericTankHighCapacity"];
     private static readonly ProtoId<PaintableGroupPrototype> StorageTanksGroup = "StorageTanks";
+    private static readonly ProtoId<PaintableGroupPrototype> StorageTanksHighCapacityGroup = "StorageTanksHighCapacity";
 
     /// <summary>
     /// The generic tank starts in filling mode (containers pour into it) and the toggle swaps it to dispensing
@@ -67,8 +69,8 @@ public sealed class ToggleableSolutionTransferTest
     }
 
     /// <summary>
-    /// Both generic tanks can be spray painted, and every look the painter offers names a body state and fill
-    /// settings for the painted tank to copy.
+    /// Each generic tank can be spray painted with the looks of its own size, and every look the painter offers
+    /// names a body state and fill settings for the painted tank to copy.
     /// </summary>
     [Test]
     public async Task EveryStorageTankPaintStyleHasTankVisuals()
@@ -78,30 +80,36 @@ public sealed class ToggleableSolutionTransferTest
         var proto = server.ProtoMan;
         var factory = server.ResolveDependency<IComponentFactory>();
 
+        var groupByTank = new Dictionary<EntProtoId, ProtoId<PaintableGroupPrototype>>
+        {
+            ["GenericTank"] = StorageTanksGroup,
+            ["GenericTankHighCapacity"] = StorageTanksHighCapacityGroup,
+        };
+
         await server.WaitAssertion(() =>
         {
-            var group = proto.Index(StorageTanksGroup);
-
             Assert.Multiple(() =>
             {
-                Assert.That(group.Styles, Contains.Key(group.DefaultStyle));
-
-                foreach (var (style, entity) in group.Styles)
-                {
-                    var entityProto = proto.Index(entity);
-                    Assert.That(entityProto.TryGetComponent<PaintableTankVisualsComponent>(out var visuals, factory),
-                        $"{style} ({entity}) has no PaintableTankVisuals");
-                    Assert.That(visuals?.BaseState, Is.Not.Empty, $"{style} ({entity}) has no base state");
-                    Assert.That(entityProto.TryGetComponent<SolutionContainerVisualsComponent>(out var fill, factory)
-                        && fill.FillBaseName != null && fill.MaxFillLevels > 0,
-                        $"{style} ({entity}) has no fill levels to copy");
-                }
-
-                foreach (var tank in GenericTanks)
+                foreach (var (tank, groupId) in groupByTank)
                 {
                     Assert.That(proto.Index(tank).TryGetComponent<PaintableComponent>(out var paintable, factory)
-                        && paintable.Group == StorageTanksGroup,
-                        $"{tank} can't be spray painted as a storage tank");
+                        && paintable.Group == groupId,
+                        $"{tank} should be painted from {groupId}");
+
+                    var group = proto.Index(groupId);
+                    Assert.That(group.Styles, Contains.Key(group.DefaultStyle));
+                    Assert.That(group.Styles[group.DefaultStyle], Is.EqualTo(tank), $"{groupId} should default to {tank}");
+
+                    foreach (var (style, entity) in group.Styles)
+                    {
+                        var entityProto = proto.Index(entity);
+                        Assert.That(entityProto.TryGetComponent<PaintableTankVisualsComponent>(out var visuals, factory),
+                            $"{groupId} {style} ({entity}) has no PaintableTankVisuals");
+                        Assert.That(visuals?.BaseState, Is.Not.Empty, $"{groupId} {style} ({entity}) has no base state");
+                        Assert.That(entityProto.TryGetComponent<SolutionContainerVisualsComponent>(out var fill, factory)
+                            && fill.FillBaseName != null && fill.MaxFillLevels > 0,
+                            $"{groupId} {style} ({entity}) has no fill levels to copy");
+                    }
                 }
             });
         });

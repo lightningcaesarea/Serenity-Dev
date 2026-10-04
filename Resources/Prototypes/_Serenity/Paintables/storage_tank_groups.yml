@@ -1,18 +1,51 @@
-# Looks the spray painter can give the generic storage tank. Each style entity needs a
-# PaintableTankVisuals component and SolutionContainerVisuals so the fill matches the body.
+# Looks the spray painter can give the generic storage tanks, one group per tank size so the
+# fill always matches. Each style entity needs PaintableTankVisuals and SolutionContainerVisuals.
 - type: paintableGroup
   id: StorageTanks
   cost: 2
   defaultStyle: generic
   styles:
     generic: GenericTank
-    high-capacity-generic: GenericTankHighCapacity
+    blue: GenericTankBlue
+    white: GenericTankWhite
+    yellow: GenericTankYellow
+    green: GenericTankGreen
+    orange: GenericTankOrange
+    cyan: GenericTankCyan
+    pink: GenericTankPink
+    purple: GenericTankPurple
+    red: GenericTankRed
+    dark-green: GenericTankDarkGreen
+    brown: GenericTankBrown
+    black: GenericTankBlack
+    light-blue: GenericTankLightBlue
     water: WaterTank
     fuel: WeldingFuelTank
-    high-capacity-water: WaterTankHighCapacity
-    high-capacity-fuel: WeldingFuelTankHighCapacity
+
+- type: paintableGroup
+  id: StorageTanksHighCapacity
+  cost: 2
+  defaultStyle: generic
+  styles:
+    generic: GenericTankHighCapacity
+    blue: GenericTankHighCapacityBlue
+    white: GenericTankHighCapacityWhite
+    yellow: GenericTankHighCapacityYellow
+    green: GenericTankHighCapacityGreen
+    orange: GenericTankHighCapacityOrange
+    cyan: GenericTankHighCapacityCyan
+    pink: GenericTankHighCapacityPink
+    purple: GenericTankHighCapacityPurple
+    red: GenericTankHighCapacityRed
+    dark-green: GenericTankHighCapacityDarkGreen
+    brown: GenericTankHighCapacityBrown
+    black: GenericTankHighCapacityBlack
+    light-blue: GenericTankHighCapacityLightBlue
+    water: WaterTankHighCapacity
+    fuel: WeldingFuelTankHighCapacity
 
 - type: paintableGroupCategory
   id: StorageTanks
   groups:
   - StorageTanks
+  - StorageTanksHighCapacity
