@@ -5,10 +5,8 @@ serenity-discord-link-deny-unlinked =
 
     1. Join our Discord: {$invite}
     2. Find the verification channel and press "Link account".
-    3. Enter this code: {$code}
+    3. Press "Sign in with SS14" and sign in with this same Space Station 14 account.
     4. Reconnect.
-
-    The code expires in {$minutes} minutes. Don't share it with anyone.
 serenity-discord-link-deny-not-member =
     Your linked Discord account isn't in our Discord server.
     Rejoin to play: {$invite}
@@ -19,17 +17,22 @@ serenity-discord-link-kick-removed = Your linked Discord account left or was rem
 
 ## Discord bot
 
-serenity-discord-link-panel-text = **Link your SS14 account.** Try to connect to the game server first to get your code, then press the button below and enter it. Only you will see what you type.
+serenity-discord-link-panel-text = **Link your SS14 account.** Press the button below, then sign in with your Space Station 14 account. You never type a password here: the sign-in happens on the official SS14 account site, and only you will see the link.
 serenity-discord-link-panel-button = Link account
-serenity-discord-link-modal-title = Link your SS14 account
-serenity-discord-link-modal-label = Code from the game's connection screen
-serenity-discord-link-reply-success = Linked to SS14 account **{$player}**. You can connect now.
-serenity-discord-link-reply-bad-code = That code isn't valid or has expired. Connect to the game again to get a fresh one.
+serenity-discord-link-reply-signin = Press the button below and sign in with the Space Station 14 account you play on. This link is only for you and works for {$minutes} minutes.
+serenity-discord-link-signin-button = Sign in with SS14
+serenity-discord-link-reply-not-configured = Linking isn't set up yet. Please tell a staff member.
 serenity-discord-link-reply-discord-taken = This Discord account is already linked to SS14 account **{$player}**. Ask staff if you need that changed.
 serenity-discord-link-reply-already-linked = That SS14 account is already linked. Ask staff if you need that changed.
 serenity-discord-link-log-linked = Linked: Discord **{$discordName}** (`{$discordId}`) <-> SS14 **{$player}** (`{$userId}`)
 serenity-discord-link-log-removed = Left or was removed from the Discord while linked: Discord **{$discordName}** (`{$discordId}`) <-> SS14 **{$player}** (`{$userId}`)
 serenity-discord-link-log-unlinked = Unlinked by **{$by}** (`{$byId}`): {$link}
+serenity-discord-link-web-title-ok = Account linked
+serenity-discord-link-web-title-fail = Couldn't link your account
+serenity-discord-link-web-success = SS14 account {$player} is now linked to Discord account {$discordName}. You can close this tab and join the game.
+serenity-discord-link-web-cancelled = The sign-in was cancelled, so nothing was linked. Press "Link account" in Discord to try again.
+serenity-discord-link-web-expired = This sign-in link is invalid, expired or was already used. Press "Link account" in Discord to get a new one.
+serenity-discord-link-web-error = Something went wrong talking to the SS14 account site, so nothing was linked. Press "Link account" in Discord to try again, and tell a staff member if it keeps happening.
 serenity-discord-link-whois-usage = Usage: {$prefix}whois <@user | Discord ID | SS14 username>
 serenity-discord-link-unlink-usage = Usage: {$prefix}unlink <@user | Discord ID | SS14 username>
 serenity-discord-link-whois-none = No link found.

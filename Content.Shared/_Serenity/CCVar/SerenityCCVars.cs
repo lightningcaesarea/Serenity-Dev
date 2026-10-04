@@ -53,10 +53,29 @@ public sealed partial class SerenityCCVars
         CVarDef.Create("serenity.discord_link.invite", "", CVar.SERVERONLY);
 
     /// <summary>
-    /// Minutes a link code stays valid.
+    /// Minutes the sign-in link the Discord button hands out stays valid.
     /// </summary>
-    public static readonly CVarDef<int> DiscordLinkCodeMinutes =
-        CVarDef.Create("serenity.discord_link.code_minutes", 15, CVar.SERVERONLY);
+    public static readonly CVarDef<int> DiscordLinkSignInMinutes =
+        CVarDef.Create("serenity.discord_link.signin_minutes", 10, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Client ID of the OAuth application registered on the SS14 account site (Manage account > Developer).
+    /// </summary>
+    public static readonly CVarDef<string> DiscordLinkOAuthClientId =
+        CVarDef.Create("serenity.discord_link.oauth_client_id", "", CVar.SERVERONLY | CVar.CONFIDENTIAL);
+
+    /// <summary>
+    /// Client secret of that OAuth application. Set it in the config file only, never through a command.
+    /// </summary>
+    public static readonly CVarDef<string> DiscordLinkOAuthClientSecret =
+        CVarDef.Create("serenity.discord_link.oauth_client_secret", "", CVar.SERVERONLY | CVar.CONFIDENTIAL);
+
+    /// <summary>
+    /// The public HTTPS address the SS14 account site sends players back to after they sign in. It has to match the
+    /// redirect URI registered with the OAuth application exactly, and end in /discord-link/callback.
+    /// </summary>
+    public static readonly CVarDef<string> DiscordLinkOAuthRedirectUri =
+        CVarDef.Create("serenity.discord_link.oauth_redirect_uri", "", CVar.SERVERONLY | CVar.CONFIDENTIAL);
 
     /// <summary>
     /// Discord role ID allowed to run the bot's staff commands (link panel, whois). Empty disables them.
