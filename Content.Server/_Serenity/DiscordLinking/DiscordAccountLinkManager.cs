@@ -1,5 +1,4 @@
 using System.Linq;
-using System.Security.Cryptography;
 using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.Administration;
@@ -9,6 +8,7 @@ using Content.Shared._Serenity.CCVar;
 using NetCord;
 using NetCord.Rest;
 using Robust.Server.Player;
+using Robust.Server.ServerStatus;
 using Robust.Shared.Asynchronous;
 using Robust.Shared.Configuration;
 using Robust.Shared.Localization;
@@ -19,8 +19,9 @@ namespace Content.Server._Serenity.DiscordLinking;
 
 /// <summary>
 /// Ties each SS14 account to exactly one Discord account and keeps the game behind guild membership.
-/// A player without a link is refused at connect and shown a one-time code; they press the
-/// "Link account" button in Discord and type the code into a private modal. Leaving or being
+/// A player without a link is refused at connect and told to press the "Link account" button in Discord; the
+/// button hands them a private sign-in link, they sign in with their SS14 account in the browser, and the SS14
+/// account site sends them back to <see cref="DiscordOAuth.CallbackPath"/> (see the OAuth partial). Leaving or being
 /// banned from the guild locks the account out, and kicks it if it's online.
 /// </summary>
 public sealed partial class DiscordAccountLinkManager : IPostInjectInit
@@ -32,37 +33,23 @@ public sealed partial class DiscordAccountLinkManager : IPostInjectInit
     [Dependency] private IPlayerLocator _locator = default!;
     [Dependency] private ITaskManager _tasks = default!;
     [Dependency] private ILogManager _log = default!;
-    // Discord delivers commands, modal submissions and member events on its own threads, where the static Loc can't reach
-    // the IoC container (it only exists on the main thread) and throws a NullReferenceException. An injected instance
-    // is resolved once, up front, and works from any thread.
+    [Dependency] private IStatusHost _statusHost = default!;
+    // Discord delivers commands, button presses and member events (and the SS14 account site sends the callback) on
+    // their own threads, where the static Loc can't reach the IoC container (it only exists on the main thread) and
+    // throws a NullReferenceException. An injected instance is resolved once, up front, and works from any thread.
     [Dependency] private ILocalizationManager _loc = default!;
 
     public const string PanelButtonId = "serenity-link-open";
-    private const string ModalId = "serenity-link-submit";
-    private const string CodeInputId = "serenity-link-code";
 
-    // No 0/O, 1/I/L: the code is read off a disconnect screen and typed by hand.
-    private const string CodeAlphabet = "ABCDEFGHJKMNPQRSTUVWXYZ23456789";
-    private const int CodeLength = 6;
-    private const int MaxFailedAttempts = 5;
-    private static readonly TimeSpan FailedAttemptWindow = TimeSpan.FromMinutes(10);
     private static readonly TimeSpan DiscordTimeout = TimeSpan.FromSeconds(5);
 
     private ISawmill _sawmill = default!;
 
-    private readonly object _lock = new();
-    private readonly Dictionary<string, PendingCode> _codes = new();
-    private readonly Dictionary<NetUserId, string> _codeByPlayer = new();
-    private readonly Dictionary<ulong, List<DateTime>> _failedAttempts = new();
-
     private bool _required;
     private string _invite = string.Empty;
-    private int _codeMinutes;
     private ulong _staffRole;
     private ulong _logChannel;
     private bool _failOpen;
-
-    private sealed record PendingCode(NetUserId UserId, string UserName, DateTime Expires);
 
     void IPostInjectInit.PostInject()
     {
@@ -73,10 +60,10 @@ public sealed partial class DiscordAccountLinkManager : IPostInjectInit
     {
         _cfg.OnValueChanged(SerenityCCVars.DiscordLinkRequired, v => _required = v, true);
         _cfg.OnValueChanged(SerenityCCVars.DiscordLinkInvite, v => _invite = v, true);
-        _cfg.OnValueChanged(SerenityCCVars.DiscordLinkCodeMinutes, v => _codeMinutes = Math.Max(1, v), true);
         _cfg.OnValueChanged(SerenityCCVars.DiscordLinkStaffRole, v => _staffRole = ParseId(v), true);
         _cfg.OnValueChanged(SerenityCCVars.DiscordLinkLogChannel, v => _logChannel = ParseId(v), true);
         _cfg.OnValueChanged(SerenityCCVars.DiscordLinkFailOpen, v => _failOpen = v, true);
+        InitializeOAuth();
 
         _discord.OnInteractionReceived += OnInteraction;
         _discord.OnGuildUserRemoved += OnGuildUserRemoved;
@@ -85,7 +72,9 @@ public sealed partial class DiscordAccountLinkManager : IPostInjectInit
         _discord.RegisterCommandCallback(OnUnlinkCommand, "unlink");
 
         if (_required && !_discord.IsConnected)
-            _sawmill.Error("serenity.discord_link.required is on but the Discord bot isn't configured; new players will be refused with codes they can't use.");
+            _sawmill.Error("serenity.discord_link.required is on but the Discord bot isn't configured; new players will be refused and can't link.");
+        else if (_required && !OAuthConfigured)
+            _sawmill.Error("serenity.discord_link.required is on but the OAuth settings (oauth_client_id, oauth_client_secret, oauth_redirect_uri) aren't all set; new players will be refused and can't link.");
     }
 
     public void Shutdown()
@@ -109,7 +98,7 @@ public sealed partial class DiscordAccountLinkManager : IPostInjectInit
 
         var link = await _db.GetDiscordLinkByPlayer(userId.UserId);
         if (link == null)
-            return UnlinkedMessage(GetOrCreateCode(userId, userName));
+            return UnlinkedMessage();
 
         var discordId = unchecked((ulong) link.DiscordId);
 
@@ -151,48 +140,13 @@ public sealed partial class DiscordAccountLinkManager : IPostInjectInit
         return null;
     }
 
-    private string UnlinkedMessage(string code)
+    private string UnlinkedMessage()
     {
-        return _loc.GetString("serenity-discord-link-deny-unlinked",
-            ("invite", InviteText()),
-            ("code", code),
-            ("minutes", _codeMinutes));
+        return _loc.GetString("serenity-discord-link-deny-unlinked", ("invite", InviteText()));
     }
 
     private string InviteText()
         => string.IsNullOrWhiteSpace(_invite) ? _loc.GetString("serenity-discord-link-no-invite") : _invite;
-
-    private string GetOrCreateCode(NetUserId userId, string userName)
-    {
-        lock (_lock)
-        {
-            PruneExpired();
-
-            // Reconnecting shouldn't invalidate a code the player is halfway through typing.
-            if (_codeByPlayer.TryGetValue(userId, out var existing))
-                return existing;
-
-            string code;
-            do
-            {
-                code = RandomNumberGenerator.GetString(CodeAlphabet, CodeLength);
-            } while (_codes.ContainsKey(code));
-
-            _codes[code] = new PendingCode(userId, userName, DateTime.UtcNow.AddMinutes(_codeMinutes));
-            _codeByPlayer[userId] = code;
-            return code;
-        }
-    }
-
-    private void PruneExpired()
-    {
-        var now = DateTime.UtcNow;
-        foreach (var (code, pending) in _codes.Where(p => p.Value.Expires <= now).ToList())
-        {
-            _codes.Remove(code);
-            _codeByPlayer.Remove(pending.UserId);
-        }
-    }
 
     #endregion
 
@@ -200,106 +154,8 @@ public sealed partial class DiscordAccountLinkManager : IPostInjectInit
 
     private async ValueTask OnInteraction(DiscordInteraction interaction)
     {
-        switch (interaction)
-        {
-            case ButtonInteraction button when button.Data.CustomId == PanelButtonId:
-                await button.SendResponseAsync(InteractionCallback.Modal(BuildModal()));
-                break;
-            case ModalInteraction modal when modal.Data.CustomId == ModalId:
-                await HandleModalSubmit(modal);
-                break;
-        }
-    }
-
-    private ModalProperties BuildModal()
-    {
-        return new ModalProperties(ModalId, _loc.GetString("serenity-discord-link-modal-title"),
-        [
-            new TextInputProperties(CodeInputId, TextInputStyle.Short, _loc.GetString("serenity-discord-link-modal-label"))
-            {
-                MinLength = CodeLength,
-                MaxLength = CodeLength,
-                Placeholder = "K7Q2XP",
-            },
-        ]);
-    }
-
-    private async Task HandleModalSubmit(ModalInteraction modal)
-    {
-        var user = modal.User;
-        var typed = ReadCode(modal)?.Trim().ToUpperInvariant() ?? string.Empty;
-
-        PendingCode? pending;
-        lock (_lock)
-        {
-            if (IsRateLimited(user.Id))
-                pending = null;
-            else if (_codes.TryGetValue(typed, out pending) && pending.Expires <= DateTime.UtcNow)
-                pending = null;
-
-            if (pending == null)
-                RecordFailure(user.Id);
-        }
-
-        if (pending == null)
-        {
-            await ReplyPrivately(modal, _loc.GetString("serenity-discord-link-reply-bad-code"));
-            return;
-        }
-
-        // Discord drops interactions not answered within 3 s, so only local DB lookups on this path.
-        if (await _db.GetDiscordLinkByDiscord(user.Id) is { } existing)
-        {
-            var other = await _db.GetPlayerRecordByUserId(new NetUserId(existing.PlayerUserId));
-            await ReplyPrivately(modal, _loc.GetString("serenity-discord-link-reply-discord-taken",
-                ("player", other?.LastSeenUserName ?? existing.PlayerUserId.ToString())));
-            return;
-        }
-
-        if (!await _db.AddDiscordLink(pending.UserId.UserId, user.Id, user.Username))
-        {
-            await ReplyPrivately(modal, _loc.GetString("serenity-discord-link-reply-already-linked"));
-            return;
-        }
-
-        lock (_lock)
-        {
-            _codes.Remove(typed);
-            _codeByPlayer.Remove(pending.UserId);
-        }
-
-        _sawmill.Info($"Linked {pending.UserName} ({pending.UserId}) to Discord {user.Username} ({user.Id})");
-        await ReplyPrivately(modal, _loc.GetString("serenity-discord-link-reply-success", ("player", pending.UserName)));
-        await PostLog(LogLinked(user.Username, user.Id, pending.UserName, pending.UserId.UserId));
-    }
-
-    private static string? ReadCode(ModalInteraction modal)
-    {
-        foreach (var component in modal.Data.Components)
-        {
-            if (component is TextInput { CustomId: CodeInputId } input)
-                return input.Value;
-        }
-
-        return null;
-    }
-
-    private bool IsRateLimited(ulong discordId)
-    {
-        if (!_failedAttempts.TryGetValue(discordId, out var attempts))
-            return false;
-
-        var cutoff = DateTime.UtcNow - FailedAttemptWindow;
-        attempts.RemoveAll(t => t < cutoff);
-        return attempts.Count >= MaxFailedAttempts;
-    }
-
-    private void RecordFailure(ulong discordId)
-    {
-        if (!_failedAttempts.TryGetValue(discordId, out var attempts))
-            _failedAttempts[discordId] = attempts = new List<DateTime>();
-
-        attempts.Add(DateTime.UtcNow);
+        if (interaction is ButtonInteraction button && button.Data.CustomId == PanelButtonId)
+            await HandleLinkButton(button);
     }
 
     private static async Task ReplyPrivately(DiscordInteraction interaction, string content)
