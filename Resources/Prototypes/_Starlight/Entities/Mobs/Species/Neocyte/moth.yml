@@ -62,7 +62,7 @@
     currentTemperature: 310.15
     specificHeat: 46
   - type: TemperatureDamage
-    heatDamageThreshold: 320
+    heatDamageThreshold: 314.15
     coldDamageThreshold: 230
     coldDamage:
       types:

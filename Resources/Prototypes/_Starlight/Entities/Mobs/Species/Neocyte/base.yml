@@ -149,7 +149,7 @@
     currentTemperature: 310.15
     specificHeat: 42 # Starlight
   - type: TemperatureDamage # Starlight, changed to base stats, since not every species has fur; we can change on a case by case per species
-    heatDamageThreshold: 325
+    heatDamageThreshold: 316.15
     coldDamageThreshold: 260 # Starlight
     coldDamage:
       types:
