@@ -276,11 +276,11 @@ public sealed partial class DiscordAccountLinkManager
         var title = _loc.GetString(success ? "serenity-discord-link-web-title-ok" : "serenity-discord-link-web-title-fail");
         var colour = success ? "#3fb950" : "#f85149";
         return $"<!doctype html><html><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">"
-               + $"<title>{HttpUtility.HtmlEncode(title)}</title>"
-               + "<style>body{font-family:system-ui,sans-serif;background:#16181d;color:#e6e6e6;display:flex;min-height:100vh;margin:0;align-items:center;justify-content:center}"
-               + "main{max-width:30rem;padding:2rem;margin:1rem;background:#20232a;border-radius:.75rem;border-top:4px solid " + colour + "}"
-               + "h1{margin-top:0;font-size:1.4rem}p{line-height:1.5;margin-bottom:0}</style></head><body><main>"
-               + $"<h1>{HttpUtility.HtmlEncode(title)}</h1><p>{HttpUtility.HtmlEncode(message)}</p></main></body></html>";
+            + $"<title>{HttpUtility.HtmlEncode(title)}</title>"
+            + "<style>body{font-family:system-ui,sans-serif;background:#16181d;color:#e6e6e6;display:flex;min-height:100vh;margin:0;align-items:center;justify-content:center}"
+            + "main{max-width:30rem;padding:2rem;margin:1rem;background:#20232a;border-radius:.75rem;border-top:4px solid " + colour + "}"
+            + "h1{margin-top:0;font-size:1.4rem}p{line-height:1.5;margin-bottom:0}</style></head><body><main>"
+            + $"<h1>{HttpUtility.HtmlEncode(title)}</h1><p>{HttpUtility.HtmlEncode(message)}</p></main></body></html>";
     }
 
     #endregion
