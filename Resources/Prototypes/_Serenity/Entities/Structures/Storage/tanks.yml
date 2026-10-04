@@ -1,0 +1,21 @@
+- type: entity
+  parent: [StorageTankBig, GenericTank] # StorageTankBig must come first, or else the density won't get inherited.
+  id: GenericTankHighCapacity
+  name: high-capacity storage tank
+  description: A highly pressurized liquids storage tank made to hold gargantuan amounts of anything.
+  suffix: Empty
+  components:
+  - type: StaticPrice
+    price: 2000
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: highgenerictank-1
+      - state: highwatertank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: SolutionContainerVisuals
+    maxFillLevels: 7
+    fillBaseName: highwatertank-2-
+  - type: PaintableTankVisuals
+    baseState: highgenerictank-1

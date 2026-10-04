@@ -20,6 +20,8 @@
   - type: SolutionContainerVisuals
     maxFillLevels: 3
     fillBaseName: fueltank-2-
+  - type: PaintableTankVisuals # Serenity: spray painter look for the generic tank
+    baseState: fueltank-2
   - type: ExaminableSolution
     solution: tank
   - type: ReagentTank
@@ -64,6 +66,8 @@
   - type: SolutionContainerVisuals
     maxFillLevels: 7
     fillBaseName: highfueltank-2-
+  - type: PaintableTankVisuals # Serenity: spray painter look for the generic tank
+    baseState: highfueltank-2
   - type: Solution
     solution:
       reagents:
@@ -95,6 +99,8 @@
   - type: SolutionContainerVisuals
     maxFillLevels: 5
     fillBaseName: watertank-2-
+  - type: PaintableTankVisuals # Serenity: spray painter look for the generic tank
+    baseState: watertank-2
   - type: ExaminableSolution
     solution: tank
 
@@ -177,6 +183,8 @@
   - type: SolutionContainerVisuals
     maxFillLevels: 7
     fillBaseName: highwatertank-2-
+  - type: PaintableTankVisuals # Serenity: spray painter look for the generic tank
+    baseState: highwatertank-2
   - type: Solution
     solution:
       reagents:
@@ -207,3 +215,10 @@
       fillBaseName: watertank-2-
     - type: ExaminableSolution
       solution: tank
+    - type: ToggleableSolutionTransfer # Serenity: alt-click switches between filling and dispensing
+      solution: tank
+    # Serenity: the spray painter can make it look like any other storage tank
+    - type: PaintableTankVisuals
+      baseState: generictank-1
+    - type: Paintable
+      group: StorageTanks

@@ -1,0 +1,18 @@
+# Looks the spray painter can give the generic storage tank. Each style entity needs a
+# PaintableTankVisuals component and SolutionContainerVisuals so the fill matches the body.
+- type: paintableGroup
+  id: StorageTanks
+  cost: 2
+  defaultStyle: generic
+  styles:
+    generic: GenericTank
+    high-capacity-generic: GenericTankHighCapacity
+    water: WaterTank
+    fuel: WeldingFuelTank
+    high-capacity-water: WaterTankHighCapacity
+    high-capacity-fuel: WeldingFuelTankHighCapacity
+
+- type: paintableGroupCategory
+  id: StorageTanks
+  groups:
+  - StorageTanks
