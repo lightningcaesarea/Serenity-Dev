@@ -1,0 +1,70 @@
+# Centiborg chassis: a long, many-legged cosmetic frame for each borg module type.
+# Sprites are CC-BY-SA-3.0 by Toriate; see each .rsi/meta.json and centiborg_credit_by_toriate.txt.
+# The layers, mind-light and toggle-light states all come from BorgSubtypeBase (borg, borg_e, borg_l);
+# the module bases supply parentType and the menu preview.
+
+- type: entity
+  abstract: true
+  id: BorgCentiborgSubtypeBase
+  components:
+    - type: BorgSubtypeDefinition
+      # The art is 64x64 with the feet on the bottom edge: raise it half a tile so it stands on its
+      # tile like a 32x32 chassis.
+      offset: 0, 0.5
+      inventoryTemplateId: borgDutch
+
+- type: entity
+  parent: [ BorgGenericSubtypeBase, BorgCentiborgSubtypeBase ]
+  id: BorgGenericSubtypeCentiborg
+  name: Centiborg
+  components:
+    - type: BorgSubtypeDefinition
+      spritePath: _Serenity/Mobs/Silicon/Borg/Centiborg/centiborg_generic.rsi
+
+- type: entity
+  parent: [ BorgMedicalSubtypeBase, BorgCentiborgSubtypeBase ]
+  id: BorgMedicalSubtypeCentiborg
+  name: Centiborg
+  components:
+    - type: BorgSubtypeDefinition
+      spritePath: _Serenity/Mobs/Silicon/Borg/Centiborg/centiborg_med.rsi
+
+- type: entity
+  parent: [ BorgServiceSubtypeBase, BorgCentiborgSubtypeBase ]
+  id: BorgServiceSubtypeCentiborg
+  name: Centiborg
+  components:
+    - type: BorgSubtypeDefinition
+      spritePath: _Serenity/Mobs/Silicon/Borg/Centiborg/centiborg_service.rsi
+
+- type: entity
+  parent: [ BorgJanitorSubtypeBase, BorgCentiborgSubtypeBase ]
+  id: BorgJanitorSubtypeCentiborg
+  name: Centiborg
+  components:
+    - type: BorgSubtypeDefinition
+      spritePath: _Serenity/Mobs/Silicon/Borg/Centiborg/centiborg_jani.rsi
+
+- type: entity
+  parent: [ BorgCargoSubtypeBase, BorgCentiborgSubtypeBase ]
+  id: BorgCargoSubtypeCentiborg
+  name: Centiborg
+  components:
+    - type: BorgSubtypeDefinition
+      spritePath: _Serenity/Mobs/Silicon/Borg/Centiborg/centiborg_cargo.rsi
+
+- type: entity
+  parent: [ BorgEngineerSubtypeBase, BorgCentiborgSubtypeBase ]
+  id: BorgEngineerSubtypeCentiborg
+  name: Centiborg
+  components:
+    - type: BorgSubtypeDefinition
+      spritePath: _Serenity/Mobs/Silicon/Borg/Centiborg/centiborg_engi.rsi
+
+- type: entity
+  parent: [ BorgMiningSubtypeBase, BorgCentiborgSubtypeBase ]
+  id: BorgMiningSubtypeCentiborg
+  name: Centiborg
+  components:
+    - type: BorgSubtypeDefinition
+      spritePath: _Serenity/Mobs/Silicon/Borg/Centiborg/centiborg_mining.rsi
