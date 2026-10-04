@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Shared._Serenity.Xenobiology; // Serenity
 using Content.Shared.Coordinates;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
@@ -130,12 +131,17 @@ public sealed partial class ActiveSlimeProcessorSystem : EntitySystem
             foreach (var entity in slimeProcessorComponent.SlimeContainer.ContainedEntities)
             {
                 if (!_entityManager.TryGetComponent(entity, out SlimeComponent? slimeComponent)) continue;
+                var extracts = new List<EntityUid>(); // Serenity
                 for (int i = 0; i < slimeProcessorComponent.YieldMultiplier + slimeComponent.SlimeSteroidAmount; i++)
                 {
                     Vector2 randomOffset = new Vector2(random.NextFloat(-0.2F, 0.2F), random.NextFloat(-0.2F, 0.2F));
                     EntityCoordinates ec = new EntityCoordinates(uid, uid.ToCoordinates().Position + randomOffset);
-                    _entityManager.PredictedSpawnAtPosition(slimeComponent.Extract, ec);
+                    extracts.Add(_entityManager.PredictedSpawnAtPosition(slimeComponent.Extract, ec)); // Serenity: keep the extract
                 }
+                // Serenity-start: let the research payout see what was produced
+                var processedEv = new SlimeProcessedEvent(entity, slimeComponent.Extract, extracts);
+                RaiseLocalEvent(uid, ref processedEv);
+                // Serenity-end
                 PredictedQueueDel(entity);
             }
 

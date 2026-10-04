@@ -1,6 +1,7 @@
 - type: cargoBounty
   id: BountyArtifact
   reward: 2500
+  researchPoints: 3000 # Serenity
   description: bounty-description-artifact
   entries:
   - name: bounty-item-artifact
@@ -423,6 +424,7 @@
 - type: cargoBounty
   id: BountyAnomalyCore
   reward: 10000
+  researchPoints: 5000 # Serenity
   description: bounty-description-anomaly-core
   entries:
   - name: bounty-item-anomaly-core
@@ -445,6 +447,7 @@
 - type: cargoBounty
   id: BountyArtifactFragment
   reward: 32500
+  researchPoints: 8000 # Serenity
   description: bounty-description-artifact-fragment
   entries:
   - name: bounty-item-artifact-fragment

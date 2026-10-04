@@ -1,18 +1,18 @@
 # Tier 1
-#TODO: uncomment once xenobio is properly balanced and sprited
-# - type: technology
-#   id: BasicXenobiologyResearch
-#   name: research-technology-basic-xenobiology
-#   icon:
-#     sprite: _Starlight/Mobs/XenoSlimes/test_sprite.rsi
-#     state: test_slime
-#   discipline: Experimental
-#   tier: 1
-#   cost: 1000
-#   recipeUnlocks:
-#   - HandheldSlimeScanner
-#   - SlimeProcessorMachineCircuitboard
-#   - XenobiologyConsoleCircuitboard
+# Serenity: re-enabled with an upstream icon; cost matches the other tier-1 experimental techs
+- type: technology
+  id: BasicXenobiologyResearch
+  name: research-technology-basic-xenobiology
+  icon:
+    sprite: Mobs/Aliens/slimes.rsi
+    state: rainbow_slime_extract
+  discipline: Experimental
+  tier: 1
+  cost: 5000
+  recipeUnlocks:
+  - HandheldSlimeScanner
+  - SlimeProcessorMachineCircuitboard
+  - XenobiologyConsoleCircuitboard
 
 # Tier 2
 - type: technology

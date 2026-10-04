@@ -15,6 +15,16 @@
       yieldMultiplier: 4
       slimeAcquireCooldown: 1s
     - type: CollectingSlimeProcessor
+    # Serenity-start: pays research points per extract to the research server on its grid
+    - type: ResearchClient
+    - type: SlimeProcessorResearch
+      tierPoints:
+        SlimeExtractTier0: 100
+        SlimeExtractTier1: 300
+        SlimeExtractTier2: 800
+        SlimeExtractTier3: 2000
+        SlimeExtractTier4: 6000
+    # Serenity-end
     - type: Machine
       board: SlimeProcessorMachineCircuitboard
     - type: ContainerContainer

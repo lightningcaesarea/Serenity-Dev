@@ -1,0 +1,49 @@
+# Slime extract bounties. Rarer tiers pay more Federal Bills and more research points.
+
+- type: cargoBounty
+  id: BountySlimeExtractTier1
+  reward: 667
+  researchPoints: 1000
+  description: bounty-description-slime-extract-tier1
+  entries:
+  - name: bounty-item-slime-extract-tier1
+    amount: 4
+    whitelist:
+      tags:
+      - SlimeExtractTier1
+
+- type: cargoBounty
+  id: BountySlimeExtractTier2
+  reward: 1333
+  researchPoints: 2500
+  description: bounty-description-slime-extract-tier2
+  entries:
+  - name: bounty-item-slime-extract-tier2
+    amount: 3
+    whitelist:
+      tags:
+      - SlimeExtractTier2
+
+- type: cargoBounty
+  id: BountySlimeExtractTier3
+  reward: 2667
+  researchPoints: 6000
+  description: bounty-description-slime-extract-tier3
+  entries:
+  - name: bounty-item-slime-extract-tier3
+    amount: 2
+    whitelist:
+      tags:
+      - SlimeExtractTier3
+
+- type: cargoBounty
+  id: BountySlimeExtractTier4
+  reward: 5000
+  researchPoints: 12000
+  description: bounty-description-slime-extract-tier4
+  entries:
+  - name: bounty-item-slime-extract-tier4
+    amount: 1
+    whitelist:
+      tags:
+      - SlimeExtractTier4
