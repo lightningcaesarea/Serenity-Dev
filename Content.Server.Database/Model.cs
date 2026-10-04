@@ -49,6 +49,7 @@ namespace Content.Server.Database
         // Serenity: DB-backed player resources (Sector Credits) + audit ledger.
         public DbSet<PlayerResource> PlayerResource { get; set; } = null!;
         public DbSet<PlayerResourceTransaction> PlayerResourceTransaction { get; set; } = null!;
+        public DbSet<CharacterBalance> CharacterBalance { get; set; } = null!;
         // Serenity: one-to-one SS14 account <-> Discord account links.
         public DbSet<SerenityDiscordLink> SerenityDiscordLink { get; set; } = null!;
 
@@ -182,6 +183,13 @@ namespace Content.Server.Database
 
             modelBuilder.Entity<PlayerResourceTransaction>()
                 .HasIndex(t => t.PlayerId);
+
+            // Deleting a character deletes its money with it.
+            modelBuilder.Entity<CharacterBalance>()
+                .HasOne(b => b.Profile)
+                .WithOne(p => p.SerenityBalance)
+                .HasForeignKey<CharacterBalance>(b => b.ProfileId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<SerenityDiscordLink>()
                 .HasIndex(l => l.DiscordId)
@@ -481,6 +489,7 @@ namespace Content.Server.Database
         public Preference Preference { get; set; } = null!;
         public StarLightModel.StarLightProfile? StarLightProfile { get; set; } // Starlight
         public CDModel.CDProfile? CDProfile { get; set; } // Cosmatic Drift Record System: optional persisted record data
+        public CharacterBalance? SerenityBalance { get; set; } // Serenity: per-character Federal Bills
     }
 
     public class Job
@@ -1163,7 +1172,46 @@ namespace Content.Server.Database
 
         /// <summary>Why the balance moved (e.g. "salary:Chef", "atm-deposit", "admin:Name: text"). Null for legacy rows.</summary>
         public string? Reason { get; set; }
+
+        /// <summary>
+        /// The character whose balance moved, for per-character money. Deliberately not a foreign key: the ledger
+        /// outlives deleted characters. Null for account-wide resources and for rows from before per-character money.
+        /// </summary>
+        public int? ProfileId { get; set; }
     }
+
+    /// <summary>
+    /// Serenity: one character's Federal Bill balance. Money belongs to the character, not the account, so each
+    /// character slot has its own; the row is created with the starting balance the first time the character spawns.
+    /// </summary>
+    [Table("serenity_character_balance")]
+    public sealed class CharacterBalance
+    {
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int ProfileId { get; set; }
+
+        public Profile Profile { get; set; } = null!;
+
+        public double Balance { get; set; }
+
+        /// <summary>
+        /// How much of <see cref="Balance"/> is still the starting grant. It can be spent but not transferred, and
+        /// withdraws as bills bound to this character, so a throwaway character can't pass it to anyone else.
+        /// Spending uses it up first. Never more than <see cref="Balance"/>.
+        /// </summary>
+        public double StartingFunds { get; set; }
+
+        public DateTime UpdatedAt { get; set; }
+    }
+
+    /// <summary>
+    /// Serenity: one character and its balance, as read for the lobby and admin commands.
+    /// <paramref name="Balance"/> is null for a character that has never spawned and so has no account yet.
+    /// </summary>
+    public sealed record CharacterBalanceSummary(int Slot, int ProfileId, string Name, double? Balance, double StartingFunds);
+
+    /// <summary>Serenity: a character's account as loaded when it spawns.</summary>
+    public readonly record struct CharacterAccount(int ProfileId, double Balance, double StartingFunds);
 
     /// <summary>
     /// Serenity: links one SS14 account to one Discord account. Both sides are unique,

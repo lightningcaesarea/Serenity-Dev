@@ -76,8 +76,8 @@ public abstract class TileAtmosphereTest : AtmosTest
             Assert.That(GetMarker(markers, "point2", out point2));
 
             Assert.That(Transform.TryGetGridTilePosition(source, out sourceXY, MapData.Grid));
-            Assert.That(Transform.TryGetGridTilePosition(source, out point1XY, MapData.Grid));
-            Assert.That(Transform.TryGetGridTilePosition(source, out point2XY, MapData.Grid));
+            Assert.That(Transform.TryGetGridTilePosition(point1, out point1XY, MapData.Grid));
+            Assert.That(Transform.TryGetGridTilePosition(point2, out point2XY, MapData.Grid));
         });
 
         Assert.That(GetGridMoles(RelevantAtmos), Is.EqualTo(0));
@@ -102,7 +102,23 @@ public abstract class TileAtmosphereTest : AtmosTest
             Assert.That(ItemToggleSys.TryActivate(welder));
         });
 
-        await Server.WaitRunTicks(500);
+        var fireReachedAllMarkers = false;
+        for (var tick = 0; tick < 1500; tick += 100)
+        {
+            await Server.WaitRunTicks(100);
+
+            if (!SAtmos.IsHotspotActive(MapData.Grid, sourceXY) ||
+                !SAtmos.IsHotspotActive(MapData.Grid, point1XY) ||
+                !SAtmos.IsHotspotActive(MapData.Grid, point2XY))
+            {
+                continue;
+            }
+
+            fireReachedAllMarkers = true;
+            break;
+        }
+
+        Assert.That(fireReachedAllMarkers, Is.True);
 
         Assert.Multiple(() =>
         {

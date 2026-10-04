@@ -214,7 +214,7 @@ public sealed partial class AtmosphereSystem
         if (!IsMixtureOxidizer(tile.Air))
             return;
 
-        var isFlammable = IsMixtureIgnitable(tile.Air);
+        var isFlammable = IsMixtureFuel(tile.Air) && !IsMixtureModerator(tile.Air); // Serenity: Wizden #43263, keeps the Starlight moderator check
 
         if (tile.Hotspot.Valid)
         {

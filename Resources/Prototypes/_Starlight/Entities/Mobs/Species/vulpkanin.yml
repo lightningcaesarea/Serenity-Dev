@@ -154,7 +154,7 @@
   - type: Thirst # on 1.25x more
     baseDecayRate: 0.125
   - type: TemperatureDamage # Ported over from CD. Afterall, it does make sense that something with fur can handle more cold/less heat. Basegame Moths, apparently, have similar resistances.
-    heatDamageThreshold: 325
+    heatDamageThreshold: 316.15
     coldDamageThreshold: 230
     coldDamage:
       types:

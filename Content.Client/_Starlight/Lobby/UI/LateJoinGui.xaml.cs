@@ -94,7 +94,7 @@ namespace Content.Client._Starlight.Lobby.UI
                 if (profile is not HumanoidCharacterProfile humanoid)
                     continue;
                 var characterPickerButton =
-                    new CharacterPickerButton(_preferencesManager, _prototypeManager, _playerManager, group, humanoid, isSelected, true);
+                    new CharacterPickerButton(_preferencesManager, _prototypeManager, _playerManager, group, humanoid, isSelected, true, slot); // Serenity: slot shows the balance
                 CharacterList.AddChild(characterPickerButton);
 
                 if (isSelected && _selectedSlot != slot)

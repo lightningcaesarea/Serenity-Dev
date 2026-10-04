@@ -4,6 +4,6 @@
     sprite: _Starlight/Mobs/XenoSlimes/slimes.rsi
     state: base1
   product: CrateNPCXenobiologySlime
-  cost: 3000
+  cost: 3500
   category: cargoproduct-category-name-science
   group: market

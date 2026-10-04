@@ -145,7 +145,8 @@ namespace Content.Client.Lobby.UI
                     _playerManager,
                     characterButtonsGroup,
                     humanoid,
-                    isSelected);
+                    isSelected,
+                    slot: slot); // Serenity: show the character's balance
 
                 // If this button is selected we need to initialize the editor with this profile
                 if (isSelected && _humanoidProfileEditor.Profile == null)

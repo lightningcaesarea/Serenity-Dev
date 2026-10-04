@@ -1,0 +1,37 @@
+spray-painter-tab-category-storagetanks = Storage Tanks
+spray-painter-tab-group-storagetanks = Standard
+spray-painter-tab-group-storagetankshighcapacity = High-capacity
+
+spray-painter-style-storagetanks-generic = Generic
+spray-painter-style-storagetanks-blue = Blue
+spray-painter-style-storagetanks-white = White
+spray-painter-style-storagetanks-yellow = Yellow
+spray-painter-style-storagetanks-green = Green
+spray-painter-style-storagetanks-orange = Orange
+spray-painter-style-storagetanks-cyan = Cyan
+spray-painter-style-storagetanks-pink = Pink
+spray-painter-style-storagetanks-purple = Purple
+spray-painter-style-storagetanks-red = Red
+spray-painter-style-storagetanks-dark-green = Dark green
+spray-painter-style-storagetanks-brown = Brown
+spray-painter-style-storagetanks-black = Black
+spray-painter-style-storagetanks-light-blue = Light blue
+spray-painter-style-storagetanks-water = Water
+spray-painter-style-storagetanks-fuel = Fuel
+
+spray-painter-style-storagetankshighcapacity-generic = Generic
+spray-painter-style-storagetankshighcapacity-blue = Blue
+spray-painter-style-storagetankshighcapacity-white = White
+spray-painter-style-storagetankshighcapacity-yellow = Yellow
+spray-painter-style-storagetankshighcapacity-green = Green
+spray-painter-style-storagetankshighcapacity-orange = Orange
+spray-painter-style-storagetankshighcapacity-cyan = Cyan
+spray-painter-style-storagetankshighcapacity-pink = Pink
+spray-painter-style-storagetankshighcapacity-purple = Purple
+spray-painter-style-storagetankshighcapacity-red = Red
+spray-painter-style-storagetankshighcapacity-dark-green = Dark green
+spray-painter-style-storagetankshighcapacity-brown = Brown
+spray-painter-style-storagetankshighcapacity-black = Black
+spray-painter-style-storagetankshighcapacity-light-blue = Light blue
+spray-painter-style-storagetankshighcapacity-water = Water
+spray-painter-style-storagetankshighcapacity-fuel = Fuel

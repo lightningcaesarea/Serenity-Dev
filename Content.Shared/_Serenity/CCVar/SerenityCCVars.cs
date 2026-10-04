@@ -76,4 +76,11 @@ public sealed partial class SerenityCCVars
     /// </summary>
     public static readonly CVarDef<bool> DiscordLinkFailOpen =
         CVarDef.Create("serenity.discord_link.fail_open", true, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Federal Bills a character's account opens with, the first time that character spawns.
+    /// Money is per-character, so every new character can claim this once.
+    /// </summary>
+    public static readonly CVarDef<int> CharacterStartingBalance =
+        CVarDef.Create("serenity.economy.starting_balance", 20000, CVar.SERVERONLY);
 }

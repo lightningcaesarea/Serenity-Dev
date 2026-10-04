@@ -611,6 +611,30 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.ToTable("cd_character_record_entries", (string)null);
                 });
 
+            modelBuilder.Entity("Content.Server.Database.CharacterBalance", b =>
+                {
+                    b.Property<int>("ProfileId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("profile_id");
+
+                    b.Property<double>("Balance")
+                        .HasColumnType("REAL")
+                        .HasColumnName("balance");
+
+                    b.Property<double>("StartingFunds")
+                        .HasColumnType("REAL")
+                        .HasColumnName("starting_funds");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("updated_at");
+
+                    b.HasKey("ProfileId")
+                        .HasName("PK_serenity_character_balance");
+
+                    b.ToTable("serenity_character_balance", (string)null);
+                });
+
             modelBuilder.Entity("Content.Server.Database.ConnectionLog", b =>
                 {
                     b.Property<int>("Id")
@@ -886,6 +910,10 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Property<Guid>("PlayerId")
                         .HasColumnType("TEXT")
                         .HasColumnName("player_id");
+
+                    b.Property<int?>("ProfileId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("profile_id");
 
                     b.Property<string>("Reason")
                         .HasColumnType("TEXT")
@@ -1944,6 +1972,18 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Navigation("CDProfile");
                 });
 
+            modelBuilder.Entity("Content.Server.Database.CharacterBalance", b =>
+                {
+                    b.HasOne("Content.Server.Database.Profile", "Profile")
+                        .WithOne("SerenityBalance")
+                        .HasForeignKey("Content.Server.Database.CharacterBalance", "ProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_serenity_character_balance_profile_profile_id");
+
+                    b.Navigation("Profile");
+                });
+
             modelBuilder.Entity("Content.Server.Database.ConnectionLog", b =>
                 {
                     b.HasOne("Content.Server.Database.Server", "Server")
@@ -2406,6 +2446,8 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Navigation("Jobs");
 
                     b.Navigation("Loadouts");
+
+                    b.Navigation("SerenityBalance");
 
                     b.Navigation("StarLightProfile");
 

@@ -1,0 +1,66 @@
+# Federal Bills withdrawn from a character's starting funds. Bound to that character (BoundCash, set when withdrawn):
+# nobody else can pick them up or merge them, and ATMs only take them back from the owner.
+# Deliberately not parented to SpaceCash: no Currency (a store would let them be swapped for ordinary bills), and no
+# material/PhysicalComposition (so they appraise at 0 and can't be sold to cargo or fed to a lathe).
+- type: entity
+  parent: BaseItem
+  id: SpaceCashBound
+  name: issued Federal Bills
+  description: Starting funds issued to one person. The serial numbers are registered to them, so nobody else can use these.
+  components:
+  - type: Cash
+  - type: Item
+    shape:
+    - 0,0,1,0
+    storedOffset: 0,-2
+  - type: StaticPrice
+    price: 0
+  - type: UserInterface
+    interfaces:
+      enum.StackCustomSplitUiKey.Key:
+        type: StackCustomSplitBoundUserInterface
+  - type: Stack
+    stackType: BoundCredit
+    count: 1
+    baseLayer: base
+    layerStates:
+    - cash
+    - cash_10
+    - cash_100
+    - cash_500
+    - cash_1000
+    - cash_5000
+    - cash_10000
+    - cash_25000
+    - cash_50000
+    - cash_100000
+    - cash_1000000
+    layerFunction: Threshold
+  - type: StackLayerThreshold
+    thresholds: [10, 100, 500, 1000, 5000, 10000, 25000, 50000, 100000, 1000000]
+  - type: Sprite
+    sprite: Objects/Economy/cash.rsi
+    state: cash
+    color: "#d8f0ff"
+    layers:
+    - state: cash
+      map: ["base"]
+  - type: Physics
+    bodyType: Dynamic
+  - type: Fixtures
+    fixtures:
+      fix1:
+        density: 30
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.35,-0.2,0.25,0.1"
+        mask:
+        - ItemMask
+  - type: Appearance
+
+- type: stack
+  id: BoundCredit
+  parent: BaseCurrencyStack
+  name: stack-bound-bill
+  icon: { sprite: /Textures/Objects/Economy/cash.rsi, state: cash }
+  spawn: SpaceCashBound

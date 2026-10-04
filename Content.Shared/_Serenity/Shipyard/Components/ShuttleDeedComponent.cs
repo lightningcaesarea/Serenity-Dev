@@ -37,4 +37,18 @@ public sealed partial class ShuttleDeedComponent : Component
     /// </summary>
     [DataField]
     public NetUserId? OwnerUserId;
+
+    /// <summary>
+    /// How much of the price was paid in bills bound to a character (their starting funds), and whose they were.
+    /// Selling the ship pays that much back as bills bound to the same character, so a ship can't turn starting
+    /// funds into ordinary money. Server-only.
+    /// </summary>
+    [DataField]
+    public int BoundPaid;
+
+    [DataField]
+    public int? BoundProfileId;
+
+    [DataField]
+    public string BoundOwnerName = string.Empty;
 }

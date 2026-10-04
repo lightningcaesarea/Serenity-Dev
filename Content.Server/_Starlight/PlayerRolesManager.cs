@@ -40,11 +40,10 @@ public sealed partial class PlayerRolesManager : IPlayerRolesManager, IPostInjec
         {
             if (_players.Remove(e.Session, out var data))
             {
-                data!.Data.Resources.TryGetValue("credits", out var balance);
+                // Serenity: money is per-character (serenity_character_balance), so the account-wide Balance column is unused.
                 _ = _dbManager.SetPlayerDataForAsync(e.Session.UserId, new StarLightModel.PlayerDataDTO
                 {
                     GhostTheme = data!.Data.GhostTheme,
-                    Balance = (int)balance
                 });
             }
         }
@@ -91,7 +90,7 @@ public sealed partial class PlayerRolesManager : IPlayerRolesManager, IPostInjec
             GhostTheme = dbData.GhostTheme
         };
 
-        data.Resources["credits"] = dbData.Balance;
+        // Serenity: "credits" are the played character's, loaded by SerenityPlayerResourcesManager when they spawn.
 
         return data;
     }

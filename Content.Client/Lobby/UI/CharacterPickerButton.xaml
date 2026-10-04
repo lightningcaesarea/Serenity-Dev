@@ -18,7 +18,12 @@
                                           SetSize="64 64"/>
 
         <!-- Name and job text -->
-        <Label Name="DescriptionLabel" HorizontalExpand="True" ClipText="True"/>
+        <!-- Serenity: the character's own balance under it -->
+        <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalAlignment="Center">
+            <Label Name="DescriptionLabel" HorizontalExpand="True" ClipText="True"/>
+            <Label Name="BalanceLabel" HorizontalExpand="True" ClipText="True" Visible="False"
+                   StyleClasses="LabelSubText"/>
+        </BoxContainer>
 
         <!-- Vertical rule to separate the buttons -->
         <PanelContainer Name="ButtonDivider" MinSize="2 0">

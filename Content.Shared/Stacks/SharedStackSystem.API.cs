@@ -103,6 +103,12 @@ public abstract partial class SharedStackSystem
         if (recipient.Comp.StackTypeId != donor.Comp.StackTypeId)
             return false;
 
+        // Serenity: let other systems keep same-type stacks apart (bills bound to different characters)
+        var attempt = new Content.Shared._Serenity.Stacks.StackMergeAttemptEvent(donor.Owner);
+        RaiseLocalEvent(recipient.Owner, ref attempt);
+        if (attempt.Cancelled)
+            return false;
+
         // The most we can transfer
         transferred = Math.Min(donor.Comp.Count, GetAvailableSpace(recipient.Comp));
         if (transferred <= 0)

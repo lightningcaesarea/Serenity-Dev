@@ -16,6 +16,11 @@ public sealed partial class WallStainSystem
         if (!_solution.TryGetSolution(entity.Owner, entity.Comp.SolutionName, out _, out var solution))
             return;
 
+        // Serenity: a freshly spawned stain is empty until ApplyStainToWall fills it (which tracks it via
+        // SolutionChangedEvent). Tracking it here queued it for deletion on a random later evaporation tick.
+        if (solution.Volume <= FixedPoint2.Zero)
+            return;
+
         UpdateEvaporationTracking(entity.Owner, solution);
         if (solution.Volume > FixedPoint2.Zero)
             UpdateVisuals(entity.Owner, entity.Comp, solution);

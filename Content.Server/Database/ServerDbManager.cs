@@ -214,6 +214,18 @@ namespace Content.Server.Database
         /// <summary>Adds a delta atomically in the database and returns the new balance.</summary>
         Task<double> AdjustPlayerResource(Guid player, string resource, double delta, string? reason);
 
+        /// <summary>Every character the player has, by slot, with its balance (null if it has never spawned).</summary>
+        Task<List<CharacterBalanceSummary>> GetCharacterBalances(Guid player, CancellationToken cancel = default);
+
+        /// <summary>The balance of the character in a slot, opening its account with the starting balance if needed.</summary>
+        Task<CharacterAccount?> EnsureCharacterBalance(Guid player, int slot, double startingBalance, string? reason);
+
+        /// <summary>Adds deltas to a character's balance and starting funds and returns the account after.</summary>
+        Task<CharacterAccount?> AdjustCharacterBalance(Guid player, int profileId, double delta, double startingFundsDelta, string? reason);
+
+        /// <summary>Sets a character's balance to an exact value.</summary>
+        Task<CharacterAccount?> SetCharacterBalance(Guid player, int profileId, double value, string? reason);
+
         /// <summary>Most recent ledger rows for a player, newest first.</summary>
         Task<List<PlayerResourceTransaction>> GetPlayerResourceTransactions(Guid player, int limit, CancellationToken cancel = default);
 
@@ -725,6 +737,30 @@ namespace Content.Server.Database
         {
             DbReadOpsMetric.Inc();
             return RunDbCommand(() => _db.GetPlayerResourceTransactions(player, limit, cancel));
+        }
+
+        public Task<List<CharacterBalanceSummary>> GetCharacterBalances(Guid player, CancellationToken cancel)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetCharacterBalances(player, cancel));
+        }
+
+        public Task<CharacterAccount?> EnsureCharacterBalance(Guid player, int slot, double startingBalance, string? reason)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.EnsureCharacterBalance(player, slot, startingBalance, reason));
+        }
+
+        public Task<CharacterAccount?> AdjustCharacterBalance(Guid player, int profileId, double delta, double startingFundsDelta, string? reason)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.AdjustCharacterBalance(player, profileId, delta, startingFundsDelta, reason));
+        }
+
+        public Task<CharacterAccount?> SetCharacterBalance(Guid player, int profileId, double value, string? reason)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.SetCharacterBalance(player, profileId, value, reason));
         }
 
         #endregion
