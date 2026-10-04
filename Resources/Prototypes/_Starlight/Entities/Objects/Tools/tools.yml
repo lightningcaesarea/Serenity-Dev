@@ -1042,6 +1042,7 @@
     - PlumbingRpldSmartDispenser
     - PlumbingRpldDrain
     - PlumbingRpldDisposal
+    - PlumbingRpldFluidPort # Serenity
     - Deconstruct
   - type: LimitedCharges
     maxCharges: 45
