@@ -160,7 +160,7 @@
 
   The [color=#a4885c]Fluid Connector Port[/color] works like the atmospherics connector port, but for reagents. Wrench a storage tank (water tank, fuel tank, chemical barrel and so on) down on top of it and the tank joins the duct network. Tanks can be wrenched down anywhere, but they only connect when they sit on a port. The port has one duct connection on the side it faces.
 
-  Right-click the tank and use the [color=#a4885c]Valve[/color] menu to set it:
+  Right-click the tank, or the port under it, and use the [color=#a4885c]Valve[/color] menu to set it:
   - [bold]Closed[/bold] (default): nothing flows.
   - [bold]Supply[/bold]: other machines on the network can pull from the tank.
   - [bold]Fill[/bold]: the tank pulls [bold]20u per update[/bold] from the network's outlets into itself.
@@ -177,5 +177,5 @@
     [color=#999999][italic]Keeping reagents flowing in one direction[/italic][/color]
   </Box>
 
-  The [color=#a4885c]One-Way Valve[/color] sits inline on a duct run and only lets reagents through in the direction of its arrow. It pulls [bold]20u per update[/bold] from the duct behind it into a small 20u buffer, and only machines on the duct in front of it can draw from that buffer. Nothing on the front side can pull back through it. Use it to stop a downstream machine from draining a supply line it shouldn't, or to keep two networks from mixing.
+  The [color=#a4885c]One-Way Valve[/color] sits inline on a duct run and only lets reagents through in the direction of its arrow. It works like a small pump: it pulls from the duct behind it into a small buffer, and only machines on the duct in front of it can draw from that buffer. Nothing on the front side can pull back through it. Click it to open its controls: switch it on or off, and set its rate from [bold]0[/bold] to [bold]40u per update[/bold] (default [bold]20u[/bold]). The arrow greys out while it is off. Use it to stop a downstream machine from draining a supply line it shouldn't, to keep two networks from mixing, or to meter how fast one network feeds another.
 </Document>

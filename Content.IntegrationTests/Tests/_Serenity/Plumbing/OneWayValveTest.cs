@@ -1,5 +1,6 @@
 using Content.Server._Serenity.Plumbing;
 using Content.Shared._Serenity.Plumbing;
+using Content.Shared._Starlight.Plumbing.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.FixedPoint;
 using Content.Shared.Maps;
@@ -42,6 +43,7 @@ public sealed class OneWayValveTest
 
         EntityUid forwardFill = default;
         EntityUid reverseFill = default;
+        EntityUid forwardValve = default;
 
         await server.WaitPost(() =>
         {
@@ -56,7 +58,7 @@ public sealed class OneWayValveTest
 
             EntityCoordinates At(int x, int y) => new(map.Grid, x + 0.5f, y + 0.5f);
 
-            EntityUid Column(int x, bool valveForward)
+            EntityUid Column(int x, bool valveForward, out EntityUid valve)
             {
                 // Top port faces south into the valve; bottom port is turned to face north into it.
                 entMan.SpawnAtPosition(Port, At(x, 2));
@@ -64,7 +66,7 @@ public sealed class OneWayValveTest
                 xformSystem.SetLocalRotation(bottom, Angle.FromDegrees(180));
 
                 // Unrotated, the valve takes in from the north and gives out to the south.
-                var valve = entMan.SpawnAtPosition(Valve, At(x, 1));
+                valve = entMan.SpawnAtPosition(Valve, At(x, 1));
                 if (!valveForward)
                     xformSystem.SetLocalRotation(valve, Angle.FromDegrees(180));
 
@@ -78,8 +80,8 @@ public sealed class OneWayValveTest
                 return fill;
             }
 
-            forwardFill = Column(0, valveForward: true);
-            reverseFill = Column(2, valveForward: false);
+            forwardFill = Column(0, valveForward: true, out forwardValve);
+            reverseFill = Column(2, valveForward: false, out _);
         });
 
         await pair.RunSeconds(8f);
@@ -88,6 +90,39 @@ public sealed class OneWayValveTest
         {
             Assert.That(Volume(entMan, forwardFill), Is.GreaterThan(FixedPoint2.Zero), "liquid passes in the arrow's direction");
             Assert.That(Volume(entMan, reverseFill), Is.EqualTo(FixedPoint2.Zero), "nothing passes against the arrow");
+        });
+
+        // Switched off, the valve stops pumping. Its 40u buffer may still hold one last pull, so let that drain first.
+        var pump = entMan.System<PlumbingPumpSystem>();
+        await server.WaitPost(() =>
+        {
+            pump.SetEnabled((forwardValve, entMan.GetComponent<PlumbingPumpComponent>(forwardValve)), false);
+            Assert.That(entMan.GetComponent<PlumbingInletComponent>(forwardValve).TransferAmount, Is.EqualTo(FixedPoint2.Zero),
+                "an off valve pulls nothing");
+        });
+
+        await pair.RunSeconds(5f);
+
+        FixedPoint2 offAt = default;
+        await server.WaitPost(() => offAt = Volume(entMan, forwardFill));
+        await pair.RunSeconds(5f);
+
+        await server.WaitAssertion(() =>
+        {
+            Assert.That(Volume(entMan, forwardFill), Is.EqualTo(offAt), "nothing passes while the valve is off");
+
+            // Rates are clamped to 0..max and rounded to whole units.
+            var comp = entMan.GetComponent<PlumbingPumpComponent>(forwardValve);
+            var ent = (forwardValve, comp);
+            pump.SetEnabled(ent, true);
+            pump.SetTransferAmount(ent, 1000f);
+            Assert.That(comp.TransferAmount, Is.EqualTo(comp.MaxTransferAmount));
+            pump.SetTransferAmount(ent, -5f);
+            Assert.That(comp.TransferAmount, Is.EqualTo(FixedPoint2.Zero));
+            pump.SetTransferAmount(ent, 7.6f);
+            Assert.That(comp.TransferAmount, Is.EqualTo(FixedPoint2.New(8)));
+            Assert.That(entMan.GetComponent<PlumbingInletComponent>(forwardValve).TransferAmount, Is.EqualTo(FixedPoint2.New(8)),
+                "the inlet follows the set rate while on");
         });
 
         await pair.CleanReturnAsync();

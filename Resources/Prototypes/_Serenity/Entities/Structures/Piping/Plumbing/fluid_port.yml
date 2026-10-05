@@ -12,9 +12,11 @@
     canCollide: false
   - type: Sprite
     sprite: _Serenity/Structures/Piping/Plumbing/fluid_port.rsi
+    drawdepth: ThinPipe # under the tank docked on it, like the atmos connector port
     layers:
     - state: fluidPort
       map: [ "enum.SubfloorLayers.FirstLayer" ]
+  - type: PlumbingFluidPort
   - type: NodeContainer
     nodes:
       port:

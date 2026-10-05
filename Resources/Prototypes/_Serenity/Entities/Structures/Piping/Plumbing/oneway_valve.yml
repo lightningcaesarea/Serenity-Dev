@@ -1,11 +1,12 @@
 # One-way valve: lets reagents flow from the inlet side to the outlet side but never back.
 # Built from the existing plumbing pieces: the inlet pulls from the upstream network into a small
 # buffer, and only the outlet side offers that buffer to other machines.
+# Like a pump, it has an on/off switch and a rate (units per update) set from its window.
 - type: entity
   parent: PlumbingMachineBase
   id: PlumbingOneWayValve
   name: one-way valve
-  description: Sits inline on a duct run and only lets reagents through in the direction of the arrow.
+  description: Sits inline on a duct run and pumps reagents through in the direction of the arrow, never back. Click it to switch it on or off and set its rate.
   components:
   - type: Physics
     bodyType: Static
@@ -14,11 +15,26 @@
     sprite: _Serenity/Structures/Piping/Plumbing/oneway_valve.rsi
     layers:
     - state: onewayValve
-      map: [ "enum.SubfloorLayers.FirstLayer" ]
+      map: [ "enum.PlumbingVisualLayers.Base", "enum.SubfloorLayers.FirstLayer" ]
+  - type: GenericVisualizer
+    visuals:
+      enum.PlumbingPumpVisuals.Enabled:
+        enum.PlumbingVisualLayers.Base:
+          True: { state: onewayValve }
+          False: { state: onewayValve_off }
   - type: PlumbingDevice
     updateInterval: 2
   - type: PlumbingInlet
     solutionName: buffer
+  - type: PlumbingPump
+    transferAmount: 20
+    maxTransferAmount: 40
+  - type: UserInterface
+    interfaces:
+      enum.PlumbingPumpUiKey.Key:
+        type: PlumbingPumpBoundUserInterface
+  - type: ActivatableUI
+    key: enum.PlumbingPumpUiKey.Key
   - type: PlumbingOutlet
     solutionName: buffer
   - type: Plungeable
@@ -58,7 +74,7 @@
   - type: Solution
     id: buffer
     solution:
-      maxVol: 20
+      maxVol: 40 # one update at the maximum rate
       canReact: false
 
 - type: rcd
