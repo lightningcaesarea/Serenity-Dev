@@ -1,3 +1,4 @@
+using Content.Shared._Serenity.Oni;
 using Content.Shared.Examine;
 using Content.Shared.Inventory;
 using Content.Shared.Item.ItemToggle;
@@ -62,7 +63,19 @@ public sealed partial class ClothingSpeedModifierSystem : EntitySystem
         if (component.Standing != null && !_standing.IsMatchingState(args.Owner, component.Standing.Value))
             return;
 
-        args.Args.ModifySpeed(component.WalkModifier, component.SprintModifier);
+        // Serenity: the wearer may shrug off part of the slowdown.
+        var walk = component.WalkModifier;
+        var sprint = component.SprintModifier;
+        if (TryComp<ClothingSlowResistanceComponent>(args.Owner, out var resist))
+        {
+            var kept = 1f - Math.Clamp(resist.Modifier, 0f, 1f);
+            if (walk < 1f)
+                walk = 1f - (1f - walk) * kept;
+            if (sprint < 1f)
+                sprint = 1f - (1f - sprint) * kept;
+        }
+
+        args.Args.ModifySpeed(walk, sprint);
     }
 
     private void OnClothingVerbExamine(EntityUid uid, ClothingSpeedModifierComponent component, GetVerbsEvent<ExamineVerb> args)

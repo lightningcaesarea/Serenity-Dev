@@ -175,7 +175,7 @@ public abstract partial class SharedStaminaSystem : EntitySystem
             toHit.Add((ent, stam));
         }
 
-        var hitEvent = new StaminaMeleeHitEvent(toHit);
+        var hitEvent = new StaminaMeleeHitEvent(toHit, args.User);
         RaiseLocalEvent(uid, hitEvent);
 
         if (hitEvent.Handled)

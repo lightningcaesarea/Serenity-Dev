@@ -1,0 +1,87 @@
+- type: entity
+  save: false
+  name: Urist McSheepy
+  parent: BaseMobHuman
+  id: BaseMobOvinia
+  abstract: true
+  components:
+  - type: HumanoidAppearance
+    species: Ovinia
+    hideLayersOnEquip:
+    - Hair
+    - Snout
+  - type: Icon
+    sprite: _Serenity/Mobs/Species/Ovinia/parts.rsi
+    state: full
+  - type: Body
+    prototype: Ovinia
+    requiredLegs: 2
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: Ovinia
+  - type: Speech
+    speechSounds: Alto
+    speechVerb: Ovinia
+  - type: TypingIndicator
+    proto: ovinia
+  # Chewing their cud: they get hungry and thirsty 25% slower than most species.
+  - type: Hunger
+    baseDecayRate: 0.0125
+  - type: Thirst
+    baseDecayRate: 0.075
+  # Hooves shrug off glass shards and the like.
+  - type: ProtectedFromStepTriggers
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 200 # sheep be heavy
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+
+- type: entity
+  save: false
+  name: Urist McSheepy
+  parent: BaseMobOvinia
+  id: MobOvinia
+
+- type: entity
+  parent: [BaseSpeciesDummy, BaseInventoryFemaleJumpsuit]
+  id: AppearanceOvinia
+  categories: [ HideSpawnMenu ]
+  description: A dummy ovinia meant to be used in character setup.
+  components:
+  - type: HumanoidAppearance
+    species: Ovinia
+    hideLayersOnEquip:
+    - Hair
+    - Snout
+
+- type: damageModifierSet
+  id: Ovinia
+  coefficients:
+    Piercing: 1.15
+    Slash: 1.15
+    Blunt: 0.75
+    Heat: 0.75
+
+- type: speechVerb
+  id: Ovinia
+  name: chat-speech-verb-name-ovinia
+  speechVerbStrings:
+  - chat-speech-verb-ovinia-1
+  - chat-speech-verb-ovinia-2
+  - chat-speech-verb-ovinia-3
+  - chat-speech-verb-ovinia-4
+
+- type: typingIndicator
+  id: ovinia
+  spritePath: /Textures/_Serenity/Effects/speech_ovinia.rsi
+  typingState: ovinia0
+  idleState: ovinia1
+  offset: -0.3, 0

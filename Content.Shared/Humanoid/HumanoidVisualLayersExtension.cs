@@ -47,6 +47,7 @@ namespace Content.Shared.Humanoid
                     yield return HumanoidVisualLayers.SnoutCover;
                     yield return HumanoidVisualLayers.FaceCover; // Far Horizons
                     yield return HumanoidVisualLayers.FaceCoverCover; // Far Horizons
+                    yield return HumanoidVisualLayers.NeckFluff; // Serenity
                     break;
                 case HumanoidVisualLayers.Snout:
                     yield return HumanoidVisualLayers.Snout;

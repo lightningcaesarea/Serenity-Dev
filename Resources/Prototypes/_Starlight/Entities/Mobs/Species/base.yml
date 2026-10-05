@@ -49,6 +49,7 @@
     - map: [ "belt" ]
     - map: [ "id" ]
     - map: [ "back" ]
+    - map: [ "enum.HumanoidVisualLayers.NeckFluff" ] # Serenity: under scarves and ties
     - map: [ "neck" ]
     - map: [ "misc" ] # Starlight
     - map: [ "enum.HumanoidVisualLayers.SnoutCover" ]
@@ -405,6 +406,7 @@
     - map: [ "id" ]
     - map: [ "outerClothing" ]
     - map: [ "back" ]
+    - map: [ "enum.HumanoidVisualLayers.NeckFluff" ] # Serenity: under scarves and ties
     - map: [ "neck" ]
     - map: [ "enum.HumanoidVisualLayers.SnoutCover" ]
     - map: [ "enum.HumanoidVisualLayers.FacialHair" ]

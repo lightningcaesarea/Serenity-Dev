@@ -1,0 +1,20 @@
+<Document>
+  # Onis
+
+  <Box>
+    <GuideEntityEmbed Entity="AppearanceOni" Caption=""/>
+  </Box>
+
+  Large, horned people that come in a variety of colors. Their accuracy with guns is terrible, but their physical strength brings them a lot of boons both in and out of combat.
+
+  ## Benefits
+  - They take [color=#1e90ff]15% less Blunt, Slash and Piercing damage[/color].
+  - They do more damage in melee: [color=#1e90ff]35% more Blunt and Asphyxiation, 20% more Slash and Piercing[/color].
+  - Clothing slows them down [color=#1e90ff]25% less[/color].
+  - Slightly more stamina than Humans, and [color=#1e90ff]25% more stamina damage[/color] with melee weapons that deal it.
+  - They pry open doors in [color=#1e90ff]half the time[/color].
+
+  ## Drawbacks
+  - [color=#ffa500]Their accuracy with guns is terrible.[/color]
+  - They are bigger than Humans, making them easier to hit.
+</Document>

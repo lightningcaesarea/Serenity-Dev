@@ -1,0 +1,17 @@
+- type: localizedDataset
+  id: NamesOniMale
+  values:
+    prefix: names-oni-male-dataset-
+    count: 20
+
+- type: localizedDataset
+  id: NamesOniFemale
+  values:
+    prefix: names-oni-female-dataset-
+    count: 20
+
+- type: localizedDataset
+  id: NamesOniLast
+  values:
+    prefix: names-oni-last-dataset-
+    count: 20
