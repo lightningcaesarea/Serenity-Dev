@@ -1,0 +1,20 @@
+# Empty generic storage tanks. They can be filled by hand and spray painted (see _Serenity/Paintables).
+- type: cargoProduct
+  id: MaterialGenericTank
+  icon:
+    sprite: Structures/Storage/tanks.rsi
+    state: generictank-1
+  product: GenericTank
+  cost: 1500
+  category: cargoproduct-category-name-materials
+  group: market
+
+- type: cargoProduct
+  id: MaterialGenericTankHighCapacity
+  icon:
+    sprite: Structures/Storage/tanks.rsi
+    state: highgenerictank-1
+  product: GenericTankHighCapacity
+  cost: 6000
+  category: cargoproduct-category-name-materials
+  group: market
