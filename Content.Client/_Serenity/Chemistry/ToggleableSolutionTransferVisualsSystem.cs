@@ -13,6 +13,13 @@ public sealed partial class ToggleableSolutionTransferVisualsSystem : Visualizer
         if (args.Sprite is not { } sprite || component.LightState is not { } lightState)
             return;
 
+        if (component.LightBezelState is { } bezelState
+            && !SpriteSystem.LayerMapTryGet((uid, sprite), ToggleableSolutionTransferLayers.LightBezel, out _, false))
+        {
+            var bezel = SpriteSystem.LayerMapReserve((uid, sprite), ToggleableSolutionTransferLayers.LightBezel);
+            SpriteSystem.LayerSetRsiState((uid, sprite), bezel, bezelState);
+        }
+
         if (!SpriteSystem.LayerMapTryGet((uid, sprite), ToggleableSolutionTransferLayers.Light, out var layer, false))
         {
             layer = SpriteSystem.LayerMapReserve((uid, sprite), ToggleableSolutionTransferLayers.Light);

@@ -28,6 +28,12 @@ public sealed partial class ToggleableSolutionTransferComponent : Component
     [DataField]
     public string? LightState;
 
+    /// <summary>
+    /// Optional state drawn untinted and shaded under the light, so it sits in a darker housing on any panel colour.
+    /// </summary>
+    [DataField]
+    public string? LightBezelState;
+
     [DataField]
     public Color FillingLightColor = Color.FromHex("#4fe36a");
 
@@ -43,5 +49,6 @@ public enum ToggleableSolutionTransferVisuals : byte
 
 public enum ToggleableSolutionTransferLayers : byte
 {
+    LightBezel,
     Light,
 }

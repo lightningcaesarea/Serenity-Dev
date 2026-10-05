@@ -23,6 +23,7 @@
     group: StorageTanksHighCapacity
   - type: ToggleableSolutionTransfer
     lightState: highmodelight
+    lightBezelState: highmodelight-bezel
 
 # Coloured generic tanks. Also the looks the spray painter offers for the generic tanks.
 

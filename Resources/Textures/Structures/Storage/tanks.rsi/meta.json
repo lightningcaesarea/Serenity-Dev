@@ -246,6 +246,12 @@
     },
     {
       "name": "highmodelight"
+    },
+    {
+      "name": "modelight-bezel"
+    },
+    {
+      "name": "highmodelight-bezel"
     }
   ]
 }

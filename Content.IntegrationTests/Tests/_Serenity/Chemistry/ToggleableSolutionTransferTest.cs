@@ -110,7 +110,8 @@ public sealed class ToggleableSolutionTransferTest
                         $"{tank} should be painted from {groupId}");
 
                     Assert.That(proto.Index(tank).TryGetComponent<ToggleableSolutionTransferComponent>(out var toggle, factory)
-                        && toggle.LightState == lightByTank[tank],
+                        && toggle.LightState == lightByTank[tank]
+                        && toggle.LightBezelState == lightByTank[tank] + "-bezel",
                         $"{tank} should use the {lightByTank[tank]} mode light");
 
                     var group = proto.Index(groupId);
