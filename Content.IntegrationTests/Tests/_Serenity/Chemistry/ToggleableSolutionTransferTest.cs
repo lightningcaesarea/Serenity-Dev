@@ -29,6 +29,7 @@ public sealed class ToggleableSolutionTransferTest
         var entMan = server.EntMan;
         var toggle = entMan.System<ToggleableSolutionTransferSystem>();
         var solutions = entMan.System<SharedSolutionContainerSystem>();
+        var appearance = entMan.System<SharedAppearanceSystem>();
         var mapData = await pair.CreateTestMap();
 
         await server.WaitAssertion(() =>
@@ -42,6 +43,9 @@ public sealed class ToggleableSolutionTransferTest
                 Assert.That(entMan.HasComponent<DrainableSolutionComponent>(tank), Is.False, "a filling tank can't be drawn from");
                 Assert.That(entMan.GetComponent<RefillableSolutionComponent>(tank).Solution, Is.EqualTo("tank"));
                 Assert.That(solutions.TryGetRefillableSolution(tank, out _, out _), "the tank's solution isn't refillable");
+                Assert.That(comp.LightState, Is.Not.Null, "the tank has no mode light");
+                Assert.That(appearance.TryGetData<bool>(tank, ToggleableSolutionTransferVisuals.Filling, out var lit) && lit,
+                    "the mode light should show filling");
             });
 
             toggle.SetFilling((tank, comp), false);
@@ -52,6 +56,8 @@ public sealed class ToggleableSolutionTransferTest
                 Assert.That(entMan.HasComponent<RefillableSolutionComponent>(tank), Is.False, "a dispensing tank can't be poured into");
                 Assert.That(entMan.GetComponent<DrainableSolutionComponent>(tank).Solution, Is.EqualTo("tank"));
                 Assert.That(solutions.TryGetDrainableSolution(tank, out _, out _), "the tank's solution isn't drainable");
+                Assert.That(appearance.TryGetData<bool>(tank, ToggleableSolutionTransferVisuals.Filling, out var lit) && !lit,
+                    "the mode light should show dispensing");
             });
 
             toggle.SetFilling((tank, comp), true);
@@ -86,6 +92,13 @@ public sealed class ToggleableSolutionTransferTest
             ["GenericTankHighCapacity"] = StorageTanksHighCapacityGroup,
         };
 
+        // A painted tank keeps its own mode light, so every look in a group must share the tank's light state.
+        var lightByTank = new Dictionary<EntProtoId, string>
+        {
+            ["GenericTank"] = "modelight",
+            ["GenericTankHighCapacity"] = "highmodelight",
+        };
+
         await server.WaitAssertion(() =>
         {
             Assert.Multiple(() =>
@@ -95,6 +108,11 @@ public sealed class ToggleableSolutionTransferTest
                     Assert.That(proto.Index(tank).TryGetComponent<PaintableComponent>(out var paintable, factory)
                         && paintable.Group == groupId,
                         $"{tank} should be painted from {groupId}");
+
+                    Assert.That(proto.Index(tank).TryGetComponent<ToggleableSolutionTransferComponent>(out var toggle, factory)
+                        && toggle.LightState == lightByTank[tank]
+                        && toggle.LightBezelState == lightByTank[tank] + "-bezel",
+                        $"{tank} should use the {lightByTank[tank]} mode light");
 
                     var group = proto.Index(groupId);
                     Assert.That(group.Styles, Contains.Key(group.DefaultStyle));

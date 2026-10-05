@@ -21,6 +21,20 @@
     light-blue: GenericTankLightBlue
     water: WaterTank
     fuel: WeldingFuelTank
+    fuel-style-generic: GenericTankFuelStyle
+    fuel-style-blue: GenericTankFuelStyleBlue
+    fuel-style-white: GenericTankFuelStyleWhite
+    fuel-style-yellow: GenericTankFuelStyleYellow
+    fuel-style-green: GenericTankFuelStyleGreen
+    fuel-style-orange: GenericTankFuelStyleOrange
+    fuel-style-cyan: GenericTankFuelStyleCyan
+    fuel-style-pink: GenericTankFuelStylePink
+    fuel-style-purple: GenericTankFuelStylePurple
+    fuel-style-red: GenericTankFuelStyleRed
+    fuel-style-dark-green: GenericTankFuelStyleDarkGreen
+    fuel-style-brown: GenericTankFuelStyleBrown
+    fuel-style-black: GenericTankFuelStyleBlack
+    fuel-style-light-blue: GenericTankFuelStyleLightBlue
 
 - type: paintableGroup
   id: StorageTanksHighCapacity

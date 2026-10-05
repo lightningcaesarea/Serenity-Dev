@@ -21,6 +21,9 @@
     baseState: highgenerictank-1
   - type: Paintable
     group: StorageTanksHighCapacity
+  - type: ToggleableSolutionTransfer
+    lightState: highmodelight
+    lightBezelState: highmodelight-bezel
 
 # Coloured generic tanks. Also the looks the spray painter offers for the generic tanks.
 
@@ -413,3 +416,218 @@
         visible: false
   - type: PaintableTankVisuals
     baseState: highgenerictank-lightblue
+
+# Fuel-style generic tanks: the fuel tank body without its fuel markings. Same size as the generic tank.
+
+- type: entity
+  parent: GenericTank
+  id: GenericTankFuelStyle
+  suffix: Empty, Fuel-style
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: genericfueltank-1
+      - state: fueltank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: SolutionContainerVisuals
+    maxFillLevels: 3
+    fillBaseName: fueltank-2-
+  - type: PaintableTankVisuals
+    baseState: genericfueltank-1
+
+- type: entity
+  parent: GenericTankFuelStyle
+  id: GenericTankFuelStyleBlue
+  suffix: Empty, Fuel-style, Blue
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: genericfueltank-blue
+      - state: fueltank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: PaintableTankVisuals
+    baseState: genericfueltank-blue
+
+- type: entity
+  parent: GenericTankFuelStyle
+  id: GenericTankFuelStyleWhite
+  suffix: Empty, Fuel-style, White
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: genericfueltank-white
+      - state: fueltank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: PaintableTankVisuals
+    baseState: genericfueltank-white
+
+- type: entity
+  parent: GenericTankFuelStyle
+  id: GenericTankFuelStyleYellow
+  suffix: Empty, Fuel-style, Yellow
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: genericfueltank-yellow
+      - state: fueltank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: PaintableTankVisuals
+    baseState: genericfueltank-yellow
+
+- type: entity
+  parent: GenericTankFuelStyle
+  id: GenericTankFuelStyleGreen
+  suffix: Empty, Fuel-style, Green
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: genericfueltank-green
+      - state: fueltank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: PaintableTankVisuals
+    baseState: genericfueltank-green
+
+- type: entity
+  parent: GenericTankFuelStyle
+  id: GenericTankFuelStyleOrange
+  suffix: Empty, Fuel-style, Orange
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: genericfueltank-orange
+      - state: fueltank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: PaintableTankVisuals
+    baseState: genericfueltank-orange
+
+- type: entity
+  parent: GenericTankFuelStyle
+  id: GenericTankFuelStyleCyan
+  suffix: Empty, Fuel-style, Cyan
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: genericfueltank-cyan
+      - state: fueltank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: PaintableTankVisuals
+    baseState: genericfueltank-cyan
+
+- type: entity
+  parent: GenericTankFuelStyle
+  id: GenericTankFuelStylePink
+  suffix: Empty, Fuel-style, Pink
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: genericfueltank-pink
+      - state: fueltank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: PaintableTankVisuals
+    baseState: genericfueltank-pink
+
+- type: entity
+  parent: GenericTankFuelStyle
+  id: GenericTankFuelStylePurple
+  suffix: Empty, Fuel-style, Purple
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: genericfueltank-purple
+      - state: fueltank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: PaintableTankVisuals
+    baseState: genericfueltank-purple
+
+- type: entity
+  parent: GenericTankFuelStyle
+  id: GenericTankFuelStyleRed
+  suffix: Empty, Fuel-style, Red
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: genericfueltank-red
+      - state: fueltank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: PaintableTankVisuals
+    baseState: genericfueltank-red
+
+- type: entity
+  parent: GenericTankFuelStyle
+  id: GenericTankFuelStyleDarkGreen
+  suffix: Empty, Fuel-style, Dark green
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: genericfueltank-darkgreen
+      - state: fueltank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: PaintableTankVisuals
+    baseState: genericfueltank-darkgreen
+
+- type: entity
+  parent: GenericTankFuelStyle
+  id: GenericTankFuelStyleBrown
+  suffix: Empty, Fuel-style, Brown
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: genericfueltank-brown
+      - state: fueltank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: PaintableTankVisuals
+    baseState: genericfueltank-brown
+
+- type: entity
+  parent: GenericTankFuelStyle
+  id: GenericTankFuelStyleBlack
+  suffix: Empty, Fuel-style, Black
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: genericfueltank-black
+      - state: fueltank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: PaintableTankVisuals
+    baseState: genericfueltank-black
+
+- type: entity
+  parent: GenericTankFuelStyle
+  id: GenericTankFuelStyleLightBlue
+  suffix: Empty, Fuel-style, Light blue
+  components:
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+      - state: genericfueltank-lightblue
+      - state: fueltank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: PaintableTankVisuals
+    baseState: genericfueltank-lightblue
