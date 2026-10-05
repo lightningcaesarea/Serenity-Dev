@@ -1,7 +1,7 @@
 - type: species
   id: Experiment
   name: species-name-experiment
-  roundStart: true
+  roundStart: false
   prototype: MobExperiment
   sprites: MobExperimentSprites
   markingLimits: MobExperimentMarkingLimits
