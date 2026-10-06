@@ -24,8 +24,14 @@ public sealed class StaminaMeleeHitEvent : HandledEntityEventArgs
     /// </summary>
     public float FlatModifier = 0;
 
-    public StaminaMeleeHitEvent(List<(EntityUid Entity, StaminaComponent Component)> hitList)
+    /// <summary>
+    /// The entity swinging the weapon.
+    /// </summary>
+    public EntityUid User; // Serenity
+
+    public StaminaMeleeHitEvent(List<(EntityUid Entity, StaminaComponent Component)> hitList, EntityUid user)
     {
         HitList = hitList;
+        User = user; // Serenity
     }
 }

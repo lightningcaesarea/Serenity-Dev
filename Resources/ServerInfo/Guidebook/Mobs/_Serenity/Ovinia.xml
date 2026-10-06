@@ -1,0 +1,17 @@
+<Document>
+  # Ovinia
+
+  <Box>
+    <GuideEntityEmbed Entity="AppearanceOvinia" Caption=""/>
+  </Box>
+
+  Ovinia are ruminant-like humanoids with a thick, fluffy coat of wool. They are a densely built, naturalistic people who often go without clothing, and an Ovinia's wool is their pride and joy.
+
+  ## Benefits
+  - Their insulating wool gives them [color=#1e90ff]25% less Blunt and Heat damage[/color].
+  - They digest slowly, becoming [color=#1e90ff]hungry and thirsty 25% slower[/color].
+  - Their hooved feet [color=#1e90ff]protect them from shards of glass[/color] and other sharp floor hazards.
+
+  ## Downsides
+  - They take [color=#ffa500]15% more Slash and Piercing damage[/color].
+</Document>

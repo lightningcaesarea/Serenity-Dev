@@ -43,6 +43,7 @@ namespace Content.Shared.Humanoid
         Penis,
         Testicles,
         Vagina,
-        Butt
+        Butt,
+        NeckFluff // Serenity: ruffs and collars of fur around the neck (Ovinia)
     }
 }

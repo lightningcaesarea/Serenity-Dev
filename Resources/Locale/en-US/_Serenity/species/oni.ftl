@@ -1,0 +1,67 @@
+species-name-oni = Oni
+
+## Oni names
+
+names-oni-male-dataset-1 = Akira
+names-oni-male-dataset-2 = Daichi
+names-oni-male-dataset-3 = Goro
+names-oni-male-dataset-4 = Haruki
+names-oni-male-dataset-5 = Isamu
+names-oni-male-dataset-6 = Jiro
+names-oni-male-dataset-7 = Kaito
+names-oni-male-dataset-8 = Kenji
+names-oni-male-dataset-9 = Masaru
+names-oni-male-dataset-10 = Noboru
+names-oni-male-dataset-11 = Ryota
+names-oni-male-dataset-12 = Shiro
+names-oni-male-dataset-13 = Takeshi
+names-oni-male-dataset-14 = Tetsuo
+names-oni-male-dataset-15 = Yoshio
+names-oni-male-dataset-16 = Hideo
+names-oni-male-dataset-17 = Kazuo
+names-oni-male-dataset-18 = Raiden
+names-oni-male-dataset-19 = Souta
+names-oni-male-dataset-20 = Tomoe
+
+names-oni-female-dataset-1 = Akemi
+names-oni-female-dataset-2 = Chiyo
+names-oni-female-dataset-3 = Emiko
+names-oni-female-dataset-4 = Fumiko
+names-oni-female-dataset-5 = Hanae
+names-oni-female-dataset-6 = Izumi
+names-oni-female-dataset-7 = Kaori
+names-oni-female-dataset-8 = Kimiko
+names-oni-female-dataset-9 = Mariko
+names-oni-female-dataset-10 = Natsuki
+names-oni-female-dataset-11 = Reiko
+names-oni-female-dataset-12 = Sachiko
+names-oni-female-dataset-13 = Tomoko
+names-oni-female-dataset-14 = Yumi
+names-oni-female-dataset-15 = Ayame
+names-oni-female-dataset-16 = Haruka
+names-oni-female-dataset-17 = Midori
+names-oni-female-dataset-18 = Sayuri
+names-oni-female-dataset-19 = Setsuna
+names-oni-female-dataset-20 = Tsubaki
+
+names-oni-last-dataset-1 = Hinomaru
+names-oni-last-dataset-2 = Kurogane
+names-oni-last-dataset-3 = Akayama
+names-oni-last-dataset-4 = Oniyama
+names-oni-last-dataset-5 = Ibukiyama
+names-oni-last-dataset-6 = Ishigaki
+names-oni-last-dataset-7 = Tetsuyama
+names-oni-last-dataset-8 = Kaminari
+names-oni-last-dataset-9 = Akatsuki
+names-oni-last-dataset-10 = Higurashi
+names-oni-last-dataset-11 = Kurosawa
+names-oni-last-dataset-12 = Shimizu
+names-oni-last-dataset-13 = Takayama
+names-oni-last-dataset-14 = Yamabuki
+names-oni-last-dataset-15 = Kitsugawa
+names-oni-last-dataset-16 = Fujimori
+names-oni-last-dataset-17 = Ogawa
+names-oni-last-dataset-18 = Iwanami
+names-oni-last-dataset-19 = Shirakawa
+names-oni-last-dataset-20 = Tsukimori
+

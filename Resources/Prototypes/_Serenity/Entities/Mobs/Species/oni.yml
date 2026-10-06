@@ -1,0 +1,75 @@
+- type: entity
+  save: false
+  name: Urist McOni
+  parent: BaseMobHuman
+  id: BaseMobOni
+  abstract: true
+  components:
+  - type: HumanoidAppearance
+    species: Oni
+    hideLayersOnEquip:
+    - Hair
+    - Snout
+  - type: Icon
+    sprite: Mobs/Species/Human/parts.rsi
+    state: full
+  - type: Speech
+    speechSounds: Baritone
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.42
+        density: 220
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: Oni
+  - type: Stamina
+    baseCritThreshold: 115
+  - type: BonusMeleeDamage
+    damageModifierSet:
+      coefficients:
+        Blunt: 1.35
+        Slash: 1.2
+        Piercing: 1.2
+        Asphyxiation: 1.35
+  - type: BonusStaminaDamage
+    multiplier: 1.25
+  - type: ClothingSlowResistance
+    modifier: 0.25
+  - type: PlayerToolModifier
+    pryTimeMultiplier: 0.5
+  - type: PlayerAccuracyModifier
+    spreadMultiplier: 15
+    maxSpreadAngle: 180
+
+- type: entity
+  save: false
+  name: Urist McOni
+  parent: BaseMobOni
+  id: MobOni
+
+- type: entity
+  parent: [BaseSpeciesDummy, BaseInventoryFemaleJumpsuit]
+  id: AppearanceOni
+  categories: [ HideSpawnMenu ]
+  description: A dummy oni meant to be used in character setup.
+  components:
+  - type: HumanoidAppearance
+    species: Oni
+    hideLayersOnEquip:
+    - Hair
+    - Snout
+
+- type: damageModifierSet
+  id: Oni
+  coefficients:
+    Blunt: 0.85
+    Slash: 0.85
+    Piercing: 0.85

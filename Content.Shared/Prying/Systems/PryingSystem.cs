@@ -1,3 +1,4 @@
+using Content.Shared._Serenity.Oni;
 using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Alert;
@@ -172,7 +173,13 @@ public sealed partial class PryingSystem : EntitySystem
         var modEv = new GetPryTimeModifierEvent(user);
 
         RaiseLocalEvent(target, ref modEv);
-        var doAfterArgs = new DoAfterArgs(EntityManager, user, modEv.BaseTime * modEv.PryTimeModifier / toolModifier, new DoorPryDoAfterEvent(), target, target, tool)
+
+        // Serenity: some species pry faster than others.
+        var userPryMultiplier = TryComp<PlayerToolModifierComponent>(user, out var userTools)
+            ? userTools.PryTimeMultiplier
+            : 1f;
+
+        var doAfterArgs = new DoAfterArgs(EntityManager, user, modEv.BaseTime * modEv.PryTimeModifier * userPryMultiplier / toolModifier, new DoorPryDoAfterEvent(), target, target, tool)
         {
             BreakOnDamage = true,
             BreakOnMove = true,

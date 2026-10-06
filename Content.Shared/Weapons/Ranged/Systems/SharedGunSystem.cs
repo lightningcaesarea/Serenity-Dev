@@ -1,3 +1,4 @@
+using Content.Shared._Serenity.Oni;
 using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 using Content.Shared.ActionBlocker;
@@ -587,7 +588,19 @@ public abstract partial class SharedGunSystem : EntitySystem
             return Angle.Zero;
 
         var theta = GetNextShotTheta(gun.Comp, curTime ?? Timing.CurTime);
-        return new Angle(theta * GetMovementSpreadModifier((gun, gun.Comp)));
+        return new Angle(ApplyHolderAccuracy(gun, theta * GetMovementSpreadModifier((gun, gun.Comp))));
+    }
+
+    /// <summary>
+    /// Widens a spread cone (in radians) for holders with a <see cref="PlayerAccuracyModifierComponent"/>, up to its cap.
+    /// </summary>
+    private double ApplyHolderAccuracy(EntityUid gun, double theta)
+    {
+        if (!TryComp<PlayerAccuracyModifierComponent>(Transform(gun).ParentUid, out var accuracy))
+            return theta;
+
+        var widened = theta * accuracy.SpreadMultiplier;
+        return widened <= theta ? widened : Math.Min(widened, Math.Max(theta, Angle.FromDegrees(accuracy.MaxSpreadAngle).Theta));
     }
 
     /// <summary>
@@ -626,7 +639,7 @@ public abstract partial class SharedGunSystem : EntitySystem
 
     public Angle GetRecoilAngle(Entity<GunComponent> gun, Angle direction, TimeSpan? curTime = null)
     {
-        var spread = UpdateCurrentAngle(gun, curTime).Theta * GetMovementSpreadModifier(gun);
+        var spread = ApplyHolderAccuracy(gun, UpdateCurrentAngle(gun, curTime).Theta * GetMovementSpreadModifier(gun));
 
         // Convert it so angle can go either side.
         var random = Random.NextFloat(-0.5f, 0.5f);

@@ -1,0 +1,155 @@
+# Ovinia: sheep-like ruminant humanoids. Species concept and art by juniwoofs and contributors (via Delta-V /
+# Den). Art licences differ per file: the body parts, horns and speech bubbles are CC-BY-SA-3.0, while the ear,
+# tail, hoof, snout and body markings are CC-BY-NC-SA-3.0 (see each meta.json). These prototypes are
+# Serenity's own implementation.
+
+- type: body
+  id: Ovinia
+  name: "ovinia"
+  root: torso
+  slots:
+    head:
+      part: HeadOvinia
+      connections:
+      - torso
+      organs:
+        brain: OrganHumanBrain
+        eyes: OrganHumanEyes
+        tongue: OrganHumanTongue
+        eye_implant: null
+        nose_implant: null
+        brain_implant: null
+    torso:
+      part: TorsoOvinia
+      connections:
+      - right arm
+      - left arm
+      - right leg
+      - left leg
+      organs:
+        heart: OrganAnimalHeart
+        lungs: OrganHumanLungs
+        stomach: OrganAnimalStomach
+        liver: OrganAnimalLiver
+        kidneys: OrganHumanKidneys
+        cavity: null
+    right arm:
+      part: RightArmOvinia
+      connections:
+      - right hand
+    left arm:
+      part: LeftArmOvinia
+      connections:
+      - left hand
+    right hand:
+      part: RightHandOvinia
+      organs:
+        hand_implant: null
+    left hand:
+      part: LeftHandOvinia
+      organs:
+        hand_implant: null
+    right leg:
+      part: RightLegOvinia
+      connections:
+      - right foot
+    left leg:
+      part: LeftLegOvinia
+      connections:
+      - left foot
+    right foot:
+      part: RightFootOvinia
+    left foot:
+      part: LeftFootOvinia
+
+# Body parts reuse the human part behaviour with ovinia sprites.
+
+- type: entity
+  id: TorsoOvinia
+  name: "ovinia torso"
+  parent: TorsoHuman
+  components:
+  - type: Sprite
+    sprite: _Serenity/Mobs/Species/Ovinia/parts.rsi
+    state: torso_m
+
+- type: entity
+  id: HeadOvinia
+  name: "ovinia head"
+  parent: HeadHuman
+  components:
+  - type: Sprite
+    sprite: _Serenity/Mobs/Species/Ovinia/parts.rsi
+    state: head_m
+
+- type: entity
+  id: LeftArmOvinia
+  name: "left ovinia arm"
+  parent: LeftArmHuman
+  components:
+  - type: Sprite
+    sprite: _Serenity/Mobs/Species/Ovinia/parts.rsi
+    state: l_arm
+
+- type: entity
+  id: RightArmOvinia
+  name: "right ovinia arm"
+  parent: RightArmHuman
+  components:
+  - type: Sprite
+    sprite: _Serenity/Mobs/Species/Ovinia/parts.rsi
+    state: r_arm
+
+- type: entity
+  id: LeftHandOvinia
+  name: "left ovinia hand"
+  parent: LeftHandHuman
+  components:
+  - type: Sprite
+    sprite: _Serenity/Mobs/Species/Ovinia/parts.rsi
+    state: l_hand
+
+- type: entity
+  id: RightHandOvinia
+  name: "right ovinia hand"
+  parent: RightHandHuman
+  components:
+  - type: Sprite
+    sprite: _Serenity/Mobs/Species/Ovinia/parts.rsi
+    state: r_hand
+
+- type: entity
+  id: LeftLegOvinia
+  name: "left ovinia leg"
+  parent: LeftLegHuman
+  components:
+  - type: Sprite
+    sprite: _Serenity/Mobs/Species/Ovinia/parts.rsi
+    state: l_leg
+
+- type: entity
+  id: RightLegOvinia
+  name: "right ovinia leg"
+  parent: RightLegHuman
+  components:
+  - type: Sprite
+    sprite: _Serenity/Mobs/Species/Ovinia/parts.rsi
+    state: r_leg
+
+- type: entity
+  id: LeftFootOvinia
+  name: "left ovinia foot"
+  parent: LeftFootHuman
+  components:
+  - type: Sprite
+    sprite: _Serenity/Mobs/Species/Ovinia/parts.rsi
+    state: l_foot
+
+- type: entity
+  id: RightFootOvinia
+  name: "right ovinia foot"
+  parent: RightFootHuman
+  components:
+  - type: Sprite
+    sprite: _Serenity/Mobs/Species/Ovinia/parts.rsi
+    state: r_foot

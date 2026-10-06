@@ -126,6 +126,7 @@
       - map: [ "id" ]
       - map: [ "enum.HumanoidVisualLayers.Tail" ]
       - map: [ "back" ]
+      - map: [ "enum.HumanoidVisualLayers.NeckFluff" ]
       - map: [ "neck" ]
       - map: [ "misc" ]
       - map: [ "enum.HumanoidVisualLayers.SnoutCover" ]
