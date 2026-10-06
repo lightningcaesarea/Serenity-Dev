@@ -1,0 +1,94 @@
+- type: constructionGraph
+  id: MilkingMachine
+  start: start
+  graph:
+    - node: start
+      actions:
+        - !type:DestroyEntity {}
+      edges:
+        - to: pink
+          steps:
+            - material: Steel
+              amount: 5
+              doAfter: 2
+            - material: Plastic
+              amount: 2
+              doAfter: 1
+            - material: Glass
+              amount: 2
+              doAfter: 1
+        - to: teal
+          steps:
+            - material: Steel
+              amount: 5
+              doAfter: 2
+            - material: Plastic
+              amount: 2
+              doAfter: 1
+            - material: Glass
+              amount: 2
+              doAfter: 1
+
+    - node: pink
+      entity: MilkingMachine
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 5
+            - !type:SpawnPrototype
+              prototype: SheetPlastic1
+              amount: 2
+            - !type:SpawnPrototype
+              prototype: SheetGlass1
+              amount: 2
+          steps:
+            - tool: Screwing
+              doAfter: 2
+            - tool: Anchoring
+              doAfter: 2
+
+    - node: teal
+      entity: MilkingMachineTeal
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 5
+            - !type:SpawnPrototype
+              prototype: SheetPlastic1
+              amount: 2
+            - !type:SpawnPrototype
+              prototype: SheetGlass1
+              amount: 2
+          steps:
+            - tool: Screwing
+              doAfter: 2
+            - tool: Anchoring
+              doAfter: 2
+
+- type: construction
+  id: MilkingMachine
+  graph: MilkingMachine
+  startNode: start
+  targetNode: pink
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: MilkingMachineTeal
+  graph: MilkingMachine
+  startNode: start
+  targetNode: teal
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked

@@ -1,0 +1,180 @@
+# Milking machine: a chair that pumps body fluids from whoever is buckled into it into a tank that plumbing
+# can pull from. Behaviour: MilkingMachineComponent. Art: CC-BY-SA-3.0, see the RSI's meta.json.
+
+- type: entity
+  parent: ChairBase
+  id: MilkingMachine
+  name: milking machine
+  description: A padded chair with pumps and a collection tank. Ducts can pull from the tank, and so can a beaker.
+  suffix: Pink
+  components:
+  - type: Sprite
+    sprite: _Serenity/Structures/Furniture/milking_machine.rsi
+    noRot: true
+    layers:
+    - state: milking_pink_off
+      map: [ "enum.MilkingMachineLayers.Base" ]
+    - state: liquid_low
+      map: [ "enum.MilkingMachineLayers.Liquid" ]
+      visible: false
+    - state: indicator_low
+      map: [ "enum.MilkingMachineLayers.Indicator" ]
+      shader: unshaded
+      visible: false
+    - state: locks_open
+      map: [ "enum.MilkingMachineLayers.Locks" ]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.MilkingMachineVisuals.Mode:
+        enum.MilkingMachineLayers.Base:
+          Off: { state: milking_pink_off }
+          Low: { state: milking_pink_low }
+          Medium: { state: milking_pink_medium }
+          High: { state: milking_pink_hard }
+        enum.MilkingMachineLayers.Indicator:
+          Off: { visible: false }
+          Low: { visible: true, state: indicator_low }
+          Medium: { visible: true, state: indicator_medium }
+          High: { visible: true, state: indicator_high }
+      enum.MilkingMachineVisuals.Fill:
+        enum.MilkingMachineLayers.Liquid:
+          Empty: { visible: false }
+          Low: { visible: true, state: liquid_low }
+          Medium: { visible: true, state: liquid_medium }
+          High: { visible: true, state: liquid_high }
+          Full: { visible: true, state: liquid_full }
+      enum.StrapVisuals.State:
+        enum.MilkingMachineLayers.Locks:
+          True: { state: locks_closed }
+          False: { state: locks_open }
+  - type: Strap
+    position: Stand
+    buckleOffset: "0,0.1"
+  - type: MilkingMachine
+    sources:
+    - feature: BreastsAccessible
+      reagent: BreastMilk
+      perSecond: 0.5
+    - feature: PenisAccessible
+      reagent: Semen
+      perSecond: 0.05
+      onClimax: 10
+    - feature: VaginaAccessible
+      reagent: VaginalFluid
+      perSecond: 0.1
+      onClimax: 8
+  - type: SolutionManager
+    solutions:
+    - SolutionMilkingMachineTank
+  - type: ExaminableSolution
+    solution: tank
+  - type: DrainableSolution
+    solution: tank
+  - type: PlumbingOutlet
+    solutionName: tank
+    connectedOutlets: true
+    outletNames:
+    - outletNorth
+    - outletEast
+    - outletSouth
+    - outletWest
+  - type: NodeContainer
+    nodes:
+      outletNorth:
+        !type:PlumbingNode
+        nodeGroupID: Plumbing
+        pipeDirection: North
+      outletEast:
+        !type:PlumbingNode
+        nodeGroupID: Plumbing
+        pipeDirection: East
+      outletSouth:
+        !type:PlumbingNode
+        nodeGroupID: Plumbing
+        pipeDirection: South
+      outletWest:
+        !type:PlumbingNode
+        nodeGroupID: Plumbing
+        pipeDirection: West
+  - type: Construction
+    graph: MilkingMachine
+    node: pink
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:SpillBehavior
+        solution: tank
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 1
+            max: 3
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+  - type: StaticPrice
+    price: 150
+
+- type: entity
+  parent: MilkingMachine
+  id: MilkingMachineTeal
+  suffix: Teal
+  components:
+  - type: Sprite
+    sprite: _Serenity/Structures/Furniture/milking_machine.rsi
+    noRot: true
+    layers:
+    - state: milking_teal_off
+      map: [ "enum.MilkingMachineLayers.Base" ]
+    - state: liquid_low
+      map: [ "enum.MilkingMachineLayers.Liquid" ]
+      visible: false
+    - state: indicator_low
+      map: [ "enum.MilkingMachineLayers.Indicator" ]
+      shader: unshaded
+      visible: false
+    - state: locks_open
+      map: [ "enum.MilkingMachineLayers.Locks" ]
+  - type: GenericVisualizer
+    visuals:
+      enum.MilkingMachineVisuals.Mode:
+        enum.MilkingMachineLayers.Base:
+          Off: { state: milking_teal_off }
+          Low: { state: milking_teal_low }
+          Medium: { state: milking_teal_medium }
+          High: { state: milking_teal_hard }
+        enum.MilkingMachineLayers.Indicator:
+          Off: { visible: false }
+          Low: { visible: true, state: indicator_low }
+          Medium: { visible: true, state: indicator_medium }
+          High: { visible: true, state: indicator_high }
+      enum.MilkingMachineVisuals.Fill:
+        enum.MilkingMachineLayers.Liquid:
+          Empty: { visible: false }
+          Low: { visible: true, state: liquid_low }
+          Medium: { visible: true, state: liquid_medium }
+          High: { visible: true, state: liquid_high }
+          Full: { visible: true, state: liquid_full }
+      enum.StrapVisuals.State:
+        enum.MilkingMachineLayers.Locks:
+          True: { state: locks_closed }
+          False: { state: locks_open }
+  - type: Construction
+    graph: MilkingMachine
+    node: teal
+
+- type: entity
+  id: SolutionMilkingMachineTank
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Solution
+    id: tank
+    solution:
+      maxVol: 300
+      canReact: false
