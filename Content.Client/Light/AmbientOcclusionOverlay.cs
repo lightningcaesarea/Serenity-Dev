@@ -43,7 +43,7 @@ public sealed partial class AmbientOcclusionOverlay : Overlay
     public AmbientOcclusionOverlay()
     {
         IoCManager.InjectDependencies(this);
-        ZIndex = AfterLightTargetOverlay.ContentZIndex + 1;
+        ZIndex = PostLightTargetOverlay.ContentZIndex + 1;
 
         _occluders = _entManager.System<OccluderSystem>();
         _gridStencil = _entManager.System<GridStencilSystem>();

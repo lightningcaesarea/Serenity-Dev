@@ -7,7 +7,7 @@ namespace Content.Client.Light;
 /// <summary>
 /// This exists just to copy <see cref="BeforeLightTargetOverlay"/> to the light render target
 /// </summary>
-public sealed partial class AfterLightTargetOverlay : Overlay
+public sealed partial class PostLightTargetOverlay : Overlay
 {
     public override OverlaySpace Space => OverlaySpace.BeforeLighting;
 
@@ -15,7 +15,7 @@ public sealed partial class AfterLightTargetOverlay : Overlay
 
     public const int ContentZIndex = LightBlurOverlay.ContentZIndex + 1;
 
-    public AfterLightTargetOverlay()
+    public PostLightTargetOverlay()
     {
         IoCManager.InjectDependencies(this);
         ZIndex = ContentZIndex;

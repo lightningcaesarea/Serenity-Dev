@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using System.Numerics;
 using Content.Client.Graphics;
 using Content.Client.Light;
@@ -87,7 +87,7 @@ public sealed partial class WallStainOverlay : Overlay
 
         _transformQuery = _entityManager.GetEntityQuery<TransformComponent>();
 
-        ZIndex = AfterLightTargetOverlay.ContentZIndex + 1;
+        ZIndex = PostLightTargetOverlay.ContentZIndex + 1;
     }
 
     private SplatLayout GetSplatLayout(Entity<WallStainComponent> stainEntity)
