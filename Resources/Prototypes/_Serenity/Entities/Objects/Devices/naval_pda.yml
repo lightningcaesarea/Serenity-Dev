@@ -1,0 +1,19 @@
+# SPDX-FileCopyrightText: 2026 CalliganSierre
+#
+# SPDX-License-Identifier: MIT
+
+- type: entity
+  parent: CentcomPDA
+  id: NavalPDA
+  name: naval PDA
+  description: A rugged naval-issue PDA with a dark blue casing.
+  components:
+  - type: Pda
+    id: NavalIDCard
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+  - type: PdaBorderColor
+    borderColor: "#1A1A2E"
+    accentHColor: "#2A4A7F"
+    accentVColor: "#1E3A5F"

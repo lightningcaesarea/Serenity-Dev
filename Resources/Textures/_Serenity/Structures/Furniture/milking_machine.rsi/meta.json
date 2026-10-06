@@ -1,0 +1,134 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Added to Skyrat-tg by Lamella-0587 (https://github.com/Skyrat-SS13/Skyrat-tg/pull/6740); taken from S.P.L.U.R.T-tg at https://github.com/SPLURT-Station/S.P.L.U.R.T-tg/blob/a702f9bd9f68c9e8f679b15ad5b36e3f3a2439af/modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/milking_machine.dmi",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "milking_pink_off"
+    },
+    {
+      "name": "milking_pink_low",
+      "delays": [
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "milking_pink_medium",
+      "delays": [
+        [
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08
+        ]
+      ]
+    },
+    {
+      "name": "milking_pink_hard",
+      "delays": [
+        [
+          0.06,
+          0.06,
+          0.06,
+          0.06,
+          0.06,
+          0.06,
+          0.06,
+          0.06
+        ]
+      ]
+    },
+    {
+      "name": "milking_teal_off"
+    },
+    {
+      "name": "milking_teal_low",
+      "delays": [
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "milking_teal_medium",
+      "delays": [
+        [
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08
+        ]
+      ]
+    },
+    {
+      "name": "milking_teal_hard",
+      "delays": [
+        [
+          0.06,
+          0.06,
+          0.06,
+          0.06,
+          0.06,
+          0.06,
+          0.06,
+          0.06
+        ]
+      ]
+    },
+    {
+      "name": "locks_open"
+    },
+    {
+      "name": "locks_closed"
+    },
+    {
+      "name": "indicator_low"
+    },
+    {
+      "name": "indicator_medium"
+    },
+    {
+      "name": "indicator_high"
+    },
+    {
+      "name": "liquid_low"
+    },
+    {
+      "name": "liquid_medium"
+    },
+    {
+      "name": "liquid_high"
+    },
+    {
+      "name": "liquid_full"
+    }
+  ]
+}

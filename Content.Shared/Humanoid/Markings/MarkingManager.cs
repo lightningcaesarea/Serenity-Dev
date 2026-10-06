@@ -94,7 +94,7 @@ namespace Content.Shared.Humanoid.Markings
 
             foreach (var (key, marking) in MarkingsByCategory(category))
             {
-                if ((markingPoints.OnlyWhitelisted || markingPoints.Points[category].OnlyWhitelisted) && marking.SpeciesRestrictions == null)
+                if (!marking.AnySpecies && (markingPoints.OnlyWhitelisted || markingPoints.Points[category].OnlyWhitelisted) && marking.SpeciesRestrictions == null) // Serenity: AnySpecies
                 {
                     continue;
                 }
@@ -157,7 +157,7 @@ namespace Content.Shared.Humanoid.Markings
 
             foreach (var (key, marking) in MarkingsByCategory(category))
             {
-                if (onlyWhitelisted && marking.SpeciesRestrictions == null)
+                if (onlyWhitelisted && marking.SpeciesRestrictions == null && !marking.AnySpecies) // Serenity: AnySpecies
                 {
                     continue;
                 }
@@ -245,7 +245,7 @@ namespace Content.Shared.Humanoid.Markings
                 return false;
             }
 
-            if (onlyWhitelisted && prototype.SpeciesRestrictions == null)
+            if (onlyWhitelisted && prototype.SpeciesRestrictions == null && !prototype.AnySpecies) // Serenity: AnySpecies
             {
                 return false;
             }
@@ -271,7 +271,7 @@ namespace Content.Shared.Humanoid.Markings
             var speciesProto = prototypeManager.Index<SpeciesPrototype>(species);
             var onlyWhitelisted = prototypeManager.Index(speciesProto.MarkingPoints).OnlyWhitelisted;
 
-            if (onlyWhitelisted && prototype.SpeciesRestrictions == null)
+            if (onlyWhitelisted && prototype.SpeciesRestrictions == null && !prototype.AnySpecies) // Serenity: AnySpecies
             {
                 return false;
             }

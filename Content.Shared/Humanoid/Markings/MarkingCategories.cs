@@ -32,7 +32,8 @@ namespace Content.Shared.Humanoid.Markings
         Testicles,
         Vagina,
         Butt,
-        NeckFluff
+        NeckFluff,
+        Belly
     }
 
     public static class MarkingCategoriesConversion
@@ -71,6 +72,7 @@ namespace Content.Shared.Humanoid.Markings
                 HumanoidVisualLayers.Vagina => MarkingCategories.Vagina, // Serenity
                 HumanoidVisualLayers.Butt => MarkingCategories.Butt, // Serenity
                 HumanoidVisualLayers.NeckFluff => MarkingCategories.NeckFluff, // Serenity
+                HumanoidVisualLayers.Belly => MarkingCategories.Belly, // Serenity
                 HumanoidVisualLayers.Tail => MarkingCategories.Tail,
                 _ => MarkingCategories.Overlay
             };

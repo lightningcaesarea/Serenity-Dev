@@ -24,6 +24,13 @@ namespace Content.Shared.Humanoid.Markings
         [DataField("sexRestriction")]
         public Sex? SexRestriction { get; private set; }
 
+        /// <summary>
+        /// Serenity: offer this marking even to species whose marking limits are whitelist-only.
+        /// <see cref="SpeciesRestrictions"/> still applies when it is set.
+        /// </summary>
+        [DataField]
+        public bool AnySpecies { get; private set; }
+
         [DataField("followSkinColor")]
         public bool FollowSkinColor { get; private set; } = false;
 

@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from S.P.L.U.R.T-tg at https://github.com/SPLURT-Station/S.P.L.U.R.T-tg/blob/c14949b3b04a3b26b54ca83595ed0a1ace14e846/modular_zzplurt/icons/mob/human/genitals/belly.dmi. Resomi variants were created by CaptainFothel by modifying the sprites taken from S.P.L.U.R.T. (subset of states)",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "m_belly_pair_1_front",
+      "directions": 4
+    },
+    {
+      "name": "m_belly_pair_3_front",
+      "directions": 4
+    },
+    {
+      "name": "m_belly_pair_5_front",
+      "directions": 4
+    },
+    {
+      "name": "m_belly_pair_7_front",
+      "directions": 4
+    },
+    {
+      "name": "m_belly_pair_9_front",
+      "directions": 4
+    }
+  ]
+}

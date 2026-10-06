@@ -164,7 +164,7 @@ public sealed partial class MarkingSet
                     continue;
                 }
 
-                if (onlyWhitelisted && prototype.SpeciesRestrictions == null)
+                if (onlyWhitelisted && prototype.SpeciesRestrictions == null && !prototype.AnySpecies) // Serenity: AnySpecies
                 {
                     toRemove.Add((category, marking.MarkingId));
                 }

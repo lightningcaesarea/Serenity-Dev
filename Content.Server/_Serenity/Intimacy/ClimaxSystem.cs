@@ -46,7 +46,8 @@ public sealed partial class ClimaxSystem : EntitySystem
 
     public bool TryClimax(Entity<ClimaxComponent?> mob, bool automatic)
     {
-        if (!CanClimax(mob, automatic) || mob.Comp == null)
+        // Resolve here: CanClimax resolves into its own copy of the entity, so mob.Comp would stay null.
+        if (!Resolve(mob, ref mob.Comp, false) || !CanClimax(mob, automatic))
             return false;
 
         foreach (var (stat, value) in mob.Comp.After)

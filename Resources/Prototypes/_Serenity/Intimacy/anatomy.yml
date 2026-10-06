@@ -32,3 +32,9 @@
   category: Butt
   feature: Butt
   coveringSlots: [ jumpsuit, outerClothing ]
+
+- type: intimacyAnatomy
+  id: Belly
+  category: Belly
+  feature: Belly
+  coveringSlots: [ jumpsuit, outerClothing ]

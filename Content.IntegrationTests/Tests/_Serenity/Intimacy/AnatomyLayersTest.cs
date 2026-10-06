@@ -21,6 +21,7 @@ public sealed class AnatomyLayersTest : InteractionTest
         HumanoidVisualLayers.Testicles,
         HumanoidVisualLayers.Vagina,
         HumanoidVisualLayers.Butt,
+        HumanoidVisualLayers.Belly,
     };
 
     [Test]

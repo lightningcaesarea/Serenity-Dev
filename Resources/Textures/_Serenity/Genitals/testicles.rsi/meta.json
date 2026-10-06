@@ -8,7 +8,15 @@
   },
   "states": [
     {
+      "name": "m_testicles_pair_1_adj",
+      "directions": 4
+    },
+    {
       "name": "m_testicles_pair_2_adj",
+      "directions": 4
+    },
+    {
+      "name": "m_testicles_pair_3_adj",
       "directions": 4
     },
     {
@@ -16,7 +24,51 @@
       "directions": 4
     },
     {
+      "name": "m_testicles_pair_5_adj",
+      "directions": 4
+    },
+    {
       "name": "m_testicles_pair_6_adj",
+      "directions": 4
+    },
+    {
+      "name": "m_testicles_pair_7_adj",
+      "directions": 4
+    },
+    {
+      "name": "m_testicles_pair_8_adj",
+      "directions": 4
+    },
+    {
+      "name": "m_testicles_sheath_1_adj",
+      "directions": 4
+    },
+    {
+      "name": "m_testicles_sheath_2_adj",
+      "directions": 4
+    },
+    {
+      "name": "m_testicles_sheath_3_adj",
+      "directions": 4
+    },
+    {
+      "name": "m_testicles_sheath_4_adj",
+      "directions": 4
+    },
+    {
+      "name": "m_testicles_sheath_5_adj",
+      "directions": 4
+    },
+    {
+      "name": "m_testicles_sheath_6_adj",
+      "directions": 4
+    },
+    {
+      "name": "m_testicles_sheath_7_adj",
+      "directions": 4
+    },
+    {
+      "name": "m_testicles_sheath_8_adj",
       "directions": 4
     }
   ]
