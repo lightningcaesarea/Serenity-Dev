@@ -260,7 +260,7 @@ public sealed partial class CryostorageSystem : SharedCryostorageSystem
         );
     }
 
-    private void HandleCryostorageReconnection(Entity<CryostorageContainedComponent> entity)
+    public void HandleCryostorageReconnection(Entity<CryostorageContainedComponent> entity) // Serenity: public so CryoReturnSystem can wake a stored body
     {
         var (uid, comp) = entity;
         if (!CryoSleepRejoiningEnabled || !IsInPausedMap(uid))

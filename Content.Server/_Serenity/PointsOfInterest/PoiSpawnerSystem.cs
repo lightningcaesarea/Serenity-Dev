@@ -48,6 +48,9 @@ public sealed partial class PoiSpawnerSystem : EntitySystem
 
         foreach (var poi in _proto.EnumeratePrototypes<SerenityPointOfInterestPrototype>())
         {
+            if (!poi.Enabled)
+                continue;
+
             SpawnPoi(mapId, poi);
         }
     }

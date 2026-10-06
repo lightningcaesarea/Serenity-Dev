@@ -1,0 +1,7 @@
+# Serenity runs a single hub map, so the map pool holds just that map. Replaces Starlight's
+# DefaultStarlightMapPool as the `game.map_pool` default; map voting is off (vote.map_enabled and
+# vote.run_map_vote_after_restart default to false).
+- type: gameMapPool
+  id: SerenityMapPool
+  maps:
+  - SerenityOutpost

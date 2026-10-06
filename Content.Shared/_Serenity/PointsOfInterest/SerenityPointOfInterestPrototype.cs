@@ -23,6 +23,12 @@ public sealed partial class SerenityPointOfInterestPrototype : IPrototype
     public string Name = string.Empty;
 
     /// <summary>
+    /// Disabled POIs are defined (and their maps kept valid) but never spawned.
+    /// </summary>
+    [DataField]
+    public bool Enabled = true;
+
+    /// <summary>
     /// Grid file to load, e.g. <c>/Maps/_Serenity/POI/cargodepot.yml</c>.
     /// </summary>
     [DataField(required: true)]

@@ -1,0 +1,63 @@
+# Serenity Outpost: the hub station for the sector. Uses the standard station prototype, but overrides
+# GridSpawn (see BaseStationShuttles in Entities/Stations/base.yml, which this copies) to drop the `ruins`
+# derelicts and the `wrecks` dungeons: derelicts are off for this map, and wrecks now come from worldgen as
+# DungeonDebris instead of a fixed ring around the station. Keep the remaining groups in sync with base.yml.
+# The job list below is a placeholder until the real list is decided.
+- type: gameMap
+  id: SerenityOutpost
+  mapName: 'Serenity Outpost'
+  mapPath: /Maps/_Serenity/Outpost/outpost.yml
+  minPlayers: 0
+  maxPlayers: 100
+  randomRotation: false
+  maxRandomOffset: 0
+  stations:
+    SerenityOutpost:
+      stationProto: StandardNanotrasenStation
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Serenity Outpost'
+        - type: GridSpawn
+          groups:
+            trade: !type:GridSpawnGroup
+              addComponents:
+                - type: TradeStation
+              paths:
+                - /Maps/_Starlight/trading_outpost.yml
+              minimumDistance: 100
+              maximumDistance: 200
+            cargo_salvage_shuttle: !type:GridSpawnGroup
+              paths:
+                - /Maps/_Starlight/Shuttles/Salvage/expeditioneer.yml
+              nameGrid: false
+            cargo_mining_shuttle: !type:GridSpawnGroup
+              paths:
+                - /Maps/_Starlight/Shuttles/Mining/asteroidcracker.yml
+              nameGrid: false
+            vgroid: !type:DungeonSpawnGroup
+              minimumDistance: 600
+              maximumDistance: 650
+              directDungeonSpawn: true
+              nameDataset: NamesBorer
+              stationGrid: false
+              addComponents:
+              - type: Gravity
+                enabled: true
+                inherent: true
+              - type: VGRoidSpawnMarker
+              protos:
+              - VGRoid
+        - type: StationJobs
+          availableJobs:
+            Assistant: [ -1, -1 ]
+            HeadOfPersonnel: [ 1, 1 ]
+            Bartender: [ 1, 2 ]
+            Janitor: [ 1, 1 ]
+            ServiceWorker: [ 2, 3 ]
+            SecurityOfficer: [ 2, 3 ]
+            MedicalDoctor: [ 2, 3 ]
+            Paramedic: [ 1, 1 ]
+            StationEngineer: [ 2, 3 ]
+            CargoTechnician: [ 2, 3 ]
+            SalvageSpecialist: [ 2, 3 ]
+            Borg: [ 1, 2 ]

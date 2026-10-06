@@ -102,4 +102,53 @@ public sealed partial class SerenityCCVars
     /// </summary>
     public static readonly CVarDef<int> CharacterStartingBalance =
         CVarDef.Create("serenity.economy.starting_balance", 20000, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Whether ghosts may return themselves to the lobby with <c>ghostrespawn</c> once the timer is up.
+    /// </summary>
+    public static readonly CVarDef<bool> RespawnEnabled =
+        CVarDef.Create("serenity.respawn.enabled", true, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Seconds a player must have been a ghost before they can respawn as a new character.
+    /// </summary>
+    public static readonly CVarDef<float> RespawnTime =
+        CVarDef.Create("serenity.respawn.time", 60f, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Whether player-owned ships (anything carrying a ShuttleDeed) FTL to CentComm when the round ends.
+    /// </summary>
+    public static readonly CVarDef<bool> RoundEndShipFtl =
+        CVarDef.Create("serenity.roundend_ship_ftl.enabled", true, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Seconds of FTL startup before an owned ship leaves at round end.
+    /// </summary>
+    public static readonly CVarDef<float> RoundEndShipFtlStartup =
+        CVarDef.Create("serenity.roundend_ship_ftl.startup", 15f, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Seconds an owned ship spends in hyperspace on its way to CentComm at round end.
+    /// </summary>
+    public static readonly CVarDef<float> RoundEndShipFtlTravel =
+        CVarDef.Create("serenity.roundend_ship_ftl.travel", 30f, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Whether a character that went into a cryopod is ghosted rather than left attached to its parked body, and may
+    /// wake the body again (return to body / <c>uncryo</c>) without reconnecting.
+    /// </summary>
+    public static readonly CVarDef<bool> CryoReturnEnabled =
+        CVarDef.Create("serenity.cryo.return_enabled", true, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Minutes after entering a cryopod during which the character can still be woken.
+    /// </summary>
+    public static readonly CVarDef<float> CryoReturnWindow =
+        CVarDef.Create("serenity.cryo.return_window_minutes", 180f, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Whether the sector event scheduler (bluespace-error grids: vaults, caches, lost vessels) runs each round.
+    /// </summary>
+    public static readonly CVarDef<bool> SectorEventsEnabled =
+        CVarDef.Create("serenity.sector_events.enabled", true, CVar.SERVERONLY);
 }
