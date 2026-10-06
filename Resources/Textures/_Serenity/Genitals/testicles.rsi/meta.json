@@ -18,6 +18,18 @@
     {
       "name": "m_testicles_pair_6_adj",
       "directions": 4
+    },
+    {
+      "name": "m_testicles_sheath_2_adj",
+      "directions": 4
+    },
+    {
+      "name": "m_testicles_sheath_4_adj",
+      "directions": 4
+    },
+    {
+      "name": "m_testicles_sheath_6_adj",
+      "directions": 4
     }
   ]
 }
