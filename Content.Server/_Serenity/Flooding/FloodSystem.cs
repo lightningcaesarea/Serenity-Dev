@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using Content.Server.Atmos.Components;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Fluids.EntitySystems;
@@ -73,7 +72,7 @@ public sealed partial class FloodSystem : SharedFloodSystem
     private readonly Queue<EntityUid> _due = new();
     private readonly HashSet<EntityUid> _toPuddle = new();
     private readonly HashSet<EntityUid> _toFlood = new();
-    private readonly Stopwatch _stopwatch = new();
+    private readonly System.Diagnostics.Stopwatch _stopwatch = new();
     private readonly List<Outlet> _outlets = new();
     private readonly List<Outlet> _receiving = new();
     private readonly List<EntityUid> _absorbed = new();
