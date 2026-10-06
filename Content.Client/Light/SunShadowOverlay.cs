@@ -32,7 +32,7 @@ public sealed partial class SunShadowOverlay : Overlay
         _xformSys = _entManager.System<SharedTransformSystem>();
         _map = _entManager.System<SharedMapSystem>();
         _lookup = _entManager.System<EntityLookupSystem>();
-        ZIndex = AfterLightTargetOverlay.ContentZIndex + 1;
+        ZIndex = PostLightTargetOverlay.ContentZIndex + 1;
     }
 
     private List<Entity<MapGridComponent>> _grids = new();

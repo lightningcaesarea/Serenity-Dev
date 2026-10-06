@@ -51,7 +51,7 @@ public sealed partial class PlanetLightSystem : EntitySystem
         _overlayMan.AddOverlay(new TileEmissionOverlay(EntityManager));
         _overlayMan.AddOverlay(new LightBlurOverlay());
         _overlayMan.AddOverlay(new SunShadowOverlay());
-        _overlayMan.AddOverlay(new AfterLightTargetOverlay());
+        _overlayMan.AddOverlay(new PostLightTargetOverlay());
     }
 
     private void OnClearColor(ref GetClearColorEvent ev)
@@ -67,7 +67,7 @@ public sealed partial class PlanetLightSystem : EntitySystem
         _overlayMan.RemoveOverlay<TileEmissionOverlay>();
         _overlayMan.RemoveOverlay<LightBlurOverlay>();
         _overlayMan.RemoveOverlay<SunShadowOverlay>();
-        _overlayMan.RemoveOverlay<AfterLightTargetOverlay>();
+        _overlayMan.RemoveOverlay<PostLightTargetOverlay>();
         _overlayMan.RemoveOverlay<AmbientOcclusionOverlay>();
     }
 }
