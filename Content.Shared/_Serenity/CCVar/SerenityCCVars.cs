@@ -138,4 +138,10 @@ public sealed partial class SerenityCCVars
     /// </summary>
     public static readonly CVarDef<bool> SectorEventsEnabled =
         CVarDef.Create("serenity.sector_events.enabled", true, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Minutes a body stays in the cryo stasis dimension before it (and everything it carries) is deleted.
+    /// </summary>
+    public static readonly CVarDef<float> CryoStasisLifetime =
+        CVarDef.Create("serenity.cryo.stasis_lifetime_minutes", 120f, CVar.SERVERONLY);
 }

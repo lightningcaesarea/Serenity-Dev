@@ -3,6 +3,7 @@ using Content.IntegrationTests.Fixtures.Attributes;
 using Content.Server.GameTicking;
 using Content.Server.Ghost;
 using Content.Server.Station.Systems;
+using Content.Shared._Serenity.CCVar;
 using Content.Shared.Bed.Cryostorage;
 using Content.Shared.CCVar;
 using Content.Shared.Mind;
@@ -121,6 +122,29 @@ public sealed class CryoStasisTest : GameTest
                 Is.EqualTo(SEntMan.GetComponent<TransformComponent>(pod).MapUid), "still in the pod");
             AssertSlots(station, 0);
         });
+
+        await Server.WaitPost(() => _ticker.RestartRound());
+    }
+
+    /// <summary>
+    /// A body that has been in stasis long enough is removed.
+    /// </summary>
+    [Test]
+    public async Task StasisBodiesAreRemovedAfterTheirTime()
+    {
+        Server.CfgMan.SetCVar(SerenityCCVars.CryoStasisLifetime, 0.1f); // six seconds
+        var (body, _, _) = await SleepInPod();
+
+        await Server.WaitAssertion(() =>
+        {
+            Assert.That(_mind.TryGetMind(body, out var mindId, out _));
+            Assert.That(_ghost.OnGhostAttempt(mindId, true, viaCommand: true));
+        });
+        await RunSeconds(3);
+
+        await Server.WaitAssertion(() => Assert.That(SEntMan.Deleted(body), Is.False, "still in stasis, not yet removed"));
+        await RunSeconds(10);
+        await Server.WaitAssertion(() => Assert.That(SEntMan.Deleted(body), "removed after its time in stasis"));
 
         await Server.WaitPost(() => _ticker.RestartRound());
     }
