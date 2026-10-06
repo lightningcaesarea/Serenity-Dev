@@ -44,6 +44,7 @@ namespace Content.Shared.Humanoid
         Testicles,
         Vagina,
         Butt,
-        NeckFluff // Serenity: ruffs and collars of fur around the neck (Ovinia)
+        NeckFluff, // Serenity: ruffs and collars of fur around the neck (Ovinia)
+        Belly // Serenity: adult anatomy, drawn between the genitals and breasts
     }
 }

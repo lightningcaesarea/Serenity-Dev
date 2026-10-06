@@ -4,6 +4,7 @@ using Content.Server._Serenity.Intimacy;
 using Content.Shared._Serenity.Intimacy;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
+using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Inventory;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
@@ -69,6 +70,7 @@ public sealed class AnatomyFeaturesTest
         await server.WaitAssertion(() =>
         {
             var markings = server.ResolveDependency<MarkingManager>();
+            var proto = server.ResolveDependency<IPrototypeManager>();
 
             var categories = new[]
             {
@@ -77,14 +79,22 @@ public sealed class AnatomyFeaturesTest
                 MarkingCategories.Testicles,
                 MarkingCategories.Vagina,
                 MarkingCategories.Butt,
+                MarkingCategories.Belly,
             };
 
-            foreach (var category in categories)
+            // Every round-start species, including those whose marking limits are whitelist-only.
+            foreach (var species in proto.EnumeratePrototypes<SpeciesPrototype>())
             {
-                foreach (var sex in new[] { Sex.Male, Sex.Female, Sex.Unsexed })
+                if (!species.RoundStart)
+                    continue;
+
+                foreach (var category in categories)
                 {
-                    Assert.That(markings.MarkingsByCategoryAndSpeciesAndSex(category, "Human", sex), Is.Not.Empty,
-                        $"the editor offers {category} to a {sex} human");
+                    foreach (var sex in new[] { Sex.Male, Sex.Female, Sex.Unsexed })
+                    {
+                        Assert.That(markings.MarkingsByCategoryAndSpeciesAndSex(category, species.ID, sex), Is.Not.Empty,
+                            $"the editor offers {category} to a {sex} {species.ID}");
+                    }
                 }
             }
         });

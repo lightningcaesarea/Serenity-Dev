@@ -120,6 +120,7 @@
     - map: [ "enum.HumanoidVisualLayers.Vagina" ]
     - map: [ "enum.HumanoidVisualLayers.Testicles" ]
     - map: [ "enum.HumanoidVisualLayers.Penis" ]
+    - map: [ "enum.HumanoidVisualLayers.Belly" ]
     - map: [ "enum.HumanoidVisualLayers.Breasts" ]
     - map: [ "enum.HumanoidVisualLayers.UndergarmentBottom" ]
     - map: [ "enum.HumanoidVisualLayers.UndergarmentTop" ]
