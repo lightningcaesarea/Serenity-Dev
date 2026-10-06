@@ -27,6 +27,6 @@ public sealed class PlumbingPumpBoundUserInterface(EntityUid owner, Enum uiKey) 
         if (_window == null || state is not PlumbingPumpBoundUserInterfaceState cast)
             return;
 
-        _window.UpdateState(cast.Enabled, cast.TransferAmount, cast.MaxTransferAmount);
+        _window.UpdateState(cast.Enabled, cast.TransferRate, cast.MaxTransferRate);
     }
 }

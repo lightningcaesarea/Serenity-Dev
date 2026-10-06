@@ -1,7 +1,7 @@
 # One-way valve: lets reagents flow from the inlet side to the outlet side but never back.
 # Built from the existing plumbing pieces: the inlet pulls from the upstream network into a small
 # buffer, and only the outlet side offers that buffer to other machines.
-# Like a pump, it has an on/off switch and a rate (units per update) set from its window.
+# Like a pump, it has an on/off switch and a rate (units per second) set from its window.
 - type: entity
   parent: PlumbingMachineBase
   id: PlumbingOneWayValve
@@ -27,8 +27,8 @@
   - type: PlumbingInlet
     solutionName: buffer
   - type: PlumbingPump
-    transferAmount: 20
-    maxTransferAmount: 40
+    transferRate: 10 # u/s; 20u per 2 s plumbing update, like other machines
+    maxTransferRate: 20
   - type: UserInterface
     interfaces:
       enum.PlumbingPumpUiKey.Key:

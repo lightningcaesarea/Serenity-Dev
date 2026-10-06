@@ -1,3 +1,4 @@
+using Content.Server._Starlight.Plumbing.Components;
 using Content.Shared._Serenity.Plumbing;
 using Content.Shared._Starlight.Plumbing.Components;
 using Content.Shared.Examine;
@@ -47,7 +48,7 @@ public sealed partial class PlumbingPumpSystem : EntitySystem
 
     private void OnSetRate(Entity<PlumbingPumpComponent> ent, ref PlumbingPumpSetRateMessage args)
     {
-        SetTransferAmount(ent, args.TransferAmount);
+        SetTransferRate(ent, args.TransferRate);
         _audio.PlayPvs(ent.Comp.ClickSound, ent.Owner, AudioParams.Default.WithVolume(-2f));
     }
 
@@ -57,7 +58,7 @@ public sealed partial class PlumbingPumpSystem : EntitySystem
             return;
 
         args.PushMarkup(ent.Comp.Enabled
-            ? Loc.GetString("plumbing-pump-examine-on", ("rate", ent.Comp.TransferAmount))
+            ? Loc.GetString("plumbing-pump-examine-on", ("rate", ent.Comp.TransferRate))
             : Loc.GetString("plumbing-pump-examine-off"));
     }
 
@@ -69,23 +70,32 @@ public sealed partial class PlumbingPumpSystem : EntitySystem
     }
 
     /// <summary>
-    ///     Sets the rate, clamped to 0 and the pump's maximum. Fractions are rounded to the nearest unit.
+    ///     Sets the rate in units per second, clamped to 0 and the pump's maximum and rounded to whole units.
     /// </summary>
-    public void SetTransferAmount(Entity<PlumbingPumpComponent> ent, float amount)
+    public void SetTransferRate(Entity<PlumbingPumpComponent> ent, float rate)
     {
-        if (!float.IsFinite(amount))
+        if (!float.IsFinite(rate))
             return;
 
-        var rounded = FixedPoint2.New(MathF.Round(amount));
-        ent.Comp.TransferAmount = FixedPoint2.Clamp(rounded, FixedPoint2.Zero, ent.Comp.MaxTransferAmount);
+        var rounded = FixedPoint2.New(MathF.Round(rate));
+        ent.Comp.TransferRate = FixedPoint2.Clamp(rounded, FixedPoint2.Zero, ent.Comp.MaxTransferRate);
         Apply(ent);
         UpdateUI(ent);
     }
 
+    /// <summary>
+    ///     The inlet moves its amount once per plumbing update, so the per-second rate is scaled by the update interval.
+    /// </summary>
     private void Apply(Entity<PlumbingPumpComponent> ent)
     {
         if (TryComp<PlumbingInletComponent>(ent.Owner, out var inlet))
-            inlet.TransferAmount = ent.Comp.Enabled ? ent.Comp.TransferAmount : FixedPoint2.Zero;
+        {
+            var interval = TryComp<PlumbingDeviceComponent>(ent.Owner, out var device)
+                ? (float) device.UpdateInterval.TotalSeconds
+                : 1f;
+
+            inlet.TransferAmount = ent.Comp.Enabled ? ent.Comp.TransferRate * interval : FixedPoint2.Zero;
+        }
 
         _appearance.SetData(ent.Owner, PlumbingPumpVisuals.Enabled, ent.Comp.Enabled);
     }
@@ -96,7 +106,7 @@ public sealed partial class PlumbingPumpSystem : EntitySystem
             PlumbingPumpUiKey.Key,
             new PlumbingPumpBoundUserInterfaceState(
                 ent.Comp.Enabled,
-                ent.Comp.TransferAmount.Float(),
-                ent.Comp.MaxTransferAmount.Float()));
+                ent.Comp.TransferRate.Float(),
+                ent.Comp.MaxTransferRate.Float()));
     }
 }

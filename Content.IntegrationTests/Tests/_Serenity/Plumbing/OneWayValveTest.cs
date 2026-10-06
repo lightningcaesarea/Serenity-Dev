@@ -111,18 +111,19 @@ public sealed class OneWayValveTest
         {
             Assert.That(Volume(entMan, forwardFill), Is.EqualTo(offAt), "nothing passes while the valve is off");
 
-            // Rates are clamped to 0..max and rounded to whole units.
+            // Rates are in units per second, clamped to 0..max and rounded to whole units.
             var comp = entMan.GetComponent<PlumbingPumpComponent>(forwardValve);
             var ent = (forwardValve, comp);
             pump.SetEnabled(ent, true);
-            pump.SetTransferAmount(ent, 1000f);
-            Assert.That(comp.TransferAmount, Is.EqualTo(comp.MaxTransferAmount));
-            pump.SetTransferAmount(ent, -5f);
-            Assert.That(comp.TransferAmount, Is.EqualTo(FixedPoint2.Zero));
-            pump.SetTransferAmount(ent, 7.6f);
-            Assert.That(comp.TransferAmount, Is.EqualTo(FixedPoint2.New(8)));
-            Assert.That(entMan.GetComponent<PlumbingInletComponent>(forwardValve).TransferAmount, Is.EqualTo(FixedPoint2.New(8)),
-                "the inlet follows the set rate while on");
+            pump.SetTransferRate(ent, 1000f);
+            Assert.That(comp.TransferRate, Is.EqualTo(comp.MaxTransferRate));
+            pump.SetTransferRate(ent, -5f);
+            Assert.That(comp.TransferRate, Is.EqualTo(FixedPoint2.Zero));
+            pump.SetTransferRate(ent, 7.6f);
+            Assert.That(comp.TransferRate, Is.EqualTo(FixedPoint2.New(8)));
+            // The valve updates every 2 s, so 8u/s is 16u per update.
+            Assert.That(entMan.GetComponent<PlumbingInletComponent>(forwardValve).TransferAmount, Is.EqualTo(FixedPoint2.New(16)),
+                "the inlet moves the per-second rate over one update while on");
         });
 
         await pair.CleanReturnAsync();

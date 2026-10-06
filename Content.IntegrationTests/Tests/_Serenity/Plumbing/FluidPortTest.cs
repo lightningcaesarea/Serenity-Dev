@@ -1,5 +1,6 @@
 using System.Linq;
 using Content.Server._Serenity.Plumbing;
+using Content.Server._Starlight.Plumbing.Components;
 using Content.Shared._Serenity.Plumbing;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.FixedPoint;
@@ -118,6 +119,15 @@ public sealed class FluidPortTest
             Assert.That(portable.IsDocked(Tank(entMan, fill)), "the fill tank is docked");
             Assert.That(portable.IsDocked(Tank(entMan, loose)), Is.False, "a tank off a port is not docked");
 
+            // Only docked tanks take part in plumbing updates, and they report their docked valve for the mode light.
+            Assert.That(entMan.HasComponent<PlumbingDeviceComponent>(supply), "a docked tank gets plumbing updates");
+            Assert.That(entMan.HasComponent<PlumbingDeviceComponent>(loose), Is.False, "a loose tank gets no plumbing updates");
+            var appearance = entMan.System<SharedAppearanceSystem>();
+            Assert.That(appearance.TryGetData<bool>(supply, PlumbingPortableVisuals.Docked, out var docked) && docked,
+                "the docked tank's appearance says it is docked");
+            Assert.That(appearance.TryGetData<PlumbingPortableMode>(supply, PlumbingPortableVisuals.Mode, out var shown)
+                && shown == PlumbingPortableMode.Supply, "the docked tank's appearance carries its valve setting");
+
             Assert.That(Volume(entMan, fill), Is.GreaterThan(FixedPoint2.Zero), "the fill tank drew from the supply tank through the duct");
             Assert.That(Volume(entMan, loose), Is.EqualTo(looseStart), "nothing was pulled from the loose tank");
         });
@@ -145,6 +155,7 @@ public sealed class FluidPortTest
         {
             Assert.That(portable.IsDocked(Tank(entMan, supply)), Is.False, "an unanchored tank is undocked");
             Assert.That(portable.TryGetDockedTank(upperPort, out _), Is.False, "the port is empty again");
+            Assert.That(entMan.HasComponent<PlumbingDeviceComponent>(supply), Is.False, "an undocked tank stops getting plumbing updates");
         });
 
         await pair.CleanReturnAsync();

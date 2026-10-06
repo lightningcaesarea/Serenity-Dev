@@ -74,9 +74,7 @@
     outletNames:
     - portable
     enabled: false
-  - type: PlumbingDevice
-    updateInterval: 2
-  - type: PlumbingPortable
+  - type: PlumbingPortable # adds a PlumbingDevice only while docked
   # Serenity-end
 
 # For highcap tanks

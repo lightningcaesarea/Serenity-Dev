@@ -2,6 +2,7 @@ using Content.Server._Serenity.Plumbing.Nodes;
 using Content.Server._Starlight.Plumbing.Components;
 using Content.Server._Starlight.Plumbing.EntitySystems;
 using Content.Server.NodeContainer.EntitySystems;
+using Content.Shared.Construction.Components;
 using Content.Server.Popups;
 using Content.Shared._Serenity.Plumbing;
 using Content.Shared._Starlight.Plumbing.Components;
@@ -11,6 +12,7 @@ using Content.Shared.Interaction;
 using Content.Shared.NodeContainer;
 using Content.Shared.Verbs;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Map.Components;
 
 namespace Content.Server._Serenity.Plumbing;
 
@@ -19,6 +21,8 @@ namespace Content.Server._Serenity.Plumbing;
 ///     into the tank on each plumbing update, Closed does neither. Docking itself is handled by the nodes.
 ///     The valve is set from the tank's right-click menu, or from the port's while a tank is docked on it,
 ///     since the port sits under the tank. These are plain verbs so they don't take over a tank's alt-click.
+///     Only a docked tank carries a <see cref="PlumbingDeviceComponent"/>, so tanks elsewhere on the map
+///     cost nothing in plumbing updates.
 /// </summary>
 public sealed partial class PlumbingPortableSystem : EntitySystem
 {
@@ -28,6 +32,8 @@ public sealed partial class PlumbingPortableSystem : EntitySystem
     [Dependency] private PopupSystem _popup = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private SharedInteractionSystem _interaction = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private SharedMapSystem _map = default!;
 
     private VerbCategory _valveCategory = default!;
 
@@ -41,6 +47,9 @@ public sealed partial class PlumbingPortableSystem : EntitySystem
         SubscribeLocalEvent<PlumbingPortableComponent, PlumbingDeviceUpdateEvent>(OnDeviceUpdate);
         SubscribeLocalEvent<PlumbingPortableComponent, GetVerbsEvent<Verb>>(OnGetVerbs);
         SubscribeLocalEvent<PlumbingPortableComponent, ExaminedEvent>(OnExamined);
+        SubscribeLocalEvent<PlumbingPortableComponent, NodeGroupsRebuilt>(OnNodeGroupsRebuilt);
+        SubscribeLocalEvent<PlumbingPortableComponent, AnchorStateChangedEvent>(OnAnchorChanged);
+        SubscribeLocalEvent<PlumbingPortableComponent, UserAnchoredEvent>(OnUserAnchored);
         SubscribeLocalEvent<PlumbingFluidPortComponent, GetVerbsEvent<Verb>>(OnPortGetVerbs);
         SubscribeLocalEvent<PlumbingFluidPortComponent, ExaminedEvent>(OnPortExamined);
     }
@@ -48,6 +57,37 @@ public sealed partial class PlumbingPortableSystem : EntitySystem
     private void OnMapInit(Entity<PlumbingPortableComponent> ent, ref MapInitEvent args)
     {
         ApplyMode(ent);
+        UpdateDocked(ent);
+    }
+
+    private void OnNodeGroupsRebuilt(Entity<PlumbingPortableComponent> ent, ref NodeGroupsRebuilt args)
+    {
+        UpdateDocked(ent);
+    }
+
+    /// <summary>
+    ///     An unanchored tank's node leaves the graph without a rebuild event of its own, so undock here.
+    /// </summary>
+    private void OnAnchorChanged(Entity<PlumbingPortableComponent> ent, ref AnchorStateChangedEvent args)
+    {
+        if (!args.Anchored)
+            UpdateDocked(ent);
+    }
+
+    /// <summary>
+    ///     Tells the player a wrenched-down tank has docked. The node graph hasn't rebuilt yet at this point,
+    ///     so look for the port on the tile directly.
+    /// </summary>
+    private void OnUserAnchored(EntityUid uid, PlumbingPortableComponent comp, UserAnchoredEvent args)
+    {
+        if (!HasPortOnTile(uid))
+            return;
+
+        _popup.PopupEntity(Loc.GetString("plumbing-portable-popup-docked",
+                ("tank", uid),
+                ("mode", ModeName(comp.Mode))),
+            uid,
+            args.User);
     }
 
     private void OnDeviceUpdate(Entity<PlumbingPortableComponent> ent, ref PlumbingDeviceUpdateEvent args)
@@ -140,6 +180,7 @@ public sealed partial class PlumbingPortableSystem : EntitySystem
 
         ent.Comp.Mode = mode;
         ApplyMode(ent);
+        _appearance.SetData(ent.Owner, PlumbingPortableVisuals.Mode, mode);
 
         _audio.PlayPvs(ent.Comp.ValveSound, ent.Owner);
         if (user != null)
@@ -158,6 +199,37 @@ public sealed partial class PlumbingPortableSystem : EntitySystem
         foreach (var reachable in node.ReachableNodes)
         {
             if (reachable is PlumbingPortNode)
+                return true;
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    ///     Brings a tank's plumbing updates and docked appearance in line with whether it is on a port.
+    /// </summary>
+    private void UpdateDocked(Entity<PlumbingPortableComponent> ent)
+    {
+        var docked = IsDocked(ent);
+        if (docked)
+            EnsureComp<PlumbingDeviceComponent>(ent.Owner);
+        else
+            RemCompDeferred<PlumbingDeviceComponent>(ent.Owner);
+
+        _appearance.SetData(ent.Owner, PlumbingPortableVisuals.Docked, docked);
+        _appearance.SetData(ent.Owner, PlumbingPortableVisuals.Mode, ent.Comp.Mode);
+    }
+
+    private bool HasPortOnTile(EntityUid uid)
+    {
+        var xform = Transform(uid);
+        if (xform.GridUid is not { } gridUid || !TryComp<MapGridComponent>(gridUid, out var grid))
+            return false;
+
+        var tile = _map.TileIndicesFor(gridUid, grid, xform.Coordinates);
+        foreach (var anchored in _map.GetAnchoredEntities(gridUid, grid, tile))
+        {
+            if (HasComp<PlumbingFluidPortComponent>(anchored))
                 return true;
         }
 
