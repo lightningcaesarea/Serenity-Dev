@@ -123,7 +123,7 @@ public sealed class SectorEventsTest : GameTest
     }
 
     /// <summary>
-    /// A ghosted, cryo-stored body can be woken again by returning to it.
+    /// A cryo-stored body can be woken again by its owner's ghost.
     /// </summary>
     [Test]
     public async Task CryoStoredBodyWakesOnReturn()
@@ -151,7 +151,7 @@ public sealed class SectorEventsTest : GameTest
             Assert.That(SEntMan.HasComponent<CryoReturnComponent>(body), "stored body should be wakeable");
             Assert.That(SEntMan.GetComponent<TransformComponent>(body).MapUid,
                 Is.Not.EqualTo(SEntMan.GetComponent<TransformComponent>(pod).MapUid), "body is parked");
-            _mind.UnVisit(mindId);
+            Assert.That(SEntMan.System<CryoReturnSystem>().TryWake(ServerSession!, out var error), error);
         });
         await RunTicksSync(10);
 
