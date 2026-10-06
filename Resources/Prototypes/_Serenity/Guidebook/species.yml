@@ -12,3 +12,8 @@
   id: Ovinia
   name: species-name-ovinia
   text: "/ServerInfo/Guidebook/Mobs/_Serenity/Ovinia.xml"
+
+- type: guideEntry
+  id: Skrell
+  name: species-name-skrell
+  text: "/ServerInfo/Guidebook/Mobs/_Serenity/Skrell.xml"

@@ -1,0 +1,19 @@
+<Document>
+  # Skrell
+
+  <Box>
+    <GuideEntityEmbed Entity="AppearanceSkrell" Caption=""/>
+  </Box>
+
+  Skrell are amphibious humanoids from a cool, wet homeworld. Instead of hair they grow long, soft head-tails, which many decorate with jewelled headdresses. Their speech is a melodic mix of trills, warbles and croaks.
+
+  Skrell play the same as humans: they have no special strengths or weaknesses.
+
+  ## Customisation
+  - Head-tails in many lengths and styles, plus spots on the head and body.
+  - Decorative headdresses, some in fixed metal colours and some you can recolour.
+  - Optional tails and large Axiori eyes.
+
+  ## Emotes
+  - Skrell can [color=#1e90ff]peep[/color], [color=#1e90ff]warble[/color], [color=#1e90ff]trill[/color] and [color=#1e90ff]trill angrily[/color], each with its own sound.
+</Document>

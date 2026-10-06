@@ -1,0 +1,114 @@
+# Skrell voice: speech verbs, emotes and their sounds. Ported from RMC-14 (MIT). The sounds are CC0 / CC-BY-4.0
+# from freesound.org (see Audio/_RMC14/Voice/Skrell/attributions.yml). Skrell reuse the existing Trill emote with
+# their own trill sounds.
+
+- type: speechVerb
+  id: Skrell
+  name: chat-speech-verb-name-skrell
+  speechVerbStrings:
+  - chat-speech-verb-skrell-1
+  - chat-speech-verb-skrell-2
+  - chat-speech-verb-skrell-3
+  - chat-speech-verb-skrell-4
+
+- type: soundCollection
+  id: SkrellTrill
+  files:
+  - /Audio/_RMC14/Voice/Skrell/trill1.ogg
+  - /Audio/_RMC14/Voice/Skrell/trill2.ogg
+
+- type: soundCollection
+  id: SkrellWarble
+  files:
+  - /Audio/_RMC14/Voice/Skrell/warble1.ogg
+  - /Audio/_RMC14/Voice/Skrell/warble2.ogg
+  - /Audio/_RMC14/Voice/Skrell/warble3.ogg
+
+- type: emoteSounds
+  id: MaleSkrell
+  parent: MaleHuman
+  sounds:
+    Trill:
+      collection: SkrellTrill
+    SkrellPeep:
+      path: /Audio/_RMC14/Voice/Skrell/peep1.ogg
+    SkrellWarble:
+      collection: SkrellWarble
+    SkrellAngryTrill:
+      path: /Audio/_RMC14/Voice/Skrell/anger2.ogg
+
+- type: emoteSounds
+  id: FemaleSkrell
+  parent: FemaleHuman
+  sounds:
+    Trill:
+      collection: SkrellTrill
+    SkrellPeep:
+      path: /Audio/_RMC14/Voice/Skrell/peep1.ogg
+    SkrellWarble:
+      collection: SkrellWarble
+    SkrellAngryTrill:
+      path: /Audio/_RMC14/Voice/Skrell/anger2.ogg
+
+- type: emote
+  id: SkrellPeep
+  name: chat-emote-name-skrell-peep
+  category: Vocal
+  available: false
+  icon: { sprite: _RMC14/Actions/species_emotes.rsi, state: peep }
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: ["chat-emote-msg-skrell-peep"]
+  chatTriggers:
+  - peep
+  - peep.
+  - peep!
+  - peeps
+  - peeps.
+  - peeps!
+
+- type: emote
+  id: SkrellWarble
+  name: chat-emote-name-skrell-warble
+  category: Vocal
+  available: false
+  icon: { sprite: _RMC14/Actions/species_emotes.rsi, state: warble }
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: ["chat-emote-msg-skrell-warble"]
+  chatTriggers:
+  - warble
+  - warble.
+  - warble!
+  - warbles
+  - warbles.
+  - warbles!
+
+- type: emote
+  id: SkrellAngryTrill
+  name: chat-emote-name-skrell-angry-trill
+  category: Vocal
+  available: false
+  icon: { sprite: _RMC14/Actions/species_emotes.rsi, state: skrellanger }
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: ["chat-emote-msg-skrell-angry-trill"]
+  chatTriggers:
+  - trill angrily
+  - trill angrily.
+  - trill angrily!
+  - trills angrily
+  - trills angrily.
+  - trills angrily!
