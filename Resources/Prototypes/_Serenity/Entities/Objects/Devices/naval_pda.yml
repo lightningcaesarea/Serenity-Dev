@@ -5,8 +5,8 @@
 - type: entity
   parent: CentcomPDA
   id: NavalPDA
-  name: naval PDA
-  description: A rugged naval-issue PDA with a dark blue casing.
+  name: Marine Raider PDA
+  description: A rugged Marine Raider-issue PDA with a dark blue casing.
   components:
   - type: Pda
     id: NavalIDCard

@@ -5,8 +5,8 @@
 - type: entity
   parent: ClothingUniformBase
   id: ClothingUniformColonialNavy
-  name: Colonial Navy uniform
-  description: A black and blue camo uniform. Signature Battle Dress Uniform of the Colonial Navy.
+  name: Marine Raider uniform
+  description: A black and blue camo uniform. Signature Battle Dress Uniform of the Marine Raiders.
   components:
   - type: Sprite
     sprite: _Serenity/Clothing/Uniforms/Jumpsuit/colonialnavy.rsi
@@ -16,8 +16,8 @@
 - type: entity
   parent: [ ClothingUniformBase, BaseCentcommContraband ]
   id: ClothingUniformColonialNavyOfficer
-  name: Colonial Navy officer uniform
-  description: A set of Naval officer Dress A's. Signature Colonial Navy Officer Dress Uniform.
+  name: Marine Raider officer uniform
+  description: A set of Marine Raider officer Dress A's. Signature Marine Raider Officer Dress Uniform.
   components:
   - type: Sprite
     sprite: _Serenity/Clothing/Uniforms/Jumpsuit/colonialnavyofficer.rsi
