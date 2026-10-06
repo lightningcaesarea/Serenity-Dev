@@ -31,6 +31,7 @@
     Chest: MobChitinidTorso
     HeadTop: MobHumanoidAnyMarking
     HeadSide: MobHumanoidAnyMarking
+    NeckFluff: MobHumanoidAnyMarking
     Tail: MobHumanoidAnyMarking
     Eyes: MobChitinidEyes
     LArm: MobChitinidLArm
@@ -63,6 +64,9 @@
       points: 1
       required: false
     HeadSide:
+      points: 1
+      required: false
+    NeckFluff:
       points: 1
       required: false
     Head:

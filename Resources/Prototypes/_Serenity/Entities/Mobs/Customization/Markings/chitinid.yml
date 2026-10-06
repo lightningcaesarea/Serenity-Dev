@@ -448,3 +448,12 @@
   sprites:
   - sprite: _Serenity/Mobs/Customization/Chitinid/chitinid_parts.rsi
     state: spotted_l_leg
+
+- type: marking
+  id: ChitinidNeckFluffBee
+  bodyPart: NeckFluff
+  markingCategory: NeckFluff
+  speciesRestriction: [Chitinid]
+  sprites:
+  - sprite: _Serenity/Mobs/Customization/Chitinid/chitinid_neckfluff.rsi
+    state: bee_neck_fluff

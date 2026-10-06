@@ -102,3 +102,6 @@ marking-ChitinidRightLegSpotted = Chitinid Right Leg (Spotted)
 marking-ChitinidRightLegSpotted-spotted_r_leg = Right Leg
 marking-ChitinidLeftLegSpotted = Chitinid Left Leg (Spotted)
 marking-ChitinidLeftLegSpotted-spotted_l_leg = Left Leg
+
+marking-ChitinidNeckFluffBee = Neck Fluff (Bee)
+marking-ChitinidNeckFluffBee-bee_neck_fluff = Neck Fluff
