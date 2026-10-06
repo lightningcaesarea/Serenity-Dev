@@ -17,3 +17,15 @@ reagent-desc-exudate = A pus-yellow liquid drained from infected tissue. It has 
 
 reagent-name-antibiox = antibiox
 reagent-desc-antibiox = A broad-spectrum antibiotic. Needs no diagnosis: it blocks new infections and freezes an existing one where it is, but it does not cure it, and the infection resumes when the drug wears off. Wipes out helpful gut bacteria, leaving the patient weak, and is harmful in large doses: at 16 units or more it poisons the patient, stops protecting them, makes new infections much likelier and makes infections spread faster.
+
+# Admin command: infect
+cmd-infect-desc = Give a mob a wound infection for testing, or move an existing one to the given tier. Ignores antibiotics.
+cmd-infect-help = Usage: infect [entity uid] [tier 1-3]
+    With no entity, targets your own mob. Tier defaults to 1.
+cmd-infect-bad-entity = No such entity: {$entity}
+cmd-infect-no-target = No target: attach to a mob or pass an entity uid.
+cmd-infect-bad-tier = The tier must be a whole number from 1 to {$max}.
+cmd-infect-no-wounds = {$entity} has no wound tracking, so it can't be infected.
+cmd-infect-done = {$entity} now has a tier {$tier} infection.
+cmd-infect-hint-entity = <entity uid>
+cmd-infect-hint-tier = <tier 1-3>

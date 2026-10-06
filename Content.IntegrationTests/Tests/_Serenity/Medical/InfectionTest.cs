@@ -12,6 +12,7 @@ using Content.Shared.EntityEffects.Effects.Damage;
 using Content.Shared.EntityEffects.Effects.StatusEffects;
 using Content.Shared.Damage.Components;
 using Content.Shared.StatusEffectNew;
+using Robust.Shared.Console;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
@@ -450,6 +451,49 @@ public sealed class InfectionTest
     /// An antibiotic overdose makes a new infection much likelier, from open wounds and from dirty surgery alike,
     /// without lifting the caps.
     /// </summary>
+    /// <summary>
+    /// The admin <c>infect</c> command (and the <see cref="InfectionSystem.SetInfection"/> it calls) gives a mob an
+    /// infection at the tier asked for, or moves the one it has, and refuses a mob that can't be infected or a bad tier.
+    /// </summary>
+    [Test]
+    public async Task InfectCommandSetsTheTier()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var server = pair.Server;
+        var entMan = server.EntMan;
+        var mapData = await pair.CreateTestMap();
+        var infections = entMan.System<InfectionSystem>();
+        var host = server.ResolveDependency<IConsoleHost>();
+
+        await server.WaitAssertion(() =>
+        {
+            var patient = entMan.SpawnEntity("MobHuman", mapData.GridCoords);
+            var comp = entMan.GetComponent<WoundComponent>(patient);
+            var id = entMan.GetNetEntity(patient);
+
+            // Straight to tier 2 on a healthy mob, then moved to 3 and back to 1: always one infection.
+            host.ExecuteCommand(null, $"infect {id} 2");
+            Assert.That(Infection(comp)!.Tier, Is.EqualTo(2));
+            Assert.That(comp.ActiveWounds.Count(w => w.WoundTypeId == InfectionWound), Is.EqualTo(1));
+
+            host.ExecuteCommand(null, $"infect {id} 3");
+            Assert.That(Infection(comp)!.Tier, Is.EqualTo(3));
+            Assert.That(Infection(comp)!.NextDecayTime, Is.EqualTo(TimeSpan.MaxValue), "the last tier doesn't escalate");
+
+            host.ExecuteCommand(null, $"infect {id} 1");
+            Assert.That(Infection(comp)!.Tier, Is.EqualTo(1));
+            Assert.That(Infection(comp)!.NextDecayTime, Is.Not.EqualTo(TimeSpan.MaxValue), "a lower tier escalates again");
+            Assert.That(comp.ActiveWounds.Count(w => w.WoundTypeId == InfectionWound), Is.EqualTo(1));
+
+            // The command refuses a tier outside 1-3 (the test console fails on any error line, so only the method is
+            // exercised here); the method clamps instead.
+            Assert.That(infections.SetInfection(patient, comp, 99), Is.EqualTo(WoundsConstants.MaxWoundTier));
+            Assert.That(Infection(comp)!.Tier, Is.EqualTo(WoundsConstants.MaxWoundTier));
+        });
+
+        await pair.CleanReturnAsync();
+    }
+
     [Test]
     public async Task AntibioticOverdoseRaisesInfectionChance()
     {

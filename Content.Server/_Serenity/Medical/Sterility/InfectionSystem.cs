@@ -118,6 +118,27 @@ public sealed partial class InfectionSystem : EntitySystem
     }
 
     /// <summary>
+    /// Gives the mob an infection at the given tier, or moves its existing infection to that tier. For admin and test
+    /// tooling: it ignores antibiotics and sterility. Returns the tier it was set to.
+    /// </summary>
+    public int SetInfection(EntityUid uid, WoundComponent comp, int tier)
+    {
+        tier = Math.Clamp(tier, 1, WoundsConstants.MaxWoundTier);
+        TryInfect(uid, comp);
+
+        if (GetInfection(comp) is not { } infection)
+            return 0;
+
+        infection.Tier = tier;
+        infection.NextDecayTime = tier >= WoundsConstants.MaxWoundTier
+            ? TimeSpan.MaxValue
+            : _timing.CurTime + EscalationDelay(Config, tier);
+        Dirty(uid, comp);
+        RaiseLocalEvent(uid, new WoundsDamagedEvent());
+        return tier;
+    }
+
+    /// <summary>
     /// The chance per update that the mob's untreated open wounds give it a new infection. 0 if it is already
     /// infected or on an antibiotic. An antibiotic overdose makes it much likelier.
     /// </summary>
