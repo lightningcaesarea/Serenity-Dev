@@ -1,0 +1,43 @@
+# Body fluids the milking machine collects. Drinkable, with the same small thirst/hunger value as milk.
+
+- type: reagent
+  id: BreastMilk
+  name: reagent-name-breast-milk
+  group: Drinks
+  desc: reagent-desc-breast-milk
+  physicalDesc: reagent-physical-desc-milky
+  flavor: milk
+  color: "#F4EEE1"
+  metabolisms:
+    Digestion:
+      effects:
+      - !type:SatiateThirst
+        factor: 4
+
+- type: reagent
+  id: Semen
+  name: reagent-name-semen
+  group: Drinks
+  desc: reagent-desc-semen
+  physicalDesc: reagent-physical-desc-viscous
+  flavor: salty
+  color: "#F2F1EA"
+  metabolisms:
+    Digestion:
+      effects:
+      - !type:SatiateThirst
+        factor: 1
+
+- type: reagent
+  id: VaginalFluid
+  name: reagent-name-vaginal-fluid
+  group: Drinks
+  desc: reagent-desc-vaginal-fluid
+  physicalDesc: reagent-physical-desc-slimy
+  flavor: sweet
+  color: "#E8EEF2"
+  metabolisms:
+    Digestion:
+      effects:
+      - !type:SatiateThirst
+        factor: 1
