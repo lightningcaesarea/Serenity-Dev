@@ -1,0 +1,132 @@
+- type: entity
+  id: Flood
+  name: flood water
+  description: Liquid standing deep across the floor.
+  categories: [ HideSpawnMenu ]
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Transform
+    anchored: true
+    noRot: true
+  - type: Sprite
+    sprite: _Serenity/Effects/flood.rsi
+    drawdepth: Objects
+    layers:
+    - state: stage1_bottom
+      map: [ "enum.FloodVisualLayers.Liquid" ]
+  - type: Appearance
+  - type: FloodVisuals
+  - type: IconSmooth
+    key: puddles
+    mode: NoSprite
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      flood:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        layer:
+        - SlipLayer
+        mask:
+        - ItemMask
+        hard: false
+  - type: SpeedModifierContacts
+    walkSpeedModifier: 0.85
+    sprintSpeedModifier: 0.85
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepWater
+      params:
+        volume: 8
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Flood
+  - type: Solution
+    id: flood
+    solution:
+      maxVol: 10000
+  - type: MixableSolution
+    solution: flood
+  - type: DrawableSolution
+    solution: flood
+  - type: ExaminableSolution
+    solution: flood
+  - type: Edible
+    edible: Drink
+    delay: 1
+    transferAmount: 10
+    solution: flood
+    utensil: Spoon
+  - type: BadDrink
+  - type: IgnoresFingerprints
+
+- type: entity
+  parent: Flood
+  id: FloodWater
+  suffix: Water, 300
+  components:
+  - type: Solution
+    id: flood
+    solution:
+      maxVol: 10000
+      reagents:
+      - ReagentId: Water
+        Quantity: 300
+
+- type: entity
+  parent: Flood
+  id: FloodWater1000
+  suffix: Water, 1000
+  components:
+  - type: Solution
+    id: flood
+    solution:
+      maxVol: 10000
+      reagents:
+      - ReagentId: Water
+        Quantity: 1000
+
+- type: entity
+  parent: Flood
+  id: FloodWater5000
+  suffix: Water, 5000
+  components:
+  - type: Solution
+    id: flood
+    solution:
+      maxVol: 10000
+      reagents:
+      - ReagentId: Water
+        Quantity: 5000
+
+- type: entity
+  id: FloodSplash
+  name: splash
+  categories: [ HideSpawnMenu ]
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Transform
+    anchored: true
+  - type: Sprite
+    sprite: _Serenity/Effects/flood_splash.rsi
+    drawdepth: SmallObjects
+    layers:
+    - state: splash
+      map: [ "enum.FloodVisualLayers.Liquid" ]
+  - type: Appearance
+  - type: FloodVisuals
+    states: {}
+  - type: TimedDespawn
+    lifetime: 0.6
+
+- type: soundCollection
+  id: FloodWade
+  files:
+  - /Audio/_Serenity/Effects/Flooding/water_wade1.ogg
+  - /Audio/_Serenity/Effects/Flooding/water_wade2.ogg
+  - /Audio/_Serenity/Effects/Flooding/water_wade3.ogg
+  - /Audio/_Serenity/Effects/Flooding/water_wade4.ogg
