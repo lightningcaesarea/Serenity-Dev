@@ -1,5 +1,6 @@
 using Content.Shared.FixedPoint;
 using Robust.Shared.Audio;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared._Serenity.Plumbing;
 
@@ -38,6 +39,7 @@ public sealed partial class PlumbingPortableComponent : Component
     public int RoundRobinIndex;
 }
 
+[Serializable, NetSerializable]
 public enum PlumbingPortableMode : byte
 {
     /// <summary>
@@ -54,4 +56,21 @@ public enum PlumbingPortableMode : byte
     ///     The tank pulls from the network's outlets into itself.
     /// </summary>
     Fill,
+}
+
+/// <summary>
+///     Appearance data for a dockable tank. A tank with a mode light shows the plumbing valve on it while docked.
+/// </summary>
+[Serializable, NetSerializable]
+public enum PlumbingPortableVisuals : byte
+{
+    /// <summary>
+    ///     Bool: the tank is docked on a fluid connector port.
+    /// </summary>
+    Docked,
+
+    /// <summary>
+    ///     <see cref="PlumbingPortableMode"/>: the valve setting.
+    /// </summary>
+    Mode,
 }
