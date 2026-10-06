@@ -1,0 +1,17 @@
+# SPDX-FileCopyrightText: 2026 CalliganSierre
+#
+# SPDX-License-Identifier: MIT
+
+- type: entity
+  parent: CentcomIDCardDeathsquad
+  id: NavalIDCard
+  name: Naval ID Card
+  components:
+  - type: PresetIdCard
+    job: ColonialNavyman
+  - type: Access
+    groups:
+    - AllAccess
+    tags:
+    - CentralCommand
+    - Naval

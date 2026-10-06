@@ -1,0 +1,12 @@
+# SPDX-FileCopyrightText: 2026 CalliganSierre
+#
+# SPDX-License-Identifier: MIT
+
+- type: accessLevel
+  id: Naval
+  name: id-card-access-level-naval
+
+- type: accessGroup
+  id: Naval
+  tags:
+  - Naval

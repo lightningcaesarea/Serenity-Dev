@@ -1,0 +1,12 @@
+# SPDX-FileCopyrightText: 2026 CalliganSierre
+#
+# SPDX-License-Identifier: MIT
+
+- type: entity
+  parent: AirlockCentralCommand
+  id: AirlockNavalLocked
+  suffix: Naval, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsNaval ]

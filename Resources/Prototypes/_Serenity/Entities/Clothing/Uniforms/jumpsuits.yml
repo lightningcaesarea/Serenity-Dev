@@ -1,0 +1,25 @@
+# SPDX-FileCopyrightText: 2026 CalliganSierre
+#
+# SPDX-License-Identifier: MIT
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformColonialNavy
+  name: Colonial Navy uniform
+  description: A black and blue camo uniform. Signature Battle Dress Uniform of the Colonial Navy.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/Uniforms/Jumpsuit/colonialnavy.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/Uniforms/Jumpsuit/colonialnavy.rsi
+
+- type: entity
+  parent: [ ClothingUniformBase, BaseCentcommContraband ]
+  id: ClothingUniformColonialNavyOfficer
+  name: Colonial Navy officer uniform
+  description: A set of Naval officer Dress A's. Signature Colonial Navy Officer Dress Uniform.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/Uniforms/Jumpsuit/colonialnavyofficer.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/Uniforms/Jumpsuit/colonialnavyofficer.rsi

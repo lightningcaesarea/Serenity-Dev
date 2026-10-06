@@ -1,0 +1,36 @@
+# SPDX-FileCopyrightText: 2026 CalliganSierre
+#
+# SPDX-License-Identifier: MIT
+
+- type: playTimeTracker
+  id: JobColonialNavyman
+
+- type: job
+  id: ColonialNavyman
+  name: job-name-naval
+  description: job-description-naval
+  playTimeTracker: JobColonialNavyman
+  setPreference: false
+  startingGear: ColonialNavymanGear
+  icon: JobIconNaval
+  supervisors: job-supervisors-hos
+  accessGroups:
+  - AllAccess
+  access:
+  - CentralCommand
+  - Naval
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
+
+- type: startingGear
+  id: ColonialNavymanGear
+  equipment:
+    jumpsuit: ClothingUniformColonialNavy
+    shoes: ClothingShoesBootsCombatFilled
+    eyes: ClothingEyesGlassesSunglasses
+    belt: ClothingBeltSecurity
+    gloves: ClothingHandsGlovesCombat
+    id: NavalPDA
+    ears: ClothingHeadsetAltCentCom
+    pocket1: WeaponPistolN1984

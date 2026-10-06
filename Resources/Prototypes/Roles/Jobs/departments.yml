@@ -54,6 +54,7 @@
   - ERTSecurity
   - ERTEngineer
   - DeathSquad
+  - ColonialNavyman
   - CentralCommandOperator # Starlight Addition
   - CentralCommandGreenShield # Starlight Addition
   editorHidden: true
@@ -81,6 +82,7 @@
   - ERTSecurity
   - ERTEngineer
   - DeathSquad
+  - ColonialNavyman
   - Magistrate
   - NanoTrasenRepresentative
   primary: false
