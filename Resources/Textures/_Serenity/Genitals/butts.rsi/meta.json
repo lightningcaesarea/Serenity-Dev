@@ -8,7 +8,15 @@
   },
   "states": [
     {
+      "name": "m_butt_pair_1_adj_primary",
+      "directions": 4
+    },
+    {
       "name": "m_butt_pair_2_adj_primary",
+      "directions": 4
+    },
+    {
+      "name": "m_butt_pair_3_adj_primary",
       "directions": 4
     },
     {
@@ -16,7 +24,15 @@
       "directions": 4
     },
     {
+      "name": "m_butt_pair_5_adj_primary",
+      "directions": 4
+    },
+    {
       "name": "m_butt_pair_6_adj_primary",
+      "directions": 4
+    },
+    {
+      "name": "m_butt_pair_7_adj_primary",
       "directions": 4
     },
     {

@@ -301,6 +301,17 @@
     state: m_penis_tentacle_6_0_front_primary
 
 - type: marking
+  id: GenitalTesticles1
+  bodyPart: Testicles
+  markingCategory: Testicles
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/testicles.rsi
+    state: m_testicles_pair_1_adj
+
+- type: marking
   id: GenitalTesticlesSmall
   bodyPart: Testicles
   markingCategory: Testicles
@@ -310,6 +321,17 @@
   sprites:
   - sprite: _Serenity/Genitals/testicles.rsi
     state: m_testicles_pair_2_adj
+
+- type: marking
+  id: GenitalTesticles3
+  bodyPart: Testicles
+  markingCategory: Testicles
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/testicles.rsi
+    state: m_testicles_pair_3_adj
 
 - type: marking
   id: GenitalTesticlesAverage
@@ -323,6 +345,17 @@
     state: m_testicles_pair_4_adj
 
 - type: marking
+  id: GenitalTesticles5
+  bodyPart: Testicles
+  markingCategory: Testicles
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/testicles.rsi
+    state: m_testicles_pair_5_adj
+
+- type: marking
   id: GenitalTesticlesLarge
   bodyPart: Testicles
   markingCategory: Testicles
@@ -334,7 +367,40 @@
     state: m_testicles_pair_6_adj
 
 - type: marking
-  id: GenitalTesticlesSheathSmall
+  id: GenitalTesticles7
+  bodyPart: Testicles
+  markingCategory: Testicles
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/testicles.rsi
+    state: m_testicles_pair_7_adj
+
+- type: marking
+  id: GenitalTesticles8
+  bodyPart: Testicles
+  markingCategory: Testicles
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/testicles.rsi
+    state: m_testicles_pair_8_adj
+
+- type: marking
+  id: GenitalTesticlesSheath1
+  bodyPart: Testicles
+  markingCategory: Testicles
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/testicles.rsi
+    state: m_testicles_sheath_1_adj
+
+- type: marking
+  id: GenitalTesticlesSheath2
   bodyPart: Testicles
   markingCategory: Testicles
   anySpecies: true
@@ -345,7 +411,18 @@
     state: m_testicles_sheath_2_adj
 
 - type: marking
-  id: GenitalTesticlesSheathAverage
+  id: GenitalTesticlesSheath3
+  bodyPart: Testicles
+  markingCategory: Testicles
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/testicles.rsi
+    state: m_testicles_sheath_3_adj
+
+- type: marking
+  id: GenitalTesticlesSheath4
   bodyPart: Testicles
   markingCategory: Testicles
   anySpecies: true
@@ -356,7 +433,18 @@
     state: m_testicles_sheath_4_adj
 
 - type: marking
-  id: GenitalTesticlesSheathLarge
+  id: GenitalTesticlesSheath5
+  bodyPart: Testicles
+  markingCategory: Testicles
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/testicles.rsi
+    state: m_testicles_sheath_5_adj
+
+- type: marking
+  id: GenitalTesticlesSheath6
   bodyPart: Testicles
   markingCategory: Testicles
   anySpecies: true
@@ -365,6 +453,50 @@
   sprites:
   - sprite: _Serenity/Genitals/testicles.rsi
     state: m_testicles_sheath_6_adj
+
+- type: marking
+  id: GenitalTesticlesSheath7
+  bodyPart: Testicles
+  markingCategory: Testicles
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/testicles.rsi
+    state: m_testicles_sheath_7_adj
+
+- type: marking
+  id: GenitalTesticlesSheath8
+  bodyPart: Testicles
+  markingCategory: Testicles
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/testicles.rsi
+    state: m_testicles_sheath_8_adj
+
+- type: marking
+  id: GenitalBreastsFlat
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_pair_0_front_primary
+
+- type: marking
+  id: GenitalBreastsCupA
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_pair_1_front_primary
 
 - type: marking
   id: GenitalBreastsSmall
@@ -378,6 +510,28 @@
     state: m_breasts_pair_2_front_primary
 
 - type: marking
+  id: GenitalBreastsCupC
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_pair_3_front_primary
+
+- type: marking
+  id: GenitalBreastsCupD
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_pair_4_front_primary
+
+- type: marking
   id: GenitalBreastsMedium
   bodyPart: Breasts
   markingCategory: Breasts
@@ -387,6 +541,28 @@
   sprites:
   - sprite: _Serenity/Genitals/breasts.rsi
     state: m_breasts_pair_5_front_primary
+
+- type: marking
+  id: GenitalBreastsCupF
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_pair_6_front_primary
+
+- type: marking
+  id: GenitalBreastsCupG
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_pair_7_front_primary
 
 - type: marking
   id: GenitalBreastsLarge
@@ -400,6 +576,39 @@
     state: m_breasts_pair_8_front_primary
 
 - type: marking
+  id: GenitalBreastsCupI
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_pair_9_front_primary
+
+- type: marking
+  id: GenitalBreastsCupJ
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_pair_10_front_primary
+
+- type: marking
+  id: GenitalBreastsCupK
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_pair_11_front_primary
+
+- type: marking
   id: GenitalBreastsVerylarge
   bodyPart: Breasts
   markingCategory: Breasts
@@ -409,6 +618,39 @@
   sprites:
   - sprite: _Serenity/Genitals/breasts.rsi
     state: m_breasts_pair_12_front_primary
+
+- type: marking
+  id: GenitalBreastsCupM
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_pair_13_front_primary
+
+- type: marking
+  id: GenitalBreastsCupN
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_pair_14_front_primary
+
+- type: marking
+  id: GenitalBreastsCupO
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_pair_15_front_primary
 
 - type: marking
   id: GenitalBreastsHuge
@@ -422,7 +664,62 @@
     state: m_breasts_pair_16_front_primary
 
 - type: marking
-  id: GenitalBreastsQuadSmall
+  id: GenitalBreastsCupQ
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_pair_17_front_primary
+
+- type: marking
+  id: GenitalBreastsCupR
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_pair_18_front_primary
+
+- type: marking
+  id: GenitalBreastsCupS
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_pair_19_front_primary
+
+- type: marking
+  id: GenitalBreastsQuadFlat
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_quad_0_front_primary
+
+- type: marking
+  id: GenitalBreastsQuadCupA
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_quad_1_front_primary
+
+- type: marking
+  id: GenitalBreastsQuadCupB
   bodyPart: Breasts
   markingCategory: Breasts
   anySpecies: true
@@ -433,7 +730,29 @@
     state: m_breasts_quad_2_front_primary
 
 - type: marking
-  id: GenitalBreastsQuadMedium
+  id: GenitalBreastsQuadCupC
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_quad_3_front_primary
+
+- type: marking
+  id: GenitalBreastsQuadCupD
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_quad_4_front_primary
+
+- type: marking
+  id: GenitalBreastsQuadCupE
   bodyPart: Breasts
   markingCategory: Breasts
   anySpecies: true
@@ -444,7 +763,29 @@
     state: m_breasts_quad_5_front_primary
 
 - type: marking
-  id: GenitalBreastsQuadLarge
+  id: GenitalBreastsQuadCupF
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_quad_6_front_primary
+
+- type: marking
+  id: GenitalBreastsQuadCupG
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_quad_7_front_primary
+
+- type: marking
+  id: GenitalBreastsQuadCupH
   bodyPart: Breasts
   markingCategory: Breasts
   anySpecies: true
@@ -455,7 +796,40 @@
     state: m_breasts_quad_8_front_primary
 
 - type: marking
-  id: GenitalBreastsQuadVerylarge
+  id: GenitalBreastsQuadCupI
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_quad_9_front_primary
+
+- type: marking
+  id: GenitalBreastsQuadCupJ
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_quad_10_front_primary
+
+- type: marking
+  id: GenitalBreastsQuadCupK
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_quad_11_front_primary
+
+- type: marking
+  id: GenitalBreastsQuadCupL
   bodyPart: Breasts
   markingCategory: Breasts
   anySpecies: true
@@ -466,7 +840,40 @@
     state: m_breasts_quad_12_front_primary
 
 - type: marking
-  id: GenitalBreastsQuadHuge
+  id: GenitalBreastsQuadCupM
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_quad_13_front_primary
+
+- type: marking
+  id: GenitalBreastsQuadCupN
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_quad_14_front_primary
+
+- type: marking
+  id: GenitalBreastsQuadCupO
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_quad_15_front_primary
+
+- type: marking
+  id: GenitalBreastsQuadCupP
   bodyPart: Breasts
   markingCategory: Breasts
   anySpecies: true
@@ -477,7 +884,62 @@
     state: m_breasts_quad_16_front_primary
 
 - type: marking
-  id: GenitalBreastsSextupleSmall
+  id: GenitalBreastsQuadCupQ
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_quad_17_front_primary
+
+- type: marking
+  id: GenitalBreastsQuadCupR
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_quad_18_front_primary
+
+- type: marking
+  id: GenitalBreastsQuadCupS
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_quad_19_front_primary
+
+- type: marking
+  id: GenitalBreastsSextupleFlat
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_sextuple_0_front_primary
+
+- type: marking
+  id: GenitalBreastsSextupleCupA
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_sextuple_1_front_primary
+
+- type: marking
+  id: GenitalBreastsSextupleCupB
   bodyPart: Breasts
   markingCategory: Breasts
   anySpecies: true
@@ -488,7 +950,29 @@
     state: m_breasts_sextuple_2_front_primary
 
 - type: marking
-  id: GenitalBreastsSextupleMedium
+  id: GenitalBreastsSextupleCupC
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_sextuple_3_front_primary
+
+- type: marking
+  id: GenitalBreastsSextupleCupD
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_sextuple_4_front_primary
+
+- type: marking
+  id: GenitalBreastsSextupleCupE
   bodyPart: Breasts
   markingCategory: Breasts
   anySpecies: true
@@ -499,7 +983,29 @@
     state: m_breasts_sextuple_5_front_primary
 
 - type: marking
-  id: GenitalBreastsSextupleLarge
+  id: GenitalBreastsSextupleCupF
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_sextuple_6_front_primary
+
+- type: marking
+  id: GenitalBreastsSextupleCupG
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_sextuple_7_front_primary
+
+- type: marking
+  id: GenitalBreastsSextupleCupH
   bodyPart: Breasts
   markingCategory: Breasts
   anySpecies: true
@@ -510,7 +1016,40 @@
     state: m_breasts_sextuple_8_front_primary
 
 - type: marking
-  id: GenitalBreastsSextupleVerylarge
+  id: GenitalBreastsSextupleCupI
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_sextuple_9_front_primary
+
+- type: marking
+  id: GenitalBreastsSextupleCupJ
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_sextuple_10_front_primary
+
+- type: marking
+  id: GenitalBreastsSextupleCupK
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_sextuple_11_front_primary
+
+- type: marking
+  id: GenitalBreastsSextupleCupL
   bodyPart: Breasts
   markingCategory: Breasts
   anySpecies: true
@@ -521,7 +1060,40 @@
     state: m_breasts_sextuple_12_front_primary
 
 - type: marking
-  id: GenitalBreastsSextupleHuge
+  id: GenitalBreastsSextupleCupM
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_sextuple_13_front_primary
+
+- type: marking
+  id: GenitalBreastsSextupleCupN
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_sextuple_14_front_primary
+
+- type: marking
+  id: GenitalBreastsSextupleCupO
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_sextuple_15_front_primary
+
+- type: marking
+  id: GenitalBreastsSextupleCupP
   bodyPart: Breasts
   markingCategory: Breasts
   anySpecies: true
@@ -530,6 +1102,50 @@
   sprites:
   - sprite: _Serenity/Genitals/breasts.rsi
     state: m_breasts_sextuple_16_front_primary
+
+- type: marking
+  id: GenitalBreastsSextupleCupQ
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_sextuple_17_front_primary
+
+- type: marking
+  id: GenitalBreastsSextupleCupR
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_sextuple_18_front_primary
+
+- type: marking
+  id: GenitalBreastsSextupleCupS
+  bodyPart: Breasts
+  markingCategory: Breasts
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/breasts.rsi
+    state: m_breasts_sextuple_19_front_primary
+
+- type: marking
+  id: GenitalButt1
+  bodyPart: Butt
+  markingCategory: Butt
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/butts.rsi
+    state: m_butt_pair_1_adj_primary
 
 - type: marking
   id: GenitalButtSmall
@@ -543,6 +1159,17 @@
     state: m_butt_pair_2_adj_primary
 
 - type: marking
+  id: GenitalButt3
+  bodyPart: Butt
+  markingCategory: Butt
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/butts.rsi
+    state: m_butt_pair_3_adj_primary
+
+- type: marking
   id: GenitalButtAverage
   bodyPart: Butt
   markingCategory: Butt
@@ -554,6 +1181,17 @@
     state: m_butt_pair_4_adj_primary
 
 - type: marking
+  id: GenitalButt5
+  bodyPart: Butt
+  markingCategory: Butt
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/butts.rsi
+    state: m_butt_pair_5_adj_primary
+
+- type: marking
   id: GenitalButtLarge
   bodyPart: Butt
   markingCategory: Butt
@@ -563,6 +1201,17 @@
   sprites:
   - sprite: _Serenity/Genitals/butts.rsi
     state: m_butt_pair_6_adj_primary
+
+- type: marking
+  id: GenitalButt7
+  bodyPart: Butt
+  markingCategory: Butt
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/butts.rsi
+    state: m_butt_pair_7_adj_primary
 
 - type: marking
   id: GenitalButtHuge

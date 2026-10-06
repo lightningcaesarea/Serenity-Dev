@@ -36,18 +36,23 @@ PENIS_SHAPES = [  # (id fragment, display name, state pattern)
     ("Tentacle", "Tentacle", "m_penis_tentacle_{n}_{e}_front_primary"),
 ]
 PENIS_SIZES = {2: "Small", 4: "Average", 6: "Large"}
-TESTICLE_SHAPES = [  # (id fragment, display name, state prefix); "" keeps the original pair ids unchanged
+# Testicles, butts and breasts offer every size the source art has. Sizes that shipped before keep their old
+# marking ids (LEGACY_*) so saved characters don't lose them; every other size gets a numbered/cup id.
+TESTICLE_SHAPES = [  # (id fragment, display name, state prefix)
     ("", "Pair", "m_testicles_pair"),
     ("Sheath", "Sheath", "m_testicles_sheath"),
 ]
-TESTICLE_SIZES = {2: "Small", 4: "Average", 6: "Large"}
-BREAST_SHAPES = [  # (id fragment, display name, state prefix); "" keeps the original pair ids unchanged
+TESTICLE_SIZES = range(1, 9)
+LEGACY_TESTICLES = {2: "Small", 4: "Average", 6: "Large"}  # pair only
+BREAST_SHAPES = [  # (id fragment, display name, state prefix)
     ("", "Pair", "m_breasts_pair"),
     ("Quad", "Four", "m_breasts_quad"),
     ("Sextuple", "Six", "m_breasts_sextuple"),
 ]
-BREAST_SIZES = {2: "Small", 5: "Medium", 8: "Large", 12: "Very large", 16: "Huge"}
-BUTT_SIZES = {2: "Small", 4: "Average", 6: "Large", 8: "Huge"}
+BREAST_SIZES = range(0, 20)  # 0 is flat, then cups A to S
+LEGACY_BREASTS = {2: "Small", 5: "Medium", 8: "Large", 12: "Verylarge", 16: "Huge"}  # pair only
+BUTT_SIZES = range(1, 9)
+LEGACY_BUTTS = {2: "Small", 4: "Average", 6: "Large", 8: "Huge"}
 BELLY_SIZES = {1: "Small", 3: "Medium", 5: "Large", 7: "Very large", 9: "Huge"}
 # vaginas have no visible art in the source: these are named placeholders the editor and intimacy system can see
 VAGINA_TYPES = ["Tentacle", "Dentata", "Hairy", "Spade", "Feline", "Equine", "Cervine", "Sergal", "Hemi", "Furred",
@@ -131,33 +136,36 @@ def main():
 
     testicle_states = []
     for frag, name, prefix in TESTICLE_SHAPES:
-        for n, size in TESTICLE_SIZES.items():
+        for n in TESTICLE_SIZES:
             st = f"{prefix}_{n}_adj"
             testicle_states.append(st)
-            mid = f"GenitalTesticles{frag}{size}"
+            legacy = LEGACY_TESTICLES.get(n) if frag == "" else None
+            mid = f"GenitalTesticles{legacy}" if legacy else f"GenitalTesticles{frag}{n}"
             yml.append(marking(mid, "Testicles", "Testicles", "testicles.rsi", st) + "\n")
-            ftl.append(f"marking-{mid} = {name}, {size.lower()}\n")
+            ftl.append(f"marking-{mid} = {name}, size {n}\n")
     write_rsi(src, "testicles.rsi", "testicles.rsi", testicle_states)
     ftl.append("\n")
 
     breast_states = []
     for frag, name, prefix in BREAST_SHAPES:
-        for n, size in BREAST_SIZES.items():
+        for n in BREAST_SIZES:
             st = f"{prefix}_{n}_front_primary"
             breast_states.append(st)
-            mid = f"GenitalBreasts{frag}{size.replace(' ', '')}"
+            cup = "Flat" if n == 0 else chr(ord("A") + n - 1)
+            legacy = LEGACY_BREASTS.get(n) if frag == "" else None
+            mid = f"GenitalBreasts{legacy}" if legacy else f"GenitalBreasts{frag}{'Flat' if n == 0 else 'Cup' + cup}"
             yml.append(marking(mid, "Breasts", "Breasts", "breasts.rsi", st) + "\n")
-            ftl.append(f"marking-{mid} = {name}, {size.lower()}\n")
+            ftl.append(f"marking-{mid} = {name}, {'flat' if n == 0 else cup + ' cup'}\n")
     write_rsi(src, "breasts.rsi", "breasts.rsi", breast_states)
     ftl.append("\n")
 
     butt_states = []
-    for n, size in BUTT_SIZES.items():
+    for n in BUTT_SIZES:
         st = f"m_butt_pair_{n}_adj_primary"
         butt_states.append(st)
-        mid = f"GenitalButt{size}"
+        mid = f"GenitalButt{LEGACY_BUTTS.get(n, n)}"
         yml.append(marking(mid, "Butt", "Butt", "butts.rsi", st) + "\n")
-        ftl.append(f"marking-{mid} = {size}\n")
+        ftl.append(f"marking-{mid} = Size {n}\n")
     write_rsi(src, "butts.rsi", "butts.rsi", butt_states)
     ftl.append("\n")
 
