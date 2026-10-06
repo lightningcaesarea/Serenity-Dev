@@ -1,0 +1,69 @@
+# Entities the Serenity Outpost map needs that Serenity did not already have. Ported from Frontier Station 14
+# at the last MIT-licensed commit (5be37d18c2), Copyright (c) 2017-2024 New Frontiers, MIT License.
+
+- type: entity
+  parent: AntiAnomalyZone
+  id: AntiAnomalyZone200
+  suffix: range 200
+  description: Anomalies will not be able to appear within a 200 block radius of this point.
+  components:
+  - type: AntiAnomalyZone
+    zoneRadius: 200
+
+- type: entity
+  parent: GasPressurePump
+  id: GasPressurePumpOn
+  suffix: "On"
+  components:
+  - type: GasPressurePump
+    enabled: true
+
+- type: entity
+  parent: GasPressurePumpOn
+  id: GasPressurePumpOnMax
+  suffix: On, Max
+  components:
+  - type: GasPressurePump
+    targetPressure: 4500
+
+- type: entity
+  parent: GasMixer
+  id: GasMixerOn
+  suffix: "On"
+  components:
+  - type: GasMixer
+    enabled: true
+
+- type: entity
+  parent: DefaultStationBeaconCommand
+  id: DefaultStationBeaconFrontierSRQuarters
+  suffix: SR's Quarters
+  components:
+  - type: NavMapBeacon
+    defaultText: station-beacon-sr-quarters
+
+- type: entity
+  parent: DefaultStationBeaconCommand
+  id: DefaultStationBeaconFrontierSROffice
+  suffix: SR's Office
+  components:
+  - type: NavMapBeacon
+    defaultText: station-beacon-sr-office
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierShipyard
+  suffix: Shipyard
+  components:
+  - type: NavMapBeacon
+    defaultText: station-beacon-shipyard
+    color: "#0077C1"
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierATM
+  suffix: ATM
+  components:
+  - type: NavMapBeacon
+    defaultText: station-beacon-atm
+    color: "#0077C1"

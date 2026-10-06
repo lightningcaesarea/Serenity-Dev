@@ -36,6 +36,38 @@
         - id: AsteroidSalvageHuge
           prob: 0.015
 # Serenity End
+# Serenity Start - wreck dungeons (formerly a fixed ring around the station), see _Serenity/World/dungeon_debris.yml
+        - id: DungeonDebrisChunkDebrisSmall
+          prob: 0.12
+        - id: DungeonDebrisChunkDebris
+          prob: 0.06
+        - id: DungeonDebrisClusterAsteroid
+          prob: 0.05
+        - id: DungeonDebrisSpindlyAsteroid
+          prob: 0.05
+        - id: DungeonDebrisBlobAsteroid
+          prob: 0.05
+        - id: DungeonDebrisSwissCheeseAsteroid
+          prob: 0.05
+        - id: DungeonDebrisClusterTrash
+          prob: 0.05
+        - id: DungeonDebrisSpindlyTrash
+          prob: 0.05
+        - id: DungeonDebrisBlobAsteroidTrash
+          prob: 0.05
+        - id: DungeonDebrisSwissCheeseTrash
+          prob: 0.05
+        - id: DungeonDebrisClusterMeat
+          prob: 0.05
+        - id: DungeonDebrisSpindlyMeat
+          prob: 0.05
+        - id: DungeonDebrisBlobAsteroidSnow
+          prob: 0.05
+        - id: DungeonDebrisClusterSnow
+          prob: 0.05
+        - id: DungeonDebrisSwissCheeseSnow
+          prob: 0.05
+# Serenity End
     - type: NoiseDrivenDebrisSelector
       noiseChannel: Wreck
       debrisTable:

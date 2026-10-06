@@ -1,0 +1,12 @@
+# Pirate's Cove: a hidden hideout far out in the sector. Ported from Frontier Station 14's MIT-era map
+# (5be37d18c2). DISABLED: the map is kept valid but is not spawned until `enabled` is flipped on. It is not
+# joinable (no stationMap) until there are pirate jobs to put on it.
+- type: serenityPointOfInterest
+  id: Cove
+  name: Pirate's Cove
+  enabled: false
+  gridPath: /Maps/_Serenity/POI/cove.yml
+  minimumDistance: 10000
+  maximumDistance: 15000
+  iffColor: "#b01e1e"
+  hideLabel: true

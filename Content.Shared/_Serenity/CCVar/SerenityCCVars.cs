@@ -102,4 +102,46 @@ public sealed partial class SerenityCCVars
     /// </summary>
     public static readonly CVarDef<int> CharacterStartingBalance =
         CVarDef.Create("serenity.economy.starting_balance", 20000, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Whether ghosts may return themselves to the lobby with <c>ghostrespawn</c> once the timer is up.
+    /// </summary>
+    public static readonly CVarDef<bool> RespawnEnabled =
+        CVarDef.Create("serenity.respawn.enabled", true, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Seconds a player must have been a ghost before they can respawn as a new character.
+    /// </summary>
+    public static readonly CVarDef<float> RespawnTime =
+        CVarDef.Create("serenity.respawn.time", 60f, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Whether player-owned ships (anything carrying a ShuttleDeed) FTL to CentComm when the round ends.
+    /// </summary>
+    public static readonly CVarDef<bool> RoundEndShipFtl =
+        CVarDef.Create("serenity.roundend_ship_ftl.enabled", true, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Seconds of FTL startup before an owned ship leaves at round end.
+    /// </summary>
+    public static readonly CVarDef<float> RoundEndShipFtlStartup =
+        CVarDef.Create("serenity.roundend_ship_ftl.startup", 15f, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Seconds an owned ship spends in hyperspace on its way to CentComm at round end.
+    /// </summary>
+    public static readonly CVarDef<float> RoundEndShipFtlTravel =
+        CVarDef.Create("serenity.roundend_ship_ftl.travel", 30f, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Whether the sector event scheduler (bluespace-error grids: vaults, caches, lost vessels) runs each round.
+    /// </summary>
+    public static readonly CVarDef<bool> SectorEventsEnabled =
+        CVarDef.Create("serenity.sector_events.enabled", true, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Minutes a body stays in the cryo stasis dimension before it (and everything it carries) is deleted.
+    /// </summary>
+    public static readonly CVarDef<float> CryoStasisLifetime =
+        CVarDef.Create("serenity.cryo.stasis_lifetime_minutes", 120f, CVar.SERVERONLY);
 }

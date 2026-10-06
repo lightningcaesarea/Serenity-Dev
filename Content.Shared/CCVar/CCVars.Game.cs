@@ -94,7 +94,7 @@ public sealed partial class CCVars
         ///     Prototype to use for map pool.
         /// </summary>
         public static readonly CVarDef<string>
-            GameMapPool = CVarDef.Create("game.map_pool", "DefaultStarlightMapPool", CVar.SERVERONLY);
+            GameMapPool = CVarDef.Create("game.map_pool", "SerenityMapPool", CVar.SERVERONLY); // Serenity: single-map pool
 
     /// <summary>
     ///     The depth of the queue used to calculate which map is next in rotation.
@@ -137,7 +137,7 @@ public sealed partial class CCVars
     ///     Whether or not disconnecting inside of a cryopod should remove the character or just store them until they reconnect.
     /// </summary>
     public static readonly CVarDef<bool>
-        GameCryoSleepRejoining = CVarDef.Create("game.cryo_sleep_rejoining", true, CVar.SERVER | CVar.REPLICATED); // Serenity: on by default so a body left in a cryopod can be re-entered on reconnect
+        GameCryoSleepRejoining = CVarDef.Create("game.cryo_sleep_rejoining", false, CVar.SERVER | CVar.REPLICATED); // Serenity: off, a body in the stasis dimension is final (see CryoStasisSystem); returning is done by not leaving the pod for an hour
 
     /// <summary>
     ///     When enabled, guests will be assigned permanent UIDs and will have their preferences stored.

@@ -32,6 +32,8 @@
     examinationText: access-reader-examination-functionality-restricted
   - type: InteractionOutline
   - type: Cryostorage
+    gracePeriod: 3600 # Serenity: a sleeper keeps their body, gear and job slot for an hour
+    noMindGracePeriod: 3600 # Serenity: same if they disconnect
   - type: Fixtures
     fixtures:
       fix1:

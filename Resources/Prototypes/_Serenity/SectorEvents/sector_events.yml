@@ -1,0 +1,102 @@
+# Sector events: bluespace-error grids that FTL in near the outpost for a while and leave again. Modelled on Frontier
+# Station 14's bluespace grid events (numbers are theirs: first event after 45 minutes, then every 45-75 minutes,
+# six-hour reoccurrence on the big ones). These are the only hostile-capable events Serenity schedules by default;
+# the usual station-event scheduler is untouched. Turn all of it off with serenity.sector_events.enabled = false.
+# Not ported yet: wizard scout, blood moon, cave (their maps need ports of Frontier-only content).
+
+- type: entity
+  id: SectorEventScheduler
+  parent: BaseGameRule
+  components:
+  - type: BasicStationEventScheduler
+    scheduledGameRules: !type:NestedSelector
+      tableId: SectorEventsTable
+    minimumTimeUntilFirstEvent: 2700 # 45 minutes
+    minMaxEventTiming:
+      min: 2700 # 45 minutes between events
+      max: 4500 # 75 minutes between events
+
+- type: entityTable
+  id: SectorEventsTable
+  table: !type:AllSelector
+    children:
+    - id: SectorEventSyndicateCache
+    - id: SectorEventVault
+    - id: SectorEventVaultSmall
+    - id: SectorEventSyndicateVessel
+
+- type: entity
+  id: BaseSectorEvent
+  parent: BaseStationEventShortDelay
+  abstract: true
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-sector-generic-start
+    endAnnouncement: station-event-sector-generic-end
+    occursDuringRoundEnd: false
+    reoccurrenceDelay: 360
+
+- type: entity
+  id: SectorEventSyndicateCache
+  parent: BaseSectorEvent
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-sector-cache-start
+    endAnnouncement: station-event-sector-cache-end
+    earliestStart: 30
+    weight: 5
+    duration: 1350
+    maxDuration: 1560
+  - type: SectorGridEventRule
+    gridName: station-event-sector-name-cache
+    paths:
+    - /Maps/_Serenity/Events/cache.yml
+
+- type: entity
+  id: SectorEventVault
+  parent: BaseSectorEvent
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-sector-vault-start
+    endAnnouncement: station-event-sector-vault-end
+    earliestStart: 30
+    weight: 5
+    duration: 1020
+    maxDuration: 1350
+  - type: SectorGridEventRule
+    gridName: station-event-sector-name-vault
+    paths:
+    - /Maps/_Serenity/Events/vault.yml
+
+- type: entity
+  id: SectorEventVaultSmall
+  parent: BaseSectorEvent
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-sector-vault-start
+    endAnnouncement: station-event-sector-vault-end
+    earliestStart: 20
+    weight: 5
+    duration: 590
+    maxDuration: 780
+  - type: SectorGridEventRule
+    gridName: station-event-sector-name-vault
+    paths:
+    - /Maps/_Serenity/Events/vaultsmall.yml
+
+- type: entity
+  id: SectorEventSyndicateVessel
+  parent: BaseSectorEvent
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-sector-vessel-start
+    endAnnouncement: station-event-sector-vessel-end
+    earliestStart: 60
+    minimumPlayers: 15
+    weight: 1
+    duration: 1800
+    maxDuration: 2400
+  - type: SectorGridEventRule
+    gridName: station-event-sector-name-vessel
+    paths:
+    - /Maps/_Serenity/Events/syndieftlintercept.yml
