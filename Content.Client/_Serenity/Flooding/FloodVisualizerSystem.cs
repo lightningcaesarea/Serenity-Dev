@@ -4,25 +4,24 @@ using Robust.Client.GameObjects;
 namespace Content.Client._Serenity.Flooding;
 
 /// <summary>
-///     Picks the flood sprite for how deep the water is and tints it the colour of the liquid.
+///     Tints the flood the colour of the liquid, more opaque the deeper it is.
 /// </summary>
 public sealed partial class FloodVisualizerSystem : VisualizerSystem<FloodVisualsComponent>
 {
     protected override void OnAppearanceChange(EntityUid uid, FloodVisualsComponent component, ref AppearanceChangeEvent args)
     {
         if (args.Sprite is not { } sprite
-            || !SpriteSystem.LayerMapTryGet((uid, sprite), FloodVisualLayers.Liquid, out var layer, false))
+            || !SpriteSystem.LayerMapTryGet((uid, sprite), FloodVisualLayers.Liquid, out var layer, false)
+            || !AppearanceSystem.TryGetData<Color>(uid, FloodVisuals.Color, out var color, args.Component))
         {
             return;
         }
 
-        if (AppearanceSystem.TryGetData<FloodDepth>(uid, FloodVisuals.Depth, out var depth, args.Component)
-            && component.States.TryGetValue(depth, out var state))
-        {
-            SpriteSystem.LayerSetRsiState((uid, sprite), layer, state);
-        }
+        var alpha = AppearanceSystem.TryGetData<FloodDepth>(uid, FloodVisuals.Depth, out var depth, args.Component)
+            && component.Alpha.TryGetValue(depth, out var depthAlpha)
+                ? depthAlpha
+                : component.DefaultAlpha;
 
-        if (AppearanceSystem.TryGetData<Color>(uid, FloodVisuals.Color, out var color, args.Component))
-            SpriteSystem.LayerSetColor((uid, sprite), layer, color.WithAlpha(component.Alpha));
+        SpriteSystem.LayerSetColor((uid, sprite), layer, color.WithAlpha(alpha));
     }
 }

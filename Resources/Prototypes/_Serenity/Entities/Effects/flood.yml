@@ -13,7 +13,7 @@
     sprite: _Serenity/Effects/flood.rsi
     drawdepth: Objects
     layers:
-    - state: stage1_bottom
+    - state: stage4_bottom
       map: [ "enum.FloodVisualLayers.Liquid" ]
   - type: Appearance
   - type: FloodVisuals
@@ -119,7 +119,8 @@
       map: [ "enum.FloodVisualLayers.Liquid" ]
   - type: Appearance
   - type: FloodVisuals
-    states: {}
+    alpha: {}
+    defaultAlpha: 1
   - type: TimedDespawn
     lifetime: 0.6
 

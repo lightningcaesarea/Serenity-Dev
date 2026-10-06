@@ -1,23 +1,26 @@
 namespace Content.Shared._Serenity.Flooding;
 
 /// <summary>
-///     Sprite state used for each flood depth. Only the client reads it.
+///     How a flood looks at each depth. Only the client reads it.
 /// </summary>
 [RegisterComponent]
 public sealed partial class FloodVisualsComponent : Component
 {
+    /// <summary>
+    ///     Opacity of the liquid at each depth, so deeper water hides more of the floor.
+    /// </summary>
     [DataField]
-    public Dictionary<FloodDepth, string> States = new()
+    public Dictionary<FloodDepth, float> Alpha = new()
     {
-        { FloodDepth.Ankles, "stage1_bottom" },
-        { FloodDepth.Waist, "stage2_bottom" },
-        { FloodDepth.Chest, "stage3_bottom" },
-        { FloodDepth.Submerged, "stage4_bottom" },
+        { FloodDepth.Ankles, 0.45f },
+        { FloodDepth.Waist, 0.6f },
+        { FloodDepth.Chest, 0.75f },
+        { FloodDepth.Submerged, 0.9f },
     };
 
     /// <summary>
-    ///     Opacity of the liquid tint, so the floor still shows through shallow water.
+    ///     Opacity used before the depth is known, and for splashes.
     /// </summary>
     [DataField]
-    public float Alpha = 0.75f;
+    public float DefaultAlpha = 0.75f;
 }

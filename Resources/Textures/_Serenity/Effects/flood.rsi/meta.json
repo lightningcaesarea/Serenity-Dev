@@ -8,66 +8,6 @@
   },
   "states": [
     {
-      "name": "stage1_bottom",
-      "delays": [
-        [
-          0.2,
-          0.2,
-          0.2
-        ]
-      ]
-    },
-    {
-      "name": "stage1_top",
-      "delays": [
-        [
-          0.2,
-          0.2,
-          0.2
-        ]
-      ]
-    },
-    {
-      "name": "stage2_bottom",
-      "delays": [
-        [
-          0.2,
-          0.2,
-          0.2
-        ]
-      ]
-    },
-    {
-      "name": "stage2_top",
-      "delays": [
-        [
-          0.2,
-          0.2,
-          0.2
-        ]
-      ]
-    },
-    {
-      "name": "stage3_bottom",
-      "delays": [
-        [
-          0.2,
-          0.2,
-          0.2
-        ]
-      ]
-    },
-    {
-      "name": "stage3_top",
-      "delays": [
-        [
-          0.2,
-          0.2,
-          0.2
-        ]
-      ]
-    },
-    {
       "name": "stage4_bottom",
       "delays": [
         [
@@ -76,9 +16,6 @@
           0.2
         ]
       ]
-    },
-    {
-      "name": "stage4_top"
     }
   ]
 }
