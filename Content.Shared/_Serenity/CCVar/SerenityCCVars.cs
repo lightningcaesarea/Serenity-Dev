@@ -134,19 +134,6 @@ public sealed partial class SerenityCCVars
         CVarDef.Create("serenity.roundend_ship_ftl.travel", 30f, CVar.SERVERONLY);
 
     /// <summary>
-    /// Whether a character that went into a cryopod is ghosted rather than left attached to its parked body, and may
-    /// wake the body again (return to body / <c>uncryo</c>) without reconnecting.
-    /// </summary>
-    public static readonly CVarDef<bool> CryoReturnEnabled =
-        CVarDef.Create("serenity.cryo.return_enabled", true, CVar.SERVERONLY);
-
-    /// <summary>
-    /// Minutes after entering a cryopod during which the character can still be woken.
-    /// </summary>
-    public static readonly CVarDef<float> CryoReturnWindow =
-        CVarDef.Create("serenity.cryo.return_window_minutes", 180f, CVar.SERVERONLY);
-
-    /// <summary>
     /// Whether the sector event scheduler (bluespace-error grids: vaults, caches, lost vessels) runs each round.
     /// </summary>
     public static readonly CVarDef<bool> SectorEventsEnabled =

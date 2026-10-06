@@ -1,9 +1,7 @@
 using Content.IntegrationTests.Fixtures;
 using Content.IntegrationTests.Fixtures.Attributes;
-using Content.Server._Serenity.Cryo;
 using Content.Server._Serenity.SectorEvents;
 using Content.Server.GameTicking;
-using Content.Server.Ghost;
 using Content.Server.Shuttles.Components;
 using Robust.Shared.Maths;
 using Content.Server.Station.Systems;
@@ -12,7 +10,6 @@ using Content.Shared._Serenity.Shipyard.Components;
 using Content.Shared._Starlight.CryoTeleportation;
 using Content.Shared.Bed.Cryostorage;
 using Content.Shared.CCVar;
-using Content.Shared.Mind;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
 using Content.Shared.Shuttles.Components;
@@ -65,8 +62,6 @@ public sealed class SectorEventsTest : GameTest
 
     [SidedDependency(Side.Server)] private readonly GameTicker _ticker = default!;
     [SidedDependency(Side.Server)] private readonly StationSystem _station = default!;
-    [SidedDependency(Side.Server)] private readonly GhostSystem _ghost = default!;
-    [SidedDependency(Side.Server)] private readonly SharedMindSystem _mind = default!;
     [SidedDependency(Side.Server)] private readonly ITileDefinitionManager _tiles = default!;
 
     private async Task<(EntityUid Body, EntityUid Station, EntityUid Grid)> StartRound()
@@ -119,49 +114,6 @@ public sealed class SectorEventsTest : GameTest
         await RunTicksSync(5);
 
         await Server.WaitAssertion(() => Assert.That(SEntMan.Deleted(eventGrid), "grid should be gone after the event"));
-        await Server.WaitPost(() => _ticker.RestartRound());
-    }
-
-    /// <summary>
-    /// A cryo-stored body can be woken again by its owner's ghost.
-    /// </summary>
-    [Test]
-    public async Task CryoStoredBodyWakesOnReturn()
-    {
-        var (body, station, grid) = await StartRound();
-        EntityUid pod = default, mindId = default;
-
-        await Server.WaitAssertion(() =>
-        {
-            SComp<StationCryoTeleportationComponent>(station).TransferDelay = TimeSpan.Zero;
-            pod = SSpawnAtPosition(CryoPod, new EntityCoordinates(grid, -0.5f, -0.5f));
-            var cryo = SComp<CryostorageComponent>(pod);
-            cryo.GracePeriod = TimeSpan.Zero;
-            cryo.NoMindGracePeriod = TimeSpan.Zero;
-
-            Assert.That(_mind.TryGetMind(body, out mindId, out _));
-            Assert.That(_ghost.OnGhostAttempt(mindId, true, viaCommand: true));
-        });
-
-        // Starlight's auto-cryo parks the abandoned body in the pod's paused map.
-        await RunSeconds(8);
-
-        await Server.WaitAssertion(() =>
-        {
-            Assert.That(SEntMan.HasComponent<CryoReturnComponent>(body), "stored body should be wakeable");
-            Assert.That(SEntMan.GetComponent<TransformComponent>(body).MapUid,
-                Is.Not.EqualTo(SEntMan.GetComponent<TransformComponent>(pod).MapUid), "body is parked");
-            Assert.That(SEntMan.System<CryoReturnSystem>().TryWake(ServerSession!, out var error), error);
-        });
-        await RunTicksSync(10);
-
-        await Server.WaitAssertion(() =>
-        {
-            Assert.That(SEntMan.GetComponent<TransformComponent>(body).MapUid,
-                Is.EqualTo(SEntMan.GetComponent<TransformComponent>(pod).MapUid), "body is back in the pod's map");
-            Assert.That(ServerSession!.AttachedEntity, Is.EqualTo(body));
-        });
-
         await Server.WaitPost(() => _ticker.RestartRound());
     }
 

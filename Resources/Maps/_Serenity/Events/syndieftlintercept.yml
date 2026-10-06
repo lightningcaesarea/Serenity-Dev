@@ -560,7 +560,7 @@ entities:
       links:
       - 41
     - type: DeviceLinkSource
-      linkedPorts:
+      linkedPorts: {}
   - uid: 280
     components:
     - type: MetaData
