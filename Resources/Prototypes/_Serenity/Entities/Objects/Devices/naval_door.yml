@@ -1,0 +1,23 @@
+# SPDX-FileCopyrightText: 2026 CalliganSierre
+#
+# SPDX-License-Identifier: MIT
+
+- type: entity
+  parent: DoorElectronicsCentralCommand
+  id: DoorElectronicsNaval
+  suffix: Naval, Locked
+  components:
+  - type: AccessReader
+    access: [["Naval"]]
+  - type: DoorElectronics
+    accessGroups:
+    - General
+    - Security
+    - Cargo
+    - Command
+    - Research
+    - Medical
+    - Service
+    - Engineering
+    - CentralCommand
+    - Naval

@@ -1,0 +1,14 @@
+# SPDX-FileCopyrightText: 2026 CalliganSierre
+#
+# SPDX-License-Identifier: MIT
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconNaval
+  icon:
+    sprite: /Textures/Interface/Misc/job_icons.rsi
+    state: Nanotrasen
+  jobName: job-name-naval
+  allowSelection: false
+  tags:
+  - JobIconCentComm
