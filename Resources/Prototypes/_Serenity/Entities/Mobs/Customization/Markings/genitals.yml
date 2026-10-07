@@ -4,6 +4,17 @@
 # limits are whitelist-only (anySpecies); sex is not restricted.
 
 - type: marking
+  id: GenitalPenisHuman1
+  bodyPart: Penis
+  markingCategory: Penis
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/penises.rsi
+    state: m_penis_human_1_0_front
+
+- type: marking
   id: GenitalPenisHumanSmall
   bodyPart: Penis
   markingCategory: Penis
@@ -13,6 +24,17 @@
   sprites:
   - sprite: _Serenity/Genitals/penises.rsi
     state: m_penis_human_2_0_front
+
+- type: marking
+  id: GenitalPenisHuman3
+  bodyPart: Penis
+  markingCategory: Penis
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/penises.rsi
+    state: m_penis_human_3_0_front
 
 - type: marking
   id: GenitalPenisHumanAverage
@@ -26,6 +48,17 @@
     state: m_penis_human_4_0_front
 
 - type: marking
+  id: GenitalPenisHuman5
+  bodyPart: Penis
+  markingCategory: Penis
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/penises.rsi
+    state: m_penis_human_5_0_front
+
+- type: marking
   id: GenitalPenisHumanLarge
   bodyPart: Penis
   markingCategory: Penis
@@ -35,6 +68,28 @@
   sprites:
   - sprite: _Serenity/Genitals/penises.rsi
     state: m_penis_human_6_0_front
+
+- type: marking
+  id: GenitalPenisHuman7
+  bodyPart: Penis
+  markingCategory: Penis
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/penises.rsi
+    state: m_penis_human_7_0_front
+
+- type: marking
+  id: GenitalPenisKnotted1
+  bodyPart: Penis
+  markingCategory: Penis
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/penises.rsi
+    state: m_penis_knotted_1_0_front_primary
 
 - type: marking
   id: GenitalPenisKnottedSmall
@@ -48,6 +103,17 @@
     state: m_penis_knotted_2_0_front_primary
 
 - type: marking
+  id: GenitalPenisKnotted3
+  bodyPart: Penis
+  markingCategory: Penis
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/penises.rsi
+    state: m_penis_knotted_3_0_front_primary
+
+- type: marking
   id: GenitalPenisKnottedAverage
   bodyPart: Penis
   markingCategory: Penis
@@ -57,6 +123,17 @@
   sprites:
   - sprite: _Serenity/Genitals/penises.rsi
     state: m_penis_knotted_4_0_front_primary
+
+- type: marking
+  id: GenitalPenisKnotted5
+  bodyPart: Penis
+  markingCategory: Penis
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/penises.rsi
+    state: m_penis_knotted_5_0_front_primary
 
 - type: marking
   id: GenitalPenisKnottedLarge
@@ -70,6 +147,28 @@
     state: m_penis_knotted_6_0_front_primary
 
 - type: marking
+  id: GenitalPenisKnotted7
+  bodyPart: Penis
+  markingCategory: Penis
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/penises.rsi
+    state: m_penis_knotted_7_0_front_primary
+
+- type: marking
+  id: GenitalPenisFlared1
+  bodyPart: Penis
+  markingCategory: Penis
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/penises.rsi
+    state: m_penis_flared_1_0_front_primary
+
+- type: marking
   id: GenitalPenisFlaredSmall
   bodyPart: Penis
   markingCategory: Penis
@@ -79,6 +178,17 @@
   sprites:
   - sprite: _Serenity/Genitals/penises.rsi
     state: m_penis_flared_2_0_front_primary
+
+- type: marking
+  id: GenitalPenisFlared3
+  bodyPart: Penis
+  markingCategory: Penis
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/penises.rsi
+    state: m_penis_flared_3_0_front_primary
 
 - type: marking
   id: GenitalPenisFlaredAverage
@@ -92,6 +202,17 @@
     state: m_penis_flared_4_0_front_primary
 
 - type: marking
+  id: GenitalPenisFlared5
+  bodyPart: Penis
+  markingCategory: Penis
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/penises.rsi
+    state: m_penis_flared_5_0_front_primary
+
+- type: marking
   id: GenitalPenisFlaredLarge
   bodyPart: Penis
   markingCategory: Penis
@@ -101,6 +222,28 @@
   sprites:
   - sprite: _Serenity/Genitals/penises.rsi
     state: m_penis_flared_6_0_front_primary
+
+- type: marking
+  id: GenitalPenisFlared7
+  bodyPart: Penis
+  markingCategory: Penis
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/penises.rsi
+    state: m_penis_flared_7_0_front_primary
+
+- type: marking
+  id: GenitalPenisTapered1
+  bodyPart: Penis
+  markingCategory: Penis
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/penises.rsi
+    state: m_penis_tapered_1_0_front_primary
 
 - type: marking
   id: GenitalPenisTaperedSmall
@@ -114,6 +257,17 @@
     state: m_penis_tapered_2_0_front_primary
 
 - type: marking
+  id: GenitalPenisTapered3
+  bodyPart: Penis
+  markingCategory: Penis
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/penises.rsi
+    state: m_penis_tapered_3_0_front_primary
+
+- type: marking
   id: GenitalPenisTaperedAverage
   bodyPart: Penis
   markingCategory: Penis
@@ -123,6 +277,17 @@
   sprites:
   - sprite: _Serenity/Genitals/penises.rsi
     state: m_penis_tapered_4_0_front_primary
+
+- type: marking
+  id: GenitalPenisTapered5
+  bodyPart: Penis
+  markingCategory: Penis
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/penises.rsi
+    state: m_penis_tapered_5_0_front_primary
 
 - type: marking
   id: GenitalPenisTaperedLarge
@@ -136,6 +301,28 @@
     state: m_penis_tapered_6_0_front_primary
 
 - type: marking
+  id: GenitalPenisTapered7
+  bodyPart: Penis
+  markingCategory: Penis
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/penises.rsi
+    state: m_penis_tapered_7_0_front_primary
+
+- type: marking
+  id: GenitalPenisHemi1
+  bodyPart: Penis
+  markingCategory: Penis
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/penises.rsi
+    state: m_penis_hemi_1_0_front_primary
+
+- type: marking
   id: GenitalPenisHemiSmall
   bodyPart: Penis
   markingCategory: Penis
@@ -145,6 +332,17 @@
   sprites:
   - sprite: _Serenity/Genitals/penises.rsi
     state: m_penis_hemi_2_0_front_primary
+
+- type: marking
+  id: GenitalPenisHemi3
+  bodyPart: Penis
+  markingCategory: Penis
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/penises.rsi
+    state: m_penis_hemi_3_0_front_primary
 
 - type: marking
   id: GenitalPenisHemiAverage
@@ -158,6 +356,17 @@
     state: m_penis_hemi_4_0_front_primary
 
 - type: marking
+  id: GenitalPenisHemi5
+  bodyPart: Penis
+  markingCategory: Penis
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/penises.rsi
+    state: m_penis_hemi_5_0_front_primary
+
+- type: marking
   id: GenitalPenisHemiLarge
   bodyPart: Penis
   markingCategory: Penis
@@ -167,6 +376,28 @@
   sprites:
   - sprite: _Serenity/Genitals/penises.rsi
     state: m_penis_hemi_6_0_front_primary
+
+- type: marking
+  id: GenitalPenisHemi7
+  bodyPart: Penis
+  markingCategory: Penis
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/penises.rsi
+    state: m_penis_hemi_7_0_front_primary
+
+- type: marking
+  id: GenitalPenisNondescript1
+  bodyPart: Penis
+  markingCategory: Penis
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/penises.rsi
+    state: m_penis_nondescript_1_0_front_primary
 
 - type: marking
   id: GenitalPenisNondescriptSmall
@@ -180,6 +411,17 @@
     state: m_penis_nondescript_2_0_front_primary
 
 - type: marking
+  id: GenitalPenisNondescript3
+  bodyPart: Penis
+  markingCategory: Penis
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/penises.rsi
+    state: m_penis_nondescript_3_0_front_primary
+
+- type: marking
   id: GenitalPenisNondescriptAverage
   bodyPart: Penis
   markingCategory: Penis
@@ -189,6 +431,17 @@
   sprites:
   - sprite: _Serenity/Genitals/penises.rsi
     state: m_penis_nondescript_4_0_front_primary
+
+- type: marking
+  id: GenitalPenisNondescript5
+  bodyPart: Penis
+  markingCategory: Penis
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/penises.rsi
+    state: m_penis_nondescript_5_0_front_primary
 
 - type: marking
   id: GenitalPenisNondescriptLarge
@@ -202,6 +455,28 @@
     state: m_penis_nondescript_6_0_front_primary
 
 - type: marking
+  id: GenitalPenisNondescript7
+  bodyPart: Penis
+  markingCategory: Penis
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/penises.rsi
+    state: m_penis_nondescript_7_0_front_primary
+
+- type: marking
+  id: GenitalPenisBarbknot1
+  bodyPart: Penis
+  markingCategory: Penis
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/penises.rsi
+    state: m_penis_barbknot_1_0_front_primary
+
+- type: marking
   id: GenitalPenisBarbknotSmall
   bodyPart: Penis
   markingCategory: Penis
@@ -211,6 +486,17 @@
   sprites:
   - sprite: _Serenity/Genitals/penises.rsi
     state: m_penis_barbknot_2_0_front_primary
+
+- type: marking
+  id: GenitalPenisBarbknot3
+  bodyPart: Penis
+  markingCategory: Penis
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/penises.rsi
+    state: m_penis_barbknot_3_0_front_primary
 
 - type: marking
   id: GenitalPenisBarbknotAverage
@@ -224,6 +510,17 @@
     state: m_penis_barbknot_4_0_front_primary
 
 - type: marking
+  id: GenitalPenisBarbknot5
+  bodyPart: Penis
+  markingCategory: Penis
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/penises.rsi
+    state: m_penis_barbknot_5_0_front_primary
+
+- type: marking
   id: GenitalPenisBarbknotLarge
   bodyPart: Penis
   markingCategory: Penis
@@ -233,6 +530,28 @@
   sprites:
   - sprite: _Serenity/Genitals/penises.rsi
     state: m_penis_barbknot_6_0_front_primary
+
+- type: marking
+  id: GenitalPenisBarbknot7
+  bodyPart: Penis
+  markingCategory: Penis
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/penises.rsi
+    state: m_penis_barbknot_7_0_front_primary
+
+- type: marking
+  id: GenitalPenisHemiknot1
+  bodyPart: Penis
+  markingCategory: Penis
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/penises.rsi
+    state: m_penis_hemiknot_1_0_front_primary
 
 - type: marking
   id: GenitalPenisHemiknotSmall
@@ -246,6 +565,17 @@
     state: m_penis_hemiknot_2_0_front_primary
 
 - type: marking
+  id: GenitalPenisHemiknot3
+  bodyPart: Penis
+  markingCategory: Penis
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/penises.rsi
+    state: m_penis_hemiknot_3_0_front_primary
+
+- type: marking
   id: GenitalPenisHemiknotAverage
   bodyPart: Penis
   markingCategory: Penis
@@ -255,6 +585,17 @@
   sprites:
   - sprite: _Serenity/Genitals/penises.rsi
     state: m_penis_hemiknot_4_0_front_primary
+
+- type: marking
+  id: GenitalPenisHemiknot5
+  bodyPart: Penis
+  markingCategory: Penis
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/penises.rsi
+    state: m_penis_hemiknot_5_0_front_primary
 
 - type: marking
   id: GenitalPenisHemiknotLarge
@@ -268,6 +609,28 @@
     state: m_penis_hemiknot_6_0_front_primary
 
 - type: marking
+  id: GenitalPenisHemiknot7
+  bodyPart: Penis
+  markingCategory: Penis
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/penises.rsi
+    state: m_penis_hemiknot_7_0_front_primary
+
+- type: marking
+  id: GenitalPenisTentacle1
+  bodyPart: Penis
+  markingCategory: Penis
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/penises.rsi
+    state: m_penis_tentacle_1_0_front_primary
+
+- type: marking
   id: GenitalPenisTentacleSmall
   bodyPart: Penis
   markingCategory: Penis
@@ -277,6 +640,17 @@
   sprites:
   - sprite: _Serenity/Genitals/penises.rsi
     state: m_penis_tentacle_2_0_front_primary
+
+- type: marking
+  id: GenitalPenisTentacle3
+  bodyPart: Penis
+  markingCategory: Penis
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/penises.rsi
+    state: m_penis_tentacle_3_0_front_primary
 
 - type: marking
   id: GenitalPenisTentacleAverage
@@ -290,6 +664,17 @@
     state: m_penis_tentacle_4_0_front_primary
 
 - type: marking
+  id: GenitalPenisTentacle5
+  bodyPart: Penis
+  markingCategory: Penis
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/penises.rsi
+    state: m_penis_tentacle_5_0_front_primary
+
+- type: marking
   id: GenitalPenisTentacleLarge
   bodyPart: Penis
   markingCategory: Penis
@@ -299,6 +684,17 @@
   sprites:
   - sprite: _Serenity/Genitals/penises.rsi
     state: m_penis_tentacle_6_0_front_primary
+
+- type: marking
+  id: GenitalPenisTentacle7
+  bodyPart: Penis
+  markingCategory: Penis
+  anySpecies: true
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+  - sprite: _Serenity/Genitals/penises.rsi
+    state: m_penis_tentacle_7_0_front_primary
 
 - type: marking
   id: GenitalTesticles1
