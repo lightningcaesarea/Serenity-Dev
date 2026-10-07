@@ -11,9 +11,9 @@ using Robust.Shared.Timing;
 namespace Content.Server._Serenity.Intimacy;
 
 /// <summary>
-/// Drives <see cref="IntimacyVocalComponent"/>: automatic moans while aroused, pained sounds when
-/// Pain spikes, a blush when acted upon, and a sex-appropriate climax cry, using thresholds,
-/// a per-second chance and sex-tiered sounds.
+/// Drives <see cref="IntimacyVocalComponent"/>: moans when pleasured and automatically while aroused,
+/// pained sounds when Pain spikes, a blush when acted upon, and a sex-appropriate climax cry, using
+/// thresholds, a per-second chance and sex-tiered sounds.
 /// </summary>
 public sealed partial class IntimacyVocalSystem : EntitySystem
 {
@@ -24,6 +24,7 @@ public sealed partial class IntimacyVocalSystem : EntitySystem
     [Dependency] private IntimacySystem _intimacy = default!;
 
     private static readonly TimeSpan TickInterval = TimeSpan.FromSeconds(1);
+    private static readonly List<LocId> NoMessages = new();
 
     public override void Initialize()
     {
@@ -49,11 +50,31 @@ public sealed partial class IntimacyVocalSystem : EntitySystem
 
     private void OnActPerformed(Entity<IntimacyVocalComponent> ent, ref IntimacyActPerformedEvent args)
     {
-        // Only the receiving side blushes, and only when someone else did it.
-        if (args.Target != ent.Owner || args.Actor == ent.Owner)
+        // Only the receiving side reacts: the target of someone else's act, or the actor of a self act.
+        if (args.Target != ent.Owner)
             return;
 
-        if (!_random.Prob(ent.Comp.BlushChance))
+        var self = args.Actor == ent.Owner;
+        var stats = self ? args.Act.ActorStats : args.Act.TargetStats;
+        var pleasurable = stats.TryGetValue("Pleasure", out var pleasure) && pleasure > 0
+            || stats.TryGetValue("Arousal", out var aroused) && aroused > 0;
+
+        // A pleasurable act on an aroused mob draws a moan. The act already posted its own emote,
+        // so this one is sound only.
+        if (pleasurable
+            && TryComp<IntimacyParticipantComponent>(ent, out var participant)
+            && !_mobState.IsIncapacitated(ent))
+        {
+            var arousal = participant.Stats.GetValueOrDefault("Arousal");
+            if (arousal >= ent.Comp.ActMoanArousalThreshold && _random.Prob(ent.Comp.ActMoanChance))
+            {
+                Vocalise(ent, GetMoanSound(ent, arousal), NoMessages);
+                return;
+            }
+        }
+
+        // Blushing is for when someone else did it.
+        if (self || !_random.Prob(ent.Comp.BlushChance))
             return;
 
         Vocalise(ent, ent.Comp.Blush, ent.Comp.BlushMessages);
