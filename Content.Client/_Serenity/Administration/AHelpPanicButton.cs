@@ -11,7 +11,7 @@ namespace Content.Client._Serenity.Administration;
 /// The panic button in the player's ahelp window. It opens a warning that has to be confirmed
 /// before anything is sent.
 /// </summary>
-public sealed class AHelpPanicButton : Button
+public sealed partial class AHelpPanicButton : Button
 {
     [Dependency] private IEntityNetworkManager _net = default!;
 
