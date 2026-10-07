@@ -16,6 +16,7 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
     {
         base.OnSolutionUpdate(entity, ref args);
         _fireSystem.UpdateFire(entity);
+        _flood.CheckPuddle(entity, args.Solution.Comp.Solution); // Serenity - deep puddles become floods
     }
     // Funky edit end
 

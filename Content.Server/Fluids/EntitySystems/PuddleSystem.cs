@@ -1,3 +1,4 @@
+using Content.Server._Serenity.Flooding;
 using Content.Server.Fluids.Components;
 using Content.Server.Spreader;
 using Content.Shared.Chemistry;
@@ -40,6 +41,7 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
     [Dependency] private SharedSolutionContainerSystem _solutionContainerSystem = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private TurfSystem _turf = default!;
+    [Dependency] private FloodSystem _flood = default!; // Serenity
     #region Starlight
     [Dependency] private EntityQuery<PuddleComponent> _puddleQuery = default!;
     [Dependency] private EntityQuery<EvaporationSparkleComponent> _evaporationSparklesQuery = default!;
@@ -539,6 +541,10 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
             puddleUid = EntityUid.Invalid;
             return false;
         }
+
+        // Serenity - liquid spilled onto a flooded tile joins the flood instead of floating a puddle on top.
+        if (_flood.TryAddToFlood(tileRef, solution, out puddleUid))
+            return true;
 
         // Get normalized co-ordinate for spill location and spill it in the centre
         // TODO: Does SnapGrid or something else already do this?
