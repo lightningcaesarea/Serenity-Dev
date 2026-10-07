@@ -688,7 +688,7 @@
   - type: Pda
     id: HoPIDCard
     penSlot:
-      startingItem: PenHop
+      startingItem: PenStationCommander # Serenity
       priority: -1
       whitelist:
         tags:

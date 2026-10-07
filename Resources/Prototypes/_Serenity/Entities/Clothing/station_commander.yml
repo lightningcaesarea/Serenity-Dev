@@ -354,3 +354,17 @@
         color: "#2c6a30"
       - state: clasp-inhand-right
         color: "#eca615"
+
+# ── Items ────────────────────────────────────────────────────────────────────
+
+# A Station Commander take on the CentComm pen: same advanced pen, in the Commander's colors.
+- type: entity
+  parent: [BaseAdvancedPen, BaseCommandContraband]
+  id: PenStationCommander
+  name: Station Commander's Pen
+  description: A dark green and gold pen made for the Station Commander, modeled on Central Command's own. It can even rewrite stamped documents.
+  components:
+  - type: Sprite
+    state: pen_station_commander
+  - type: Item
+    heldPrefix: pen_station_commander

@@ -64,3 +64,10 @@
   id: StationCommanderEVASuit
   equipment:
     outerClothing: ClothingOuterEVASuitStationCommander
+
+# Pen
+- type: loadout
+  id: StationCommanderPen
+  storage:
+    id:
+    - PenStationCommander
