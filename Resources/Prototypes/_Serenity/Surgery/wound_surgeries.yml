@@ -117,3 +117,49 @@
     - NeoSlimePerson
     - IPC
     - Doll
+
+# Slimes have no flesh to lance: the infection lives in their jelly, which is siphoned off and coagulated.
+- type: entity
+  parent: SurgeryBase
+  id: SurgeryDrainInfectionSlime
+  name: Purge Contaminated Jelly
+  components:
+  - type: Surgery
+    requirement:
+    - SurgeryOpenIncisionSlime
+    steps:
+    - SurgeryStepSiphonInfectedJelly
+    - SurgeryStepCoagulateInfectedJelly
+  - type: SurgeryWoundCondition
+    category: Infection
+  - type: SurgeryPartCondition
+    parts:
+    - Torso
+  - type: SurgerySpeciesCondition
+    speciesBlacklist: []
+    speciesWhitelist:
+    - SlimePerson
+    - NeoSlimePerson
+
+# Dolls are drained like anyone else, once their shell is off and the incision is open.
+- type: entity
+  parent: SurgeryBase
+  id: SurgeryDrainInfectionDoll
+  name: Drain Infection
+  components:
+  - type: Surgery
+    requirement:
+    - SurgeryOpenIncisionDoll
+    steps:
+    - SurgeryStepLanceInfection
+    - SurgeryStepDrainInfection
+    - SurgeryStepCauterizeInfection
+  - type: SurgeryWoundCondition
+    category: Infection
+  - type: SurgeryPartCondition
+    parts:
+    - Torso
+  - type: SurgerySpeciesCondition
+    speciesBlacklist: []
+    speciesWhitelist:
+    - Doll

@@ -160,3 +160,14 @@
     state: cautery
   - type: SurgeryStepClearWoundEffect
     category: Infection
+
+# Infection, slimes: the same drain and cauterize, on jelly instead of flesh
+- type: entity
+  parent: SurgeryStepDrainInfection
+  id: SurgeryStepSiphonInfectedJelly
+  name: Siphon the contaminated jelly into a container
+
+- type: entity
+  parent: SurgeryStepCauterizeInfection
+  id: SurgeryStepCoagulateInfectedJelly
+  name: Coagulate the remaining jelly

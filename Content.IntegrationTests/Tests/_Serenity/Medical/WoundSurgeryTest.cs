@@ -30,6 +30,17 @@ public sealed class WoundSurgeryTest
         ("SurgeryDrainInfection", WoundCategoryIds.Infection, "Infection"),
     ];
 
+    /// <summary>
+    /// Species that can't take the standard incision get their own way to drain an infection, which an infection
+    /// would otherwise never leave them.
+    /// </summary>
+    private static readonly (EntProtoId Mob, EntProtoId Surgery)[] DrainVariants =
+    [
+        ("MobHuman", "SurgeryDrainInfection"),
+        ("MobSlimePerson", "SurgeryDrainInfectionSlime"),
+        ("MobDoll", "SurgeryDrainInfectionDoll"),
+    ];
+
     [Test]
     public async Task SurgeriesAreOfferedForAndClearTheirWounds()
     {
@@ -108,7 +119,9 @@ public sealed class WoundSurgeryTest
         {
             Assert.Multiple(() =>
             {
-                foreach (var (surgery, category, _) in Cases)
+                var all = Cases.Select(c => (c.Surgery, c.Category))
+                    .Concat(DrainVariants.Select(v => (v.Surgery, WoundCategoryIds.Infection)));
+                foreach (var (surgery, category) in all)
                 {
                     var surgeryProto = proto.Index(surgery);
                     Assert.That(surgeryProto.TryGetComponent<SurgeryWoundConditionComponent>(out var condition, factory), $"{surgery} has no wound condition");
@@ -123,6 +136,48 @@ public sealed class WoundSurgeryTest
                     {
                         Assert.That(proto.HasIndex(step), $"{surgery} uses unknown step {step}");
                     }
+                }
+            });
+        });
+
+        await pair.CleanReturnAsync();
+    }
+
+    /// <summary>
+    /// Every species with wounds can have an infection drained, and only by the surgery meant for its body.
+    /// </summary>
+    [Test]
+    public async Task EverySpeciesCanHaveAnInfectionDrained()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var server = pair.Server;
+        var entMan = server.EntMan;
+        var mapData = await pair.CreateTestMap();
+        var wounds = entMan.System<SharedWoundSystem>();
+        var body = entMan.System<SharedBodySystem>();
+        var singletons = entMan.System<StarlightEntitySystem>();
+
+        await server.WaitAssertion(() =>
+        {
+            Assert.Multiple(() =>
+            {
+                foreach (var (mob, expected) in DrainVariants)
+                {
+                    var patient = entMan.SpawnEntity(mob, mapData.GridCoords);
+                    var woundComp = entMan.GetComponent<WoundComponent>(patient);
+                    var torso = body.GetBodyChildrenOfType(patient, BodyPartType.Torso).First().Id;
+                    wounds.AddWound(patient, woundComp, new WoundEntry("Infection", 1));
+
+                    foreach (var (_, surgery) in DrainVariants)
+                    {
+                        Assert.That(singletons.TryGetSingleton(surgery, out var surgeryUid), $"{surgery} is missing");
+                        var ev = new SurgeryValidEvent(patient, torso);
+                        entMan.EventBus.RaiseLocalEvent(surgeryUid, ref ev);
+                        Assert.That(!ev.Cancelled, Is.EqualTo(surgery == expected),
+                            surgery == expected ? $"{mob} should be offered {surgery}" : $"{mob} shouldn't be offered {surgery}");
+                    }
+
+                    entMan.DeleteEntity(patient);
                 }
             });
         });
