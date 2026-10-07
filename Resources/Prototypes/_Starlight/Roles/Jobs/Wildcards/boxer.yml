@@ -3,6 +3,7 @@
   name: job-name-boxer
   description: job-description-boxer
   playTimeTracker: JobBoxer
+  setPreference: false # Serenity: role disabled
   startingGear: BoxerGear
   icon: "JobIconBoxer"
   supervisors: job-supervisors-hop
