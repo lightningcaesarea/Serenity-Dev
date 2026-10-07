@@ -15,7 +15,7 @@ namespace Content.Server._Serenity.Discord;
 /// Keeps the Discord bot's status showing how many players are connected and how far the round is,
 /// e.g. "12 players · Round 1:05".
 /// </summary>
-public sealed class DiscordBotStatusSystem : EntitySystem
+public sealed partial class DiscordBotStatusSystem : EntitySystem
 {
     [Dependency] private DiscordLink _discord = default!;
     [Dependency] private IConfigurationManager _cfg = default!;
