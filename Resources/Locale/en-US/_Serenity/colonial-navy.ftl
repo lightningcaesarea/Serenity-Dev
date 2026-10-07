@@ -1,5 +1,5 @@
-id-card-access-level-naval = Naval
+id-card-access-level-naval = Marine Raider
 
-job-name-naval = Colonial Navyman
+job-name-naval = Marine Raider
 job-description-naval = You shouldn't be able to see this...
-JobColonialNavyman = Colonial Navyman
+JobColonialNavyman = Marine Raider

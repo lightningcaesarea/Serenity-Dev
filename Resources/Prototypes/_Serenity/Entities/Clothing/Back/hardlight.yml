@@ -5,8 +5,8 @@
 - type: entity
   parent: ClothingBackpackCNIRifleman
   id: ClothingBackpackCNISquadleader
-  name: CNI Squad Leader backpack
-  description: A rugged backpack worn by the squad leader of a naval infantry squad, made with a radio pocket on the side.
+  name: Marine Raider Squad Leader backpack
+  description: A rugged backpack worn by the squad leader of a Marine Raider squad, made with a radio pocket on the side.
   components:
   - type: Sprite
     sprite: _Serenity/Clothing/Back/ColNavInf/cnisquadleader.rsi
@@ -28,8 +28,8 @@
 - type: entity
   parent: [ ClothingBackpack, BaseCentcommContraband ]
   id: ClothingBackpackCNIRifleman
-  name: CNI Rifleman backpack
-  description: A rugged backpack worn by non-specialist riflemen in naval infantry fireteams.
+  name: Marine Raider Rifleman backpack
+  description: A rugged backpack worn by non-specialist riflemen in Marine Raider fireteams.
   components:
   - type: Sprite
     sprite: _Serenity/Clothing/Back/ColNavInf/cnirifleman.rsi
@@ -44,8 +44,8 @@
 - type: entity
   parent: ClothingBackpackCNIRifleman
   id: ClothingBackpackCNICombatengineer
-  name: CNI Combat Engineer backpack
-  description: A rugged backpack worn by combat engineers in naval infantry squads.
+  name: Marine Raider Combat Engineer backpack
+  description: A rugged backpack worn by combat engineers in Marine Raider squads.
   components:
   - type: Sprite
     sprite: _Serenity/Clothing/Back/ColNavInf/cnicombatengineer.rsi
@@ -59,8 +59,8 @@
 - type: entity
   parent: ClothingBackpackCNIRifleman
   id: ClothingBackpackCNIExplosivespecialist
-  name: CNI EWS backpack
-  description: A rugged backpack worn by explosive weapons specialists in naval infantry platoons, with an additional specialized compartment for carrying a missile launcher.
+  name: Marine Raider EWS backpack
+  description: A rugged backpack worn by explosive weapons specialists in Marine Raider platoons, with an additional specialized compartment for carrying a missile launcher.
   components:
   - type: Sprite
     sprite: _Serenity/Clothing/Back/ColNavInf/cniexplosivespecialist.rsi
@@ -73,8 +73,8 @@
 - type: entity
   parent: ClothingBackpackCNIRifleman
   id: ClothingBackpackCNICorpsman
-  name: CNI Corpsman backpack
-  description: A rugged backpack worn by corpsmen in naval infantry platoons.
+  name: Marine Raider Corpsman backpack
+  description: A rugged backpack worn by corpsmen in Marine Raider platoons.
   components:
   - type: Sprite
     sprite: _Serenity/Clothing/Back/ColNavInf/cnicorpsman.rsi
@@ -82,8 +82,8 @@
 - type: entity
   parent: ClothingBackpackCNIRifleman
   id: ClothingBackpackCNIMachinegunner
-  name: CNI Machine Gunner backpack
-  description: A rugged backpack worn by suppression gunners in naval infantry squads.
+  name: Marine Raider Machine Gunner backpack
+  description: A rugged backpack worn by suppression gunners in Marine Raider squads.
   components:
   - type: Sprite
     sprite: _Serenity/Clothing/Back/ColNavInf/cnimachinegunner.rsi
@@ -91,8 +91,8 @@
 - type: entity
   parent: [ ClothingMaskGas, BaseCentcommContraband ]
   id: ClothingMaskGasCNI
-  name: Colonial Navy gas mask
-  description: A military-grade gas mask used by the Colonial Navy.
+  name: Marine Raider gas mask
+  description: A military-grade gas mask used by the Marine Raiders.
   components:
   - type: Sprite
     sprite: _Serenity/Clothing/Mask/cni.rsi

@@ -5,8 +5,8 @@
 - type: entity
   parent: [ ClothingOuterHardsuitBase, BaseCentcommContraband ]
   id: ClothingOuterHardsuitColonialNavalInfantry
-  name: Colonial Navy M21 infantry hardsuit
-  description: A moderately armored mobile hardsuit used by the Colonial Navy. It features a distinctive pale-blue and black color scheme, and is equipped with a reinforced helmet for enhanced protection.
+  name: Marine Raider M21 infantry hardsuit
+  description: A moderately armored mobile hardsuit used by the Marine Raiders. It features a distinctive black and dark grey color scheme with a blue visor, and is equipped with a reinforced helmet for enhanced protection.
   components:
   - type: Sprite
     sprite: _Serenity/Clothing/OuterClothing/Hardsuits/colonialnavalinfantryHS.rsi
@@ -38,8 +38,8 @@
   parent: ClothingHeadHelmetHardsuitSyndie
   id: ClothingHeadHelmetHardsuitColonialNavalInfantry
   categories: [ HideSpawnMenu ]
-  name: Colonial Navy M21 infantry hardsuit helmet
-  description: A reinforced hardsuit helmet used by the Colonial Navy.
+  name: Marine Raider M21 infantry hardsuit helmet
+  description: A reinforced hardsuit helmet used by the Marine Raiders.
   components:
   - type: Sprite
     sprite: _Serenity/Clothing/OuterClothing/Hardsuits/colonialnavalinfantryHSHelm.rsi
