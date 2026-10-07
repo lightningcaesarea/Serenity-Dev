@@ -39,3 +39,19 @@
   isPhysical: false
   ownVerb: true # Serenity - its own verb, like Floof Station's Look at
   icon: /Textures/Interface/Actions/eyeopen.png # Serenity
+  priority: 2 # Serenity - above Check out and Strip
+
+# Serenity - Floof Station's Check out. Only the two of you see it.
+- type: socialInteraction
+  id: CheckOut
+  verbName: check-out-verb
+  interactString: checking-out-success
+  messagePerceivedByTarget: checking-out-success-target
+  interactSound: /Audio/_Serenity/Intimacy/Emotes/blush.ogg
+  soundPerceivedByOthers: false
+  isPhysical: false
+  ownVerb: true
+  icon: /Textures/Interface/Actions/eyeopen.png
+  priority: 1
+  requiredConsent:
+  - LewdInteractions

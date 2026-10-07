@@ -73,6 +73,7 @@ public sealed partial class SocialInteractionSystem : EntitySystem
                 Category = proto.OwnVerb ? null : VerbCategory.Social, // Serenity - share the Social submenu with hug
                 InSocialMenu = proto.OwnVerb, // Serenity
                 Icon = proto.Icon, // Serenity
+                Priority = proto.Priority, // Serenity
                 Act = () => InteractionAction(uid, args, proto)
             };
 

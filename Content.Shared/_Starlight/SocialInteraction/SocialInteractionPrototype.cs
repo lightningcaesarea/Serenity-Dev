@@ -99,6 +99,13 @@ public sealed partial class SocialInteractionPrototype : IPrototype
 
     // Serenity
     /// <summary>
+    /// Verb priority. Higher shows first.
+    /// </summary>
+    [DataField]
+    public int Priority;
+
+    // Serenity
+    /// <summary>
     /// Popup shown only to the target. When set, <see cref="MessagePerceivedByOthers"/> skips the target.
     /// </summary>
     [DataField]
