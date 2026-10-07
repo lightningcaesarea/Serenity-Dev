@@ -1,5 +1,5 @@
 ## Verb and window
-intimacy-verb = Intimacy...
+intimacy-verb = Intimacy
 intimacy-window-title = Intimacy
 intimacy-window-target = With { $name }
 intimacy-column-you = You
