@@ -1,0 +1,79 @@
+# Serenity: adds each PR merged to main to the in-game changelog (Resources/Changelog/ChangelogSerenity.yml).
+# Entries come from the PR's :cl: block, or from its title when it has none. See Tools/_Serenity/update_changelog.py.
+# Only runs on Serenity-Dev; Serenity-Server gets the commit when main is moved forward for a live build.
+
+name: Serenity Changelog
+
+concurrency:
+  group: serenity-changelog
+  cancel-in-progress: false
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'PR number to add (leave empty to use the PR of the latest commit)'
+        required: false
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: read
+
+jobs:
+  update-changelog:
+    if: github.repository == 'lightningcaesarea/Serenity-Dev'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Find the merged PR
+        id: pr
+        uses: actions/github-script@v7
+        with:
+          result-encoding: string
+          script: |
+            const input = '${{ inputs.pr_number }}';
+            if (input) return input;
+            const prs = await github.rest.repos.listPullRequestsAssociatedWithCommit({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              commit_sha: context.sha,
+            });
+            const merged = prs.data.find(pr => pr.merged_at && pr.base.ref === 'main');
+            if (!merged) {
+              console.log('No merged PR for this commit; nothing to add.');
+              return '';
+            }
+            return String(merged.number);
+
+      - name: Update the changelog
+        if: steps.pr.outputs.result != ''
+        run: |
+          pip install --quiet pyyaml PyGithub
+          python3 Tools/_Serenity/update_changelog.py
+        env:
+          PR_NUMBER: ${{ steps.pr.outputs.result }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+
+      - name: Commit and push
+        if: steps.pr.outputs.result != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add Resources/Changelog/ChangelogSerenity.yml
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "Update changelog for PR #${{ steps.pr.outputs.result }} [skip ci]"
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push origin HEAD:main && exit 0
+            sleep 5
+          done
+          exit 1

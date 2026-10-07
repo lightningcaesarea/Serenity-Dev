@@ -20,6 +20,8 @@ If your PR contains in-game changes you must provide screenshots/videos of the c
 **Changelog**
 <!--
 If you want the players to know about changes made in this PR, specify them using the template outside the comment. Short and informative.
+Serenity: these go into the in-game Serenity Changelog when the PR merges. With no :cl: block, the PR title is used instead.
+For a code-only or CI-only PR, put a line reading just no-changelog in the description to leave it out.
 
 :cl: STARLIGHT TEAM
 - add: Added Starlight.
