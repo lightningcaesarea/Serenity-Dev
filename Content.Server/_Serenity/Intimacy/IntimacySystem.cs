@@ -53,6 +53,7 @@ public sealed partial class IntimacySystem : SharedIntimacySystem
             Text = Loc.GetString("intimacy-verb"),
             Priority = -10,
             Act = () => OpenWindow(user, targetUid, session),
+            Social = true,
         });
     }
 

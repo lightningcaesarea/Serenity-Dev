@@ -191,6 +191,7 @@
     interactSuccessString: hugging-success-generic
     interactSuccessSound: /Audio/Effects/thudswoosh.ogg
     messagePerceivedByOthers: hugging-success-generic-others
+  - type: SocialMenu # Serenity
   - type: CanHostGuardian
   - type: NpcFactionMember
     factions:

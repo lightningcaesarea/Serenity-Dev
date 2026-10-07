@@ -1,0 +1,1 @@
+social-verb-hug = Hug

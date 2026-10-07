@@ -43,6 +43,9 @@ namespace Content.Client.Verbs.UI
         /// </summary>
         public ContextMenuPopup? OpenMenu = null;
 
+        // Serenity - when set, only verbs flagged as social are listed, without categories.
+        private bool _socialOnly;
+
         public void OnStateEntered(GameplayState state)
         {
             _context.OnContextKeyEvent += OnKeyBindDown;
@@ -129,11 +132,53 @@ namespace Content.Client.Verbs.UI
             menu.Open(box);
         }
 
+        // Serenity
+        /// <summary>
+        ///     Open a condensed verb menu at the mouse that lists only the social verbs (hug, strip, intimacy...)
+        ///     for the given target. Opened by clicking another player with an empty hand.
+        /// </summary>
+        public void OpenSocialMenu(EntityUid target)
+        {
+            if (_playerManager.LocalEntity is not {Valid: true} user)
+                return;
+
+            Close();
+
+            var menu = _context.RootMenu;
+            menu.MenuBody.RemoveAllChildren();
+
+            var netTarget = EntityManager.GetNetEntity(target);
+            CurrentTarget = netTarget;
+            CurrentVerbs = _verbSystem.GetVerbs(netTarget, user, Verb.VerbTypes, out _);
+            ExtraCategories = new();
+            OpenMenu = menu;
+            _socialOnly = true;
+
+            FillVerbPopup(menu);
+
+            menu.SetPositionLast();
+            var box = UIBox2.FromDimensions(UIManager.MousePositionScaled.Position, new Vector2(1, 1));
+            menu.Open(box);
+        }
+
         /// <summary>
         ///     Fill the verb pop-up using the verbs stored in <see cref="CurrentVerbs"/>
         /// </summary>
         private void FillVerbPopup(ContextMenuPopup popup)
         {
+            // Serenity - social menu lists its verbs flat and skips everything else.
+            if (_socialOnly)
+            {
+                foreach (var verb in CurrentVerbs)
+                {
+                    if (verb.Social)
+                        _context.AddElement(popup, new VerbMenuElement(verb));
+                }
+
+                popup.InvalidateMeasure();
+                return;
+            }
+
             HashSet<string> listedCategories = new();
             var extras = new ValueList<string>(ExtraCategories.Count);
 
@@ -284,6 +329,8 @@ namespace Content.Client.Verbs.UI
 
         private void Close()
         {
+            _socialOnly = false; // Serenity
+
             if (OpenMenu == null)
                 return;
 

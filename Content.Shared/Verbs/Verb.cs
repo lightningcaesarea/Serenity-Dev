@@ -146,6 +146,13 @@ namespace Content.Shared.Verbs
         /// </summary>
         public bool? DoContactInteraction;
 
+        // Serenity
+        /// <summary>
+        ///     Whether this verb is listed in the condensed social menu that opens when a player clicks another
+        ///     player with an empty hand.
+        /// </summary>
+        public bool Social;
+
         public virtual bool DefaultDoContactInteraction => false;
 
         /// <summary>
