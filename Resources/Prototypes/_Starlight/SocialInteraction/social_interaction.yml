@@ -32,9 +32,10 @@
   verbName: look-verb
   interactString: looking-success
   messagePerceivedByOthers: looking-success-others
-  emoteMessage: looking-emote
-  emoteMessageSelf: looking-emote-self
+  messagePerceivedByTarget: looking-success-target # Serenity
   interactSound: /Audio/Effects/pop_high.ogg
   soundPerceivedByOthers: false
   allowSelfTarget: true
   isPhysical: false
+  ownVerb: true # Serenity - its own verb, like Floof Station's Look at
+  icon: /Textures/Interface/Actions/eyeopen.png # Serenity
