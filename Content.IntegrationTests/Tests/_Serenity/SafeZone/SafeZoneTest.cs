@@ -22,7 +22,7 @@ public sealed class SafeZoneTest : GameTest
 {
     private const string Map = "SerenitySafeZoneTestMap";
     private const string ExemptMap = "SerenitySafeZoneExemptTestMap";
-    private static readonly ProtoId<JobPrototype> Mime = "Mime";
+    private static readonly ProtoId<JobPrototype> Assistant = "Assistant";
 
     // YAML indentation, not C#.
     // editorconfig-checker-disable
@@ -42,7 +42,7 @@ public sealed class SafeZoneTest : GameTest
         - type: SafeZone
         - type: StationJobs
           availableJobs:
-            {Mime}: [ 1, 1 ]
+            {Assistant}: [ 1, 1 ]
 
 - type: gameMap
   id: {ExemptMap}
@@ -57,10 +57,10 @@ public sealed class SafeZoneTest : GameTest
           mapNameTemplate: ""Empty""
         - type: SafeZone
           exemptJobs:
-          - {Mime}
+          - {Assistant}
         - type: StationJobs
           availableJobs:
-            {Mime}: [ 1, 1 ]
+            {Assistant}: [ 1, 1 ]
 ";
     // editorconfig-checker-enable
 
@@ -75,11 +75,11 @@ public sealed class SafeZoneTest : GameTest
     [SidedDependency(Side.Server)] private readonly GameTicker _ticker = default!;
     [SidedDependency(Side.Server)] private readonly SharedTransformSystem _transform = default!;
 
-    private async Task<EntityUid> SpawnAsMime(string map = Map)
+    private async Task<EntityUid> SpawnAsAssistant(string map = Map)
     {
         Server.CfgMan.SetCVar(CCVars.GameMap, map);
-        await Pair.SetJobPreferences([Mime]);
-        await Pair.SetJobPriorities((Mime, JobPriority.High));
+        await Pair.SetJobPreferences([Assistant]);
+        await Pair.SetJobPriorities((Assistant, JobPriority.High));
         _ticker.ToggleReadyAll(true);
         await Server.WaitPost(() => _ticker.StartRound());
         await RunTicksSync(10);
@@ -102,7 +102,7 @@ public sealed class SafeZoneTest : GameTest
     [Test]
     public async Task PacifiedOnTheGridAndFreedOffIt()
     {
-        var body = await SpawnAsMime();
+        var body = await SpawnAsAssistant();
         await RunSeconds(2);
 
         await Server.WaitAssertion(() =>
@@ -125,7 +125,7 @@ public sealed class SafeZoneTest : GameTest
     [Test]
     public async Task OtherPacificationIsKept()
     {
-        var body = await SpawnAsMime();
+        var body = await SpawnAsAssistant();
         await Server.WaitPost(() => SEntMan.EnsureComponent<PacifiedComponent>(body));
         await RunSeconds(2);
 
@@ -143,7 +143,7 @@ public sealed class SafeZoneTest : GameTest
     [Test]
     public async Task ExemptJobsAreNotPacified()
     {
-        var body = await SpawnAsMime(ExemptMap);
+        var body = await SpawnAsAssistant(ExemptMap);
         await RunSeconds(2);
 
         await Server.WaitAssertion(() =>
