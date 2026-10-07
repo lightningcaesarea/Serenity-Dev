@@ -59,17 +59,25 @@ public sealed partial class IntimacyVocalComponent : Component
 
     // ---- Triggers ----
 
+    /// <summary>Arousal at or above this lets a pleasurable act on the mob draw a moan.</summary>
+    [DataField]
+    public float ActMoanArousalThreshold = 10f;
+
+    /// <summary>Chance of moaning when a pleasurable act lands on a mob over <see cref="ActMoanArousalThreshold"/>.</summary>
+    [DataField]
+    public float ActMoanChance = 0.5f;
+
     /// <summary>Arousal at or above this makes the mob liable to moan on its own.</summary>
     [DataField]
-    public float MoanArousalThreshold = 70f;
+    public float MoanArousalThreshold = 50f;
 
     /// <summary>Pleasure at or above this also makes the mob liable to moan on its own.</summary>
     [DataField]
-    public float MoanPleasureThreshold = 85f;
+    public float MoanPleasureThreshold = 70f;
 
-    /// <summary>Per-second chance of an automatic moan while over a threshold. 0.03 ≈ one every ~30 s.</summary>
+    /// <summary>Per-second chance of an automatic moan while over a threshold. 0.05 ≈ one every ~20 s.</summary>
     [DataField]
-    public float AutoMoanChance = 0.03f;
+    public float AutoMoanChance = 0.05f;
 
     /// <summary>A pain increase that leaves Pain above this may draw a pained sound.</summary>
     [DataField]
@@ -84,7 +92,7 @@ public sealed partial class IntimacyVocalComponent : Component
 
     /// <summary>Minimum gap between any two automatic vocalisations, so the chat is not flooded.</summary>
     [DataField]
-    public TimeSpan MinimumGap = TimeSpan.FromSeconds(6);
+    public TimeSpan MinimumGap = TimeSpan.FromSeconds(4);
 
     // ---- Emote text ($actor) ----
 

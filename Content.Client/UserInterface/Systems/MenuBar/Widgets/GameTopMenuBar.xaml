@@ -47,7 +47,7 @@
     <ui:MenuButton
         Name="ConsentButton"
         Access="Internal"
-        Icon="{xe:Tex '/Textures/Interface/Nano/lock.svg.192dpi.png'}"
+        Icon="{xe:Tex '/Textures/_Serenity/Interface/heart.svg.192dpi.png'}"
         ToolTip="{Loc 'game-hud-open-consent-menu-button-tooltip'}"
         MinSize="42 64"
         HorizontalExpand="True"
