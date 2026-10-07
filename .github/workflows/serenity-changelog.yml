@@ -1,6 +1,9 @@
 # Serenity: adds each PR merged to main to the in-game changelog (Resources/Changelog/ChangelogSerenity.yml).
 # Entries come from the PR's :cl: block, or from its title when it has none. See Tools/_Serenity/update_changelog.py.
 # Only runs on Serenity-Dev; Serenity-Server gets the commit when main is moved forward for a live build.
+# No [skip ci] in the commit message: GitHub skips push workflows for it, so when this commit is
+# the head of a live push, Serenity-Server's Live Server Build would not run. Pushes made with
+# GITHUB_TOKEN don't start workflows here anyway.
 
 name: Serenity Changelog
 
@@ -71,7 +74,7 @@ jobs:
             echo "No changes to commit."
             exit 0
           fi
-          git commit -m "Update changelog for PR #${{ steps.pr.outputs.result }} [skip ci]"
+          git commit -m "Update changelog for PR #${{ steps.pr.outputs.result }}"
           for i in 1 2 3; do
             git pull --rebase origin main && git push origin HEAD:main && exit 0
             sleep 5
