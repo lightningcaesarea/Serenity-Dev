@@ -835,3 +835,12 @@ Entries:
   id: 13801
   time: '2026-10-07T19:53:30.000000+00:00'
   url: https://github.com/lightningcaesarea/Serenity-Dev/pull/138
+- author: Inny
+  changes:
+  - message: 'Serenity Outpost is now a safe zone: you can''t attack anyone while you''re on the outpost itself. Command, Marines and Marine Raiders are exempt.'
+    type: Add
+  - message: New players get a welcome message when they spawn, and the station lets everyone know someone new has arrived.
+    type: Add
+  id: 13401
+  time: '2026-10-07T22:09:06.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/134
