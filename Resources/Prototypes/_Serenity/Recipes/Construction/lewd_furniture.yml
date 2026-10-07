@@ -1,0 +1,364 @@
+# Construction for the lewd furniture in Entities/Structures/Furniture/lewd_furniture.yml.
+
+- type: constructionGraph
+  id: DancingPole
+  start: start
+  graph:
+    - node: start
+      actions:
+        - !type:DestroyEntity {}
+      edges:
+        - to: purple
+          steps:
+            - material: Steel
+              amount: 3
+              doAfter: 2
+            - material: MetalRod
+              amount: 2
+              doAfter: 2
+        - to: cyan
+          steps:
+            - material: Steel
+              amount: 3
+              doAfter: 2
+            - material: MetalRod
+              amount: 2
+              doAfter: 2
+        - to: green
+          steps:
+            - material: Steel
+              amount: 3
+              doAfter: 2
+            - material: MetalRod
+              amount: 2
+              doAfter: 2
+        - to: red
+          steps:
+            - material: Steel
+              amount: 3
+              doAfter: 2
+            - material: MetalRod
+              amount: 2
+              doAfter: 2
+        - to: white
+          steps:
+            - material: Steel
+              amount: 3
+              doAfter: 2
+            - material: MetalRod
+              amount: 2
+              doAfter: 2
+
+    - node: purple
+      entity: DancingPole
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 3
+            - !type:SpawnPrototype
+              prototype: PartRodMetal1
+              amount: 2
+          steps:
+            - tool: Screwing
+              doAfter: 2
+            - tool: Anchoring
+              doAfter: 2
+
+    - node: cyan
+      entity: DancingPoleCyan
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 3
+            - !type:SpawnPrototype
+              prototype: PartRodMetal1
+              amount: 2
+          steps:
+            - tool: Screwing
+              doAfter: 2
+            - tool: Anchoring
+              doAfter: 2
+
+    - node: green
+      entity: DancingPoleGreen
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 3
+            - !type:SpawnPrototype
+              prototype: PartRodMetal1
+              amount: 2
+          steps:
+            - tool: Screwing
+              doAfter: 2
+            - tool: Anchoring
+              doAfter: 2
+
+    - node: red
+      entity: DancingPoleRed
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 3
+            - !type:SpawnPrototype
+              prototype: PartRodMetal1
+              amount: 2
+          steps:
+            - tool: Screwing
+              doAfter: 2
+            - tool: Anchoring
+              doAfter: 2
+
+    - node: white
+      entity: DancingPoleWhite
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 3
+            - !type:SpawnPrototype
+              prototype: PartRodMetal1
+              amount: 2
+          steps:
+            - tool: Screwing
+              doAfter: 2
+            - tool: Anchoring
+              doAfter: 2
+
+- type: construction
+  id: DancingPole
+  graph: DancingPole
+  startNode: start
+  targetNode: purple
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: DancingPoleCyan
+  graph: DancingPole
+  startNode: start
+  targetNode: cyan
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: DancingPoleGreen
+  graph: DancingPole
+  startNode: start
+  targetNode: green
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: DancingPoleRed
+  graph: DancingPole
+  startNode: start
+  targetNode: red
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: DancingPoleWhite
+  graph: DancingPole
+  startNode: start
+  targetNode: white
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: constructionGraph
+  id: BdsmBed
+  start: start
+  graph:
+    - node: start
+      actions:
+        - !type:DestroyEntity {}
+      edges:
+        - to: bed
+          steps:
+            - material: Steel
+              amount: 2
+              doAfter: 2
+            - material: Plastic
+              amount: 4
+              doAfter: 2
+
+    - node: bed
+      entity: BdsmBed
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 2
+            - !type:SpawnPrototype
+              prototype: SheetPlastic1
+              amount: 4
+          steps:
+            - tool: Screwing
+              doAfter: 2
+
+- type: construction
+  id: BdsmBed
+  graph: BdsmBed
+  startNode: start
+  targetNode: bed
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: constructionGraph
+  id: PillowPile
+  start: start
+  graph:
+    - node: start
+      actions:
+        - !type:DestroyEntity {}
+      edges:
+        - to: smallPink
+          steps:
+            - material: Cloth
+              amount: 5
+              doAfter: 2
+        - to: smallTeal
+          steps:
+            - material: Cloth
+              amount: 5
+              doAfter: 2
+        - to: largePink
+          steps:
+            - material: Cloth
+              amount: 10
+              doAfter: 2
+        - to: largeTeal
+          steps:
+            - material: Cloth
+              amount: 10
+              doAfter: 2
+
+    - node: smallPink
+      entity: PillowPileSmallPink
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialCloth1
+              amount: 5
+          steps:
+            - tool: Cutting
+              doAfter: 2
+
+    - node: smallTeal
+      entity: PillowPileSmallTeal
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialCloth1
+              amount: 5
+          steps:
+            - tool: Cutting
+              doAfter: 2
+
+    - node: largePink
+      entity: PillowPileLargePink
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialCloth1
+              amount: 10
+          steps:
+            - tool: Cutting
+              doAfter: 2
+
+    - node: largeTeal
+      entity: PillowPileLargeTeal
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialCloth1
+              amount: 10
+          steps:
+            - tool: Cutting
+              doAfter: 2
+
+- type: construction
+  id: PillowPileSmallPink
+  graph: PillowPile
+  startNode: start
+  targetNode: smallPink
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: PillowPileSmallTeal
+  graph: PillowPile
+  startNode: start
+  targetNode: smallTeal
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: PillowPileLargePink
+  graph: PillowPile
+  startNode: start
+  targetNode: largePink
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: PillowPileLargeTeal
+  graph: PillowPile
+  startNode: start
+  targetNode: largeTeal
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
