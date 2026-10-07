@@ -17,6 +17,14 @@
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Serenity Outpost'
+        - type: SafeZone # No fighting on the outpost itself; docked ships are their own grids.
+          exemptJobs:
+          - SecurityCadet
+          - SecurityOfficer
+          - SeniorOfficer
+          - Detective
+          - Warden
+          - HeadOfSecurity
         - type: GridSpawn
           groups:
             trade: !type:GridSpawnGroup

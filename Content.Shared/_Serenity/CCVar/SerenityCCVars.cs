@@ -144,4 +144,23 @@ public sealed partial class SerenityCCVars
     /// </summary>
     public static readonly CVarDef<float> CryoStasisLifetime =
         CVarDef.Create("serenity.cryo.stasis_lifetime_minutes", 120f, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Whether players with little playtime get a welcome message when they spawn, and the station calls out their
+    /// arrival on the radio.
+    /// </summary>
+    public static readonly CVarDef<bool> NewPlayerWelcomeEnabled =
+        CVarDef.Create("serenity.new_player_welcome.enabled", true, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Minutes of overall playtime below which a player counts as new.
+    /// </summary>
+    public static readonly CVarDef<int> NewPlayerWelcomeMaxPlaytime =
+        CVarDef.Create("serenity.new_player_welcome.max_playtime", 300, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Radio channel the station announces new players on. Empty sends only the private welcome.
+    /// </summary>
+    public static readonly CVarDef<string> NewPlayerWelcomeChannel =
+        CVarDef.Create("serenity.new_player_welcome.channel", "Common", CVar.SERVERONLY);
 }
