@@ -804,3 +804,10 @@ Entries:
   id: 13301
   time: '2026-10-07T19:21:15.000000+00:00'
   url: https://github.com/lightningcaesarea/Serenity-Dev/pull/133
+- author: Inny
+  changes:
+  - message: The ahelp window has a panic button for extreme consent violations, for when asking in LOOC, SOOC and in character hasn't worked. It alerts every online admin.
+    type: Add
+  id: 13201
+  time: '2026-10-07T19:21:25.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/132
