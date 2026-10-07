@@ -33,9 +33,12 @@
   equipment:
     id: AssistantPDA
     ears: ClothingHeadsetAssistant
-  #storage:
-    #back:
-    #- Stuff
+    belt: JetpackMiniFilled # Serenity start: Spacers get pilot-style EVA kit
+  inhand:
+  - ClothingOuterHardsuitEVA
+  storage:
+    back:
+    - ClothingHeadHelmetEVA # Serenity end
 
 - type: chameleonOutfit
   id: PassengerChameleonOutfit
