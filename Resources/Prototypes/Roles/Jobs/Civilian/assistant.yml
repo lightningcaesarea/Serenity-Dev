@@ -36,8 +36,7 @@
     belt: JetpackMiniFilled # Serenity start: Spacers get pilot-style EVA kit
   storage:
     back:
-    - ClothingOuterHardsuitEVA
-    - ClothingHeadHelmetEVA # Serenity end
+    - ClothingOuterEVASuitPilot # Serenity end: Frontier's pilot EVA suit, helmet built in
 
 - type: chameleonOutfit
   id: PassengerChameleonOutfit
