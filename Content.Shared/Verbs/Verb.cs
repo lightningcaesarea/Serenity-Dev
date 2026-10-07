@@ -146,6 +146,13 @@ namespace Content.Shared.Verbs
         /// </summary>
         public bool? DoContactInteraction;
 
+        // Serenity
+        /// <summary>
+        ///     Lists this verb as its own entry in the menu that opens when a player clicks another player with an
+        ///     empty hand, next to the <see cref="VerbCategory.Social"/> submenu.
+        /// </summary>
+        public bool InSocialMenu;
+
         public virtual bool DefaultDoContactInteraction => false;
 
         /// <summary>
