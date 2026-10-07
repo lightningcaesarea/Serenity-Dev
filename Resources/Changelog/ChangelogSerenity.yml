@@ -795,3 +795,12 @@ Entries:
   id: 13101
   time: '2026-10-07T15:37:57.000000+00:00'
   url: https://github.com/lightningcaesarea/Serenity-Dev/pull/131
+- author: Inny
+  changes:
+  - message: Staff can answer ahelps by replying in the Discord ahelp relay channel.
+    type: Add
+  - message: The Discord bot's status shows the player count and round time.
+    type: Add
+  id: 13301
+  time: '2026-10-07T19:21:15.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/133
