@@ -9,3 +9,6 @@ job-description-station-commander = Command the Outpost: coordinate every depart
 # Serenity: the Assistant Manager job (id AssistantManager) is reworked into the Station Officer.
 job-name-station-officer = Station Officer
 job-description-station-officer = Back up the Station Commander: keep the Outpost's departments on task, direct the crew, and step in when the Commander is busy.
+
+# Serenity: the Assistant job's playtime tracker (JobPassenger) shows as Spacer; upstream's line is commented out.
+JobPassenger = Spacer
