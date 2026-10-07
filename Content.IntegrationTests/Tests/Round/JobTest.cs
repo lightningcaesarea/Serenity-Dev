@@ -16,7 +16,7 @@ public sealed class JobTest : GameTest
 {
     private static readonly ProtoId<JobPrototype> Passenger = "Assistant";
     private static readonly ProtoId<JobPrototype> Engineer = "StationEngineer";
-    private static readonly ProtoId<JobPrototype> Captain = "Captain";
+    private static readonly ProtoId<JobPrototype> Captain = "HeadOfPersonnel"; // Serenity: the Captain is disabled; the Station Commander is the weighted head job
 
     private static string _map = "JobTestMap";
 

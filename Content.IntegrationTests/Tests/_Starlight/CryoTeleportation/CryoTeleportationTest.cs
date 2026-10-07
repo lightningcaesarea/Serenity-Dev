@@ -27,7 +27,7 @@ public sealed class CryoTeleportationTest : GameTest
     private const string Map = "CryoTeleportationTestMap";
     private static readonly EntProtoId _cryoPod = "CryogenicSleepUnit";
     private static readonly ProtoId<JobPrototype> _passenger = "Assistant";
-    private static readonly ProtoId<JobPrototype> _mime = "Mime";
+    private static readonly ProtoId<JobPrototype> _limitedJob = "Bartender"; // Serenity: the Mime is disabled; any limited-slot job works
 
     // Long enough to cover the auto-cryo refresh cooldown (5s) plus a margin.
     private const float WaitForCryo = 8f;
@@ -50,7 +50,7 @@ public sealed class CryoTeleportationTest : GameTest
         - type: StationJobs
           availableJobs:
             {_passenger}: [ -1, -1 ]
-            {_mime}: [ 1, 1 ]
+            {_limitedJob}: [ 1, 1 ]
 ";
     // editorconfig-checker-enable
 
@@ -74,7 +74,7 @@ public sealed class CryoTeleportationTest : GameTest
     /// <summary>
     /// /ghost while alive leaves a mindless body. Auto-cryo must still reopen its slot.
     /// </summary>
-    [TestCase("Mime")]
+    [TestCase("Bartender")] // Serenity: the Mime is disabled
     // Serenity: no K9 case, the job is disabled here (setPreference: false) so a round can't assign it
     public async Task GhostWhileAliveReturnsSlot(string jobId)
     {
@@ -107,7 +107,7 @@ public sealed class CryoTeleportationTest : GameTest
     [Test]
     public async Task RevivedBodyAfterNewLifeReturnsOnlyOldSlot()
     {
-        var (body, station, pod) = await StartRoundAs(_mime);
+        var (body, station, pod) = await StartRoundAs(_limitedJob);
         var session = ServerSession!;
         EntityUid newBody = default;
 
@@ -138,8 +138,8 @@ public sealed class CryoTeleportationTest : GameTest
         await Server.WaitAssertion(() =>
         {
             AssertStored(pod, body);
-            AssertSlots(station, _mime, 1);
-            AssertNotHeld(station, session.UserId, _mime);
+            AssertSlots(station, _limitedJob, 1);
+            AssertNotHeld(station, session.UserId, _limitedJob);
 
             Assert.That(_stationJobs.TryGetPlayerJobs(station, session.UserId, out var jobs));
             Assert.That(jobs, Does.Contain(_passenger));
@@ -156,7 +156,7 @@ public sealed class CryoTeleportationTest : GameTest
     [Test]
     public async Task DisconnectInBodyReturnsSlot()
     {
-        var (body, station, pod) = await StartRoundAs(_mime);
+        var (body, station, pod) = await StartRoundAs(_limitedJob);
         var user = ServerSession!.UserId;
 
         var clientNet = Client.ResolveDependency<IClientNetManager>();
@@ -168,8 +168,8 @@ public sealed class CryoTeleportationTest : GameTest
         await Server.WaitAssertion(() =>
         {
             AssertStored(pod, body);
-            AssertSlots(station, _mime, 1);
-            AssertNotHeld(station, user, _mime);
+            AssertSlots(station, _limitedJob, 1);
+            AssertNotHeld(station, user, _limitedJob);
         });
 
         await Server.WaitPost(() => _ticker.RestartRound());
@@ -181,7 +181,7 @@ public sealed class CryoTeleportationTest : GameTest
     [Test]
     public async Task ReturningToRevivedBodyCancelsCryo()
     {
-        var (body, station, _) = await StartRoundAs(_mime);
+        var (body, station, _) = await StartRoundAs(_limitedJob);
         var session = ServerSession!;
         EntityUid mindId = default;
 
@@ -205,7 +205,7 @@ public sealed class CryoTeleportationTest : GameTest
         {
             Assert.That(session.AttachedEntity, Is.EqualTo(body));
             Assert.That(SEntMan.HasComponent<CryostorageContainedComponent>(body), Is.False);
-            AssertSlots(station, _mime, 0);
+            AssertSlots(station, _limitedJob, 0);
         });
 
         await Server.WaitPost(() => _ticker.RestartRound());
