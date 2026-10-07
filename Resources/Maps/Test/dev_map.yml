@@ -15656,7 +15656,7 @@ entities:
     - type: Transform
       pos: 31.5,19.5
       parent: 1
-- proto: SpawnPointCaptain
+- proto: SpawnPointHeadOfPersonnel
   entities:
   - uid: 24
     components:
