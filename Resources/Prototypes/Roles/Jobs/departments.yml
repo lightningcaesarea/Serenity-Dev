@@ -21,7 +21,7 @@
   - Chaplain
   - Chef
   - Clown
-  - HeadOfPersonnel
+  # - HeadOfPersonnel # Serenity: the Station Commander is Command only
   - Janitor
   - Librarian
   - Mime
