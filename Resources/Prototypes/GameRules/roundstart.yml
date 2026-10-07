@@ -453,10 +453,7 @@
     children:
       - !type:NestedSelector
         tableId: BasicCalmEventsTable
-      - !type:NestedSelector
-        tableId: BasicAntagEventsTable
-      - !type:NestedSelector
-        tableId: ModerateAntagEventsTable
+      # Serenity: antag event tables (BasicAntagEventsTable, ModerateAntagEventsTable) removed, no midround antags.
       - !type:NestedSelector
         tableId: CargoGiftsTable
       - !type:NestedSelector
@@ -470,8 +467,7 @@
     children:
     - !type:NestedSelector
       tableId: BasicCalmEventsTable
-    - !type:NestedSelector
-      tableId: BasicAntagEventsTable
+    # Serenity: antag event tables (BasicAntagEventsTable, ModerateAntagEventsTable) removed, no midround antags.
     - !type:NestedSelector
       tableId: CargoGiftsTable
     - !type:NestedSelector

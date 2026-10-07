@@ -27,7 +27,6 @@
   showInVote: true
   rules:
   - SubXenoborgs
-  - SubGamemodesRuleNoXenoborg # No two motherships. Allows wizards to spawn on Xenoborgs. Space is dangerous, yo.
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
@@ -49,7 +48,6 @@
     - BasicStationEventScheduler
     - BasicStationEventScheduler # More events without ramping events. What could go wrong?
     - MeteorSwarmMildScheduler
-    - SubGamemodesRule
     - BasicRoundstartVariation
     - BasicRoundstartVariation
     - BasicRoundstartVariation
@@ -69,7 +67,6 @@
   minPlayers: 50
   rules:
   - Vampire
-  - SubGamemodesRuleNoVampires
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
   - BasicRoundstartVariation
@@ -87,7 +84,6 @@
   rules:
     - SLChangeling
     - SLChangelingLess
-    - SubGamemodesRuleNoChangelings
     - BasicStationEventScheduler
     - BasicRoundstartVariation
 
@@ -103,7 +99,6 @@
   rules:
     - SLChangeling
     - Traitor
-    - SubGamemodesRuleNoChangelings
     - BasicStationEventScheduler
     - BasicRoundstartVariation
 
@@ -124,7 +119,6 @@
     - SLChangelingLess
     - TraitorLess
     - VampireLess
-    - SubGamemodesRuleVampTraitorLing
     - BasicStationEventScheduler
     - BasicRoundstartVariation
 
@@ -212,7 +206,6 @@
   minPlayers: 50
   rules:
   - TerrorSpidersSpawn
-  - SubGamemodesRuleNoChangelings
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
