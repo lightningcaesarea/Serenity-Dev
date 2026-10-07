@@ -11,8 +11,14 @@ namespace Content.Server._Serenity.SafeZone;
 public sealed partial class SafeZoneComponent : Component
 {
     /// <summary>
-    /// Jobs that keep the ability to fight inside the zone, e.g. security, who have to be able to arrest people.
+    /// Jobs that keep the ability to fight inside the zone, on top of <see cref="ExemptDepartments"/>.
     /// </summary>
     [DataField]
     public HashSet<ProtoId<JobPrototype>> ExemptJobs = new();
+
+    /// <summary>
+    /// Departments whose jobs keep the ability to fight inside the zone. A job counts if it is in any of these.
+    /// </summary>
+    [DataField]
+    public HashSet<ProtoId<DepartmentPrototype>> ExemptDepartments = new();
 }

@@ -3,9 +3,11 @@ using Content.Server.Station.Components;
 using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Mind;
 using Content.Shared.Mobs.Components;
+using Content.Shared.Roles;
 using Content.Shared.Roles.Jobs;
 using Content.Shared.Station.Components;
 using Robust.Shared.Player;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Server._Serenity.SafeZone;
@@ -70,12 +72,29 @@ public sealed class SafeZoneSystem : EntitySystem
             || !TryComp<SafeZoneComponent>(member.Station, out var zone))
             return false;
 
-        if (zone.ExemptJobs.Count == 0
+        if (zone.ExemptJobs.Count == 0 && zone.ExemptDepartments.Count == 0
             || !_mind.TryGetMind(uid, out var mindId, out _)
             || !_jobs.MindTryGetJobId(mindId, out var job)
             || job is not { } jobId)
             return true;
 
-        return !zone.ExemptJobs.Contains(jobId);
+        return !IsExempt(zone, jobId);
+    }
+
+    private bool IsExempt(SafeZoneComponent zone, ProtoId<JobPrototype> job)
+    {
+        if (zone.ExemptJobs.Contains(job))
+            return true;
+
+        if (zone.ExemptDepartments.Count == 0 || !_jobs.TryGetAllDepartments(job, out var departments))
+            return false;
+
+        foreach (var department in departments)
+        {
+            if (zone.ExemptDepartments.Contains(department.ID))
+                return true;
+        }
+
+        return false;
     }
 }

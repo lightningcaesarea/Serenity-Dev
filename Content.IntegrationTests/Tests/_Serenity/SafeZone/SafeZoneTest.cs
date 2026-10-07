@@ -56,8 +56,8 @@ public sealed class SafeZoneTest : GameTest
         - type: StationNameSetup
           mapNameTemplate: ""Empty""
         - type: SafeZone
-          exemptJobs:
-          - {Assistant}
+          exemptDepartments:
+          - Civilian
         - type: StationJobs
           availableJobs:
             {Assistant}: [ 1, 1 ]
@@ -147,7 +147,7 @@ public sealed class SafeZoneTest : GameTest
         await RunSeconds(2);
 
         await Server.WaitAssertion(() =>
-            Assert.That(SEntMan.HasComponent<PacifiedComponent>(body), Is.False, "exempt jobs (security) can still fight"));
+            Assert.That(SEntMan.HasComponent<PacifiedComponent>(body), Is.False, "exempt departments (security, command) can still fight"));
 
         await Server.WaitPost(() => _ticker.RestartRound());
     }
