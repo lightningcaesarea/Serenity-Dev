@@ -1,4 +1,4 @@
-job-supervisors-assistantmanager = the Assistant Manager, and absolutely everyone else
+job-supervisors-assistantmanager = the Station Officers, and absolutely everyone else
 job-supervisors-command = Command
 job-supervisors-magistrate = Magistrate
 job-supervisors-nanotrasen = NanoTrasen

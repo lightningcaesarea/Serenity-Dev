@@ -51,6 +51,7 @@
           availableJobs:
             Assistant: [ -1, -1 ]
             HeadOfPersonnel: [ 1, 1 ]
+            AssistantManager: [ 2, 2 ]
             Bartender: [ 1, 2 ]
             ServiceWorker: [ 2, 3 ]
             SecurityOfficer: [ 2, 3 ]
