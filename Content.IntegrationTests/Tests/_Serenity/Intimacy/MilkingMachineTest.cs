@@ -69,7 +69,7 @@ public sealed class MilkingMachineTest
         await server.WaitAssertion(() =>
         {
             Assert.That(solutions.TryGetSolution(machine, "tank", out _, out var tank));
-            Assert.That(tank!.GetTotalPrototypeQuantity("BreastMilk"), Is.GreaterThan(FixedPoint2.Zero), "breasts give milk");
+            Assert.That(tank!.GetTotalPrototypeQuantity("Milk"), Is.GreaterThan(FixedPoint2.Zero), "breasts give milk");
             Assert.That(intimacy.GetStat(occupant, "Arousal"), Is.GreaterThan(0f), "the pump arouses the occupant");
 
             var semenBefore = tank.GetTotalPrototypeQuantity("Semen");

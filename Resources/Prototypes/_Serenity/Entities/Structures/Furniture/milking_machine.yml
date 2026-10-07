@@ -48,13 +48,20 @@
         enum.MilkingMachineLayers.Locks:
           True: { state: locks_closed }
           False: { state: locks_open }
+  - type: UserInterface
+    interfaces:
+      enum.MilkingMachineUiKey.Key:
+        type: MilkingMachineBoundUserInterface
+  - type: ActivatableUI
+    key: enum.MilkingMachineUiKey.Key
+    verbText: milking-machine-verb-open
   - type: Strap
     position: Stand
     buckleOffset: "0,0.1"
   - type: MilkingMachine
     sources:
     - feature: BreastsAccessible
-      reagent: BreastMilk
+      reagent: Milk
       perSecond: 0.5
     - feature: PenisAccessible
       reagent: Semen
