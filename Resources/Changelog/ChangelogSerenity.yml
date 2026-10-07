@@ -788,3 +788,10 @@ Entries:
   id: 12701
   time: '2026-10-07T12:02:55.000000+00:00'
   url: https://github.com/lightningcaesarea/Serenity-Dev/pull/127
+- author: Inny
+  changes:
+  - message: Admins can enable or disable emergency shuttle calls from the (Re)call shuttle window.
+    type: Add
+  id: 13101
+  time: '2026-10-07T15:37:57.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/131
