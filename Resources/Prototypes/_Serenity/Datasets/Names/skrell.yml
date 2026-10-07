@@ -1,0 +1,13 @@
+# Skrell names, ported from RMC-14 (MIT), which took them from PolarisSS13.
+
+- type: localizedDataset
+  id: NamesSkrellFirst
+  values:
+    prefix: names-skrell-first-dataset-
+    count: 156
+
+- type: localizedDataset
+  id: NamesSkrellLast
+  values:
+    prefix: names-skrell-last-dataset-
+    count: 414

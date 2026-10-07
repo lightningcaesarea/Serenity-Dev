@@ -1,0 +1,153 @@
+# Skrell: amphibious humanoids from Baystation12 lore. Ported from RMC-14 (MIT); art is CC-BY-SA-3.0 (see
+# Textures/_RMC14/Mobs/Skrells/parts.rsi/meta.json).
+
+- type: body
+  id: Skrell
+  name: "skrell"
+  root: torso
+  slots:
+    head:
+      part: HeadSkrell
+      connections:
+      - torso
+      organs:
+        brain: OrganHumanBrain
+        eyes: OrganHumanEyes
+        tongue: OrganHumanTongue
+        eye_implant: null
+        nose_implant: null
+        brain_implant: null
+    torso:
+      part: TorsoSkrell
+      connections:
+      - right arm
+      - left arm
+      - right leg
+      - left leg
+      organs:
+        heart: OrganHumanHeart
+        lungs: OrganHumanLungs
+        stomach: OrganHumanStomach
+        liver: OrganHumanLiver
+        kidneys: OrganHumanKidneys
+        cavity: null
+    right arm:
+      part: RightArmSkrell
+      connections:
+      - right hand
+    left arm:
+      part: LeftArmSkrell
+      connections:
+      - left hand
+    right hand:
+      part: RightHandSkrell
+      organs:
+        hand_implant: null
+    left hand:
+      part: LeftHandSkrell
+      organs:
+        hand_implant: null
+    right leg:
+      part: RightLegSkrell
+      connections:
+      - right foot
+    left leg:
+      part: LeftLegSkrell
+      connections:
+      - left foot
+    right foot:
+      part: RightFootSkrell
+    left foot:
+      part: LeftFootSkrell
+
+# Body parts reuse the human part behaviour with skrell sprites.
+
+- type: entity
+  id: TorsoSkrell
+  name: "skrell torso"
+  parent: TorsoHuman
+  components:
+  - type: Sprite
+    sprite: _RMC14/Mobs/Skrells/parts.rsi
+    state: torso_m
+
+- type: entity
+  id: HeadSkrell
+  name: "skrell head"
+  parent: HeadHuman
+  components:
+  - type: Sprite
+    sprite: _RMC14/Mobs/Skrells/parts.rsi
+    state: head_m
+
+- type: entity
+  id: LeftArmSkrell
+  name: "left skrell arm"
+  parent: LeftArmHuman
+  components:
+  - type: Sprite
+    sprite: _RMC14/Mobs/Skrells/parts.rsi
+    state: l_arm
+
+- type: entity
+  id: RightArmSkrell
+  name: "right skrell arm"
+  parent: RightArmHuman
+  components:
+  - type: Sprite
+    sprite: _RMC14/Mobs/Skrells/parts.rsi
+    state: r_arm
+
+- type: entity
+  id: LeftHandSkrell
+  name: "left skrell hand"
+  parent: LeftHandHuman
+  components:
+  - type: Sprite
+    sprite: _RMC14/Mobs/Skrells/parts.rsi
+    state: l_hand
+
+- type: entity
+  id: RightHandSkrell
+  name: "right skrell hand"
+  parent: RightHandHuman
+  components:
+  - type: Sprite
+    sprite: _RMC14/Mobs/Skrells/parts.rsi
+    state: r_hand
+
+- type: entity
+  id: LeftLegSkrell
+  name: "left skrell leg"
+  parent: LeftLegHuman
+  components:
+  - type: Sprite
+    sprite: _RMC14/Mobs/Skrells/parts.rsi
+    state: l_leg
+
+- type: entity
+  id: RightLegSkrell
+  name: "right skrell leg"
+  parent: RightLegHuman
+  components:
+  - type: Sprite
+    sprite: _RMC14/Mobs/Skrells/parts.rsi
+    state: r_leg
+
+- type: entity
+  id: LeftFootSkrell
+  name: "left skrell foot"
+  parent: LeftFootHuman
+  components:
+  - type: Sprite
+    sprite: _RMC14/Mobs/Skrells/parts.rsi
+    state: l_foot
+
+- type: entity
+  id: RightFootSkrell
+  name: "right skrell foot"
+  parent: RightFootHuman
+  components:
+  - type: Sprite
+    sprite: _RMC14/Mobs/Skrells/parts.rsi
+    state: r_foot

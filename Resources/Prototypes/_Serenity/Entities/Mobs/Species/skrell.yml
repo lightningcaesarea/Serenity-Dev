@@ -1,0 +1,47 @@
+# Skrell: amphibious humanoids from Baystation12 lore. Ported from RMC-14 (MIT), where they play the same as
+# humans; only their look, names, voice and emotes differ.
+
+- type: entity
+  save: false
+  name: Urist McFrog
+  parent: BaseMobHuman
+  id: BaseMobSkrell
+  abstract: true
+  components:
+  - type: HumanoidAppearance
+    species: Skrell
+    hideLayersOnEquip:
+    - HeadTop
+    - Hair
+  - type: Icon
+    sprite: _RMC14/Mobs/Skrells/parts.rsi
+    state: preview_shorthair
+  - type: Body
+    prototype: Skrell
+    requiredLegs: 2
+  - type: Speech
+    speechVerb: Skrell
+    allowedEmotes: [ 'Trill', 'SkrellPeep', 'SkrellWarble', 'SkrellAngryTrill' ]
+  - type: Vocal
+    sounds:
+      Male: MaleSkrell
+      Female: FemaleSkrell
+      Unsexed: MaleSkrell
+
+- type: entity
+  save: false
+  name: Urist McFrog
+  parent: BaseMobSkrell
+  id: MobSkrell
+
+- type: entity
+  parent: [BaseSpeciesDummy, BaseInventoryFemaleJumpsuit]
+  id: AppearanceSkrell
+  categories: [ HideSpawnMenu ]
+  description: A dummy skrell meant to be used in character setup.
+  components:
+  - type: HumanoidAppearance
+    species: Skrell
+    hideLayersOnEquip:
+    - HeadTop
+    - Hair
