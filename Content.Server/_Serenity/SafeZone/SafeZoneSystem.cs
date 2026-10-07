@@ -72,9 +72,10 @@ public sealed class SafeZoneSystem : EntitySystem
 
         if (zone.ExemptJobs.Count == 0
             || !_mind.TryGetMind(uid, out var mindId, out _)
-            || !_jobs.MindTryGetJobId(mindId, out var job))
+            || !_jobs.MindTryGetJobId(mindId, out var job)
+            || job is not { } jobId)
             return true;
 
-        return !zone.ExemptJobs.Contains(job.Value);
+        return !zone.ExemptJobs.Contains(jobId);
     }
 }
