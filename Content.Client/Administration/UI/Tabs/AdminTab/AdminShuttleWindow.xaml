@@ -9,6 +9,11 @@
             <cc:CommandButton Command="callshuttle 4:00" Name="_callShuttleButton" Text="{Loc 'comms-console-menu-call-shuttle'}" HorizontalExpand="True" SizeFlagsStretchRatio="2" />
         </BoxContainer>
         <cc:CommandButton Command="recallshuttle" Name="_recallShuttleButton" Text="{Loc 'comms-console-menu-recall-shuttle'}" HorizontalAlignment="Center"/>
+        <!-- Serenity: switch emergency shuttle calls on or off for the round, without an announcement -->
+        <BoxContainer Orientation="Horizontal" HorizontalExpand="True" Margin="0 4 0 0">
+            <cc:CommandButton Command="shuttlecalls true false" Text="{Loc 'admin-shuttle-enable-calls'}" HorizontalExpand="True"/>
+            <cc:CommandButton Command="shuttlecalls false false" Text="{Loc 'admin-shuttle-disable-calls'}" HorizontalExpand="True"/>
+        </BoxContainer>
     </BoxContainer>
 
 </DefaultWindow>
