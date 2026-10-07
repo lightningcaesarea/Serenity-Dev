@@ -47,6 +47,15 @@ public sealed partial class InteractionPopupSystem : EntitySystem
         SharedInteract(uid, component, args, args.Target, args.User);
     }
 
+    // Serenity - lets the social menu's hug verb run the same interaction as an empty-hand click.
+    public void TryInteract(Entity<InteractionPopupComponent?> target, EntityUid user)
+    {
+        if (!Resolve(target, ref target.Comp, false))
+            return;
+
+        SharedInteract(target, target.Comp, new InteractHandEvent(user, target), target, user);
+    }
+
     private void SharedInteract(
         EntityUid uid,
         InteractionPopupComponent component,

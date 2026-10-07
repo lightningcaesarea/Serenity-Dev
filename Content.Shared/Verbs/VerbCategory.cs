@@ -96,5 +96,9 @@ namespace Content.Shared.Verbs
 
         public static readonly VerbCategory ManageChannels =
             new(text: "verb-categories-manage-channels", null);
+
+        // Serenity - hug, strip, intimacy and the like. Also listed on its own when clicking another player.
+        public static readonly VerbCategory Social =
+            new("verb-categories-social", "/Textures/Interface/VerbIcons/group.svg.192dpi.png");
     }
 }
