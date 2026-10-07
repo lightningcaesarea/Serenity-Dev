@@ -97,6 +97,26 @@ public sealed partial class SerenityCCVars
         CVarDef.Create("serenity.discord_link.fail_open", true, CVar.SERVERONLY);
 
     /// <summary>
+    /// Discord channel ID of the ahelp relay. Staff (serenity.discord_link.staff_role) replying to an ahelp there
+    /// sends the reply to the player in game. If discord.ahelp_webhook is empty the bot posts the ahelps here itself.
+    /// Empty falls back to the channel the ahelp webhook posts in.
+    /// </summary>
+    public static readonly CVarDef<string> DiscordAhelpChannel =
+        CVarDef.Create("serenity.discord.ahelp_channel", "", CVar.SERVERONLY);
+
+    /// <summary>
+    /// Show the connected player count and round time as the Discord bot's status.
+    /// </summary>
+    public static readonly CVarDef<bool> DiscordStatusEnabled =
+        CVarDef.Create("serenity.discord.status_enabled", true, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Seconds between Discord bot status updates. Discord rate-limits presence changes, so keep this at 20 or more.
+    /// </summary>
+    public static readonly CVarDef<float> DiscordStatusInterval =
+        CVarDef.Create("serenity.discord.status_interval", 30f, CVar.SERVERONLY);
+
+    /// <summary>
     /// Federal Bills a character's account opens with, the first time that character spawns.
     /// Money is per-character, so every new character can claim this once.
     /// </summary>
