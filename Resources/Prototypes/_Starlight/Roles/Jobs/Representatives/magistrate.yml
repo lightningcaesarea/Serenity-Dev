@@ -21,7 +21,7 @@
   icon: "JobIconMagistrate"
   rules: job-rules-corporate-aligned
   supervisors: job-supervisors-nanotrasen
-  setPreference: true
+  setPreference: false # Serenity: role disabled
   displayWeight: 5
   access:
   - Magistrate

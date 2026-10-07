@@ -3,6 +3,7 @@
   name: job-name-performer
   description: job-description-performer
   playTimeTracker: JobPerformer
+  setPreference: false # Serenity: role disabled
   requirements:
   - !type:DepartmentTimeRequirement
     department: Civilian

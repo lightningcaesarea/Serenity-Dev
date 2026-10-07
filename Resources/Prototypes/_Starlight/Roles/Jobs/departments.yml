@@ -16,6 +16,7 @@
   name: department-NT
   description: department-NT-description
   color: "#05255D"
+  editorHidden: true # Serenity: every job in this department is disabled
   roles:
   - BlueShield
   - Magistrate
@@ -48,6 +49,7 @@
   description: department-ITG-description
   color: "#a34f18"
   weight: -10
+  editorHidden: true # Serenity: every job in this department is disabled
   roles:
   - SalvageLead
   - SalvageSpecialist

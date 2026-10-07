@@ -3,6 +3,7 @@
   name: job-name-mime
   description: job-description-mime
   playTimeTracker: JobMime
+  setPreference: false # Serenity: role disabled
   requirements:
     - !type:OverallPlaytimeRequirement
       time: 4h
