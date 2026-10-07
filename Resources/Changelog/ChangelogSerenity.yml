@@ -1,0 +1,790 @@
+Order: -2
+Entries:
+- author: Inny
+  changes:
+  - message: Spesos are now F-Bills.
+    type: Tweak
+  id: 301
+  time: '2026-09-19T19:33:04.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/3
+- author: Inny
+  changes:
+  - message: 'Kink and consent preferences: set what you are and aren''t into, per player.'
+    type: Add
+  id: 101
+  time: '2026-09-19T19:33:06.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/1
+- author: Inny
+  changes:
+  - message: Reworked assistant loadouts and added WinterDrobe clothing options.
+    type: Tweak
+  id: 201
+  time: '2026-09-19T19:33:10.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/2
+- author: Inny
+  changes:
+  - message: Cargo orders cost more.
+    type: Tweak
+  id: 401
+  time: '2026-09-19T19:33:13.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/4
+- author: Inny
+  changes:
+  - message: Salaries were cut and the assistant role is unpaid.
+    type: Tweak
+  id: 501
+  time: '2026-09-19T19:33:16.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/5
+- author: Inny
+  changes:
+  - message: Added a currency exchange machine.
+    type: Add
+  id: 601
+  time: '2026-09-19T19:33:22.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/6
+- author: Inny
+  changes:
+  - message: Cargo orders now cost three times the Starlight price.
+    type: Tweak
+  id: 801
+  time: '2026-09-20T16:12:09.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/8
+- author: Inny
+  changes:
+  - message: F-Bills are now called Federal Bills.
+    type: Tweak
+  id: 901
+  time: '2026-09-20T16:12:12.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/9
+- author: Inny
+  changes:
+  - message: Salaries now come from the Federation and the Sector Station Administration.
+    type: Tweak
+  id: 1001
+  time: '2026-09-20T16:12:16.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/10
+- author: Inny
+  changes:
+  - message: Fixed the layout of the kink preference buttons.
+    type: Fix
+  id: 1101
+  time: '2026-09-20T16:12:18.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/11
+- author: Inny
+  changes:
+  - message: ATMs no longer charge a deposit fee.
+    type: Remove
+  id: 1201
+  time: '2026-09-20T16:12:21.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/12
+- author: Inny
+  changes:
+  - message: Intimacy interactions between consenting players, with consent mirroring.
+    type: Add
+  id: 1401
+  time: '2026-09-20T17:49:16.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/14
+- author: Inny
+  changes:
+  - message: Admins can check and change balances, and every money movement is logged.
+    type: Add
+  id: 1501
+  time: '2026-09-20T17:49:20.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/15
+- author: Inny
+  changes:
+  - message: Removed the NSFW descriptions consent toggle.
+    type: Remove
+  id: 1801
+  time: '2026-09-20T19:59:05.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/18
+- author: Inny
+  changes:
+  - message: Kinks and consent can be opened from the top bar and from the inspect window.
+    type: Add
+  id: 1701
+  time: '2026-09-20T20:32:45.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/17
+- author: Inny
+  changes:
+  - message: Intimacy has sounds, involuntary vocalisations, anatomy features and 14 new acts.
+    type: Add
+  id: 2001
+  time: '2026-09-21T00:39:52.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/20
+- author: Inny
+  changes:
+  - message: 'New shipyard console: buy a ship and get its deed.'
+    type: Add
+  id: 2101
+  time: '2026-09-21T11:26:07.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/21
+- author: Inny
+  changes:
+  - message: You can go back into your cryostorage body.
+    type: Tweak
+  id: 2201
+  time: '2026-09-21T11:26:11.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/22
+- author: Inny
+  changes:
+  - message: 'Bounty contracts: post and claim bounties on other players from a PDA cartridge.'
+    type: Add
+  id: 2301
+  time: '2026-09-21T11:26:14.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/23
+- author: Inny
+  changes:
+  - message: 'Contraband exchange: a fence console that buys contraband for Federal Bills.'
+    type: Add
+  id: 2401
+  time: '2026-09-21T11:26:17.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/24
+- author: Inny
+  changes:
+  - message: 'Dead drops: search certain posters to call down a smuggler drop pod.'
+    type: Add
+  id: 2501
+  time: '2026-09-21T11:26:23.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/25
+- author: Inny
+  changes:
+  - message: 'Public transit: an automated bus runs between stations.'
+    type: Add
+  id: 2601
+  time: '2026-09-21T11:26:28.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/26
+- author: Inny
+  changes:
+  - message: The shipyard map is cleaned up when the last shipyard console is removed.
+    type: Fix
+  id: 3301
+  time: '2026-09-22T15:56:53.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/33
+- author: Inny
+  changes:
+  - message: Added the Stirling Synthetics clothing line.
+    type: Add
+  id: 2901
+  time: '2026-09-22T16:38:53.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/29
+- author: Inny
+  changes:
+  - message: The shipyard sells the full Frontier vessel catalogue.
+    type: Add
+  id: 3101
+  time: '2026-09-22T16:39:01.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/31
+- author: Inny
+  changes:
+  - message: Security uniforms and gear use Delta-V's black and navy look.
+    type: Tweak
+  id: 3001
+  time: '2026-09-22T16:39:11.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/30
+- author: Inny
+  changes:
+  - message: Asteroid fields and more salvage wrecks now generate in space.
+    type: Add
+  id: 3401
+  time: '2026-09-26T15:46:55.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/34
+- author: Inny
+  changes:
+  - message: Points of interest spawn around the sector, starting with the Cargo Depot.
+    type: Add
+  id: 3501
+  time: '2026-09-26T15:47:38.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/35
+- author: Inny
+  changes:
+  - message: Genitals and anatomy are part of character creation and intimacy.
+    type: Add
+  id: 3601
+  time: '2026-09-27T03:49:54.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/36
+- author: Inny
+  changes:
+  - message: Character and preference saves are checked so they can't be broken or bloated.
+    type: Fix
+  id: 3801
+  time: '2026-09-28T02:49:58.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/38
+- author: Inny
+  changes:
+  - message: Link your Discord account to your game account; joining needs Discord membership.
+    type: Add
+  id: 3901
+  time: '2026-09-28T17:26:21.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/39
+- author: Inny
+  changes:
+  - message: Disabled the Duty Officer, K9 and Surgeon jobs.
+    type: Remove
+  id: 4201
+  time: '2026-09-28T17:26:38.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/42
+- author: Inny
+  changes:
+  - message: 'Skills system, and new security ranks: Armourer and Senior Officer.'
+    type: Add
+  id: 4101
+  time: '2026-09-28T19:07:22.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/41
+- author: Inny
+  changes:
+  - message: Removed the arrivals terminal and shuttle.
+    type: Remove
+  id: 4401
+  time: '2026-09-28T19:07:28.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/44
+- author: Inny
+  changes:
+  - message: Sector Credits are gone; Federal Bills is the only currency.
+    type: Remove
+  id: 4501
+  time: '2026-09-28T23:29:14.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/45
+- author: Inny
+  changes:
+  - message: 'Wounds: injuries can leave wounds that need treatment.'
+    type: Add
+  id: 4601
+  time: '2026-09-28T23:29:27.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/46
+- author: Inny
+  changes:
+  - message: Six specialised shipyard consoles that take Federal Bills.
+    type: Add
+  id: 4801
+  time: '2026-09-29T00:50:50.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/48
+- author: Inny
+  changes:
+  - message: Colourable duffel bags in the ClothesMate.
+    type: Add
+  id: 4901
+  time: '2026-09-29T00:50:53.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/49
+- author: Inny
+  changes:
+  - message: 'Medical Recovery: implants, beacons, a recovery pad and console to bring back the fallen.'
+    type: Add
+  id: 5101
+  time: '2026-09-29T00:50:57.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/51
+- author: Inny
+  changes:
+  - message: Added the AR-18 Kauser carbine.
+    type: Add
+  id: 5001
+  time: '2026-09-29T00:51:17.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/50
+- author: Inny
+  changes:
+  - message: Redesigned the intimacy window.
+    type: Tweak
+  id: 6101
+  time: '2026-09-30T21:15:09.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/61
+- author: Inny
+  changes:
+  - message: Pain, and painkillers to treat it.
+    type: Add
+  id: 5201
+  time: '2026-09-30T21:41:17.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/52
+- author: Inny
+  changes:
+  - message: Typing bubbles show which channel you are typing in; Felionoids get their own bubble.
+    type: Add
+  id: 5301
+  time: '2026-09-30T21:41:30.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/53
+- author: Inny
+  changes:
+  - message: Fixed edge cases when clearing and adding wounds.
+    type: Fix
+  id: 5401
+  time: '2026-09-30T21:41:35.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/54
+- author: Inny
+  changes:
+  - message: Slash and piercing damage now cause wounds.
+    type: Add
+  id: 5601
+  time: '2026-09-30T22:42:38.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/56
+- author: Inny
+  changes:
+  - message: Surgeries that treat fractures, burns, lacerations and punctures.
+    type: Add
+  id: 5701
+  time: '2026-09-30T22:42:48.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/57
+- author: Inny
+  changes:
+  - message: 'Surgical sterility: dirty tools contaminate patients; soap cleans them.'
+    type: Add
+  id: 5801
+  time: '2026-09-30T22:42:58.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/58
+- author: Inny
+  changes:
+  - message: 'Infection: dirty surgery and open wounds can get infected; antibiotics treat it.'
+    type: Add
+  id: 5901
+  time: '2026-09-30T22:43:07.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/59
+- author: Inny
+  changes:
+  - message: Antibiox is a broad-spectrum antibiotic that stops infections progressing.
+    type: Tweak
+  id: 6001
+  time: '2026-09-30T22:43:17.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/60
+- author: Inny
+  changes:
+  - message: Health analyzers come in basic and advanced versions; reading them uses the Diagnostics skill.
+    type: Tweak
+  id: 6201
+  time: '2026-09-30T22:43:27.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/62
+- author: Inny
+  changes:
+  - message: A 15u dose of Antibiox lasts about seven minutes.
+    type: Tweak
+  id: 6401
+  time: '2026-09-30T22:43:37.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/64
+- author: Inny
+  changes:
+  - message: IV stands and bags (needs the Medicine skill).
+    type: Add
+  id: 6301
+  time: '2026-09-30T22:48:21.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/63
+- author: Inny
+  changes:
+  - message: Antibiox auto-injector, a 16u overdose limit, and a medical guidebook page.
+    type: Add
+  id: 6601
+  time: '2026-09-30T23:11:04.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/66
+- author: Inny
+  changes:
+  - message: The ChemMaster has a packaging tab with its own buffer.
+    type: Tweak
+  id: 6501
+  time: '2026-09-30T23:45:32.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/65
+- author: Inny
+  changes:
+  - message: Fixed rounds failing to start because of the Antibiox auto-injector.
+    type: Fix
+  id: 6701
+  time: '2026-10-01T00:31:08.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/67
+- author: Inny
+  changes:
+  - message: Every chemical dispenser reagent runs on energy.
+    type: Tweak
+  id: 7101
+  time: '2026-10-01T02:04:35.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/71
+- author: Inny
+  changes:
+  - message: Bigger ChemMaster packaging buttons.
+    type: Tweak
+  id: 7001
+  time: '2026-10-01T02:17:49.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/70
+- author: Inny
+  changes:
+  - message: IV stands can no longer be folded.
+    type: Remove
+  id: 6901
+  time: '2026-10-01T02:24:37.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/69
+- author: Inny
+  changes:
+  - message: Salaries are back to their earlier levels.
+    type: Tweak
+  id: 7201
+  time: '2026-10-01T03:17:27.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/72
+- author: Inny
+  changes:
+  - message: Pen injectors, printable from the ChemMaster.
+    type: Add
+  id: 7301
+  time: '2026-10-01T03:24:42.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/73
+- author: Inny
+  changes:
+  - message: The MedTek PDA works as an advanced health analyzer; the Antibiox injector holds 15u.
+    type: Tweak
+  id: 6801
+  time: '2026-10-01T03:29:25.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/68
+- author: Inny
+  changes:
+  - message: Blood packs are replaced by IV bags; saline only restores blood when injected.
+    type: Tweak
+  id: 7601
+  time: '2026-10-01T04:05:21.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/76
+- author: Inny
+  changes:
+  - message: Airlocks, high-security doors, secret doors and turnstiles use new Delta-V sprites.
+    type: Tweak
+  - message: Door, blast door and shutter sounds replaced with RMC-14's.
+    type: Tweak
+  id: 7501
+  time: '2026-10-01T04:06:14.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/75
+- author: Inny
+  changes:
+  - message: The medbay NanoMed stocks the advanced health analyzer.
+    type: Add
+  id: 7401
+  time: '2026-10-01T12:31:46.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/74
+- author: Inny
+  changes:
+  - message: The ChemMaster needs the Chemistry skill again.
+    type: Tweak
+  id: 7701
+  time: '2026-10-01T15:47:11.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/77
+- author: Inny
+  changes:
+  - message: Medical jobs are now Nurse, Doctor and Paramedic.
+    type: Tweak
+  id: 7901
+  time: '2026-10-01T15:47:17.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/79
+- author: Inny
+  changes:
+  - message: Added the Chitinid species.
+    type: Add
+  id: 8901
+  time: '2026-10-01T17:38:15.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/89
+- author: Inny
+  changes:
+  - message: Drain Infection needs a container in hand and fills it with exudate.
+    type: Tweak
+  id: 7801
+  time: '2026-10-01T18:39:39.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/78
+- author: Inny
+  changes:
+  - message: Wounds and weapon hits land on body parts, with effects that depend on where you're hit.
+    type: Add
+  id: 8401
+  time: '2026-10-01T19:41:46.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/84
+- author: Inny
+  changes:
+  - message: Medicine lockers and medbay vending machines stock IV stands.
+    type: Add
+  id: 8501
+  time: '2026-10-01T19:41:53.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/85
+- author: Inny
+  changes:
+  - message: The medical techfab prints empty IV bags and stands.
+    type: Add
+  id: 8701
+  time: '2026-10-01T19:41:59.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/87
+- author: Inny
+  changes:
+  - message: Security is now the Marine Police; Detective is disabled; added the BountyVend and MP Field Supply.
+    type: Tweak
+  id: 8101
+  time: '2026-10-01T20:57:46.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/81
+- author: Inny
+  changes:
+  - message: Wider range on the species height and width sliders.
+    type: Tweak
+  id: 8301
+  time: '2026-10-01T21:01:02.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/83
+- author: Inny
+  changes:
+  - message: Reworked the Medical Recovery console and transit.
+    type: Tweak
+  id: 8201
+  time: '2026-10-01T21:01:15.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/82
+- author: Inny
+  changes:
+  - message: 'Simpler Amoxla recipe: Ammonia and Carbon, from 380 K.'
+    type: Tweak
+  id: 8801
+  time: '2026-10-01T21:21:30.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/88
+- author: Inny
+  changes:
+  - message: IV stands drag properly, sell as a flatpack, and filled IV bags are labelled.
+    type: Fix
+  id: 9201
+  time: '2026-10-02T17:44:39.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/92
+- author: Inny
+  changes:
+  - message: Recovery implants track vitals, arrivals name the grid, and Nurses get Diagnostics.
+    type: Tweak
+  id: 9001
+  time: '2026-10-02T17:46:00.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/90
+- author: Inny
+  changes:
+  - message: Shipyard consoles accept Federal Bills and respect the inserted ID's access.
+    type: Fix
+  id: 9301
+  time: '2026-10-02T17:46:30.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/93
+- author: Inny
+  changes:
+  - message: Fixed the Antibiox overdose, the infection-suppressed note and the advanced analyzer report.
+    type: Fix
+  id: 9501
+  time: '2026-10-02T17:46:50.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/95
+- author: Inny
+  changes:
+  - message: The AR-18 has held and worn sprites.
+    type: Fix
+  - message: Anatomy markings show on Lagomorph, Cyclorite, IPC and Chitinid.
+    type: Fix
+  - message: Typing a channel prefix shows that channel's typing bubble.
+    type: Tweak
+  - message: Botany gives +1 produce per hand harvest.
+    type: Tweak
+  - message: All access turnstiles use the new deny buzz.
+    type: Tweak
+  id: 9601
+  time: '2026-10-02T17:47:14.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/96
+- author: Inny
+  changes:
+  - message: Rodentia hunger matches the guidebook.
+    type: Tweak
+  id: 9801
+  time: '2026-10-02T18:34:54.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/98
+- author: Inny
+  changes:
+  - message: Fixed the shipyard bill slot, vending prices, depot pallet sales and economy text.
+    type: Fix
+  id: 9701
+  time: '2026-10-02T19:36:40.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/97
+- author: Inny
+  changes:
+  - message: The Discord linking bot works again.
+    type: Fix
+  id: 10201
+  time: '2026-10-02T21:53:26.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/102
+- author: Inny
+  changes:
+  - message: Pulled in 100 bug fixes from upstream Space Station 14.
+    type: Fix
+  id: 10101
+  time: '2026-10-02T22:16:38.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/101
+- author: Inny
+  changes:
+  - message: Shadekin take 70% more bloodloss.
+    type: Tweak
+  id: 9901
+  time: '2026-10-02T22:18:55.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/99
+- author: Inny
+  changes:
+  - message: Updated to the latest Starlight upstream.
+    type: Tweak
+  id: 9101
+  time: '2026-10-02T22:49:16.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/91
+- author: Inny
+  changes:
+  - message: Balances are per character, and starting funds can't be transferred.
+    type: Tweak
+  id: 10301
+  time: '2026-10-04T04:42:39.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/103
+- author: Inny
+  changes:
+  - message: Xenobiology research pays out, and there are bounties for slime extracts.
+    type: Add
+  id: 10401
+  time: '2026-10-04T04:42:47.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/104
+- author: Inny
+  changes:
+  - message: Fire fixes from upstream and rebalanced fire heat.
+    type: Tweak
+  id: 10701
+  time: '2026-10-04T12:46:52.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/107
+- author: Inny
+  changes:
+  - message: 'Plumbing: a fluid connector port for tanks and a one-way valve.'
+    type: Add
+  id: 10601
+  time: '2026-10-04T14:28:46.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/106
+- author: Inny
+  changes:
+  - message: Fillable generic storage tanks that can be spray-painted in 13 colours.
+    type: Add
+  id: 10501
+  time: '2026-10-04T14:29:23.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/105
+- author: Inny
+  changes:
+  - message: Hungry slimes turn on the crew; a docility potion calms them.
+    type: Add
+  id: 10901
+  time: '2026-10-04T16:17:33.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/109
+- author: Inny
+  changes:
+  - message: Centiborg chassis for every borg module.
+    type: Add
+  id: 11001
+  time: '2026-10-04T17:16:09.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/110
+- author: Inny
+  changes:
+  - message: Link your Discord account by signing in with your SS14 account.
+    type: Tweak
+  id: 11101
+  time: '2026-10-04T20:12:36.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/111
+- author: Inny
+  changes:
+  - message: Generic tanks work like fuel tanks and have fill/dispense mode lights.
+    type: Tweak
+  id: 11201
+  time: '2026-10-05T18:49:14.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/112
+- author: Inny
+  changes:
+  - message: Cargo sells the generic storage tanks.
+    type: Add
+  id: 11501
+  time: '2026-10-06T00:03:36.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/115
+- author: Inny
+  changes:
+  - message: Experiment is no longer a roundstart species.
+    type: Remove
+  id: 11301
+  time: '2026-10-06T00:16:30.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/113
+- author: Inny
+  changes:
+  - message: Added the Oni and Ovinia species, and a neck fluff marking (including for Chitinids).
+    type: Add
+  id: 11701
+  time: '2026-10-06T00:38:22.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/117
+- author: Inny
+  changes:
+  - message: Fluid ports work with docked tanks, and the one-way valve has pump controls.
+    type: Fix
+  id: 11601
+  time: '2026-10-06T03:00:12.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/116
+- author: Inny
+  changes:
+  - message: Admin command to give a mob a wound infection, for testing.
+    type: Add
+  id: 11401
+  time: '2026-10-06T05:16:33.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/114
+- author: Inny
+  changes:
+  - message: Serenity Outpost is the new hub map, with sector events and deeded ships flying home at round end.
+    type: Add
+  - message: Cryo holds sleepers for an hour before sending them to stasis.
+    type: Tweak
+  id: 11801
+  time: '2026-10-06T05:18:57.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/118
+- author: Inny
+  changes:
+  - message: 'New anatomy markings: three penis shapes, a testicle sheath, four and six breasts, bellies, and more vagina types.'
+    type: Add
+  - message: Every testicle, butt and breast cup size is now available.
+    type: Add
+  - message: Arachnid, Diona, Vox, Avali, Resomi, Felionoid, Lagomorph, Thaven, Cyclorite and Neo species can now choose anatomy markings.
+    type: Fix
+  id: 12001
+  time: '2026-10-06T23:02:28.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/120
+- author: CalliganSierre
+  changes:
+  - message: Added Naval Infantry, Naval and Marine equipment.
+    type: Add
+  id: 12401
+  time: '2026-10-06T23:02:54.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/124
+- author: Inny
+  changes:
+  - message: 'Milking machine: buckle in, pick a strength, and plumbing can pull the collected fluids from its tank.'
+    type: Add
+  - message: Climaxing now works (the button and automatic climax always failed before).
+    type: Fix
+  id: 12201
+  time: '2026-10-06T23:12:13.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/122
+- author: Inny
+  changes:
+  - message: Slimes and Dolls can now have an infection cured. Dolls use Drain Infection, and Slimes use the new Purge Contaminated Jelly surgery.
+    type: Fix
+  id: 12301
+  time: '2026-10-07T02:22:52.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/123
+- author: Inny
+  changes:
+  - message: Colonial Navy gear, ID, PDA and access are now named Marine Raider.
+    type: Tweak
+  id: 12501
+  time: '2026-10-07T02:22:59.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/125
+- author: Inny
+  changes:
+  - message: Clicking another player now opens a social menu with Hug, Strip and Intimacy instead of hugging immediately. The same options are under a new Social submenu in the right-click menu.
+    type: Tweak
+  id: 12801
+  time: '2026-10-07T11:59:56.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/128
+- author: Inny
+  changes:
+  - message: Added the Skrell, an amphibious species with head-tails, headdresses and their own trills and warbles.
+    type: Add
+  id: 12601
+  time: '2026-10-07T12:02:35.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/126
+- author: Inny
+  changes:
+  - message: Large spills now become flood water that flows through rooms, is stopped by doors and walls, drains away, and can drown you.
+    type: Add
+  id: 12101
+  time: '2026-10-07T12:02:43.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/121
+- author: Inny
+  changes:
+  - message: Added a buildable dancing pole in five neon colours, a BDSM bed, and pink and teal pillow piles.
+    type: Add
+  id: 12701
+  time: '2026-10-07T12:02:55.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/127
