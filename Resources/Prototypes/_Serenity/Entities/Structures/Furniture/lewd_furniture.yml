@@ -1,0 +1,217 @@
+# Lewd furniture that needs no code of its own: a dancing pole, a BDSM bed and pillow piles.
+# Art: CC-BY-SA-3.0 from Skyrat-tg, see each RSI's meta.json.
+
+# Dancing pole: buckle onto it to dance. The neon ring in the base can be switched on and off.
+- type: entity
+  abstract: true
+  parent: ChairBase
+  id: DancingPoleBase
+  name: dancing pole
+  description: A polished steel pole on a neon-lit base, for showing off your great assets.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Structures/Furniture/dancing_pole.rsi
+    noRot: true
+    offset: "0,0.65625" # The art is 74px tall with the base at the bottom; this sits the base on the tile.
+  - type: Strap
+    position: Stand
+    buckleOffset: "0,0"
+  - type: ItemToggle
+    activated: true
+    onUse: false
+  - type: ItemTogglePointLight
+  - type: ToggleableVisuals
+    spriteLayer: glow
+  - type: PointLight
+    enabled: false
+    radius: 1.5
+    energy: 1.5
+    netsync: false
+  - type: Appearance
+  - type: StaticPrice
+    price: 75
+
+- type: entity
+  parent: DancingPoleBase
+  id: DancingPole
+  suffix: Purple
+  components:
+  - type: Sprite
+    layers:
+    - state: pole_purple
+    - state: pole_purple_glow
+      map: [ "glow" ]
+      shader: unshaded
+      visible: false
+  - type: PointLight
+    color: "#b24cff"
+  - type: Construction
+    graph: DancingPole
+    node: purple
+
+- type: entity
+  parent: DancingPoleBase
+  id: DancingPoleCyan
+  suffix: Cyan
+  components:
+  - type: Sprite
+    layers:
+    - state: pole_cyan
+    - state: pole_cyan_glow
+      map: [ "glow" ]
+      shader: unshaded
+      visible: false
+  - type: PointLight
+    color: "#3fe0f0"
+  - type: Construction
+    graph: DancingPole
+    node: cyan
+
+- type: entity
+  parent: DancingPoleBase
+  id: DancingPoleGreen
+  suffix: Green
+  components:
+  - type: Sprite
+    layers:
+    - state: pole_green
+    - state: pole_green_glow
+      map: [ "glow" ]
+      shader: unshaded
+      visible: false
+  - type: PointLight
+    color: "#4cff6a"
+  - type: Construction
+    graph: DancingPole
+    node: green
+
+- type: entity
+  parent: DancingPoleBase
+  id: DancingPoleRed
+  suffix: Red
+  components:
+  - type: Sprite
+    layers:
+    - state: pole_red
+    - state: pole_red_glow
+      map: [ "glow" ]
+      shader: unshaded
+      visible: false
+  - type: PointLight
+    color: "#ff4c4c"
+  - type: Construction
+    graph: DancingPole
+    node: red
+
+- type: entity
+  parent: DancingPoleBase
+  id: DancingPoleWhite
+  suffix: White
+  components:
+  - type: Sprite
+    layers:
+    - state: pole_white
+    - state: pole_white_glow
+      map: [ "glow" ]
+      shader: unshaded
+      visible: false
+  - type: PointLight
+    color: "#f0f0ff"
+  - type: Construction
+    graph: DancingPole
+    node: white
+
+# BDSM bed: a latex bed with D-rings along the sides. Buckling works like any bed.
+- type: entity
+  parent: Bed
+  id: BdsmBed
+  name: BDSM bed
+  description: A latex-covered bed with D-rings along the sides. Looks comfortable, for a while.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Structures/Furniture/bdsm_bed.rsi
+    state: bed
+  - type: Construction
+    graph: BdsmBed
+    node: bed
+  - type: StaticPrice
+    price: 100
+
+# Pillow piles: a soft heap to sink into.
+- type: entity
+  abstract: true
+  parent: ChairBase
+  id: PillowPileBase
+  name: pillow pile
+  description: A soft heap of pillows to sink into.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Structures/Furniture/pillow_pile.rsi
+    noRot: true
+  - type: Strap
+    position: Stand
+    buckleOffset: "0,0.1"
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Inflatable
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          MaterialCloth1:
+            min: 1
+            max: 3
+  - type: StaticPrice
+    price: 30
+
+- type: entity
+  parent: PillowPileBase
+  id: PillowPileSmallPink
+  suffix: Small, Pink
+  components:
+  - type: Sprite
+    state: small_pink
+  - type: Construction
+    graph: PillowPile
+    node: smallPink
+
+- type: entity
+  parent: PillowPileBase
+  id: PillowPileSmallTeal
+  suffix: Small, Teal
+  components:
+  - type: Sprite
+    state: small_teal
+  - type: Construction
+    graph: PillowPile
+    node: smallTeal
+
+- type: entity
+  parent: PillowPileBase
+  id: PillowPileLargePink
+  name: large pillow pile
+  suffix: Pink
+  components:
+  - type: Sprite
+    state: large_pink
+  - type: Construction
+    graph: PillowPile
+    node: largePink
+
+- type: entity
+  parent: PillowPileBase
+  id: PillowPileLargeTeal
+  name: large pillow pile
+  suffix: Teal
+  components:
+  - type: Sprite
+    state: large_teal
+  - type: Construction
+    graph: PillowPile
+    node: largeTeal
