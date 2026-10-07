@@ -18,21 +18,13 @@
         - type: StationJobs
           availableJobs:
             #service
-            Captain: [ 1, 1 ]
             HeadOfPersonnel: [ 1, 1 ]
             Bartender: [ 3, 3 ]
             Botanist: [ 3, 3 ]
             Chef: [ 3, 3 ]
-            Janitor: [ 3, 3 ]
-            Chaplain: [ 3, 3 ]
-            Librarian: [ 1, 1 ]
-            Lawyer: [ 2, 2 ]
             ServiceWorker: [ 5, 5 ]
-            Reporter: [ 2, 2 ]
             RadioHost: [ 2, 2 ]
             #engineering
-            ChiefEngineer: [ 1, 1 ]
-            AtmosphericTechnician: [ 3, 3 ]
             StationEngineer: [ 6, 6 ]
             TechnicalAssistant: [ 4, 4 ]
             #medical
@@ -40,10 +32,8 @@
             MedicalIntern: [ 4, 4 ]
             Paramedic: [ 2, 2 ]
             #science
-            ResearchDirector: [ 1, 1 ]
             Scientist: [ 7, 7 ]
             ResearchAssistant: [ 4, 4 ]
-            Roboticist: [ 3, 3 ]
             #security
             HeadOfSecurity: [ 1, 1 ]
             Warden: [ 1, 1 ]
@@ -52,27 +42,13 @@
             SecurityCadet: [ 6, 6 ]
             Brigmedic: [ 2, 2 ]
             #supply
-            Quartermaster: [ 1, 1 ]
             SalvageLead: [ 1, 1 ]
-            SalvageSpecialist: [ 4, 4 ]
             SalvageMedic: [ 1, 1 ]
             MiningSpecialist: [ 4, 4 ]
-            CargoTechnician: [ 7, 7 ]
             MailTech: [ 3, 3 ]
             #civillian
             Assistant: [ -1, -1 ]
-            Clown: [ 1, 1 ]
-            Mime: [ 1, 1 ]
-            Musician: [ 3, 3 ]
-            Performer: [ 5, 5 ]
-            Boxer: [ 2, 2 ]
             #silicon
-            StationAi: [ 1, 1 ]
             Borg: [ 4, 4 ]
             #law
-            Magistrate: [ 1, 1 ]
-            IAA: [ 2, 2 ]
             #Representatives
-            BlueShield: [ 1, 1 ]
-            NanoTrasenRepresentative: [ 1, 1 ]
-            NanotrasenCareerTrainer: [ 2, 2 ]

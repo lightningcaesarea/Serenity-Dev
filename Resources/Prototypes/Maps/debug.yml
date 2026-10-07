@@ -26,7 +26,7 @@
           mapNameTemplate: "Dev"
         - type: StationJobs
           availableJobs:
-            Captain: [ -1, -1 ]
+            HeadOfPersonnel: [ -1, -1 ] # Serenity: the Captain is disabled
 
 - type: gameMap
   id: TestTeg
@@ -41,4 +41,4 @@
           mapNameTemplate: "TEG"
         - type: StationJobs
           availableJobs:
-            ChiefEngineer: [ -1, -1 ]
+            StationEngineer: [ -1, -1 ] # Serenity: the Chief Engineer is disabled
