@@ -824,3 +824,14 @@ Entries:
   id: 13601
   time: '2026-10-07T19:33:46.000000+00:00'
   url: https://github.com/lightningcaesarea/Serenity-Dev/pull/136
+- author: Inny
+  changes:
+  - message: The click and right-click menus on another player now show a Social submenu (Hug, Boop, Pet, Wave) plus Look at, Check out, Strip and Intimacy as separate options.
+    type: Tweak
+  - message: Look at is its own verb; the person you look at gets a popup instead of a chat emote.
+    type: Tweak
+  - message: Added a Check out verb that only you and the other person see.
+    type: Add
+  id: 13801
+  time: '2026-10-07T19:53:30.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/138
