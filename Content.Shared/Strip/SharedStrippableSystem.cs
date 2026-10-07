@@ -165,7 +165,7 @@ public abstract partial class SharedStrippableSystem : EntitySystem
             Text = Loc.GetString("strip-verb-get-data-text"),
             Icon = new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/outfit.svg.192dpi.png")),
             Act = () => TryOpenStrippingUi(args.User, (uid, component), true),
-            Social = true, // Serenity
+            Category = VerbCategory.Social, // Serenity
         };
 
         args.Verbs.Add(verb);

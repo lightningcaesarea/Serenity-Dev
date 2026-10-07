@@ -64,7 +64,7 @@ public abstract partial class SharedSocialMenuSystem : EntitySystem
             Text = Loc.GetString("social-verb-hug"),
             Priority = 10,
             Act = () => _interactionPopup.TryInteract(target, user),
-            Social = true,
+            Category = VerbCategory.Social,
         });
     }
 }
