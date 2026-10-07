@@ -116,6 +116,7 @@ namespace Content.Server.Administration.Systems
             SubscribeLocalEvent<GameRunLevelChangedEvent>(OnGameRunLevelChanged);
             SubscribeNetworkEvent<BwoinkClientTypingUpdated>(OnClientTypingUpdated);
             SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => _activeConversations.Clear());
+            InitializePanic(); // Serenity
 
         	_rateLimit.Register(
                 RateLimitKey,

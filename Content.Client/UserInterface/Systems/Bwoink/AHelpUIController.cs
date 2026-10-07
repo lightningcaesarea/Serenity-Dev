@@ -26,6 +26,7 @@ using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Utility;
 using Content.Client._Starlight.MHelp;
+using Content.Client._Serenity.Administration; // Serenity
 
 namespace Content.Client.UserInterface.Systems.Bwoink;
 
@@ -621,7 +622,12 @@ public sealed class UserAHelpUIHandler : IAHelpUIHandler
         };
         _window.OnClose += () => { OnClose?.Invoke(); };
         _window.OnOpen += () => { OnOpen?.Invoke(); };
-        _window.Contents.AddChild(_chatPanel);
+        // Serenity: panic button above the chat
+        var contents = new BoxContainer { Orientation = BoxContainer.LayoutOrientation.Vertical, VerticalExpand = true };
+        _chatPanel.VerticalExpand = true;
+        contents.AddChild(new AHelpPanicButton());
+        contents.AddChild(_chatPanel);
+        _window.Contents.AddChild(contents);
 
         var introText = Loc.GetString("bwoink-system-introductory-message");
         var introMessage = new SharedBwoinkSystem.BwoinkTextMessage( _ownerId, SharedBwoinkSystem.SystemUserId, introText);
