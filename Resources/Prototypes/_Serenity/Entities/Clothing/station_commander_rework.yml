@@ -1,0 +1,423 @@
+# Station Commander versions of the Head of Personnel and Captain clothing.
+# Each one inherits the original's stats and only swaps in a green-and-gold recolor of its sprite.
+
+- type: entity
+  parent: ClothingHeadHatHopcap
+  id: ClothingHeadHatStationCommanderPeaked
+  name: Station Commander peaked cap
+  description: A green-and-gold Station Commander version of the head of personnel's cap.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/StationCommander/Head/peaked_cap.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/StationCommander/Head/peaked_cap.rsi
+
+- type: entity
+  parent: ClothingHeadHatHopCapFormal
+  id: ClothingHeadHatStationCommanderFormal
+  name: Station Commander formal cap
+  description: A green-and-gold Station Commander version of the head of personnel's formal cap.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/StationCommander/Head/formal_cap.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/StationCommander/Head/formal_cap.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatStationCommanderOfficer
+  name: Station Commander officer's cap
+  description: A green-and-gold Station Commander version of the cap cap.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/StationCommander/Head/officer_cap.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/StationCommander/Head/officer_cap.rsi
+  - type: Item
+    sprite: _Serenity/Clothing/StationCommander/Head/officer_cap.rsi
+  - type: Tag
+    tags:
+    - PetWearable
+    - CorgiWearable
+    - ClothMade
+    - Recyclable
+    - WhitelistChameleon
+    - HamsterWearable
+
+- type: entity
+  parent: ClothingHeadHatBeretCaptain
+  id: ClothingHeadHatStationCommanderOfficerBeret
+  name: Station Commander officer's beret
+  description: A green-and-gold Station Commander version of the captain's beret.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/StationCommander/Head/officer_beret.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/StationCommander/Head/officer_beret.rsi
+
+- type: entity
+  parent: ClothingUniformJumpsuitHoP
+  id: ClothingUniformJumpsuitStationCommanderDuty
+  name: Station Commander duty jumpsuit
+  description: A green-and-gold Station Commander version of the head of personnel's jumpsuit.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/StationCommander/Uniforms/duty_jumpsuit.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/StationCommander/Uniforms/duty_jumpsuit.rsi
+
+- type: entity
+  parent: ClothingUniformJumpskirtHoP
+  id: ClothingUniformJumpskirtStationCommanderDuty
+  name: Station Commander duty jumpskirt
+  description: A green-and-gold Station Commander version of the head of personnel's jumpskirt.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/StationCommander/Uniforms/duty_jumpskirt.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/StationCommander/Uniforms/duty_jumpskirt.rsi
+
+- type: entity
+  parent: ClothingUniformJumpsuitHoPTurtleneck
+  id: ClothingUniformJumpsuitStationCommanderTurtleneck
+  name: Station Commander turtleneck
+  description: A green-and-gold Station Commander version of the head of personal's turtleneck.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/StationCommander/Uniforms/turtleneck.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/StationCommander/Uniforms/turtleneck.rsi
+
+- type: entity
+  parent: ClothingUniformJumpskirtHoPTurtleneck
+  id: ClothingUniformJumpskirtStationCommanderTurtleneck
+  name: Station Commander turtleneck skirt
+  description: A green-and-gold Station Commander version of the head of personal's turtleneck.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/StationCommander/Uniforms/turtleneck_skirt.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/StationCommander/Uniforms/turtleneck_skirt.rsi
+
+- type: entity
+  parent: ClothingUniformJumpsuitHopFormal
+  id: ClothingUniformJumpsuitStationCommanderFormal
+  name: Station Commander formal suit
+  description: A green-and-gold Station Commander version of the head of personnel's formal suit.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/StationCommander/Uniforms/formal_suit.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/StationCommander/Uniforms/formal_suit.rsi
+
+- type: entity
+  parent: ClothingUniformJumpskirtHopFormal
+  id: ClothingUniformJumpskirtStationCommanderFormal
+  name: Station Commander formal dress
+  description: A green-and-gold Station Commander version of the head of personnel's formal dress.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/StationCommander/Uniforms/formal_dress.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/StationCommander/Uniforms/formal_dress.rsi
+
+- type: entity
+  parent: ClothingUniformJumpsuitCaptain
+  id: ClothingUniformJumpsuitStationCommanderCommand
+  name: Station Commander command jumpsuit
+  description: A green-and-gold Station Commander version of the captain's jumpsuit.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/StationCommander/Uniforms/command_jumpsuit.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/StationCommander/Uniforms/command_jumpsuit.rsi
+
+- type: entity
+  parent: ClothingUniformJumpskirtCaptain
+  id: ClothingUniformJumpskirtStationCommanderCommand
+  name: Station Commander command jumpskirt
+  description: A green-and-gold Station Commander version of the captain's jumpskirt.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/StationCommander/Uniforms/command_jumpskirt.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/StationCommander/Uniforms/command_jumpskirt.rsi
+
+- type: entity
+  parent: ClothingUniformJumpsuitCapFormal
+  id: ClothingUniformJumpsuitStationCommanderDress
+  name: Station Commander dress uniform
+  description: A green-and-gold Station Commander version of the captain's formal suit.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/StationCommander/Uniforms/dress_uniform.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/StationCommander/Uniforms/dress_uniform.rsi
+
+- type: entity
+  parent: ClothingUniformJumpskirtCapFormalDress
+  id: ClothingUniformJumpskirtStationCommanderDress
+  name: Station Commander dress gown
+  description: A green-and-gold Station Commander version of the captain's formal dress.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/StationCommander/Uniforms/dress_gown.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/StationCommander/Uniforms/dress_gown.rsi
+
+- type: entity
+  parent: ClothingUniformJumpsuitCapTurtleneck
+  id: ClothingUniformJumpsuitStationCommanderCommandTurtleneck
+  name: Station Commander command turtleneck
+  description: A green-and-gold Station Commander version of the captain's turtleneck.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/StationCommander/Uniforms/command_turtleneck.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/StationCommander/Uniforms/command_turtleneck.rsi
+
+- type: entity
+  parent: ClothingUniformJumpskirtCapTurtleneck
+  id: ClothingUniformJumpskirtStationCommanderCommandTurtleneck
+  name: Station Commander command turtleneck skirt
+  description: A green-and-gold Station Commander version of the captain's turtleneck.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/StationCommander/Uniforms/command_turtleneck_skirt.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/StationCommander/Uniforms/command_turtleneck_skirt.rsi
+
+- type: entity
+  parent: ClothingUniformJumpsuitCaptainNoble
+  id: ClothingUniformJumpsuitStationCommanderNoble
+  name: Station Commander noble jumpsuit
+  description: A green-and-gold Station Commander version of the captain's noble jumpsuit.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/StationCommander/Uniforms/noble_jumpsuit.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/StationCommander/Uniforms/noble_jumpsuit.rsi
+
+- type: entity
+  parent: ClothingNeckCloakHop
+  id: ClothingNeckCloakStationCommanderDuty
+  name: Station Commander duty cloak
+  description: A green-and-gold Station Commander version of the head of personnel's cloak.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/StationCommander/Neck/duty_cloak.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/StationCommander/Neck/duty_cloak.rsi
+
+- type: entity
+  parent: ClothingNeckMantleHOP
+  id: ClothingNeckMantleStationCommanderDuty
+  name: Station Commander duty mantle
+  description: A green-and-gold Station Commander version of the head of personnel's mantle.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/StationCommander/Neck/duty_mantle.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/StationCommander/Neck/duty_mantle.rsi
+
+- type: entity
+  parent: ClothingNeckCloakHopFormal
+  id: ClothingNeckCloakStationCommanderFormal
+  name: Station Commander formal cloak
+  description: A green-and-gold Station Commander version of the head of personnel's formal cloak.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/StationCommander/Neck/formal_cloak.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/StationCommander/Neck/formal_cloak.rsi
+
+- type: entity
+  parent: ClothingNeckCloakCap
+  id: ClothingNeckCloakStationCommanderCommand
+  name: Station Commander command cloak
+  description: A green-and-gold Station Commander version of the captain's cloak.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/StationCommander/Neck/command_cloak.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/StationCommander/Neck/command_cloak.rsi
+
+- type: entity
+  parent: ClothingNeckCloakCapFormal
+  id: ClothingNeckCloakStationCommanderCeremonial
+  name: Station Commander ceremonial cloak
+  description: A green-and-gold Station Commander version of the captain's formal cloak.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/StationCommander/Neck/ceremonial_cloak.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/StationCommander/Neck/ceremonial_cloak.rsi
+
+- type: entity
+  parent: ClothingNeckMantleCap
+  id: ClothingNeckMantleStationCommanderCommand
+  name: Station Commander command mantle
+  description: A green-and-gold Station Commander version of the captain's mantle.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/StationCommander/Neck/command_mantle.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/StationCommander/Neck/command_mantle.rsi
+
+- type: entity
+  parent: ClothingNeckCloakBoat
+  id: ClothingNeckCloakStationCommanderBoat
+  name: Station Commander boat cloak
+  description: A green-and-gold Station Commander version of the captain's boat cloak.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/StationCommander/Neck/boat_cloak.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/StationCommander/Neck/boat_cloak.rsi
+
+- type: entity
+  parent: ClothingBackpackHoP
+  id: ClothingBackpackStationCommander
+  name: Station Commander backpack
+  description: A green-and-gold Station Commander version of the head of personnel's backpack.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/StationCommander/Back/backpack.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/StationCommander/Back/backpack.rsi
+
+- type: entity
+  parent: ClothingBackpackSatchelHoP
+  id: ClothingBackpackSatchelStationCommander
+  name: Station Commander satchel
+  description: A green-and-gold Station Commander version of the head of personnel's satchel.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/StationCommander/Back/satchel.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/StationCommander/Back/satchel.rsi
+
+- type: entity
+  parent: ClothingBackpackDuffelHoP
+  id: ClothingBackpackDuffelStationCommanderDuty
+  name: Station Commander duty duffel bag
+  description: A green-and-gold Station Commander version of the head of personnel's duffel bag.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/StationCommander/Back/duty_duffel.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/StationCommander/Back/duty_duffel.rsi
+
+- type: entity
+  parent: ClothingBackpackCaptain
+  id: ClothingBackpackStationCommanderCommand
+  name: Station Commander command backpack
+  description: A green-and-gold Station Commander version of the captain's backpack.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/StationCommander/Back/command_backpack.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/StationCommander/Back/command_backpack.rsi
+
+- type: entity
+  parent: ClothingBackpackSatchelCaptain
+  id: ClothingBackpackSatchelStationCommanderCommand
+  name: Station Commander command satchel
+  description: A green-and-gold Station Commander version of the captain's satchel.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/StationCommander/Back/command_satchel.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/StationCommander/Back/command_satchel.rsi
+
+- type: entity
+  parent: ClothingBackpackDuffelCaptain
+  id: ClothingBackpackDuffelStationCommanderCommand
+  name: Station Commander command duffel bag
+  description: A green-and-gold Station Commander version of the captain's duffel bag.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/StationCommander/Back/command_duffel.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/StationCommander/Back/command_duffel.rsi
+
+- type: entity
+  parent: ClothingOuterArmorCaptainCarapace
+  id: ClothingOuterArmorStationCommanderCommandCarapace
+  name: Station Commander command carapace
+  description: A green-and-gold Station Commander version of the captain's carapace.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/StationCommander/OuterClothing/command_carapace.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/StationCommander/OuterClothing/command_carapace.rsi
+
+- type: entity
+  parent: ClothingOuterWinterHoP
+  id: ClothingOuterWinterStationCommander
+  name: Station Commander winter coat
+  description: A green-and-gold Station Commander version of the head of personnel's winter coat.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/StationCommander/OuterClothing/winter_coat.rsi
+    layers:
+    - state: icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+      right:
+      - state: inhand-right
+  - type: Clothing
+    sprite: _Serenity/Clothing/StationCommander/OuterClothing/winter_coat.rsi
+    clothingVisuals:
+      outerClothing:
+      - state: equipped-OUTERCLOTHING
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodWinterStationCommander
+
+- type: entity
+  parent: ClothingHeadHatHoodWinterHOP
+  id: ClothingHeadHatHoodWinterStationCommander
+  name: Station Commander winter coat hood
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/StationCommander/Head/winter_coat_hood.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/StationCommander/Head/winter_coat_hood.rsi
+
+- type: entity
+  parent: ClothingOuterWinterCap
+  id: ClothingOuterWinterStationCommanderCommand
+  name: Station Commander command winter coat
+  description: A green-and-gold Station Commander version of the captain's winter coat.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/StationCommander/OuterClothing/command_winter_coat.rsi
+    layers:
+    - state: icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+      right:
+      - state: inhand-right
+  - type: Clothing
+    sprite: _Serenity/Clothing/StationCommander/OuterClothing/command_winter_coat.rsi
+    clothingVisuals:
+      outerClothing:
+      - state: equipped-OUTERCLOTHING
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodWinterStationCommanderCommand
+
+- type: entity
+  parent: ClothingHeadHatHoodWinterCaptain
+  id: ClothingHeadHatHoodWinterStationCommanderCommand
+  name: Station Commander command winter coat hood
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/StationCommander/Head/command_winter_coat_hood.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/StationCommander/Head/command_winter_coat_hood.rsi

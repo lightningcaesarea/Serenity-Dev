@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "State based copyright | Recolored to green and gold for Serenity's Station Commander from _Starlight/Clothing/Head/Hats/beret_captain.rsi.",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "icon",
+      "copyright": "Hanz5579(discord)"
+    },
+    {
+      "name": "equipped-HELMET",
+      "directions": 4,
+      "copyright": "Hanz5579(discord)"
+    },
+    {
+      "name": "inhand-left",
+      "directions": 4,
+      "copyright": "Hanz5579(discord)"
+    },
+    {
+      "name": "inhand-right",
+      "directions": 4,
+      "copyright": "Hanz5579(discord)"
+    }
+  ]
+}
