@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Content.Server.Discord;
 using Content.Server.Discord.DiscordLink;
 using Content.Shared._Serenity.CCVar;
+using Content.Shared.Administration;
 using NetCord;
 using NetCord.Gateway;
 using NetCord.Rest;
