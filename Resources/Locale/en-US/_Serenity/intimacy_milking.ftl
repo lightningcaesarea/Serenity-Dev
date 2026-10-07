@@ -16,7 +16,7 @@ milking-machine-window-fill = {$volume} / {$max}u
 milking-machine-window-tank-empty = The tank is empty.
 milking-machine-window-reagent-quantity = {$quantity}u
 
-reagent-name-semen = semen
+reagent-name-semen = cum
 reagent-desc-semen = Thick, warm and salty.
 reagent-name-vaginal-fluid = vaginal fluid
 reagent-desc-vaginal-fluid = Slick and faintly sweet.
