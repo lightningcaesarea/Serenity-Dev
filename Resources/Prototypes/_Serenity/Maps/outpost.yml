@@ -17,6 +17,11 @@
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Serenity Outpost'
+        - type: SafeZone # No fighting on the outpost itself; docked ships are their own grids.
+          exemptDepartments:
+          - Command
+          - Security # Marines
+          - CentralCommand # Marine Raiders, ERT
         - type: GridSpawn
           groups:
             trade: !type:GridSpawnGroup
