@@ -19,6 +19,7 @@
     - Boop
     - Wave
     - Look
+    - CheckOut # Serenity
 
 # Add as a parent to prototypes that should be able to do social interactions.
 - type: entity

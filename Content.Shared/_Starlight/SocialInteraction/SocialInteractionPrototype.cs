@@ -1,6 +1,7 @@
 using Content.Shared._Serenity.Consent;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Utility; // Serenity
 
 namespace Content.Shared._Starlight.SocialInteraction;
 
@@ -80,4 +81,33 @@ public sealed partial class SocialInteractionPrototype : IPrototype
     [DataField]
     public List<ProtoId<ConsentTogglePrototype>> RequiredConsent = new();
     // Serenity: end
+
+    // Serenity
+    /// <summary>
+    /// Shows this interaction as its own verb instead of inside the Social submenu, in both the right-click
+    /// menu and the menu opened by clicking another player.
+    /// </summary>
+    [DataField]
+    public bool OwnVerb;
+
+    // Serenity
+    /// <summary>
+    /// Icon shown next to the verb.
+    /// </summary>
+    [DataField]
+    public SpriteSpecifier? Icon;
+
+    // Serenity
+    /// <summary>
+    /// Verb priority. Higher shows first.
+    /// </summary>
+    [DataField]
+    public int Priority;
+
+    // Serenity
+    /// <summary>
+    /// Popup shown only to the target. When set, <see cref="MessagePerceivedByOthers"/> skips the target.
+    /// </summary>
+    [DataField]
+    public LocId? MessagePerceivedByTarget;
 }

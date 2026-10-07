@@ -43,7 +43,7 @@ namespace Content.Client.Verbs.UI
         /// </summary>
         public ContextMenuPopup? OpenMenu = null;
 
-        // Serenity - when set, only the Social category's verbs are listed, flat.
+        // Serenity - when set, only the Social submenu and verbs marked InSocialMenu are listed.
         private bool _socialOnly;
 
         public void OnStateEntered(GameplayState state)
@@ -134,8 +134,9 @@ namespace Content.Client.Verbs.UI
 
         // Serenity
         /// <summary>
-        ///     Open a condensed verb menu at the mouse that lists the <see cref="VerbCategory.Social"/> verbs
-        ///     (hug, strip, intimacy...) for the given target. Opened by clicking another player with an empty hand.
+        ///     Open a condensed verb menu at the mouse with the <see cref="VerbCategory.Social"/> submenu (hug...)
+        ///     and the verbs marked <see cref="Verb.InSocialMenu"/> (strip, intimacy). Opened by clicking another
+        ///     player with an empty hand.
         /// </summary>
         public void OpenSocialMenu(EntityUid target)
         {
@@ -166,12 +167,14 @@ namespace Content.Client.Verbs.UI
         /// </summary>
         private void FillVerbPopup(ContextMenuPopup popup)
         {
-            // Serenity - the social menu is the right-click Social category, listed flat.
+            // Serenity - the click menu shows the Social submenu, then strip, intimacy and the like.
             if (_socialOnly)
             {
+                AddVerbCategory(VerbCategory.Social, popup);
+
                 foreach (var verb in CurrentVerbs)
                 {
-                    if (verb.Category?.Text == VerbCategory.Social.Text)
+                    if (verb.InSocialMenu && verb.Category == null)
                         _context.AddElement(popup, new VerbMenuElement(verb));
                 }
 
