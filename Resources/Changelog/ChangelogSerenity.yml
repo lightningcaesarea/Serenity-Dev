@@ -811,3 +811,16 @@ Entries:
   id: 13201
   time: '2026-10-07T19:21:25.000000+00:00'
   url: https://github.com/lightningcaesarea/Serenity-Dev/pull/132
+- author: Inny
+  changes:
+  - message: The Station Commander can pick a new green-and-gold uniform, beret, cap, cloak, mantle, jacket, carapace, EVA suit, duffel and messenger bag in their loadout.
+    type: Add
+  - message: The Station Commander can also wear green-and-gold versions of every Head of Personnel and Captain hat, uniform, cloak, mantle, bag and winter coat.
+    type: Add
+  - message: Added the Station Commander's Pen, which the Station Commander starts with.
+    type: Add
+  - message: The Head of Personnel's PDA and locker are now the Station Commander PDA and Station Commander locker, with new colors.
+    type: Tweak
+  id: 13601
+  time: '2026-10-07T19:33:46.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/136
