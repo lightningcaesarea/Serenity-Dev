@@ -321,6 +321,51 @@ public sealed partial class DiscordLink : IPostInjectInit
 
         await _client.Rest.SendMessageAsync(channelId, message);
     }
+
+    /// <summary>
+    ///     Sends a message to a channel and returns its ID, or null if the bot isn't connected.
+    /// </summary>
+    public async Task<ulong?> SendMessageGetIdAsync(ulong channelId, MessageProperties message)
+    {
+        if (_client == null)
+            return null;
+
+        var sent = await _client.Rest.SendMessageAsync(channelId, message);
+        return sent.Id;
+    }
+
+    /// <summary>
+    ///     Edits a message the bot sent earlier.
+    /// </summary>
+    public async Task ModifyMessageAsync(ulong channelId, ulong messageId, Action<MessageOptions> edit)
+    {
+        if (_client == null)
+            return;
+
+        await _client.Rest.ModifyMessageAsync(channelId, messageId, edit);
+    }
+
+    /// <summary>
+    ///     Reacts to a message with a unicode emoji.
+    /// </summary>
+    public async Task AddReactionAsync(ulong channelId, ulong messageId, string emoji)
+    {
+        if (_client == null)
+            return;
+
+        await _client.Rest.AddMessageReactionAsync(channelId, messageId, new ReactionEmojiProperties(emoji));
+    }
+
+    /// <summary>
+    ///     Sets the bot's presence (status and activity) shown in Discord.
+    /// </summary>
+    public async Task UpdatePresenceAsync(PresenceProperties presence)
+    {
+        if (_client == null)
+            return;
+
+        await _client.UpdatePresenceAsync(presence);
+    }
     // Serenity end
 
     /// <summary>
