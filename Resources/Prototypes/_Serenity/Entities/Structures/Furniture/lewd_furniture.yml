@@ -135,7 +135,7 @@
     graph: BdsmBed
     node: bed
   - type: StaticPrice
-    price: 100
+    price: 120
 
 # Pillow piles: a soft heap to sink into.
 - type: entity
@@ -203,6 +203,8 @@
   - type: Construction
     graph: PillowPile
     node: largePink
+  - type: StaticPrice
+    price: 60
 
 - type: entity
   parent: PillowPileBase
@@ -215,3 +217,5 @@
   - type: Construction
     graph: PillowPile
     node: largeTeal
+  - type: StaticPrice
+    price: 60
