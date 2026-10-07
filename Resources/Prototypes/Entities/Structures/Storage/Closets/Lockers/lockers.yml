@@ -82,13 +82,13 @@
 - type: entity
   id: LockerHeadOfPersonnel
   parent: LockerBaseSecure
-  name: head of personnel's locker
+  name: Station Commander locker # Serenity: the HoP is reworked into the Station Commander
   components:
   - type: Appearance
   - type: EntityStorageVisuals
-    stateBaseClosed: hop
-    stateDoorOpen: hop_open
-    stateDoorClosed: hop_door
+    stateBaseClosed: station_commander # Serenity
+    stateDoorOpen: station_commander_open # Serenity
+    stateDoorClosed: station_commander_door # Serenity
   - type: AccessReader
     access: [["HeadOfPersonnel"]]
   - type: WiresPanelSecurity # Starlight-edit: Maintenance panel

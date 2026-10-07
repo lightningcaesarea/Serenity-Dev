@@ -1,0 +1,66 @@
+# Station Commander (job id HeadOfPersonnel) loadout options, added to the HoP loadout groups.
+
+# Jumpsuit
+- type: loadout
+  id: StationCommanderJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitStationCommander
+
+- type: loadout
+  id: StationCommanderJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtStationCommander
+
+- type: loadout
+  id: StationCommanderMilitaryJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryStationCommander
+
+# Head
+- type: loadout
+  id: StationCommanderBeret
+  equipment:
+    head: ClothingHeadHatStationCommanderBeret
+
+- type: loadout
+  id: StationCommanderCap
+  equipment:
+    head: ClothingHeadHatStationCommanderCap
+
+# Neck
+- type: loadout
+  id: StationCommanderCloak
+  equipment:
+    neck: ClothingNeckCloakStationCommander
+
+- type: loadout
+  id: StationCommanderMantle
+  equipment:
+    neck: ClothingNeckMantleStationCommander
+
+# Back
+- type: loadout
+  id: StationCommanderDuffel
+  equipment:
+    back: ClothingBackpackDuffelStationCommander
+
+- type: loadout
+  id: StationCommanderMessenger
+  equipment:
+    back: ClothingBackpackMessengerStationCommander
+
+# Outer clothing
+- type: loadout
+  id: StationCommanderJacket
+  equipment:
+    outerClothing: ClothingOuterJacketStationCommander
+
+- type: loadout
+  id: StationCommanderCarapace
+  equipment:
+    outerClothing: ClothingOuterArmorStationCommanderCarapace
+
+- type: loadout
+  id: StationCommanderEVASuit
+  equipment:
+    outerClothing: ClothingOuterEVASuitStationCommander

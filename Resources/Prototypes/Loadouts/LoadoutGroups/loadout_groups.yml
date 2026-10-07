@@ -253,6 +253,8 @@
   loadouts:
   - HoPHead
   - HopHeadFormal # Delta V
+  - StationCommanderBeret # Serenity
+  - StationCommanderCap # Serenity
 
 - type: loadoutGroup
   id: HoPJumpsuit
@@ -264,6 +266,9 @@
   - HoPTurtleneckJumpskirt # starlight
   - HopFormalSuit # DeltaV
   - HopFormalSkirt # DeltaV
+  - StationCommanderJumpsuit # Serenity
+  - StationCommanderJumpskirt # Serenity
+  - StationCommanderMilitaryJumpsuit # Serenity
 
 - type: loadoutGroup
   id: HoPNeck
@@ -273,6 +278,8 @@
   - HoPCloak
   - HoPMantle
   - HopCloakFormal # DeltaV
+  - StationCommanderCloak # Serenity
+  - StationCommanderMantle # Serenity
 
 - type: loadoutGroup
   id: HoPBackpack
@@ -283,6 +290,8 @@
   - HoPDuffel # Starlight
   - HoPBackpackIan
   - LeatherSatchel # starlight
+  - StationCommanderDuffel # Serenity
+  - StationCommanderMessenger # Serenity
 
 - type: loadoutGroup
   id: HoPOuterClothing
@@ -290,6 +299,9 @@
   minLimit: 0
   loadouts:
   - HoPWintercoat
+  - StationCommanderJacket # Serenity
+  - StationCommanderCarapace # Serenity
+  - StationCommanderEVASuit # Serenity
 
 #- type: loadoutGroup
 #  id: HoPJobTrinkets

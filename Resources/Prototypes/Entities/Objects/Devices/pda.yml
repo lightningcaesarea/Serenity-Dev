@@ -682,7 +682,7 @@
 - type: entity
   parent: BasePDA
   id: HoPPDA
-  name: head of personnel PDA
+  name: Station Commander PDA # Serenity: the HoP is reworked into the Station Commander
   description: Looks like it's been chewed on.
   components:
   - type: Pda
@@ -697,12 +697,12 @@
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
        !type:String
-       pda-hop
+       pda-station-commander # Serenity
   - type: PdaBorderColor
-    borderColor: "#789876"
-    accentHColor: "#447987"
+    borderColor: "#2c6a30" # Serenity: Station Commander green and gold
+    accentHColor: "#f2b833" # Serenity
   - type: Icon
-    state: pda-hop
+    state: pda-station-commander # Serenity
 
 - type: entity
   parent: BasePDA

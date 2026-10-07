@@ -1,0 +1,356 @@
+# Station Commander clothing (the reworked Head of Personnel).
+# Sprites are Frontier Station 14's station representative set; see each meta.json for
+# license and credit. The beret, cap and jacket are CC-BY-NC-SA-4.0, the rest CC-BY-SA-3.0.
+# The prototypes below are written for Serenity, not copied from Frontier.
+
+# ── Uniforms ─────────────────────────────────────────────────────────────────
+
+- type: entity
+  parent: ClothingUniformJumpsuitHoP
+  id: ClothingUniformJumpsuitStationCommander
+  name: Station Commander uniform
+  description: A finely tailored uniform for the Station Commander. Every stitch says "I am in charge here."
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/Uniforms/Jumpsuit/station_commander.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/Uniforms/Jumpsuit/station_commander.rsi
+
+- type: entity
+  parent: ClothingUniformJumpskirtHoP
+  id: ClothingUniformJumpskirtStationCommander
+  name: Station Commander uniform skirt
+  description: A finely tailored uniform skirt for the Station Commander.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/Uniforms/Jumpskirt/station_commander.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/Uniforms/Jumpskirt/station_commander.rsi
+
+- type: entity
+  parent: ClothingUniformJumpsuitHoP
+  id: ClothingUniformJumpsuitMilitaryStationCommander
+  name: Station Commander military jumpsuit
+  description: A sturdy military-cut jumpsuit with gold epaulets, for a Station Commander expecting trouble.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/Uniforms/Jumpsuit/military_color.rsi
+    layers:
+    - state: icon-base-bottom
+      color: "#3e3e48"
+    - state: icon-base-top-jumpsuit
+      color: "#3e3e48"
+    - state: icon-decor-department
+      color: "#09300b"
+    - state: icon-decor-department-head
+      color: "#fbe6b8"
+    - state: icon-decor-epaulets
+      color: "#eca615"
+    - state: icon-belt
+      color: "#fbe6b8"
+    - state: icon-belt-buckle
+      color: "#eca615"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-base-bottom
+        color: "#3e3e48"
+      - state: inhand-left-base-top-jumpsuit
+        color: "#3e3e48"
+      - state: inhand-left-decor-department
+        color: "#09300b"
+      - state: inhand-left-decor-department-head
+        color: "#fbe6b8"
+      - state: inhand-left-decor-epaulets
+        color: "#eca615"
+      - state: inhand-left-belt
+        color: "#fbe6b8"
+      - state: inhand-left-belt-buckle
+        color: "#eca615"
+      right:
+      - state: inhand-right-base-bottom
+        color: "#3e3e48"
+      - state: inhand-right-base-top-jumpsuit
+        color: "#3e3e48"
+      - state: inhand-right-decor-department
+        color: "#09300b"
+      - state: inhand-right-decor-department-head
+        color: "#fbe6b8"
+      - state: inhand-right-decor-epaulets
+        color: "#eca615"
+      - state: inhand-right-belt
+        color: "#fbe6b8"
+      - state: inhand-right-belt-buckle
+        color: "#eca615"
+  - type: Clothing
+    sprite: _Serenity/Clothing/Uniforms/Jumpsuit/military_color.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-base-bottom
+        color: "#3e3e48"
+      - state: equipped-base-top-jumpsuit
+        color: "#3e3e48"
+      - state: equipped-decor-department
+        color: "#2c6a30"
+      - state: equipped-decor-department-head
+        color: "#fbe6b8"
+      - state: equipped-decor-epaulets
+        color: "#eca615"
+      - state: equipped-belt
+        color: "#fbe6b8"
+      - state: equipped-belt-buckle
+        color: "#eca615"
+
+# ── Head ─────────────────────────────────────────────────────────────────────
+
+- type: entity
+  parent: ClothingHeadHatHopcap
+  id: ClothingHeadHatStationCommanderBeret
+  name: Station Commander beret
+  description: A soft green beret worn by the Station Commander.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/Head/Hats/station_commander_beret.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/Head/Hats/station_commander_beret.rsi
+
+- type: entity
+  parent: ClothingHeadHatHopcap
+  id: ClothingHeadHatStationCommanderCap
+  name: Station Commander cap
+  description: A peaked cap issued to the Station Commander. Try not to lose it.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/Head/Hats/station_commander_cap.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/Head/Hats/station_commander_cap.rsi
+
+# ── Neck ─────────────────────────────────────────────────────────────────────
+
+- type: entity
+  parent: ClothingNeckCloakHop
+  id: ClothingNeckCloakStationCommander
+  name: Station Commander cloak
+  description: A fur-collared cloak made from exquisite fibers. Only the Station Commander gets one.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/Neck/Cloaks/station_commander.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/Neck/Cloaks/station_commander.rsi
+
+- type: entity
+  parent: ClothingNeckMantleHOP
+  id: ClothingNeckMantleStationCommander
+  name: Station Commander mantle
+  description: A mantle that protects the Station Commander's neck and shoulders from vicious papercuts.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/Neck/Mantles/station_commander.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/Neck/Mantles/station_commander.rsi
+
+# ── Outer clothing ───────────────────────────────────────────────────────────
+
+# Same protection as the captain's carapace, in the Commander's colors.
+- type: entity
+  parent: ClothingOuterArmorCaptainCarapace
+  id: ClothingOuterArmorStationCommanderCarapace
+  name: Station Commander carapace
+  description: An armored chestpiece that protects without slowing the Station Commander down.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/OuterClothing/Armor/station_commander_carapace.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/OuterClothing/Armor/station_commander_carapace.rsi
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterJacketStationCommander
+  name: Station Commander jacket
+  description: A green dress jacket with gold epaulets, the top half of the Station Commander's uniform.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/OuterClothing/Misc/station_commander_jacket.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/OuterClothing/Misc/station_commander_jacket.rsi
+
+- type: entity
+  parent: ClothingOuterEVASuitBase
+  id: ClothingOuterEVASuitStationCommander
+  name: Station Commander EVA suit
+  description: A green and gold EVA suit with a built-in helmet, issued to the Station Commander.
+  components:
+  # Serenity: the ToggleableClothing below needs a matching container declared up front.
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:ContainerSlot {}
+  - type: Sprite
+    sprite: _Serenity/Clothing/OuterClothing/Suits/eva_color.rsi
+    layers:
+    - state: icon-base
+      color: "#194214"
+    - state: icon-decals-01
+      color: "#f2b833"
+    - state: icon-reinforced-points
+      color: "#3e3e48"
+    - state: icon-breathing-gear
+    - state: icon-unshaded
+      shader: unshaded
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-base
+        color: "#194214"
+      - state: inhand-left-decals-01
+        color: "#f2b833"
+      - state: inhand-left-reinforced-points
+        color: "#3e3e48"
+      - state: inhand-left-breathing-gear
+      - state: inhand-left-unshaded
+        shader: unshaded
+      right:
+      - state: inhand-right-base
+        color: "#194214"
+      - state: inhand-right-decals-01
+        color: "#f2b833"
+      - state: inhand-right-reinforced-points
+        color: "#3e3e48"
+      - state: inhand-right-breathing-gear
+      - state: inhand-right-unshaded
+        shader: unshaded
+  - type: Clothing
+    sprite: _Serenity/Clothing/OuterClothing/Suits/eva_color.rsi
+    clothingVisuals:
+      outerClothing:
+      - state: equipped-base
+        color: "#194214"
+      - state: equipped-decals-01
+        color: "#f2b833"
+      - state: equipped-reinforced-points
+        color: "#3e3e48"
+      - state: equipped-breathing-gear
+      - state: equipped-unshaded
+        shader: unshaded
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadEVAHelmetStationCommander
+
+- type: entity
+  parent: ClothingHeadEVAHelmetBase
+  id: ClothingHeadEVAHelmetStationCommander
+  name: Station Commander EVA helmet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
+    layers:
+    - state: icon-base
+      color: "#194214"
+    - state: icon-reinforced-points
+      color: "#3e3e48"
+    - state: icon-decals-02
+      color: "#f2b833"
+    - state: icon-visor
+      color: "#fbe6b8"
+  - type: Clothing
+    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
+    clothingVisuals:
+      head:
+      - state: equipped-head-base
+        color: "#194214"
+      - state: equipped-head-reinforced-points
+        color: "#3e3e48"
+      - state: equipped-head-decals-02
+        color: "#f2b833"
+      - state: equipped-head-visor
+        color: "#fbe6b8"
+
+# ── Back ─────────────────────────────────────────────────────────────────────
+
+- type: entity
+  parent: ClothingBackpackDuffelColorable
+  id: ClothingBackpackDuffelStationCommander
+  name: Station Commander duffel bag
+  description: A large green duffel bag with gold straps.
+  components:
+  - type: Sprite
+    layers:
+    - state: icon-base
+      color: "#2c6a30"
+    - state: icon-sling
+      color: "#fbe6b8"
+    - state: icon-decal-straps
+      color: "#f2b833"
+    - state: icon-handle
+      color: "#fbe6b8"
+    - state: icon-zipper
+  - type: Clothing
+    clothingVisuals:
+      back:
+      - state: equipped-BACKPACK-base
+        color: "#2c6a30"
+      - state: equipped-BACKPACK-sling
+        color: "#fbe6b8"
+      - state: equipped-BACKPACK-decal-straps
+        color: "#f2b833"
+      - state: equipped-BACKPACK-handle
+        color: "#fbe6b8"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-base
+        color: "#2c6a30"
+      - state: inhand-left-sling
+        color: "#fbe6b8"
+      - state: inhand-left-decal-straps
+        color: "#f2b833"
+      - state: inhand-left-handle
+        color: "#fbe6b8"
+      - state: inhand-left-zipper
+      right:
+      - state: inhand-right-base
+        color: "#2c6a30"
+      - state: inhand-right-sling
+        color: "#fbe6b8"
+      - state: inhand-right-decal-straps
+        color: "#f2b833"
+      - state: inhand-right-handle
+        color: "#fbe6b8"
+      - state: inhand-right-zipper
+
+- type: entity
+  parent: ClothingBackpackSatchel
+  id: ClothingBackpackMessengerStationCommander
+  name: Station Commander messenger bag
+  description: An exclusive green messenger bag with a gold clasp.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/Back/Messenger/color.rsi
+    layers:
+    - state: icon-base
+      color: "#2c6a30"
+    - state: icon-sling
+      color: "#fbe6b8"
+    - state: icon-clasp
+      color: "#eca615"
+  - type: Clothing
+    sprite: _Serenity/Clothing/Back/Messenger/color.rsi
+    clothingVisuals:
+      back:
+      - state: base-equipped-BACKPACK
+        color: "#2c6a30"
+      - state: sling-equipped-BACKPACK
+        color: "#fbe6b8"
+      - state: clasp-equipped-BACKPACK
+        color: "#eca615"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: base-inhand-left
+        color: "#2c6a30"
+      - state: clasp-inhand-left
+        color: "#eca615"
+      right:
+      - state: base-inhand-right
+        color: "#2c6a30"
+      - state: clasp-inhand-right
+        color: "#eca615"
