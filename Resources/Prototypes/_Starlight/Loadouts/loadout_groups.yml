@@ -858,6 +858,7 @@
   loadouts:
   - AssistantManagerGloves
   - AssistantManagerMittens
+  - StationOfficerGloves
 
 - type: loadoutGroup
   id: AssistantManagerOuterClothing
@@ -865,6 +866,7 @@
   minLimit: 0
   loadouts:
   - AssistantManagerWintercoat
+  - StationOfficerWintercoat
 
 - type: loadoutGroup
   id: AssistantManagerShoes
@@ -876,6 +878,7 @@
   - WhiteShoes
   - BlueShoes
   - BlueWinterBoots
+  - StationOfficerWinterBoots
   - Heels
 
 # Silicon Brain Type

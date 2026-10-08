@@ -1,0 +1,59 @@
+# Station Officer (job id AssistantManager) cold-weather gear, recolored from the Head of Personnel set:
+# command blue with gold trim. Sprites are CC-BY-SA-3.0 recolors, see each meta.json for credit.
+
+- type: entity
+  parent: ClothingHandsGlovesHop
+  id: ClothingHandsGlovesStationOfficer
+  name: station officer's gloves
+  description: Warm command-blue gloves with gold stitching, for officers who handle a lot of paperwork.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/Hands/Gloves/station_officer.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/Hands/Gloves/station_officer.rsi
+
+- type: entity
+  parent: ClothingOuterWinterHoP
+  id: ClothingOuterWinterStationOfficer
+  name: station officer's winter coat
+  description: A warm command-blue winter coat with gold trim.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/OuterClothing/WinterCoats/station_officer.rsi
+    layers:
+    - state: icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+      right:
+      - state: inhand-right
+  - type: Clothing
+    sprite: _Serenity/Clothing/OuterClothing/WinterCoats/station_officer.rsi
+    clothingVisuals:
+      outerClothing:
+      - state: equipped-OUTERCLOTHING
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodWinterStationOfficer
+
+- type: entity
+  parent: ClothingHeadHatHoodWinterBase
+  id: ClothingHeadHatHoodWinterStationOfficer
+  categories: [ HideSpawnMenu ]
+  name: station officer's winter coat hood
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/Head/Hoods/station_officer.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/Head/Hoods/station_officer.rsi
+
+- type: entity
+  parent: ClothingShoesBaseWinterBoots
+  id: ClothingShoesBootsWinterStationOfficer
+  name: station officer's winter boots
+  description: Fur-lined command-blue boots for long shifts on cold decks.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/Shoes/Boots/station_officer_winter.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/Shoes/Boots/station_officer_winter.rsi

@@ -1,0 +1,16 @@
+# Station Officer (job id AssistantManager) loadout options, added to the Assistant Manager loadout groups.
+
+- type: loadout
+  id: StationOfficerGloves
+  equipment:
+    gloves: ClothingHandsGlovesStationOfficer
+
+- type: loadout
+  id: StationOfficerWintercoat
+  equipment:
+    outerClothing: ClothingOuterWinterStationOfficer
+
+- type: loadout
+  id: StationOfficerWinterBoots
+  equipment:
+    shoes: ClothingShoesBootsWinterStationOfficer
