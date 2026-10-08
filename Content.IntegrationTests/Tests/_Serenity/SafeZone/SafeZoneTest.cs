@@ -126,7 +126,14 @@ public sealed class SafeZoneTest : GameTest
     public async Task OtherPacificationIsKept()
     {
         var body = await SpawnAsAssistant();
-        await Server.WaitPost(() => SEntMan.EnsureComponent<PacifiedComponent>(body));
+        await Server.WaitPost(() =>
+        {
+            // The zone may already have pacified the player while the round started; undo that so the pacification
+            // below is the only one, added in the same moment so the zone can't get in between.
+            SEntMan.RemoveComponent<SafeZonePacifiedComponent>(body);
+            SEntMan.RemoveComponent<PacifiedComponent>(body);
+            SEntMan.AddComponent<PacifiedComponent>(body);
+        });
         await RunSeconds(2);
 
         await Server.WaitAssertion(() =>
