@@ -950,3 +950,10 @@ Entries:
   id: 15501
   time: '2026-10-08T13:14:24.000000+00:00'
   url: https://github.com/lightningcaesarea/Serenity-Dev/pull/155
+- author: Inny
+  changes:
+  - message: Station Officer gloves, winter coat and winter boots.
+    type: Tweak
+  id: 15701
+  time: '2026-10-08T15:15:47.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/157
