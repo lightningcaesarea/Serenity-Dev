@@ -64,7 +64,7 @@
   id: JobIconHeadOfPersonnel
   icon:
     sprite: *icon-rsi
-    state: HeadOfPersonnel
+    state: StationCommander # Serenity: the HoP is reworked into the Station Commander
   jobName: job-name-hop
   tags: # Starlight-edit: makes the icon visable on the player accessible ID card computer.
   - JobIconCrew
