@@ -869,3 +869,10 @@ Entries:
   id: 14201
   time: '2026-10-08T11:46:06.000000+00:00'
   url: https://github.com/lightningcaesarea/Serenity-Dev/pull/142
+- author: Inny
+  changes:
+  - message: Ship saving.
+    type: Tweak
+  id: 14501
+  time: '2026-10-08T11:46:18.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/145
