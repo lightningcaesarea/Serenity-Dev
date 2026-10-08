@@ -444,7 +444,7 @@
       color: *color-security-top
     - state: stripe_bottom
       color: *color-security-bottom
-    - sprite: *icon-rsi
+    - sprite: &icon-rsi-dv _Serenity/Interface/Misc/job_icons_security_dv.rsi # Serenity: DeltaV job icon to match the DV-themed PDA
       offset: *icon-offset
       state: SecurityCadet
   - type: PresetIdCard
@@ -462,7 +462,7 @@
       color: *color-security-top
     - state: stripe_bottom
       color: *color-security-bottom
-    - sprite: *icon-rsi
+    - sprite: *icon-rsi-dv # Serenity
       offset: *icon-offset
       state: SecurityOfficer
   - type: PresetIdCard
@@ -480,7 +480,7 @@
       color: *color-security-top
     - state: stripe_bottom
       color: *color-security-bottom
-    - sprite: *icon-rsi
+    - sprite: *icon-rsi-dv # Serenity
       offset: *icon-offset
       state: Warden
   - type: PresetIdCard
@@ -498,7 +498,7 @@
       color: *color-security-top
     - state: stripe_bottom
       color: *color-security-bottom
-    - sprite: *icon-rsi
+    - sprite: *icon-rsi-dv # Serenity
       offset: *icon-offset
       state: Detective
   - type: PresetIdCard
@@ -516,7 +516,7 @@
       color: *color-security-top
     - state: stripe_bottom
       color: *color-security-bottom
-    - sprite: *icon-rsi
+    - sprite: *icon-rsi-dv # Serenity
       offset: *icon-offset
       state: Brigmedic
   - type: PresetIdCard # Starlight
@@ -536,7 +536,7 @@
       color: *color-security-top
     - state: stripe_bottom
       color: *color-security-bottom
-    - sprite: *icon-rsi
+    - sprite: *icon-rsi-dv # Serenity
       offset: *icon-offset
       state: SeniorOfficer
 
@@ -623,7 +623,7 @@
       color: *color-service-top
     - state: stripe_bottom
       color: *color-service-bottom
-    - sprite: *icon-rsi
+    - sprite: *icon-rsi-dv # Serenity
       offset: *icon-offset
       state: Chaplain
   - type: PresetIdCard
