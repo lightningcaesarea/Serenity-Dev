@@ -37,9 +37,8 @@
   - type: Sprite
     layers:
     - state: default
-    - sprite: &icon-rsi Interface/Misc/job_icons.rsi
-      offset: &icon-offset -0.09375, 0.0625 #3 pixels left, 2 pixels up
-      state: Assistant
+    - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
+      state: idassistant
   - type: PresetIdCard
     job: Assistant
 
@@ -58,8 +57,8 @@
       color: "#1b67a5"
     - state: stripe_bottom
       color: "#0e4069"
-    - sprite: *icon-rsi
-      offset: *icon-offset
+    - sprite: &icon-rsi Interface/Misc/job_icons.rsi
+      offset: &icon-offset -0.09375, 0.0625 #3 pixels left, 2 pixels up
       state: Captain
   - type: Item
     heldPrefix: gold
@@ -86,9 +85,8 @@
       color: "#2c6a30"
     - state: stripe_bottom
       color: "#194214"
-    - sprite: *icon-rsi
-      offset: *icon-offset
-      state: StationCommander
+    - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
+      state: idheadofpersonnel
   - type: Item
     heldPrefix: gold
   - type: PresetIdCard
@@ -168,9 +166,8 @@
       color: &color-security-top "#cb0000"
     - state: stripe_bottom
       color: &color-security-bottom "#830000"
-    - sprite: *icon-rsi
-      offset: *icon-offset
-      state: HeadOfSecurity
+    - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
+      state: idheadofsecurity
   - type: Item
     heldPrefix: silver
   - type: PresetIdCard
@@ -210,9 +207,8 @@
       color: *color-engineering-top
     - state: stripe_bottom
       color: *color-engineering-bottom
-    - sprite: *icon-rsi
-      offset: *icon-offset
-      state: TechnicalAssistant
+    - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
+      state: idtechnicalassistant
   - type: PresetIdCard
     job: TechnicalAssistant
 
@@ -228,9 +224,8 @@
       color: *color-engineering-top
     - state: stripe_bottom
       color: *color-engineering-bottom
-    - sprite: *icon-rsi
-      offset: *icon-offset
-      state: StationEngineer
+    - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
+      state: idstationengineer
   - type: PresetIdCard
     job: StationEngineer
 
@@ -282,9 +277,8 @@
       color: *color-medical-top
     - state: stripe_bottom
       color: *color-medical-bottom
-    - sprite: *icon-rsi
-      offset: *icon-offset
-      state: MedicalIntern
+    - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
+      state: idmedicalintern
   - type: PresetIdCard
     job: MedicalIntern
 
@@ -300,9 +294,8 @@
       color: *color-medical-top
     - state: stripe_bottom
       color: *color-medical-bottom
-    - sprite: *icon-rsi
-      offset: *icon-offset
-      state: MedicalDoctor
+    - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
+      state: idmedicaldoctor
   - type: PresetIdCard
     job: MedicalDoctor
 
@@ -318,9 +311,8 @@
       color: *color-medical-top
     - state: stripe_bottom
       color: *color-medical-bottom
-    - sprite: *icon-rsi
-      offset: *icon-offset
-      state: Paramedic
+    - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
+      state: idparamedic
   - type: PresetIdCard
     job: Paramedic
 
@@ -390,9 +382,8 @@
       color: *color-science-top
     - state: stripe_bottom
       color: *color-science-bottom
-    - sprite: *icon-rsi
-      offset: *icon-offset
-      state: ResearchAssistant
+    - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
+      state: idresearchassistant
   - type: PresetIdCard
     job: ResearchAssistant
 
@@ -408,9 +399,8 @@
       color: *color-science-top
     - state: stripe_bottom
       color: *color-science-bottom
-    - sprite: *icon-rsi
-      offset: *icon-offset
-      state: Scientist
+    - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
+      state: idscientist
   - type: PresetIdCard
     job: Scientist
 
@@ -444,9 +434,8 @@
       color: *color-security-top
     - state: stripe_bottom
       color: *color-security-bottom
-    - sprite: *icon-rsi
-      offset: *icon-offset
-      state: SecurityCadet
+    - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
+      state: idsecuritycadet
   - type: PresetIdCard
     job: SecurityCadet
 
@@ -462,9 +451,8 @@
       color: *color-security-top
     - state: stripe_bottom
       color: *color-security-bottom
-    - sprite: *icon-rsi
-      offset: *icon-offset
-      state: SecurityOfficer
+    - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
+      state: idsecurityofficer
   - type: PresetIdCard
     job: SecurityOfficer
 
@@ -480,9 +468,8 @@
       color: *color-security-top
     - state: stripe_bottom
       color: *color-security-bottom
-    - sprite: *icon-rsi
-      offset: *icon-offset
-      state: Warden
+    - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
+      state: idwarden
   - type: PresetIdCard
     job: Warden
 
@@ -498,7 +485,7 @@
       color: *color-security-top
     - state: stripe_bottom
       color: *color-security-bottom
-    - sprite: *icon-rsi
+    - sprite: &icon-rsi-dv _Serenity/Interface/Misc/job_icons_security_dv.rsi # Serenity
       offset: *icon-offset
       state: Detective
   - type: PresetIdCard
@@ -516,9 +503,8 @@
       color: *color-security-top
     - state: stripe_bottom
       color: *color-security-bottom
-    - sprite: *icon-rsi
-      offset: *icon-offset
-      state: Brigmedic
+    - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
+      state: idbrigmedic
   - type: PresetIdCard # Starlight
     job: Brigmedic # Starlight
 
@@ -536,9 +522,8 @@
       color: *color-security-top
     - state: stripe_bottom
       color: *color-security-bottom
-    - sprite: *icon-rsi
-      offset: *icon-offset
-      state: SeniorOfficer
+    - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
+      state: idseniorofficer
 
 #Service
 
@@ -554,9 +539,8 @@
       color: &color-service-top "#639137"
     - state: stripe_bottom
       color: &color-service-bottom "#446326"
-    - sprite: *icon-rsi
-      offset: *icon-offset
-      state: ServiceWorker
+    - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
+      state: idserviceworker
   - type: PresetIdCard
     job: ServiceWorker
 
@@ -623,7 +607,7 @@
       color: *color-service-top
     - state: stripe_bottom
       color: *color-service-bottom
-    - sprite: *icon-rsi
+    - sprite: *icon-rsi-dv # Serenity
       offset: *icon-offset
       state: Chaplain
   - type: PresetIdCard
@@ -659,9 +643,8 @@
       color: *color-service-top
     - state: stripe_bottom
       color: *color-service-bottom
-    - sprite: *icon-rsi
-      offset: *icon-offset
-      state: Bartender
+    - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
+      state: idbartender
   - type: PresetIdCard
     job: Bartender
 
@@ -677,9 +660,8 @@
       color: *color-service-top
     - state: stripe_bottom
       color: *color-service-bottom
-    - sprite: *icon-rsi
-      offset: *icon-offset
-      state: Bartender
+    - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
+      state: idbartender
   - type: PresetIdCard
     job: Bartender
     name: Pun Pun
@@ -699,9 +681,8 @@
       color: *color-service-top
     - state: stripe_bottom
       color: *color-service-bottom
-    - sprite: *icon-rsi
-      offset: *icon-offset
-      state: Chef
+    - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
+      state: idchef
   - type: PresetIdCard
     job: Chef
 
@@ -717,9 +698,8 @@
       color: *color-service-top
     - state: stripe_bottom
       color: *color-service-bottom
-    - sprite: *icon-rsi
-      offset: *icon-offset
-      state: Botanist
+    - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
+      state: idbotanist
   - type: PresetIdCard
     job: Botanist
 
@@ -949,9 +929,8 @@
   - type: Sprite
     layers:
     - state: default
-    - sprite: *icon-rsi
-      offset: *icon-offset
-      state: Assistant
+    - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
+      state: idassistant
   - type: AgentIDCard
   - type: UIRequiresLock
   - type: ActivatableUI
