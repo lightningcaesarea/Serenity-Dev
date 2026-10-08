@@ -1,12 +1,12 @@
 job-supervisors-centcom = Central Command
 job-supervisors-captain = the Captain
-job-supervisors-hop = the Head of Personnel
+job-supervisors-hop = the Station Commander
 job-supervisors-hos = the Marine CO
 job-supervisors-ce = the Chief Engineer
 job-supervisors-cmo = the Chief Medical Officer
 job-supervisors-rd = the Research Director
 job-supervisors-qm = the Quartermaster
-job-supervisors-service = Chefs, Botanists, the Bartender, and the Head of Personnel
+job-supervisors-service = Chefs, Botanists, the Bartender, and the Station Commander
 job-supervisors-engineering = Station Engineers, Atmospheric Technicians, and the Chief Engineer
 job-supervisors-medicine = Medical Doctors, Paramedics, Chemists, and the Chief Medical Officer
 job-supervisors-security = Marine Troopers, the Marine Quartermaster, and the Marine CO
