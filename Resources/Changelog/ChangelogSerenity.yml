@@ -853,3 +853,10 @@ Entries:
   id: 13701
   time: '2026-10-07T22:10:01.000000+00:00'
   url: https://github.com/lightningcaesarea/Serenity-Dev/pull/137
+- author: SERENITY
+  changes:
+  - message: Plasma is now called Phoron in item, gas, reagent and material names and descriptions.
+    type: Tweak
+  id: 14901
+  time: '2026-10-08T11:27:45.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/149
