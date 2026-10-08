@@ -111,10 +111,10 @@ public sealed partial class SerenityCCVars
         CVarDef.Create("serenity.discord.status_enabled", true, CVar.SERVERONLY);
 
     /// <summary>
-    /// Seconds between Discord bot status updates. Discord rate-limits presence changes, so keep this at 20 or more.
+    /// Seconds between Discord bot status updates (default 3 minutes). Discord rate-limits presence changes, so keep this at 20 or more.
     /// </summary>
     public static readonly CVarDef<float> DiscordStatusInterval =
-        CVarDef.Create("serenity.discord.status_interval", 30f, CVar.SERVERONLY);
+        CVarDef.Create("serenity.discord.status_interval", 180f, CVar.SERVERONLY);
 
     /// <summary>
     /// Federal Bills a character's account opens with, the first time that character spawns.
