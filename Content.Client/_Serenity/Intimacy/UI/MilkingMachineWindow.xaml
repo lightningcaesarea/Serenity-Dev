@@ -1,0 +1,37 @@
+<controls:FancyWindow xmlns="https://spacestation14.io"
+            xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+            MinSize="340 380" Title="{Loc milking-machine-window-title}">
+    <BoxContainer Orientation="Vertical" Margin="8" SeparationOverride="10">
+        <BoxContainer Orientation="Vertical" SeparationOverride="4">
+            <Label Text="{Loc milking-machine-window-occupant}" StyleClasses="LabelHeading" />
+            <Label Name="OccupantLabel" />
+            <Label Name="NotParticipatingLabel" Text="{Loc milking-machine-window-not-participating}"
+                   StyleClasses="LabelSubText" Visible="False" />
+            <BoxContainer Name="StatsBox" Orientation="Vertical" SeparationOverride="4" />
+        </BoxContainer>
+
+        <BoxContainer Orientation="Vertical" SeparationOverride="4">
+            <Label Text="{Loc milking-machine-window-pump}" StyleClasses="LabelHeading" />
+            <BoxContainer Orientation="Horizontal" HorizontalExpand="True" SeparationOverride="1">
+                <Button Name="OffButton" Text="{Loc milking-machine-mode-off}" StyleClasses="OpenRight"
+                        ToggleMode="True" HorizontalExpand="True" />
+                <Button Name="LowButton" Text="{Loc milking-machine-mode-low}" StyleClasses="OpenBoth"
+                        ToggleMode="True" HorizontalExpand="True" />
+                <Button Name="MediumButton" Text="{Loc milking-machine-mode-medium}" StyleClasses="OpenBoth"
+                        ToggleMode="True" HorizontalExpand="True" />
+                <Button Name="HighButton" Text="{Loc milking-machine-mode-high}" StyleClasses="OpenLeft"
+                        ToggleMode="True" HorizontalExpand="True" />
+            </BoxContainer>
+        </BoxContainer>
+
+        <BoxContainer Orientation="Vertical" SeparationOverride="4" VerticalExpand="True">
+            <Label Text="{Loc milking-machine-window-tank}" StyleClasses="LabelHeading" />
+            <ProgressBar Name="FillBar" MinValue="0" MaxValue="1" Value="0" MinHeight="22" HorizontalExpand="True">
+                <Label Name="FillLabel" HorizontalAlignment="Center" />
+            </ProgressBar>
+            <ScrollContainer VerticalExpand="True" HScrollEnabled="False" MinHeight="60">
+                <BoxContainer Name="ContentsBox" Orientation="Vertical" SeparationOverride="2" />
+            </ScrollContainer>
+        </BoxContainer>
+    </BoxContainer>
+</controls:FancyWindow>

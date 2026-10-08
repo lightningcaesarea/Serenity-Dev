@@ -21,7 +21,7 @@
   - Chaplain
   - Chef
   - Clown
-  - HeadOfPersonnel
+  # - HeadOfPersonnel # Serenity: the Station Commander is Command only
   - Janitor
   - Librarian
   - Mime
@@ -31,7 +31,7 @@
   - Visitor
   - ServiceWorker
   # Starlight start
-  - AssistantManager
+  # - AssistantManager # Serenity: the Station Officer is in Command
   - Performer
   - Lawyer
   - Boxer
@@ -70,6 +70,7 @@
   - ChiefEngineer
   - ChiefMedicalOfficer
   - HeadOfPersonnel
+  - AssistantManager # Serenity: the Station Officer
   - HeadOfSecurity
   - ResearchDirector
   - Quartermaster

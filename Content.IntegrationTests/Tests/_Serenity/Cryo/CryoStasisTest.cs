@@ -24,7 +24,7 @@ namespace Content.IntegrationTests.Tests._Serenity.Cryo;
 public sealed class CryoStasisTest : GameTest
 {
     private const string Map = "SerenityCryoStasisTestMap";
-    private static readonly ProtoId<JobPrototype> Mime = "Mime";
+    private static readonly ProtoId<JobPrototype> LimitedJob = "Bartender"; // the Mime is disabled; any limited-slot job works
     private static readonly EntProtoId CryoPod = "CryogenicSleepUnit";
 
     // YAML indentation, not C#.
@@ -44,7 +44,7 @@ public sealed class CryoStasisTest : GameTest
           mapNameTemplate: ""Empty""
         - type: StationJobs
           availableJobs:
-            {Mime}: [ 1, 1 ]
+            {LimitedJob}: [ 1, 1 ]
 ";
     // editorconfig-checker-enable
 
@@ -66,8 +66,8 @@ public sealed class CryoStasisTest : GameTest
 
     private void AssertSlots(EntityUid station, int expected)
     {
-        Assert.That(_stationJobs.TryGetJobSlot(station, Mime, out var slots));
-        Assert.That(slots, Is.EqualTo(expected), $"Open {Mime} slots");
+        Assert.That(_stationJobs.TryGetJobSlot(station, LimitedJob, out var slots));
+        Assert.That(slots, Is.EqualTo(expected), $"Open {LimitedJob} slots");
     }
 
     /// <summary>
@@ -76,8 +76,8 @@ public sealed class CryoStasisTest : GameTest
     private async Task<(EntityUid Body, EntityUid Station, EntityUid Pod)> SleepInPod()
     {
         Server.CfgMan.SetCVar(CCVars.GameMap, Map);
-        await Pair.SetJobPreferences([Mime]);
-        await Pair.SetJobPriorities((Mime, JobPriority.High));
+        await Pair.SetJobPreferences([LimitedJob]);
+        await Pair.SetJobPriorities((LimitedJob, JobPriority.High));
         _ticker.ToggleReadyAll(true);
         await Server.WaitPost(() => _ticker.StartRound());
         await RunTicksSync(10);

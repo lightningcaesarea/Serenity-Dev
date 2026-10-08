@@ -6,6 +6,10 @@
   name: ETO web vest
   description: A protective vest built for ETO members, allowing you to stay light on your feet.
   components:
+  - type: Storage # Serenity: keep the pocket grid instead of the armor plate compartment from ClothingArmorPlateCarrier
+    grid:
+    - 0,0,2,1
+    maxItemSize: Small
   - type: Sprite
     sprite: _Starlight/Admeme/ETO/clothing/armour/etovest.rsi
   - type: Clothing

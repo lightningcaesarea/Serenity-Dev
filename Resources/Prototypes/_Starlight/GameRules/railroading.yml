@@ -80,9 +80,8 @@
     delay: 10
     cards:
     # antagonists
+    # Serenity: RRCardCriminal and RRCardWar removed, no antag objective cards.
 
-    - RRCardCriminal
-    - RRCardWar
 
     # open mail
 

@@ -2,6 +2,7 @@ using Content.Shared._Serenity.Consent;
 using Content.Shared._Serenity.Intimacy;
 using Content.Shared.Buckle.Components;
 using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.Chemistry.Reagent;
 using Content.Shared.FixedPoint;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Popups;
@@ -14,6 +15,7 @@ namespace Content.Server._Serenity.Intimacy;
 /// <summary>
 /// Runs <see cref="MilkingMachineComponent"/>: raises the occupant's arousal and pleasure, collects fluids into
 /// the machine's tank every second, and adds a burst when the occupant climaxes. Plumbing pulls from the tank.
+/// Also serves the control window, which shows the occupant, the pump mode and the tank.
 /// </summary>
 public sealed partial class MilkingMachineSystem : EntitySystem
 {
@@ -23,6 +25,7 @@ public sealed partial class MilkingMachineSystem : EntitySystem
     [Dependency] private SharedIntimacySystem _intimacy = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private SharedSolutionContainerSystem _solution = default!;
+    [Dependency] private UserInterfaceSystem _ui = default!;
 
     public override void Initialize()
     {
@@ -30,7 +33,10 @@ public sealed partial class MilkingMachineSystem : EntitySystem
 
         SubscribeLocalEvent<MilkingMachineComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<MilkingMachineComponent, GetVerbsEvent<Verb>>(OnGetVerbs);
+        SubscribeLocalEvent<MilkingMachineComponent, StrappedEvent>(OnStrapped);
         SubscribeLocalEvent<MilkingMachineComponent, UnstrappedEvent>(OnUnstrapped);
+        SubscribeLocalEvent<MilkingMachineComponent, BoundUIOpenedEvent>(OnUIOpened);
+        SubscribeLocalEvent<MilkingMachineComponent, MilkingMachineSetModeMessage>(OnSetModeMessage);
         SubscribeLocalEvent<BuckleComponent, ClimaxEvent>(OnClimax);
     }
 
@@ -98,6 +104,7 @@ public sealed partial class MilkingMachineSystem : EntitySystem
         ent.Comp.NextUpdate = _timing.CurTime + ent.Comp.UpdateInterval;
         Dirty(ent);
         UpdateAppearance(ent);
+        UpdateUI(ent);
 
         if (user != null)
         {
@@ -108,11 +115,31 @@ public sealed partial class MilkingMachineSystem : EntitySystem
         return true;
     }
 
+    private void OnStrapped(Entity<MilkingMachineComponent> ent, ref StrappedEvent args)
+    {
+        UpdateUI(ent);
+    }
+
     private void OnUnstrapped(Entity<MilkingMachineComponent> ent, ref UnstrappedEvent args)
     {
         // Never keep running on the next person to sit down.
         if (ent.Comp.Mode != MilkingMachineMode.Off)
             TrySetMode(ent, MilkingMachineMode.Off, null);
+
+        UpdateUI(ent);
+    }
+
+    private void OnUIOpened(Entity<MilkingMachineComponent> ent, ref BoundUIOpenedEvent args)
+    {
+        UpdateUI(ent);
+    }
+
+    private void OnSetModeMessage(Entity<MilkingMachineComponent> ent, ref MilkingMachineSetModeMessage args)
+    {
+        if (!Enum.IsDefined(args.Mode))
+            return;
+
+        TrySetMode(ent, args.Mode, args.Actor);
     }
 
     private void OnClimax(Entity<BuckleComponent> ent, ref ClimaxEvent args)
@@ -141,6 +168,7 @@ public sealed partial class MilkingMachineSystem : EntitySystem
 
             // Plumbing drains the tank on its own schedule, so keep the fill level current even while off.
             UpdateAppearance((uid, machine));
+            UpdateUI((uid, machine));
             if (machine.Mode == MilkingMachineMode.Off)
                 continue;
 
@@ -175,6 +203,31 @@ public sealed partial class MilkingMachineSystem : EntitySystem
         }
 
         UpdateAppearance(ent);
+    }
+
+    private void UpdateUI(Entity<MilkingMachineComponent> ent)
+    {
+        if (!_ui.IsUiOpen(ent.Owner, MilkingMachineUiKey.Key))
+            return;
+
+        var state = new MilkingMachineUiState { Mode = ent.Comp.Mode };
+
+        if (GetOccupant(ent) is { } occupant)
+        {
+            state.OccupantName = Identity.Name(occupant, EntityManager);
+            state.OccupantParticipates = _intimacy.IsEnabled(occupant);
+            if (state.OccupantParticipates && TryComp<IntimacyParticipantComponent>(occupant, out var participant))
+                state.OccupantStats = new Dictionary<string, float>(participant.Stats);
+        }
+
+        if (_solution.TryGetSolution(ent.Owner, ent.Comp.SolutionName, out _, out var tank))
+        {
+            state.Volume = tank.Volume;
+            state.MaxVolume = tank.MaxVolume;
+            state.Contents = new List<ReagentQuantity>(tank.Contents);
+        }
+
+        _ui.SetUiState(ent.Owner, MilkingMachineUiKey.Key, state);
     }
 
     private void UpdateAppearance(Entity<MilkingMachineComponent> ent)

@@ -3,6 +3,7 @@
   name: job-name-lawyer
   description: job-description-lawyer-sl # Starlight, new desc.
   playTimeTracker: JobLawyer
+  setPreference: false # Serenity: role disabled
   requirements:
     - !type:RoleTimeRequirement # Starlight start
       role: JobIAA # You have to actually know the law, this role is really easy to mess up if you don't.

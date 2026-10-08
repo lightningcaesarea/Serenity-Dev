@@ -24,3 +24,24 @@ public sealed class ShipyardConsolePurchaseMessage : BoundUserInterfaceMessage
 /// </summary>
 [Serializable, NetSerializable]
 public sealed class ShipyardConsoleSellMessage : BoundUserInterfaceMessage;
+
+/// <summary>
+/// Serenity: save the ship deeded to the inserted ID card for a later round. The ship leaves the sector.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class ShipyardConsoleSaveMessage : BoundUserInterfaceMessage;
+
+/// <summary>
+/// Serenity: bring back one of the playing character's saved ships. Only the save's id comes from the client;
+/// the ship itself is read from the server's copy.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class ShipyardConsoleLoadMessage : BoundUserInterfaceMessage
+{
+    public string SaveId { get; }
+
+    public ShipyardConsoleLoadMessage(string saveId)
+    {
+        SaveId = saveId;
+    }
+}

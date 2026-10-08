@@ -37,11 +37,11 @@ book-text-supermatter-guide =
 
    ⠀Understand that the supermatter crystal upon activation will start producing [color=lightgreen]tritium[/color], as well as [color=lightblue]oxygen[/color] gasses. These gasses can and should be siphoned off for further use.
 
-   ⠀A simple setup for the supermatter engine, is to first activate all of the radiation collectors and make sure they are filled with [color=pink]plasma[/color]. Similarly, the crystal will spark like the tesla ball, and nescessary precautions should be taken.
+   ⠀A simple setup for the supermatter engine, is to first activate all of the radiation collectors and make sure they are filled with [color=pink]phoron[/color]. Similarly, the crystal will spark like the tesla ball, and nescessary precautions should be taken.
 
    ⠀Then, you should begin setting up your [color=blue]cooling loop[/color]. Your cooling loop is very important, as fresh cold gas must be supplied to keep the crystal from delaminating.
 
-   ⠀Any gas can be used for these loops, but a basic setup utilizes nitrogen, while more advanced setups will utilize plasma.
+   ⠀Any gas can be used for these loops, but a basic setup utilizes nitrogen, while more advanced setups will utilize phoron.
 
    ⠀Be prepared, as the crystal will begin to heat up the gas inside the chamber. If gas is not exchanged, a runaway reaction will occur which is very difficult to recover from.
 

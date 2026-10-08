@@ -78,7 +78,8 @@ job-title-universal = Universal
 job-title-visitor = Visitor
 
 # Role timers - Make these alphabetical or I cut you
-JobAssistant = Assistant
+# Serenity: the Assistant is called the Spacer
+JobAssistant = Spacer
 JobAtmosphericTechnician = Atmospheric Technician
 JobBartender = Bartender
 JobBorg = Borg
@@ -101,7 +102,7 @@ JobERTJanitor = ERT Janitor
 JobERTLeader = ERT Leader
 JobERTMedical = ERT Medical
 JobERTSecurity = ERT Security
-JobHeadOfPersonnel = Head of Personnel
+JobHeadOfPersonnel = Station Commander
 JobHeadOfSecurity = Marine CO
 JobJanitor = Janitor
 JobLawyer = Lawyer

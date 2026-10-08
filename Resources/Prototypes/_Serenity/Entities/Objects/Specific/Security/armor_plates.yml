@@ -1,0 +1,141 @@
+# Armor plates. Fitted into armor vests and hardsuits (see ClothingArmorPlateCarrier), they stop part of
+# each hit before the armor applies, wear down as they do, and slow the wearer. The stats follow
+# Monolith's plates; the prototypes are written for Serenity.
+
+- type: entity
+  abstract: true
+  parent: [BaseItem, BaseSecurityContraband]
+  id: BaseArmorPlate
+  components:
+  - type: Item
+    sprite: _Mono/Clothing/ArmorPlate/armor_plates.rsi
+    size: Normal
+  - type: Damageable
+    damageContainer: Inorganic
+  - type: Repairable
+    fuelCost: 10
+    doAfterDelay: 7
+
+- type: entity
+  parent: BaseArmorPlate
+  id: ArmorPlateTrauma
+  name: trauma plate
+  description: Plasteel over crush-foam. Shrugs off blunt and slash damage, but does nothing against bullets or burns.
+  components:
+  - type: Sprite
+    sprite: _Mono/Clothing/ArmorPlate/armor_plates.rsi
+    state: blunt_slash
+  - type: ArmorPlate
+    durability: 150
+    walkSpeedModifier: 0.9
+    sprintSpeedModifier: 0.9
+    staminaPerAbsorbed: 0.5
+    absorption:
+      Blunt: 1
+      Slash: 1
+    wear:
+      Blunt: 1
+      Slash: 1
+      Piercing: 1
+      Heat: 1
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  parent: BaseArmorPlate
+  id: ArmorPlateBallistic
+  name: ballistic plate
+  description: A thick plastitanium slab that stops piercing damage outright. Heat ruins it quickly.
+  components:
+  - type: Sprite
+    sprite: _Mono/Clothing/ArmorPlate/armor_plates.rsi
+    state: pierce
+  - type: ArmorPlate
+    durability: 150
+    walkSpeedModifier: 0.9
+    sprintSpeedModifier: 0.9
+    staminaPerAbsorbed: 0.5
+    absorption:
+      Piercing: 1
+    wear:
+      Piercing: 1
+      Heat: 1.5
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  parent: BaseArmorPlate
+  id: ArmorPlateDiffusion
+  name: diffusion plate
+  description: Layered shielding and copper heat sinks. Soaks up heat and blunts shock and radiation, but cracks under bullets.
+  components:
+  - type: Sprite
+    sprite: _Mono/Clothing/ArmorPlate/armor_plates.rsi
+    state: heat
+  - type: ArmorPlate
+    durability: 150
+    walkSpeedModifier: 0.9
+    sprintSpeedModifier: 0.9
+    staminaPerAbsorbed: 0.5
+    absorption:
+      Heat: 1
+      Radiation: 0.5
+      Shock: 0.5
+    wear:
+      Piercing: 1.5
+      Heat: 1
+      Radiation: 0.5
+      Shock: 0.5
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  parent: BaseArmorPlate
+  id: ArmorPlateSpeed
+  name: kinetic plate
+  description: An experimental alloy that pushes its wearer along. You move faster, and every hit lands harder.
+  components:
+  - type: Sprite
+    sprite: _Mono/Clothing/ArmorPlate/armor_plates.rsi
+    state: speed
+  - type: ArmorPlate
+    durability: 250
+    walkSpeedModifier: 1.1
+    sprintSpeedModifier: 1.1
+    staminaPerHit: 0.5
+    absorption:
+      Blunt: -0.1
+      Slash: -0.1
+      Piercing: -0.1
+      Heat: -0.1
+    wear:
+      Blunt: 1
+      Slash: 1
+      Piercing: 1
+      Heat: 1
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 250
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]

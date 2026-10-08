@@ -3,6 +3,7 @@
   name: job-name-reporter
   description: job-description-reporter
   playTimeTracker: JobReporter
+  setPreference: false # Serenity: role disabled
   requirements: # Starlight BEGIN
     - !type:OverallPlaytimeRequirement
       time: 4h # Starlight END

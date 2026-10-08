@@ -417,8 +417,8 @@
 - type: entity
   parent: BaseSubdermalImplant
   id: RadioImplantCentcomm
-  name: centcomm radio implant # Starlight
-  description: This implant grants access to the Centcomm channel without a headset. Only authorized for Centcomm employees.
+  name: sector command radio implant # Starlight
+  description: This implant grants access to the Centcomm channel without a headset. Only authorized for Sector Command employees.
   categories: [ HideSpawnMenu ]
   components:
   - type: SubdermalImplant
@@ -429,7 +429,7 @@
 - type: entity
   parent: DeathRattleImplant
   id: DeathRattleImplantCentcomm
-  name: centcomm death rattle implant
+  name: sector command death rattle implant
   description: This implant will inform the Centcomm radio channel should the user fall into critical condition or die.
   categories: [ HideSpawnMenu ]
   components:

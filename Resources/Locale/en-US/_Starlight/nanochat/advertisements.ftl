@@ -89,10 +89,10 @@ nanochat-ad-comitas-systems = Comitas Systems is hiring! We're interested in ind
 
     MRSWC5DIEB2G6IDOMFXG65DSMFZWK3Q=
 
-nanochat-ad-violet-sky-plasma = Do you need plasma, but hate fracking and other environmentally destructive mining practices?
+nanochat-ad-violet-sky-plasma = Do you need phoron, but hate fracking and other environmentally destructive mining practices?
     Well, do we have the offer for you!
     Violet Sky Systems is proud to introduce:
-    100% clean atmospheric plasma! Freshly mined from a distant Resomi colony!
+    100% clean atmospheric phoron! Freshly mined from a distant Resomi colony!
     Only 9.999* per canister! Get yours today! *Interstellar shipping costs apply.
 
 nanochat-ad-silverclaw-tour = Listen one, listen all!

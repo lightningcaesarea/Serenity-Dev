@@ -119,3 +119,43 @@ public enum MilkingMachineLayers : byte
     Indicator,
     Locks,
 }
+
+[Serializable, NetSerializable]
+public enum MilkingMachineUiKey : byte
+{
+    Key,
+}
+
+/// <summary>
+/// Everything the control window shows: who is strapped in, how they're doing, the pump mode and the tank.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class MilkingMachineUiState : BoundUserInterfaceState
+{
+    public MilkingMachineMode Mode;
+
+    /// <summary>
+    /// Name of whoever is buckled in, or null when the seat is empty.
+    /// </summary>
+    public string? OccupantName;
+
+    /// <summary>
+    /// False when the occupant has lewd interactions turned off, so the pump does nothing to them.
+    /// </summary>
+    public bool OccupantParticipates;
+
+    /// <summary>
+    /// The occupant's intimacy stats, only filled in when they participate.
+    /// </summary>
+    public Dictionary<string, float> OccupantStats = new();
+
+    public FixedPoint2 Volume;
+    public FixedPoint2 MaxVolume;
+    public List<ReagentQuantity> Contents = new();
+}
+
+[Serializable, NetSerializable]
+public sealed class MilkingMachineSetModeMessage(MilkingMachineMode mode) : BoundUserInterfaceMessage
+{
+    public readonly MilkingMachineMode Mode = mode;
+}

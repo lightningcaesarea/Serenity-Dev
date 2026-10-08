@@ -405,7 +405,7 @@
   parent: [BaseBrandedLighter, FlippoLighter] #SL Edit: added flippolighter parent
   id: NanotrasenFlippo
   name: NanoTrasen flippo  # Starlight-edit
-  description: "A navy blue luxury flippo, generally handed out to loyal heads of staff instead of a payraise. Fueled with liquid plasma and burns a little hotter than usual."
+  description: "A navy blue luxury flippo, generally handed out to loyal heads of staff instead of a payraise. Fueled with liquid phoron and burns a little hotter than usual."
   components:
   - type: Sprite
     sprite: Objects/Tools/Lighters/nanotrasen.rsi
@@ -439,8 +439,8 @@
 - type: entity
   parent: [SolutionToolWelderExperimental, BaseBrandedLighter, BaseCentcommContraband]
   id: CentCommFlippo
-  name: gilded CentComm flippo  # Starlight-edit
-  description: "An Ornate, jade embossed and gilded flippo frame containing a bluespace powered jet. The latch is secured by a miniature access reader that only responds to CentComm officials. The nicest lighter known to man."
+  name: gilded Sector Command flippo  # Starlight-edit
+  description: "An Ornate, onyx embossed and gilded flippo frame containing a bluespace powered jet. The latch is secured by a miniature access reader that only responds to Sector Command officials. The nicest lighter known to man."
   suffix: DO NOT MAP
   components:
   - type: Sprite

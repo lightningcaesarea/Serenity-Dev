@@ -56,7 +56,7 @@
     state: stamp-cap
 
 - type: entity
-  name: CentComm rubber stamp
+  name: Sector Command rubber stamp
   parent: RubberStampBase
   id: RubberStampCentcom
   description: A rubber stamp for stamping important documents. Tell them who's boss! # Starlight
@@ -64,7 +64,7 @@
   components:
   - type: Stamp
     stampedName: stamp-component-stamped-name-centcom
-    stampedColor: "#006600"
+    stampedColor: "#c27a14"
     stampState: "paper_stamp-centcom"
   - type: Sprite
     state: stamp-centcom
@@ -201,7 +201,7 @@
   name: research director's rubber stamp
   parent: [RubberStampBase, BaseCommandContraband]
   id: RubberStampRd
-  description: A rubber stamp for stamping important documents. Covered in ash and plasma residue. # Starlight
+  description: A rubber stamp for stamping important documents. Covered in ash and phoron residue. # Starlight
   categories: [ DoNotMap ]
   components:
   - type: Stamp

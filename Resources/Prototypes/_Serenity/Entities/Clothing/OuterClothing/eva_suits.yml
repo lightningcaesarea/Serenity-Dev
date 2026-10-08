@@ -1,0 +1,1341 @@
+# EVA suits, voidsuits and robes for Serenity.
+#
+# Sprites come from New Frontiers 14 and keep their original licences (CC-BY-SA-3.0 /
+# CC-BY-SA-4.0); see each RSI's meta.json for the full credit chain (tgstation, Baystation12,
+# erhardsteinhauer, dustylens and others). The prototypes in this file were written fresh
+# for Serenity: only ids, palette values, sprite state names and stat numbers were carried over.
+
+# === Bases =====================================================================================
+# Every suit here builds on this. Serenity: it does not inherit ClothingOuterHardsuitBase, so the
+# geiger counter, armor values and GroupExamine are pulled in explicitly instead.
+
+- type: entity
+  abstract: true
+  id: SerenityEVASuitBase
+  parent: [ ClothingOuterStorageBase, ClothingOuterEVASuitBase, GeigerCounterClothing ]
+  components:
+  - type: ClothingSpeedModifier
+    sprintModifier: 0.95
+    walkModifier: 0.95
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Heat: 0.9
+        Piercing: 0.95
+        Radiation: 0.25
+        Slash: 0.9
+  - type: GroupExamine
+  - type: Item
+    shape:
+    - 0,0,3,2
+  - type: Clothing
+    equipSound: /Audio/Mecha/mechmove03.ogg
+    unequipSound: /Audio/Mecha/mechmove03.ogg
+  - type: PhysicalComposition
+    materialComposition:
+      Cloth: 50
+      Durathread: 100
+  - type: Tag
+    tags:
+    - SuitEVA
+    - WhitelistChameleon
+  # Serenity: declare the helmet slot next to the pocket storage so the container set is
+  # known before ToggleableClothing fills it on spawn.
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+        ents: []
+      toggleable-clothing: !type:ContainerSlot {}
+
+# The recoloured job suits all share one greyscale sheet and tint it per layer.
+
+- type: entity
+  abstract: true
+  id: SerenityDepartmentalEVASuit
+  parent: SerenityEVASuitBase
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/OuterClothing/Suits/eva_color.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/OuterClothing/Suits/eva_color.rsi
+  # Serenity: no CatWearable, which this codebase does not define.
+  - type: Tag
+    tags:
+    - SuitEVA
+    - WhitelistChameleon
+    - MonkeyWearable
+
+# Same suit with a lamp mounted on the shoulder.
+
+- type: entity
+  abstract: true
+  id: SerenityDepartmentalEVASuitShoulderLight
+  parent: SerenityDepartmentalEVASuit
+  components:
+  - type: Sprite
+    layers:
+    - { state: icon-base }
+    - { state: icon-decals-01 }
+    - { state: icon-reinforced-points }
+    - { state: icon-shoulder-light }
+    - { state: icon-breathing-gear }
+    - { state: icon-unshaded }
+    - { state: icon-shoulder-light-overlay-unshaded, shader: unshaded, map: [ "light" ], visible: false }
+  - type: Clothing
+    clothingVisuals:
+      outerClothing:
+      - { state: equipped-base }
+      - { state: equipped-decals-01 }
+      - { state: equipped-reinforced-points }
+      - { state: equipped-shoulder-light }
+      - { state: equipped-breathing-gear }
+      - { state: equipped-unshaded }
+  - type: ToggleableVisuals
+    spriteLayer: light
+    clothingVisuals:
+      outerClothing:
+      - { state: equipped-shoulder-light-overlay-unshaded, shader: unshaded }
+  # Serenity: ConeSingle, a forward beam from the shoulder.
+  - type: PointLight
+    autoRot: true
+    enabled: false
+    energy: 1
+    lightMask: ConeSingle
+    netsync: false
+    radius: 6
+  - type: ItemTogglePointLight
+  - type: HandheldLight
+    addPrefix: false
+    blinkingBehaviourId: blinking
+    radiatingBehaviourId: radiating
+  - type: Battery
+    maxCharge: 600
+    startingCharge: 600
+  - type: BatterySelfRecharger
+    autoRechargeRate: 2
+  - type: Appearance
+  - type: LightBehaviour
+    behaviours:
+    - !type:FadeBehaviour
+      id: radiating
+      interpolate: Linear
+      startValue: 3.0
+      endValue: 2.0
+      maxDuration: 2.0
+      isLooped: true
+      reverseWhenFinished: true
+    - !type:PulseBehaviour
+      id: blinking
+      interpolate: Nearest
+      startValue: 0.1
+      endValue: 2.0
+      maxDuration: 1.0
+      isLooped: true
+
+# === Departmental and job suits ================================================================
+
+- type: entity
+  id: ClothingOuterEVASuitHydro
+  parent: SerenityDepartmentalEVASuit
+  name: botanist EVA suit
+  description: Leaf-green panels with soil-brown reinforcement. Lets a gardener tend the outer trays without bringing vacuum back in on their boots.
+  components:
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadEVAHelmetHydro
+  - type: Sprite
+    layers:
+    - { state: icon-base, color: "#5fa31e" }
+    - { state: icon-decals-01, color: "#3164ff" }
+    - { state: icon-reinforced-points, color: "#6b4600" }
+    - { state: icon-breathing-gear }
+    - { state: icon-unshaded, shader: unshaded }
+  - type: Item
+    inhandVisuals:
+      left:
+      - { state: inhand-left-base, color: "#5fa31e" }
+      - { state: inhand-left-decals-01, color: "#3164ff" }
+      - { state: inhand-left-reinforced-points, color: "#6b4600" }
+      - { state: inhand-left-breathing-gear }
+      - { state: inhand-left-unshaded, shader: unshaded }
+      right:
+      - { state: inhand-right-base, color: "#5fa31e" }
+      - { state: inhand-right-decals-01, color: "#3164ff" }
+      - { state: inhand-right-reinforced-points, color: "#6b4600" }
+      - { state: inhand-right-breathing-gear }
+      - { state: inhand-right-unshaded, shader: unshaded }
+  - type: Clothing
+    clothingVisuals:
+      outerClothing:
+      - { state: equipped-base, color: "#5fa31e" }
+      - { state: equipped-decals-01, color: "#3164ff" }
+      - { state: equipped-reinforced-points, color: "#6b4600" }
+      - { state: equipped-breathing-gear }
+      - { state: equipped-unshaded, shader: unshaded }
+
+- type: entity
+  id: ClothingOuterEVASuitMailman
+  parent: SerenityDepartmentalEVASuit
+  name: mailcarrier EVA suit
+  description: Postal blue with grey trim. Packages still arrive on time when the shortest route runs across the hull.
+  components:
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadEVAHelmetMailman
+  - type: Sprite
+    layers:
+    - { state: icon-base, color: "#4960ed" }
+    - { state: icon-decals-01, color: "#b3b3b3" }
+    - { state: icon-reinforced-points, color: "#3e3e48" }
+    - { state: icon-breathing-gear }
+    - { state: icon-unshaded, shader: unshaded }
+  - type: Item
+    inhandVisuals:
+      left:
+      - { state: inhand-left-base, color: "#4960ed" }
+      - { state: inhand-left-decals-01, color: "#b3b3b3" }
+      - { state: inhand-left-reinforced-points, color: "#3e3e48" }
+      - { state: inhand-left-breathing-gear }
+      - { state: inhand-left-unshaded, shader: unshaded }
+      right:
+      - { state: inhand-right-base, color: "#4960ed" }
+      - { state: inhand-right-decals-01, color: "#b3b3b3" }
+      - { state: inhand-right-reinforced-points, color: "#3e3e48" }
+      - { state: inhand-right-breathing-gear }
+      - { state: inhand-right-unshaded, shader: unshaded }
+  - type: Clothing
+    clothingVisuals:
+      outerClothing:
+      - { state: equipped-base, color: "#4960ed" }
+      - { state: equipped-decals-01, color: "#b3b3b3" }
+      - { state: equipped-reinforced-points, color: "#3e3e48" }
+      - { state: equipped-breathing-gear }
+      - { state: equipped-unshaded, shader: unshaded }
+
+- type: entity
+  id: ClothingOuterEVASuitContractor
+  parent: SerenityDepartmentalEVASuit
+  name: contractor EVA suit
+  description: An off-white work suit with charcoal trim, the sort of thing a contractor buys once and patches forever.
+  components:
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadEVAHelmetContractor
+  - type: Sprite
+    layers:
+    - { state: icon-base, color: "#fff4e2" }
+    - { state: icon-decals-01, color: "#3e3e48" }
+    - { state: icon-reinforced-points, color: "#3e3e48" }
+    - { state: icon-breathing-gear }
+    - { state: icon-unshaded, shader: unshaded }
+  - type: Item
+    inhandVisuals:
+      left:
+      - { state: inhand-left-base, color: "#fff4e2" }
+      - { state: inhand-left-decals-01, color: "#3e3e48" }
+      - { state: inhand-left-reinforced-points, color: "#3e3e48" }
+      - { state: inhand-left-breathing-gear }
+      - { state: inhand-left-unshaded, shader: unshaded }
+      right:
+      - { state: inhand-right-base, color: "#fff4e2" }
+      - { state: inhand-right-decals-01, color: "#3e3e48" }
+      - { state: inhand-right-reinforced-points, color: "#3e3e48" }
+      - { state: inhand-right-breathing-gear }
+      - { state: inhand-right-unshaded, shader: unshaded }
+  - type: Clothing
+    clothingVisuals:
+      outerClothing:
+      - { state: equipped-base, color: "#fff4e2" }
+      - { state: equipped-decals-01, color: "#3e3e48" }
+      - { state: equipped-reinforced-points, color: "#3e3e48" }
+      - { state: equipped-breathing-gear }
+      - { state: equipped-unshaded, shader: unshaded }
+
+- type: entity
+  id: ClothingOuterEVASuitSr
+  parent: SerenityDepartmentalEVASuit
+  name: station representative EVA suit
+  description: Deep green with gold piping. Built to look dignified while greeting visitors at an airlock.
+  components:
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadEVAHelmetSr
+  - type: Sprite
+    layers:
+    - { state: icon-base, color: "#194214" }
+    - { state: icon-decals-01, color: "#f2b833" }
+    - { state: icon-reinforced-points, color: "#3e3e48" }
+    - { state: icon-breathing-gear }
+    - { state: icon-unshaded, shader: unshaded }
+  - type: Item
+    inhandVisuals:
+      left:
+      - { state: inhand-left-base, color: "#194214" }
+      - { state: inhand-left-decals-01, color: "#f2b833" }
+      - { state: inhand-left-reinforced-points, color: "#3e3e48" }
+      - { state: inhand-left-breathing-gear }
+      - { state: inhand-left-unshaded, shader: unshaded }
+      right:
+      - { state: inhand-right-base, color: "#194214" }
+      - { state: inhand-right-decals-01, color: "#f2b833" }
+      - { state: inhand-right-reinforced-points, color: "#3e3e48" }
+      - { state: inhand-right-breathing-gear }
+      - { state: inhand-right-unshaded, shader: unshaded }
+  - type: Clothing
+    clothingVisuals:
+      outerClothing:
+      - { state: equipped-base, color: "#194214" }
+      - { state: equipped-decals-01, color: "#f2b833" }
+      - { state: equipped-reinforced-points, color: "#3e3e48" }
+      - { state: equipped-breathing-gear }
+      - { state: equipped-unshaded, shader: unshaded }
+
+- type: entity
+  id: ClothingOuterEVASuitStc
+  parent: SerenityDepartmentalEVASuit
+  name: station traffic controller EVA suit
+  description: High-visibility blue and orange, so incoming pilots can pick out whoever is waving them in.
+  components:
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadEVAHelmetStc
+  - type: Sprite
+    layers:
+    - { state: icon-base, color: "#1560bd" }
+    - { state: icon-decals-01, color: "#fe5c00" }
+    - { state: icon-reinforced-points, color: "#704900" }
+    - { state: icon-breathing-gear }
+    - { state: icon-unshaded, shader: unshaded }
+  - type: Item
+    inhandVisuals:
+      left:
+      - { state: inhand-left-base, color: "#1560bd" }
+      - { state: inhand-left-decals-01, color: "#fe5c00" }
+      - { state: inhand-left-reinforced-points, color: "#704900" }
+      - { state: inhand-left-breathing-gear }
+      - { state: inhand-left-unshaded, shader: unshaded }
+      right:
+      - { state: inhand-right-base, color: "#1560bd" }
+      - { state: inhand-right-decals-01, color: "#fe5c00" }
+      - { state: inhand-right-reinforced-points, color: "#704900" }
+      - { state: inhand-right-breathing-gear }
+      - { state: inhand-right-unshaded, shader: unshaded }
+  - type: Clothing
+    clothingVisuals:
+      outerClothing:
+      - { state: equipped-base, color: "#1560bd" }
+      - { state: equipped-decals-01, color: "#fe5c00" }
+      - { state: equipped-reinforced-points, color: "#704900" }
+      - { state: equipped-breathing-gear }
+      - { state: equipped-unshaded, shader: unshaded }
+
+- type: entity
+  id: ClothingOuterEVASuitCaptain
+  parent: SerenityDepartmentalEVASuit
+  name: captain EVA suit
+  description: Steel blue with gold accents. Command never got around to ordering anything less flashy.
+  components:
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadEVAHelmetCaptain
+  - type: Sprite
+    layers:
+    - { state: icon-base, color: "#3a6781" }
+    - { state: icon-decals-01, color: "#ffce5b" }
+    - { state: icon-reinforced-points, color: "#3e3e48" }
+    - { state: icon-breathing-gear }
+    - { state: icon-unshaded, shader: unshaded }
+  - type: Item
+    inhandVisuals:
+      left:
+      - { state: inhand-left-base, color: "#3a6781" }
+      - { state: inhand-left-decals-01, color: "#ffce5b" }
+      - { state: inhand-left-reinforced-points, color: "#3e3e48" }
+      - { state: inhand-left-breathing-gear }
+      - { state: inhand-left-unshaded, shader: unshaded }
+      right:
+      - { state: inhand-right-base, color: "#3a6781" }
+      - { state: inhand-right-decals-01, color: "#ffce5b" }
+      - { state: inhand-right-reinforced-points, color: "#3e3e48" }
+      - { state: inhand-right-breathing-gear }
+      - { state: inhand-right-unshaded, shader: unshaded }
+  - type: Clothing
+    clothingVisuals:
+      outerClothing:
+      - { state: equipped-base, color: "#3a6781" }
+      - { state: equipped-decals-01, color: "#ffce5b" }
+      - { state: equipped-reinforced-points, color: "#3e3e48" }
+      - { state: equipped-breathing-gear }
+      - { state: equipped-unshaded, shader: unshaded }
+
+- type: entity
+  id: ClothingOuterEVASuitEngineer
+  parent: SerenityDepartmentalEVASuitShoulderLight
+  name: engineer EVA suit
+  description: Hazard yellow and orange, with a shoulder lamp for poking around dark maintenance hatches.
+  components:
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadEVAHelmetEngineer
+  - type: Sprite
+    layers:
+    - { state: icon-base, color: "#ffee00" }
+    - { state: icon-decals-01, color: "#ff7f00" }
+    - { state: icon-reinforced-points, color: "#ff7f00" }
+    - { state: icon-shoulder-light, color: "#ff7f00" }
+    - { state: icon-breathing-gear }
+    - { state: icon-unshaded, shader: unshaded }
+    - { state: icon-shoulder-light-overlay-unshaded, shader: unshaded, map: [ "light" ], visible: false }
+  - type: Item
+    inhandVisuals:
+      left:
+      - { state: inhand-left-base, color: "#ffee00" }
+      - { state: inhand-left-decals-01, color: "#ff7f00" }
+      - { state: inhand-left-reinforced-points, color: "#ff7f00" }
+      - { state: inhand-left-breathing-gear }
+      - { state: inhand-left-unshaded, shader: unshaded }
+      right:
+      - { state: inhand-right-base, color: "#ffee00" }
+      - { state: inhand-right-decals-01, color: "#ff7f00" }
+      - { state: inhand-right-reinforced-points, color: "#ff7f00" }
+      - { state: inhand-right-breathing-gear }
+      - { state: inhand-right-unshaded, shader: unshaded }
+  - type: Clothing
+    clothingVisuals:
+      outerClothing:
+      - { state: equipped-base, color: "#ffee00" }
+      - { state: equipped-decals-01, color: "#ff7f00" }
+      - { state: equipped-reinforced-points, color: "#ff7f00" }
+      - { state: equipped-shoulder-light, color: "#ff7f00" }
+      - { state: equipped-breathing-gear }
+      - { state: equipped-unshaded, shader: unshaded }
+
+- type: entity
+  id: ClothingOuterEVASuitAtmosTech
+  parent: SerenityDepartmentalEVASuit
+  name: atmospheric technician EVA suit
+  description: Yellow plating with blue markings. Made for long shifts patching pipes on the wrong side of a wall.
+  components:
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadEVAHelmetAtmosTech
+  - type: Sprite
+    layers:
+    - { state: icon-base, color: "#ffee00" }
+    - { state: icon-decals-01, color: "#00a5ff" }
+    - { state: icon-reinforced-points, color: "#ff7f00" }
+    - { state: icon-breathing-gear }
+    - { state: icon-unshaded, shader: unshaded }
+  - type: Item
+    inhandVisuals:
+      left:
+      - { state: inhand-left-base, color: "#ffee00" }
+      - { state: inhand-left-decals-01, color: "#00a5ff" }
+      - { state: inhand-left-reinforced-points, color: "#ff7f00" }
+      - { state: inhand-left-breathing-gear }
+      - { state: inhand-left-unshaded, shader: unshaded }
+      right:
+      - { state: inhand-right-base, color: "#ffee00" }
+      - { state: inhand-right-decals-01, color: "#00a5ff" }
+      - { state: inhand-right-reinforced-points, color: "#ff7f00" }
+      - { state: inhand-right-breathing-gear }
+      - { state: inhand-right-unshaded, shader: unshaded }
+  - type: Clothing
+    clothingVisuals:
+      outerClothing:
+      - { state: equipped-base, color: "#ffee00" }
+      - { state: equipped-decals-01, color: "#00a5ff" }
+      - { state: equipped-reinforced-points, color: "#ff7f00" }
+      - { state: equipped-breathing-gear }
+      - { state: equipped-unshaded, shader: unshaded }
+
+- type: entity
+  id: ClothingOuterEVASuitCargo
+  parent: SerenityDepartmentalEVASuit
+  name: cargo technician EVA suit
+  description: Tan with silver stripes. Has plenty of anchor points for wrangling crates outside.
+  components:
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadEVAHelmetCargo
+  - type: Sprite
+    layers:
+    - { state: icon-base, color: "#deb733" }
+    - { state: icon-decals-01, color: "#c0c0c0" }
+    - { state: icon-reinforced-points, color: "#3e3e48" }
+    - { state: icon-breathing-gear }
+    - { state: icon-unshaded, shader: unshaded }
+  - type: Item
+    inhandVisuals:
+      left:
+      - { state: inhand-left-base, color: "#deb733" }
+      - { state: inhand-left-decals-01, color: "#c0c0c0" }
+      - { state: inhand-left-reinforced-points, color: "#3e3e48" }
+      - { state: inhand-left-breathing-gear }
+      - { state: inhand-left-unshaded, shader: unshaded }
+      right:
+      - { state: inhand-right-base, color: "#deb733" }
+      - { state: inhand-right-decals-01, color: "#c0c0c0" }
+      - { state: inhand-right-reinforced-points, color: "#3e3e48" }
+      - { state: inhand-right-breathing-gear }
+      - { state: inhand-right-unshaded, shader: unshaded }
+  - type: Clothing
+    clothingVisuals:
+      outerClothing:
+      - { state: equipped-base, color: "#deb733" }
+      - { state: equipped-decals-01, color: "#c0c0c0" }
+      - { state: equipped-reinforced-points, color: "#3e3e48" }
+      - { state: equipped-breathing-gear }
+      - { state: equipped-unshaded, shader: unshaded }
+
+- type: entity
+  id: ClothingOuterEVASuitSalvage
+  parent: SerenityDepartmentalEVASuit
+  name: salvage specialist EVA suit
+  description: Tan with purple markings and scuffed brown reinforcement. Favoured by people who strip wrecks for a living.
+  components:
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadEVAHelmetSalvage
+  - type: Sprite
+    layers:
+    - { state: icon-base, color: "#deb733" }
+    - { state: icon-decals-01, color: "#ad2aea" }
+    - { state: icon-reinforced-points, color: "#786243" }
+    - { state: icon-breathing-gear }
+    - { state: icon-unshaded, shader: unshaded }
+  - type: Item
+    inhandVisuals:
+      left:
+      - { state: inhand-left-base, color: "#deb733" }
+      - { state: inhand-left-decals-01, color: "#ad2aea" }
+      - { state: inhand-left-reinforced-points, color: "#786243" }
+      - { state: inhand-left-breathing-gear }
+      - { state: inhand-left-unshaded, shader: unshaded }
+      right:
+      - { state: inhand-right-base, color: "#deb733" }
+      - { state: inhand-right-decals-01, color: "#ad2aea" }
+      - { state: inhand-right-reinforced-points, color: "#786243" }
+      - { state: inhand-right-breathing-gear }
+      - { state: inhand-right-unshaded, shader: unshaded }
+  - type: Clothing
+    clothingVisuals:
+      outerClothing:
+      - { state: equipped-base, color: "#deb733" }
+      - { state: equipped-decals-01, color: "#ad2aea" }
+      - { state: equipped-reinforced-points, color: "#786243" }
+      - { state: equipped-breathing-gear }
+      - { state: equipped-unshaded, shader: unshaded }
+
+- type: entity
+  id: ClothingOuterEVASuitMedic
+  parent: SerenityDepartmentalEVASuit
+  name: medical specialist EVA suit
+  description: Pale blue and white, easy to spot when someone is drifting out there and needs a hand.
+  components:
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadEVAHelmetMedic
+  - type: Sprite
+    layers:
+    - { state: icon-base, color: "#5a96bb" }
+    - { state: icon-decals-01, color: "#d6e6f3" }
+    - { state: icon-reinforced-points, color: "#3e3e48" }
+    - { state: icon-breathing-gear }
+    - { state: icon-unshaded, shader: unshaded }
+  - type: Item
+    inhandVisuals:
+      left:
+      - { state: inhand-left-base, color: "#5a96bb" }
+      - { state: inhand-left-decals-01, color: "#d6e6f3" }
+      - { state: inhand-left-reinforced-points, color: "#3e3e48" }
+      - { state: inhand-left-breathing-gear }
+      - { state: inhand-left-unshaded, shader: unshaded }
+      right:
+      - { state: inhand-right-base, color: "#5a96bb" }
+      - { state: inhand-right-decals-01, color: "#d6e6f3" }
+      - { state: inhand-right-reinforced-points, color: "#3e3e48" }
+      - { state: inhand-right-breathing-gear }
+      - { state: inhand-right-unshaded, shader: unshaded }
+  - type: Clothing
+    clothingVisuals:
+      outerClothing:
+      - { state: equipped-base, color: "#5a96bb" }
+      - { state: equipped-decals-01, color: "#d6e6f3" }
+      - { state: equipped-reinforced-points, color: "#3e3e48" }
+      - { state: equipped-breathing-gear }
+      - { state: equipped-unshaded, shader: unshaded }
+
+- type: entity
+  id: ClothingOuterEVASuitParamedic
+  parent: SerenityDepartmentalEVASuitShoulderLight
+  name: paramedic EVA suit
+  description: Dark green with crimson stripes and a shoulder lamp, so a patient can see help coming.
+  components:
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadEVAHelmetParamedic
+  - type: Sprite
+    layers:
+    - { state: icon-base, color: "#2c6946" }
+    - { state: icon-decals-01, color: "#8c1e50" }
+    - { state: icon-reinforced-points, color: "#d6e6f3" }
+    - { state: icon-shoulder-light, color: "#2c6946" }
+    - { state: icon-breathing-gear }
+    - { state: icon-unshaded, shader: unshaded }
+    - { state: icon-shoulder-light-overlay-unshaded, shader: unshaded, map: [ "light" ], visible: false }
+  - type: Item
+    inhandVisuals:
+      left:
+      - { state: inhand-left-base, color: "#2c6946" }
+      - { state: inhand-left-decals-01, color: "#8c1e50" }
+      - { state: inhand-left-reinforced-points, color: "#d6e6f3" }
+      - { state: inhand-left-breathing-gear }
+      - { state: inhand-left-unshaded, shader: unshaded }
+      right:
+      - { state: inhand-right-base, color: "#2c6946" }
+      - { state: inhand-right-decals-01, color: "#8c1e50" }
+      - { state: inhand-right-reinforced-points, color: "#d6e6f3" }
+      - { state: inhand-right-breathing-gear }
+      - { state: inhand-right-unshaded, shader: unshaded }
+  - type: Clothing
+    clothingVisuals:
+      outerClothing:
+      - { state: equipped-base, color: "#2c6946" }
+      - { state: equipped-decals-01, color: "#8c1e50" }
+      - { state: equipped-reinforced-points, color: "#d6e6f3" }
+      - { state: equipped-shoulder-light, color: "#2c6946" }
+      - { state: equipped-breathing-gear }
+      - { state: equipped-unshaded, shader: unshaded }
+
+- type: entity
+  id: ClothingOuterEVASuitScientist
+  parent: SerenityDepartmentalEVASuit
+  name: scientist EVA suit
+  description: Clean white with violet trim. Lab coat not included.
+  components:
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadEVAHelmetScientist
+  - type: Sprite
+    layers:
+    - { state: icon-base, color: "#edeaea" }
+    - { state: icon-decals-01, color: "#9c0de1" }
+    - { state: icon-reinforced-points, color: "#606275" }
+    - { state: icon-breathing-gear }
+    - { state: icon-unshaded, shader: unshaded }
+  - type: Item
+    inhandVisuals:
+      left:
+      - { state: inhand-left-base, color: "#edeaea" }
+      - { state: inhand-left-decals-01, color: "#9c0de1" }
+      - { state: inhand-left-reinforced-points, color: "#606275" }
+      - { state: inhand-left-breathing-gear }
+      - { state: inhand-left-unshaded, shader: unshaded }
+      right:
+      - { state: inhand-right-base, color: "#edeaea" }
+      - { state: inhand-right-decals-01, color: "#9c0de1" }
+      - { state: inhand-right-reinforced-points, color: "#606275" }
+      - { state: inhand-right-breathing-gear }
+      - { state: inhand-right-unshaded, shader: unshaded }
+  - type: Clothing
+    clothingVisuals:
+      outerClothing:
+      - { state: equipped-base, color: "#edeaea" }
+      - { state: equipped-decals-01, color: "#9c0de1" }
+      - { state: equipped-reinforced-points, color: "#606275" }
+      - { state: equipped-breathing-gear }
+      - { state: equipped-unshaded, shader: unshaded }
+
+- type: entity
+  id: ClothingOuterEVASuitJanitor
+  parent: SerenityDepartmentalEVASuit
+  name: janitor EVA suit
+  description: Grey with purple and yellow markings. Even the outside of the station needs mopping now and then.
+  components:
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadEVAHelmetJanitor
+  - type: Sprite
+    layers:
+    - { state: icon-base, color: "#cac4c3" }
+    - { state: icon-decals-01, color: "#bb5cc9" }
+    - { state: icon-reinforced-points, color: "#ebdc36" }
+    - { state: icon-breathing-gear }
+    - { state: icon-unshaded, shader: unshaded }
+  - type: Item
+    inhandVisuals:
+      left:
+      - { state: inhand-left-base, color: "#cac4c3" }
+      - { state: inhand-left-decals-01, color: "#bb5cc9" }
+      - { state: inhand-left-reinforced-points, color: "#ebdc36" }
+      - { state: inhand-left-breathing-gear }
+      - { state: inhand-left-unshaded, shader: unshaded }
+      right:
+      - { state: inhand-right-base, color: "#cac4c3" }
+      - { state: inhand-right-decals-01, color: "#bb5cc9" }
+      - { state: inhand-right-reinforced-points, color: "#ebdc36" }
+      - { state: inhand-right-breathing-gear }
+      - { state: inhand-right-unshaded, shader: unshaded }
+  - type: Clothing
+    clothingVisuals:
+      outerClothing:
+      - { state: equipped-base, color: "#cac4c3" }
+      - { state: equipped-decals-01, color: "#bb5cc9" }
+      - { state: equipped-reinforced-points, color: "#ebdc36" }
+      - { state: equipped-breathing-gear }
+      - { state: equipped-unshaded, shader: unshaded }
+
+- type: entity
+  id: ClothingOuterEVASuitValet
+  parent: SerenityDepartmentalEVASuit
+  name: valet EVA suit
+  description: Bright red with gold stripes, for parking other people's shuttles in style.
+  components:
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadEVAHelmetValet
+  - type: Sprite
+    layers:
+    - { state: icon-base, color: "#e6001f" }
+    - { state: icon-decals-01, color: "#f2b833" }
+    - { state: icon-reinforced-points, color: "#606275" }
+    - { state: icon-breathing-gear }
+    - { state: icon-unshaded, shader: unshaded }
+  - type: Item
+    inhandVisuals:
+      left:
+      - { state: inhand-left-base, color: "#e6001f" }
+      - { state: inhand-left-decals-01, color: "#f2b833" }
+      - { state: inhand-left-reinforced-points, color: "#606275" }
+      - { state: inhand-left-breathing-gear }
+      - { state: inhand-left-unshaded, shader: unshaded }
+      right:
+      - { state: inhand-right-base, color: "#e6001f" }
+      - { state: inhand-right-decals-01, color: "#f2b833" }
+      - { state: inhand-right-reinforced-points, color: "#606275" }
+      - { state: inhand-right-breathing-gear }
+      - { state: inhand-right-unshaded, shader: unshaded }
+  - type: Clothing
+    clothingVisuals:
+      outerClothing:
+      - { state: equipped-base, color: "#e6001f" }
+      - { state: equipped-decals-01, color: "#f2b833" }
+      - { state: equipped-reinforced-points, color: "#606275" }
+      - { state: equipped-breathing-gear }
+      - { state: equipped-unshaded, shader: unshaded }
+
+- type: entity
+  id: ClothingOuterEVASuitServiceWorker
+  parent: SerenityDepartmentalEVASuit
+  name: service worker EVA suit
+  description: Cream with lime trim. Service staff wear it when the deliveries have to go outside.
+  components:
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadEVAHelmetServiceWorker
+  - type: Sprite
+    layers:
+    - { state: icon-base, color: "#fff4e2" }
+    - { state: icon-decals-01, color: "#9FED58" }
+    - { state: icon-reinforced-points, color: "#606275" }
+    - { state: icon-breathing-gear }
+    - { state: icon-unshaded, shader: unshaded }
+  - type: Item
+    inhandVisuals:
+      left:
+      - { state: inhand-left-base, color: "#fff4e2" }
+      - { state: inhand-left-decals-01, color: "#9FED58" }
+      - { state: inhand-left-reinforced-points, color: "#606275" }
+      - { state: inhand-left-breathing-gear }
+      - { state: inhand-left-unshaded, shader: unshaded }
+      right:
+      - { state: inhand-right-base, color: "#fff4e2" }
+      - { state: inhand-right-decals-01, color: "#9FED58" }
+      - { state: inhand-right-reinforced-points, color: "#606275" }
+      - { state: inhand-right-breathing-gear }
+      - { state: inhand-right-unshaded, shader: unshaded }
+  - type: Clothing
+    clothingVisuals:
+      outerClothing:
+      - { state: equipped-base, color: "#fff4e2" }
+      - { state: equipped-decals-01, color: "#9FED58" }
+      - { state: equipped-reinforced-points, color: "#606275" }
+      - { state: equipped-breathing-gear }
+      - { state: equipped-unshaded, shader: unshaded }
+
+- type: entity
+  id: ClothingOuterEVASuitChaplain
+  parent: SerenityDepartmentalEVASuit
+  name: chaplain EVA suit
+  description: Charcoal with gold trim, solemn enough for a funeral held out among the stars.
+  components:
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadEVAHelmetChaplain
+  - type: Sprite
+    layers:
+    - { state: icon-base, color: "#3e3e48" }
+    - { state: icon-decals-01, color: "#ffce5b" }
+    - { state: icon-reinforced-points, color: "#3e3e48" }
+    - { state: icon-breathing-gear }
+    - { state: icon-unshaded, shader: unshaded }
+  - type: Item
+    inhandVisuals:
+      left:
+      - { state: inhand-left-base, color: "#3e3e48" }
+      - { state: inhand-left-decals-01, color: "#ffce5b" }
+      - { state: inhand-left-reinforced-points, color: "#3e3e48" }
+      - { state: inhand-left-breathing-gear }
+      - { state: inhand-left-unshaded, shader: unshaded }
+      right:
+      - { state: inhand-right-base, color: "#3e3e48" }
+      - { state: inhand-right-decals-01, color: "#ffce5b" }
+      - { state: inhand-right-reinforced-points, color: "#3e3e48" }
+      - { state: inhand-right-breathing-gear }
+      - { state: inhand-right-unshaded, shader: unshaded }
+  - type: Clothing
+    clothingVisuals:
+      outerClothing:
+      - { state: equipped-base, color: "#3e3e48" }
+      - { state: equipped-decals-01, color: "#ffce5b" }
+      - { state: equipped-reinforced-points, color: "#3e3e48" }
+      - { state: equipped-breathing-gear }
+      - { state: equipped-unshaded, shader: unshaded }
+
+- type: entity
+  id: ClothingOuterEVASuitBoxerRed
+  parent: SerenityDepartmentalEVASuit
+  name: boxer EVA suit
+  suffix: Red
+  description: A cream suit with red trim, worn for fights where the ring has no air.
+  components:
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadEVAHelmetBoxerRed
+  - type: Sprite
+    layers:
+    - { state: icon-base, color: "#fff4e2" }
+    - { state: icon-reinforced-points, color: "#606275" }
+    - { state: icon-decals-02-boxer, color: "#d1502c" }
+    - { state: icon-breathing-gear }
+    - { state: icon-unshaded, shader: unshaded }
+  - type: Item
+    inhandVisuals:
+      left:
+      - { state: inhand-left-base, color: "#fff4e2" }
+      - { state: inhand-left-decals-01, color: "#d1502c" }
+      - { state: inhand-left-reinforced-points, color: "#606275" }
+      - { state: inhand-left-breathing-gear }
+      - { state: inhand-left-unshaded, shader: unshaded }
+      right:
+      - { state: inhand-right-base, color: "#fff4e2" }
+      - { state: inhand-right-decals-01, color: "#d1502c" }
+      - { state: inhand-right-reinforced-points, color: "#606275" }
+      - { state: inhand-right-breathing-gear }
+      - { state: inhand-right-unshaded, shader: unshaded }
+  - type: Clothing
+    clothingVisuals:
+      outerClothing:
+      - { state: equipped-base, color: "#fff4e2" }
+      - { state: equipped-reinforced-points, color: "#606275" }
+      - { state: equipped-decals-02-boxer, color: "#d1502c" }
+      - { state: equipped-breathing-gear }
+      - { state: equipped-unshaded, shader: unshaded }
+
+- type: entity
+  id: ClothingOuterEVASuitBoxerGreen
+  parent: SerenityDepartmentalEVASuit
+  name: boxer EVA suit
+  suffix: Green
+  description: A cream suit with green trim, worn for fights where the ring has no air.
+  components:
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadEVAHelmetBoxerGreen
+  - type: Sprite
+    layers:
+    - { state: icon-base, color: "#fff4e2" }
+    - { state: icon-reinforced-points, color: "#606275" }
+    - { state: icon-decals-02-boxer, color: "#4cd339" }
+    - { state: icon-breathing-gear }
+    - { state: icon-unshaded, shader: unshaded }
+  - type: Item
+    inhandVisuals:
+      left:
+      - { state: inhand-left-base, color: "#fff4e2" }
+      - { state: inhand-left-decals-01, color: "#4cd339" }
+      - { state: inhand-left-reinforced-points, color: "#606275" }
+      - { state: inhand-left-breathing-gear }
+      - { state: inhand-left-unshaded, shader: unshaded }
+      right:
+      - { state: inhand-right-base, color: "#fff4e2" }
+      - { state: inhand-right-decals-01, color: "#4cd339" }
+      - { state: inhand-right-reinforced-points, color: "#606275" }
+      - { state: inhand-right-breathing-gear }
+      - { state: inhand-right-unshaded, shader: unshaded }
+  - type: Clothing
+    clothingVisuals:
+      outerClothing:
+      - { state: equipped-base, color: "#fff4e2" }
+      - { state: equipped-reinforced-points, color: "#606275" }
+      - { state: equipped-decals-02-boxer, color: "#4cd339" }
+      - { state: equipped-breathing-gear }
+      - { state: equipped-unshaded, shader: unshaded }
+
+- type: entity
+  id: ClothingOuterEVASuitBoxerBlue
+  parent: SerenityDepartmentalEVASuit
+  name: boxer EVA suit
+  suffix: Blue
+  description: A cream suit with blue trim, worn for fights where the ring has no air.
+  components:
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadEVAHelmetBoxerBlue
+  - type: Sprite
+    layers:
+    - { state: icon-base, color: "#fff4e2" }
+    - { state: icon-reinforced-points, color: "#606275" }
+    - { state: icon-decals-02-boxer, color: "#23a0bb" }
+    - { state: icon-breathing-gear }
+    - { state: icon-unshaded, shader: unshaded }
+  - type: Item
+    inhandVisuals:
+      left:
+      - { state: inhand-left-base, color: "#fff4e2" }
+      - { state: inhand-left-decals-01, color: "#23a0bb" }
+      - { state: inhand-left-reinforced-points, color: "#606275" }
+      - { state: inhand-left-breathing-gear }
+      - { state: inhand-left-unshaded, shader: unshaded }
+      right:
+      - { state: inhand-right-base, color: "#fff4e2" }
+      - { state: inhand-right-decals-01, color: "#23a0bb" }
+      - { state: inhand-right-reinforced-points, color: "#606275" }
+      - { state: inhand-right-breathing-gear }
+      - { state: inhand-right-unshaded, shader: unshaded }
+  - type: Clothing
+    clothingVisuals:
+      outerClothing:
+      - { state: equipped-base, color: "#fff4e2" }
+      - { state: equipped-reinforced-points, color: "#606275" }
+      - { state: equipped-decals-02-boxer, color: "#23a0bb" }
+      - { state: equipped-breathing-gear }
+      - { state: equipped-unshaded, shader: unshaded }
+
+- type: entity
+  id: ClothingOuterEVASuitBoxerYellow
+  parent: SerenityDepartmentalEVASuit
+  name: boxer EVA suit
+  suffix: Yellow
+  description: A cream suit with yellow trim, worn for fights where the ring has no air.
+  components:
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadEVAHelmetBoxerYellow
+  - type: Sprite
+    layers:
+    - { state: icon-base, color: "#fff4e2" }
+    - { state: icon-reinforced-points, color: "#606275" }
+    - { state: icon-decals-02-boxer, color: "#d9be15" }
+    - { state: icon-breathing-gear }
+    - { state: icon-unshaded, shader: unshaded }
+  - type: Item
+    inhandVisuals:
+      left:
+      - { state: inhand-left-base, color: "#fff4e2" }
+      - { state: inhand-left-decals-01, color: "#d9be15" }
+      - { state: inhand-left-reinforced-points, color: "#606275" }
+      - { state: inhand-left-breathing-gear }
+      - { state: inhand-left-unshaded, shader: unshaded }
+      right:
+      - { state: inhand-right-base, color: "#fff4e2" }
+      - { state: inhand-right-decals-01, color: "#d9be15" }
+      - { state: inhand-right-reinforced-points, color: "#606275" }
+      - { state: inhand-right-breathing-gear }
+      - { state: inhand-right-unshaded, shader: unshaded }
+  - type: Clothing
+    clothingVisuals:
+      outerClothing:
+      - { state: equipped-base, color: "#fff4e2" }
+      - { state: equipped-reinforced-points, color: "#606275" }
+      - { state: equipped-decals-02-boxer, color: "#d9be15" }
+      - { state: equipped-breathing-gear }
+      - { state: equipped-unshaded, shader: unshaded }
+
+- type: entity
+  id: ClothingOuterEVASuitBoxerRandom
+  parent: SerenityDepartmentalEVASuit
+  name: boxer EVA suit
+  suffix: Randomized colors
+  description: A cream boxing suit. The trim was dyed whatever colour the shop had in stock that day.
+  components:
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadEVAHelmetBoxerRandom
+  - type: Sprite
+    layers:
+    - { state: equipped-base, color: "#fff4e2" }
+    - { state: equipped-reinforced-points, color: "#606275" }
+    - { state: equipped-decals-02-boxer, map: [ "eva_decal_boxing" ] }
+    - { state: equipped-breathing-gear }
+    - { state: equipped-unshaded, shader: unshaded }
+  - type: Item
+    inhandVisuals:
+      left:
+      - { state: inhand-left-base, color: "#fff4e2" }
+      - { state: inhand-left-decals-01 }
+      - { state: inhand-left-reinforced-points, color: "#606275" }
+      - { state: inhand-left-breathing-gear }
+      - { state: inhand-left-unshaded, shader: unshaded }
+      right:
+      - { state: inhand-right-base, color: "#fff4e2" }
+      - { state: inhand-right-decals-01 }
+      - { state: inhand-right-reinforced-points, color: "#606275" }
+      - { state: inhand-right-breathing-gear }
+      - { state: inhand-right-unshaded, shader: unshaded }
+  - type: Clothing
+    clothingVisuals:
+      outerClothing:
+      - { state: equipped-base, color: "#fff4e2" }
+      - { state: equipped-reinforced-points, color: "#606275" }
+      - { state: equipped-decals-02-boxer, map: [ "eva_decal_boxing" ] }
+      - { state: equipped-breathing-gear }
+      - { state: equipped-unshaded, shader: unshaded }
+  # Serenity: trim colour is rolled from the Sixteen palette (Palettes/sixteen.yml).
+  - type: RandomSprite
+    available:
+    - eva_decal_boxing:
+        equipped-decals-02-boxer: Sixteen
+
+- type: entity
+  id: ClothingOuterEVASuitPilot
+  parent: SerenityDepartmentalEVASuit
+  name: pilot EVA suit
+  description: Faded blue with brown leather-look trim. Pilots trust it for the walk out to the docking arm.
+  components:
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadEVAHelmetPilot
+  - type: Sprite
+    layers:
+    - { state: icon-base, color: "#496ea0" }
+    - { state: icon-decals-01, color: "#784f1e" }
+    - { state: icon-reinforced-points, color: "#784f1e" }
+    - { state: icon-breathing-gear }
+    - { state: icon-unshaded, shader: unshaded }
+  - type: Item
+    inhandVisuals:
+      left:
+      - { state: inhand-left-base, color: "#496ea0" }
+      - { state: inhand-left-decals-01, color: "#784f1e" }
+      - { state: inhand-left-reinforced-points, color: "#784f1e" }
+      - { state: inhand-left-breathing-gear }
+      - { state: inhand-left-unshaded, shader: unshaded }
+      right:
+      - { state: inhand-right-base, color: "#496ea0" }
+      - { state: inhand-right-decals-01, color: "#784f1e" }
+      - { state: inhand-right-reinforced-points, color: "#784f1e" }
+      - { state: inhand-right-breathing-gear }
+      - { state: inhand-right-unshaded, shader: unshaded }
+  - type: Clothing
+    clothingVisuals:
+      outerClothing:
+      - { state: equipped-base, color: "#496ea0" }
+      - { state: equipped-decals-01, color: "#784f1e" }
+      - { state: equipped-reinforced-points, color: "#784f1e" }
+      - { state: equipped-breathing-gear }
+      - { state: equipped-unshaded, shader: unshaded }
+
+- type: entity
+  id: ClothingOuterEVASuitMercenary
+  parent: SerenityDepartmentalEVASuit
+  name: mercenary EVA suit
+  description: Olive drab with khaki markings. Plain, durable, and asks no questions.
+  components:
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadEVAHelmetMercenary
+  - type: Sprite
+    layers:
+    - { state: icon-base, color: "#7b7b3f" }
+    - { state: icon-decals-01, color: "#b8b873" }
+    - { state: icon-reinforced-points, color: "#3e3e48" }
+    - { state: icon-breathing-gear }
+    - { state: icon-unshaded, shader: unshaded }
+  - type: Item
+    inhandVisuals:
+      left:
+      - { state: inhand-left-base, color: "#7b7b3f" }
+      - { state: inhand-left-decals-01, color: "#b8b873" }
+      - { state: inhand-left-reinforced-points, color: "#3e3e48" }
+      - { state: inhand-left-breathing-gear }
+      - { state: inhand-left-unshaded, shader: unshaded }
+      right:
+      - { state: inhand-right-base, color: "#7b7b3f" }
+      - { state: inhand-right-decals-01, color: "#b8b873" }
+      - { state: inhand-right-reinforced-points, color: "#3e3e48" }
+      - { state: inhand-right-breathing-gear }
+      - { state: inhand-right-unshaded, shader: unshaded }
+  - type: Clothing
+    clothingVisuals:
+      outerClothing:
+      - { state: equipped-base, color: "#7b7b3f" }
+      - { state: equipped-decals-01, color: "#b8b873" }
+      - { state: equipped-reinforced-points, color: "#3e3e48" }
+      - { state: equipped-breathing-gear }
+      - { state: equipped-unshaded, shader: unshaded }
+
+- type: entity
+  id: ClothingOuterEVASuitPrivateSec
+  parent: SerenityDepartmentalEVASuit
+  name: private security EVA suit
+  description: Blue with red stripes and brown reinforcement, issued by security firms that rent out guards.
+  components:
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadEVAHelmetPrivateSec
+  - type: Sprite
+    layers:
+    - { state: icon-base, color: "#2286bd" }
+    - { state: icon-decals-01, color: "#9d1c1c" }
+    - { state: icon-reinforced-points, color: "#935c3f" }
+    - { state: icon-breathing-gear }
+    - { state: icon-unshaded, shader: unshaded }
+  - type: Item
+    inhandVisuals:
+      left:
+      - { state: inhand-left-base, color: "#2286bd" }
+      - { state: inhand-left-decals-01, color: "#9d1c1c" }
+      - { state: inhand-left-reinforced-points, color: "#935c3f" }
+      - { state: inhand-left-breathing-gear }
+      - { state: inhand-left-unshaded, shader: unshaded }
+      right:
+      - { state: inhand-right-base, color: "#2286bd" }
+      - { state: inhand-right-decals-01, color: "#9d1c1c" }
+      - { state: inhand-right-reinforced-points, color: "#935c3f" }
+      - { state: inhand-right-breathing-gear }
+      - { state: inhand-right-unshaded, shader: unshaded }
+  - type: Clothing
+    clothingVisuals:
+      outerClothing:
+      - { state: equipped-base, color: "#2286bd" }
+      - { state: equipped-decals-01, color: "#9d1c1c" }
+      - { state: equipped-reinforced-points, color: "#935c3f" }
+      - { state: equipped-breathing-gear }
+      - { state: equipped-unshaded, shader: unshaded }
+
+- type: entity
+  id: ClothingOuterEVASuitNfsd
+  parent: SerenityDepartmentalEVASuitShoulderLight
+  name: sheriff's department EVA suit
+  description: Khaki and forest green with a shoulder lamp, standard issue for deputies on patrol.
+  components:
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadEVAHelmetNfsd
+  - type: Sprite
+    layers:
+    - { state: icon-base, color: "#a9947d" }
+    - { state: icon-decals-01, color: "#384d2f" }
+    - { state: icon-reinforced-points, color: "#493926" }
+    - { state: icon-shoulder-light, color: "#384d2f" }
+    - { state: icon-breathing-gear }
+    - { state: icon-unshaded, shader: unshaded }
+    - { state: icon-shoulder-light-overlay-unshaded, shader: unshaded, map: [ "light" ], visible: false }
+  - type: Item
+    inhandVisuals:
+      left:
+      - { state: inhand-left-base, color: "#a9947d" }
+      - { state: inhand-left-decals-01, color: "#384d2f" }
+      - { state: inhand-left-reinforced-points, color: "#493926" }
+      - { state: inhand-left-breathing-gear }
+      - { state: inhand-left-unshaded, shader: unshaded }
+      right:
+      - { state: inhand-right-base, color: "#a9947d" }
+      - { state: inhand-right-decals-01, color: "#384d2f" }
+      - { state: inhand-right-reinforced-points, color: "#493926" }
+      - { state: inhand-right-breathing-gear }
+      - { state: inhand-right-unshaded, shader: unshaded }
+  - type: Clothing
+    clothingVisuals:
+      outerClothing:
+      - { state: equipped-base, color: "#a9947d" }
+      - { state: equipped-decals-01, color: "#384d2f" }
+      - { state: equipped-reinforced-points, color: "#493926" }
+      - { state: equipped-shoulder-light, color: "#384d2f" }
+      - { state: equipped-breathing-gear }
+      - { state: equipped-unshaded, shader: unshaded }
+
+- type: entity
+  id: ClothingOuterEVASuitPirate
+  parent: SerenityDepartmentalEVASuitShoulderLight
+  name: pirate EVA suit
+  description: Weathered tan with blood-red trim and a shoulder lamp. Almost certainly stolen.
+  components:
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadEVAHelmetPirate
+  - type: Sprite
+    layers:
+    - { state: icon-base, color: "#d4a365" }
+    - { state: icon-decals-01, color: "#4b0e10" }
+    - { state: icon-reinforced-points, color: "#784f1e" }
+    - { state: icon-shoulder-light, color: "#4b0e10" }
+    - { state: icon-breathing-gear }
+    - { state: icon-unshaded, shader: unshaded }
+    - { state: icon-shoulder-light-overlay-unshaded, shader: unshaded, map: [ "light" ], visible: false }
+  - type: Item
+    inhandVisuals:
+      left:
+      - { state: inhand-left-base, color: "#d4a365" }
+      - { state: inhand-left-decals-01, color: "#4b0e10" }
+      - { state: inhand-left-reinforced-points, color: "#784f1e" }
+      - { state: inhand-left-breathing-gear }
+      - { state: inhand-left-unshaded, shader: unshaded }
+      right:
+      - { state: inhand-right-base, color: "#d4a365" }
+      - { state: inhand-right-decals-01, color: "#4b0e10" }
+      - { state: inhand-right-reinforced-points, color: "#784f1e" }
+      - { state: inhand-right-breathing-gear }
+      - { state: inhand-right-unshaded, shader: unshaded }
+  - type: Clothing
+    clothingVisuals:
+      outerClothing:
+      - { state: equipped-base, color: "#d4a365" }
+      - { state: equipped-decals-01, color: "#4b0e10" }
+      - { state: equipped-reinforced-points, color: "#784f1e" }
+      - { state: equipped-shoulder-light, color: "#4b0e10" }
+      - { state: equipped-breathing-gear }
+      - { state: equipped-unshaded, shader: unshaded }
+
+- type: entity
+  id: ClothingOuterEVASuitPrisoner
+  parent: SerenityDepartmentalEVASuit
+  name: prisoner EVA suit
+  description: Blaze orange with dark green trim, hard to lose track of against the black.
+  components:
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadEVAHelmetPrisoner
+  - type: Sprite
+    layers:
+    - { state: icon-base, color: "#ff8300" }
+    - { state: icon-decals-01, color: "#384d2f" }
+    - { state: icon-reinforced-points, color: "#493926" }
+    - { state: icon-breathing-gear }
+    - { state: icon-unshaded, shader: unshaded }
+  - type: Item
+    inhandVisuals:
+      left:
+      - { state: inhand-left-base, color: "#ff8300" }
+      - { state: inhand-left-decals-01, color: "#384d2f" }
+      - { state: inhand-left-reinforced-points, color: "#493926" }
+      - { state: inhand-left-breathing-gear }
+      - { state: inhand-left-unshaded, shader: unshaded }
+      right:
+      - { state: inhand-right-base, color: "#ff8300" }
+      - { state: inhand-right-decals-01, color: "#384d2f" }
+      - { state: inhand-right-reinforced-points, color: "#493926" }
+      - { state: inhand-right-breathing-gear }
+      - { state: inhand-right-unshaded, shader: unshaded }
+  - type: Clothing
+    clothingVisuals:
+      outerClothing:
+      - { state: equipped-base, color: "#ff8300" }
+      - { state: equipped-decals-01, color: "#384d2f" }
+      - { state: equipped-reinforced-points, color: "#493926" }
+      - { state: equipped-breathing-gear }
+      - { state: equipped-unshaded, shader: unshaded }
+
+- type: entity
+  id: ClothingOuterEVASuitLvhi
+  parent: SerenityDepartmentalEVASuit
+  name: plated EVA suit
+  description: A navy suit with orange striping and a bolted-on chest plate, rugged enough for heavy-industry work.
+  components:
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadEVAHelmetLvhi
+  - type: Sprite
+    layers:
+    - { state: equipped-base, color: "#283846" }
+    - { state: equipped-decals-01, color: "#e48545" }
+    - { state: equipped-reinforced-points, color: "#3e3e48" }
+    - { sprite: _Serenity/Clothing/OuterClothing/Armor/bulletproof_vest_procedural.rsi, state: decor_base_OuterClothing_armor_06, color: "#e48545" }
+    - { state: equipped-breathing-gear }
+    - { state: equipped-unshaded, shader: unshaded }
+  - type: Item
+    inhandVisuals:
+      left:
+      - { state: inhand-left-base, color: "#283846" }
+      - { state: inhand-left-decals-01, color: "#e48545" }
+      - { state: inhand-left-reinforced-points, color: "#3e3e48" }
+      - { state: inhand-left-breathing-gear }
+      - { state: inhand-left-unshaded, shader: unshaded }
+      right:
+      - { state: inhand-right-base, color: "#283846" }
+      - { state: inhand-right-decals-01, color: "#e48545" }
+      - { state: inhand-right-reinforced-points, color: "#3e3e48" }
+      - { state: inhand-right-breathing-gear }
+      - { state: inhand-right-unshaded, shader: unshaded }
+  - type: Clothing
+    clothingVisuals:
+      outerClothing:
+      - { state: equipped-base, color: "#283846" }
+      - { state: equipped-decals-01, color: "#e48545" }
+      - { state: equipped-reinforced-points, color: "#3e3e48" }
+      - { sprite: _Serenity/Clothing/OuterClothing/Armor/bulletproof_vest_procedural.rsi, state: decor_base_OuterClothing_armor_06, color: "#e48545" }
+      - { state: equipped-breathing-gear }
+      - { state: equipped-unshaded, shader: unshaded }
+
+# === Voidsuits =================================================================================
+
+# Serenity: the armored model rides on the mercenary hardsuit for its protection values.
+
+- type: entity
+  id: ClothingOuterEVASuitFsa
+  parent: ClothingOuterHardsuitMercenary
+  name: armored voidsuit
+  description: A bulky voidsuit with extra plating, built on a combat hardsuit frame for crews expecting trouble.
+  components:
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitFSA
+    slot: head
+  - type: Sprite
+    sprite: _Serenity/Clothing/OuterClothing/Suits/fsa_voidsuit.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/OuterClothing/Suits/fsa_voidsuit.rsi
+  - type: Tag
+    tags:
+    - MonkeyWearable
+    - ScurretWearable
+    - CorgiWearable
+
+- type: entity
+  id: ClothingOuterEVASuitFsb
+  parent: SerenityEVASuitBase
+  name: biotech voidsuit
+  description: A slim voidsuit in clinical colours, made for lab crews who work in vacuum.
+  components:
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitFSB
+    slot: head
+  - type: Sprite
+    sprite: _Serenity/Clothing/OuterClothing/Suits/fsb_voidsuit.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/OuterClothing/Suits/fsb_voidsuit.rsi
+  - type: Tag
+    tags:
+    - MonkeyWearable
+    - ScurretWearable
+    - CorgiWearable
+
+- type: entity
+  id: ClothingOuterEVASuitFsc
+  parent: SerenityEVASuitBase
+  name: trader's voidsuit
+  description: A practical voidsuit for traders who spend as much time on the dock as in the shop.
+  components:
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitFSC
+    slot: head
+  - type: Sprite
+    sprite: _Serenity/Clothing/OuterClothing/Suits/fsc_voidsuit.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/OuterClothing/Suits/fsc_voidsuit.rsi
+  - type: Tag
+    tags:
+    - MonkeyWearable
+    - ScurretWearable
+    - CorgiWearable
+
+# === Robes =====================================================================================
+
+- type: entity
+  id: ClothingOuterEVASuitGoblin
+  parent: SerenityEVASuitBase
+  name: scavenger EVA robes
+  description: Layered robes sewn over a pressure liner. Ugly, but they hold air.
+  components:
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadEVAHelmetGoblin
+    slot: head
+  - type: Sprite
+    sprite: _Serenity/Clothing/OuterClothing/Suits/goblin_eva_robes.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/OuterClothing/Suits/goblin_eva_robes.rsi
+  - type: StaticPrice
+    price: 65

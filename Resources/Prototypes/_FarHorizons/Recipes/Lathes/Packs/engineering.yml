@@ -5,6 +5,7 @@
   - NuclearCentrifugeMachineCircuitboard
   - NuclearReactorMonitorComputerCircuitboard
   - GasTurbineMonitorComputerCircuitboard
+  - TokamakConsoleCircuitboard # Serenity
 
 - type: latheRecipePack
   id: ReactorPartsBasic
@@ -31,6 +32,14 @@
   - BananiumReactorFuelRod
   - PlasmaReactorFuelRod
   - UraniumGlassReactorFuelRod
+  - TokamakFuelRodHydrogen # Serenity
+  - TokamakFuelRodDeuterium # Serenity
+  - TokamakFuelRodTritium # Serenity
+  - TokamakFuelRodDeuteriumTritium # Serenity
+  - TokamakFuelRodHelium3 # Serenity
+  - TokamakFuelRodLithium # Serenity
+  - TokamakFuelRodBoron # Serenity
+  - TokamakFuelRodIron # Serenity
 
 - type: latheRecipePack
   id: ReactorControlRods

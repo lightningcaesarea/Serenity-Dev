@@ -236,8 +236,8 @@
 - type: entity
   parent: [ClothingNeckBase, BaseCentcommContraband]
   id: ClothingNeckCloakCCponcho
-  name: central command poncho
-  description: a stylish poncho for a CC offical that prefers field-work to pushing papers.
+  name: sector command poncho
+  description: a stylish poncho for a Sector Command offical that prefers field-work to pushing papers.
   components:
   - type: Sprite
     sprite:  _Starlight/Clothing/Neck/Cloaks/CC_poncho.rsi
@@ -650,8 +650,8 @@
 - type: entity
   parent: [ClothingNeckMantleCMO, BaseCentcommContraband]
   id: ClothingNeckCloakCCShawl
-  name: central command shawl
-  description:  A shawl with a shoulder epaulette fitting of a member of central command following complaints from a CID Minister of Intelligence that wanted the medical symbol removed from it as an excuse to wear it without being apart of CMD.
+  name: sector command shawl
+  description:  A shawl with a shoulder epaulette fitting of a member of sector command following complaints from a CID Minister of Intelligence that wanted the medical symbol removed from it as an excuse to wear it without being apart of CMD.
   components:
     - type: Sprite
       sprite:  _Starlight/Clothing/Neck/Cloaks/CC_shawl.rsi

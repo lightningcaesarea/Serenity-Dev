@@ -246,6 +246,8 @@
       containers:
         cell_slot: !type:ContainerSlot
         toggleable-clothing: !type:ContainerSlot
+        storagebase: !type:Container # Serenity: armor plates
+          ents: []
     - type: ItemSlots
       slots:
         cell_slot:
@@ -776,6 +778,7 @@
     - type: Storage
       grid:
       - 0,0,18,6 # Starlight
+      maxItemSize: Huge # Serenity: was unset; keep it from inheriting the armor plate compartment's Normal limit
     - type: ContainerContainer
       containers:
        storagebase: !type:Container
@@ -1301,6 +1304,7 @@
     - type: Storage
       grid:
         - 0,0,2,1
+      maxItemSize: Small # Serenity: keep the pocket limit from ClothingOuterStorageBase
     - type: ContainerContainer
       containers:
         toggleable-clothing: !type:ContainerSlot

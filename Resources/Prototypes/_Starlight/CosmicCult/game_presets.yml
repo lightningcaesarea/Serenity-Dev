@@ -5,10 +5,9 @@
   name: cosmiccult-title
   description: cosmiccult-description
   minPlayers: 20
-  showInVote: true
+  showInVote: false # Serenity: no antag round modes in votes
   rules:
     - CosmicCult
-    - SubGamemodesRuleConversion
     - MeteorSwarmScheduler
     - SpaceTrafficControlEventScheduler
     - BasicRoundstartVariation

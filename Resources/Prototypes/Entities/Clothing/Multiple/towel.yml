@@ -286,34 +286,34 @@
 
 - type: entity
   id: TowelColorCentcom
-  name: centcom towel
+  name: sector command towel
   parent: BaseTowel
   components:
   - type: Sprite
     layers:
     - state: icon
-      color: "#29722e"
+      color: "#3d3f43"
     - state: iconstripe
-      color: "#F7C430"
+      color: "#f7a430"
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left
-        color: "#29722e"
+        color: "#3d3f43"
       right:
       - state: inhand-right
-        color: "#29722e"
+        color: "#3d3f43"
   - type: Clothing
     clothingVisuals:
       head:
       - state: equipped-HELMET
-        color: "#29722e"
+        color: "#3d3f43"
       jumpsuit:
       - state: equipped-INNERCLOTHING
-        color: "#29722e"
+        color: "#3d3f43"
       belt:
       - state: equipped-BELT
-        color: "#29722e"
+        color: "#3d3f43"
   - type: Fiber
     fiberColor: fibers-green
 

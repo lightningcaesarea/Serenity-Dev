@@ -1,4 +1,5 @@
-job-name-assistant = Assistant
+# Serenity: the Assistant is called the Spacer
+job-name-assistant = Spacer
 job-name-stirstir = Stir Stir
 job-name-cook-assistant = Cook Assistant
 job-name-delivery-assistant = Delivery Boy

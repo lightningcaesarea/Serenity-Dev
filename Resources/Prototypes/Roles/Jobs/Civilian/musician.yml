@@ -3,6 +3,7 @@
   name: job-name-musician
   description: job-description-musician
   playTimeTracker: JobMusician
+  setPreference: false # Serenity: role disabled
   startingGear: MusicianGear
   icon: "JobIconMusician"
   supervisors: job-supervisors-hire

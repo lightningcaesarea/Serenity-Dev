@@ -973,7 +973,7 @@
 - type: entity
   parent: BaseSecurityPDA
   id: CentcomPDA
-  name: CentComm PDA
+  name: Sector Command PDA
   description: Light green sign of walking bureaucracy.
   components:
   - type: Pda
@@ -990,7 +990,7 @@
        !type:String
        pda-centcom
   - type: PdaBorderColor
-    borderColor: "#00842e"
+    borderColor: "#3d3f43"
   - type: Icon
     state: pda-centcom
   - type: CartridgeLoader
@@ -1090,7 +1090,7 @@
   parent: BasePDA
   id: AtmosPDA
   name: atmos PDA
-  description: Still smells like plasma.
+  description: Still smells like phoron.
   components:
   - type: Pda
     id: AtmosIDCard

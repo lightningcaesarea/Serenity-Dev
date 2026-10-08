@@ -1,0 +1,569 @@
+# Sector Command clothing, ported from Hullrot (Sector Crescent) Empire gear and recolored
+# to Sector Command charcoal and orange-gold. Only sprites credited to Shiptest/tgstation
+# (CC-BY-SA-3.0) were taken; see each meta.json for credit. Prototypes are written for Serenity.
+
+# ── Uniforms ──────────────────────────────────────────────────────────────────
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitSectorCommandHighCommand
+  name: Sector Command high command uniform
+  description: A charcoal dress uniform with orange-gold braid, reserved for Sector Command's ranking officers.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/Uniforms/highcommand.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/Uniforms/highcommand.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitSectorCommandHighCommandCasual
+  name: Sector Command high command casual uniform
+  description: The off-duty cut of the high command uniform. Still sharper than anything the crew owns.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/Uniforms/highcommandcasual.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/Uniforms/highcommandcasual.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitSectorCommandAdjutantFormal
+  name: Sector Command adjutant's formal uniform
+  description: A crisp white shirt under a charcoal waistcoat, worn by Sector Command adjutants on formal duty.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/Uniforms/adjutantformal.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/Uniforms/adjutantformal.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitSectorCommandAdjutantCasual
+  name: Sector Command adjutant's casual uniform
+  description: A white shirt and charcoal slacks for adjutants who are only mostly on duty.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/Uniforms/adjutantcasual.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/Uniforms/adjutantcasual.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitSectorCommandTrooperFormal
+  name: Sector Command trooper's dress uniform
+  description: Parade dress for Sector Command troopers, with orange-gold piping.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/Uniforms/trooperformal.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/Uniforms/trooperformal.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitSectorCommandCombat
+  name: Sector Command combat fatigues
+  description: Charcoal fatigues worn under armor by Sector Command troopers.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/Uniforms/combat.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/Uniforms/combat.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitSectorCommandAttache
+  name: Sector Command attaché's suit
+  description: A tailored suit for Sector Command's diplomats and liaisons.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/Uniforms/attache.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/Uniforms/attache.rsi
+
+# ── Outer clothing ────────────────────────────────────────────────────────────
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterCoatSectorCommandHighCommand
+  name: Sector Command high command coat
+  description: A heavy charcoal greatcoat laden with orange-gold braid. Rank has its privileges.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/OuterClothing/highcommandcoat.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/OuterClothing/highcommandcoat.rsi
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterCoatSectorCommandParade
+  name: Sector Command parade jacket
+  description: A double-breasted parade jacket with orange-gold buttons.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/OuterClothing/paradejacket.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/OuterClothing/paradejacket.rsi
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterCoatSectorCommandAdjutant
+  name: Sector Command adjutant's coat
+  description: A long white coat with charcoal lining, issued to Sector Command adjutants.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/OuterClothing/adjutantcoat.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/OuterClothing/adjutantcoat.rsi
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterCoatSectorCommandMagistrate
+  name: Sector Command magistrate's robe
+  description: Flowing charcoal robes worn by Sector Command's legal officers.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/OuterClothing/magistrate.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/OuterClothing/magistrate.rsi
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterCoatSectorCommandInspector
+  name: Sector Command inspector's coat
+  description: A long black coat. When someone wearing it arrives on station, something has gone wrong.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/OuterClothing/inspectorcoat.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/OuterClothing/inspectorcoat.rsi
+
+- type: entity
+  parent: ClothingOuterArmorBase
+  id: ClothingOuterArmorSectorCommandCommand
+  name: Sector Command officer's armor
+  description: Plated charcoal armor with orange-gold trim, worn by Sector Command field officers.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/OuterClothing/commandarmor.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/OuterClothing/commandarmor.rsi
+
+- type: entity
+  parent: ClothingOuterArmorBase
+  id: ClothingOuterArmorSectorCommandHonorGuard
+  name: Sector Command honor guard armor
+  description: Ceremonial plate for Sector Command's honor guard. It still stops bullets.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/OuterClothing/honorguardarmor.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/OuterClothing/honorguardarmor.rsi
+
+- type: entity
+  parent: ClothingOuterArmorBase
+  id: ClothingOuterArmorSectorCommand
+  name: Sector Command armor vest
+  description: Standard-issue charcoal plate carrier for Sector Command troopers.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/OuterClothing/armor.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/OuterClothing/armor.rsi
+
+- type: entity
+  parent: ClothingOuterArmorBase
+  id: ClothingOuterArmorSectorCommandTrooper
+  name: Sector Command trooper armor
+  description: Full-coverage charcoal armor for Sector Command troopers.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/OuterClothing/trooperarmor.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/OuterClothing/trooperarmor.rsi
+
+- type: entity
+  parent: ClothingOuterEVASuitBase
+  id: ClothingOuterHardsuitSectorCommandEVA
+  name: Sector Command EVA suit
+  description: A charcoal EVA suit with orange-gold trim, for Sector Command personnel who have to step outside.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/OuterClothing/eva.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/OuterClothing/eva.rsi
+
+# ── Head ──────────────────────────────────────────────────────────────────────
+
+- type: entity
+  parent: ClothingHeadEVAHelmetBase
+  id: ClothingHeadHelmetSectorCommandEVA
+  name: Sector Command EVA helmet
+  description: A charcoal EVA helmet matching the Sector Command EVA suit.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/Head/eva.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/Head/eva.rsi
+
+- type: entity
+  parent: ClothingHeadHelmetArmoredBase
+  id: ClothingHeadHelmetSectorCommandCommand
+  name: Sector Command officer's helmet
+  description: An armored helmet with an orange-gold crest, worn by Sector Command field officers.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/Head/commandhelmet.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/Head/commandhelmet.rsi
+  - type: HideLayerClothing
+    layers:
+      Hair: HEAD
+      HeadTop: HEAD
+      HeadSide: HEAD
+
+- type: entity
+  parent: ClothingHeadHelmetArmoredBase
+  id: ClothingHeadHelmetSectorCommandHonorGuard
+  name: Sector Command honor guard helmet
+  description: A ceremonial helmet for Sector Command's honor guard.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/Head/honorguardhelmet.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/Head/honorguardhelmet.rsi
+  - type: HideLayerClothing
+    layers:
+      Hair: HEAD
+      HeadTop: HEAD
+      HeadSide: HEAD
+
+- type: entity
+  parent: ClothingHeadHelmetArmoredBase
+  id: ClothingHeadHelmetSectorCommand
+  name: Sector Command helmet
+  description: A standard-issue charcoal helmet for Sector Command troopers.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/Head/helmet.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/Head/helmet.rsi
+  - type: HideLayerClothing
+    layers:
+      Hair: HEAD
+      HeadTop: HEAD
+      HeadSide: HEAD
+
+- type: entity
+  parent: [ ClothingHeadLightBase, ClothingHeadHelmetArmoredBase, ClothingHeadLightParamsAdvanced ]
+  id: ClothingHeadHelmetSectorCommandTrooper
+  name: Sector Command trooper helmet
+  description: A fully enclosed charcoal helmet with an orange-gold visor.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/Head/trooperhelmet.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/Head/trooperhelmet.rsi
+  - type: HideLayerClothing
+    layers:
+      Hair: HEAD
+      HeadTop: HEAD
+      HeadSide: HEAD
+
+- type: entity
+  parent: [ ClothingHeadLightBase, ClothingHeadHelmetArmoredBase, ClothingHeadLightParamsAdvanced ]
+  id: ClothingHeadHelmetSectorCommandInspector
+  name: Sector Command inspector's helmet
+  description: A black helmet worn by Sector Command inspectors.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/Head/inspectorhelmet.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/Head/inspectorhelmet.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatSectorCommandBicorne
+  name: Sector Command bicorne
+  description: An old-fashioned bicorne with orange-gold trim, for officers who like to be seen.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/Head/bicorne.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/Head/bicorne.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatSectorCommandPeakedCap
+  name: Sector Command peaked cap
+  description: A charcoal peaked cap with an orange-gold band.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/Head/peakedcap.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/Head/peakedcap.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatSectorCommandBeret
+  name: Sector Command beret
+  description: A charcoal beret with a silver plume.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/Head/beret.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/Head/beret.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatSectorCommandWideBrim
+  name: Sector Command wide-brim hat
+  description: A wide-brimmed charcoal hat.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/Head/widebrim.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/Head/widebrim.rsi
+
+# ── Neck ──────────────────────────────────────────────────────────────────────
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckCloakSectorCommandHighCommand
+  name: Sector Command high command cape
+  description: A charcoal cape with orange-gold edging, worn over the shoulders by high command.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/Neck/highcommandcape.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/Neck/highcommandcape.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckCloakSectorCommandAdjutant
+  name: Sector Command adjutant's cape
+  description: A short cape with orange-gold trim for Sector Command adjutants.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/Neck/adjutantcape.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/Neck/adjutantcape.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckCloakSectorCommandCapelet
+  name: Sector Command capelet
+  description: A charcoal capelet with orange-gold fringe.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/Neck/capelet.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/Neck/capelet.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckCloakSectorCommandMantle
+  name: Sector Command mantle
+  description: A greatcoat worn over the shoulders like a cloak, sleeves and all.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/Neck/mantle.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/Neck/mantle.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckCloakSectorCommandInspector
+  name: Sector Command inspector's shoulder cape
+  description: A one-shouldered black cape worn by Sector Command inspectors.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/Neck/inspectorcape.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/Neck/inspectorcape.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckSectorCommandBow
+  name: Sector Command bow
+  description: A charcoal neck bow.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/Neck/bow.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/Neck/bow.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckSectorCommandBowSapphire
+  name: Sector Command sapphire bow
+  description: A charcoal neck bow set with a sapphire.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/Neck/bowsapphire.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/Neck/bowsapphire.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckSectorCommandBowEmerald
+  name: Sector Command emerald bow
+  description: A charcoal neck bow set with an emerald.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/Neck/bowemerald.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/Neck/bowemerald.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckSectorCommandBowTopaz
+  name: Sector Command topaz bow
+  description: A charcoal neck bow set with a topaz.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/Neck/bowtopaz.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/Neck/bowtopaz.rsi
+
+# ── Masks ─────────────────────────────────────────────────────────────────────
+
+- type: entity
+  parent: ClothingMaskBase
+  id: ClothingMaskGasSectorCommand
+  name: Sector Command gas mask
+  description: A charcoal gas mask issued to Sector Command troopers.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/Masks/gasmask.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/Masks/gasmask.rsi
+  - type: BreathMask
+  - type: IdentityBlocker
+
+- type: entity
+  parent: ClothingMaskBase
+  id: ClothingMaskSectorCommandHighCommand
+  name: Sector Command high command mask
+  description: A ceremonial half-mask worn by high command at formal events.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/Masks/highcommandmask.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/Masks/highcommandmask.rsi
+
+- type: entity
+  parent: ClothingMaskBase
+  id: ClothingMaskSectorCommandAdjutant
+  name: Sector Command adjutant's mask
+  description: A ceremonial mask worn by adjutants at formal events.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/Masks/adjutantmask.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/Masks/adjutantmask.rsi
+
+# ── Gloves ────────────────────────────────────────────────────────────────────
+
+- type: entity
+  parent: ClothingHandsBase
+  id: ClothingHandsGlovesSectorCommandHighCommand
+  name: Sector Command high command gloves
+  description: Charcoal gloves with orange-gold cuffs.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/Hands/highcommandgloves.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/Hands/highcommandgloves.rsi
+
+- type: entity
+  parent: ClothingHandsBase
+  id: ClothingHandsGlovesSectorCommandAdjutant
+  name: Sector Command adjutant's gloves
+  description: Spotless white gloves.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/Hands/adjutantgloves.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/Hands/adjutantgloves.rsi
+
+- type: entity
+  parent: ClothingHandsBase
+  id: ClothingHandsGlovesSectorCommandLong
+  name: Sector Command long gloves
+  description: Elbow-length charcoal gloves.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/Hands/longgloves.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/Hands/longgloves.rsi
+
+# ── Shoes ─────────────────────────────────────────────────────────────────────
+
+- type: entity
+  parent: ClothingShoesMilitaryBase
+  id: ClothingShoesBootsSectorCommandJack
+  name: Sector Command jackboots
+  description: Charcoal jackboots with orange-gold buckles.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/Shoes/jackboots.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/Shoes/jackboots.rsi
+
+- type: entity
+  parent: ClothingShoesMilitaryBase
+  id: ClothingShoesBootsSectorCommandLong
+  name: Sector Command tall boots
+  description: Knee-high charcoal riding boots.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/Shoes/longboots.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/Shoes/longboots.rsi
+
+- type: entity
+  parent: ClothingShoesBase
+  id: ClothingShoesBootsSectorCommandDress
+  name: Sector Command dress boots
+  description: Polished dress boots with orange-gold trim.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/Shoes/dressboots.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/Shoes/dressboots.rsi
+
+- type: entity
+  parent: ClothingShoesBase
+  id: ClothingShoesSectorCommandLaceup
+  name: Sector Command laceups
+  description: Polished charcoal laceup shoes.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/Shoes/laceup.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/Shoes/laceup.rsi
+
+# ── Back ──────────────────────────────────────────────────────────────────────
+
+- type: entity
+  parent: ClothingBackpack
+  id: ClothingBackpackSectorCommand
+  name: Sector Command backpack
+  description: A charcoal backpack with orange-gold fittings.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/Back/backpack.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/Back/backpack.rsi
+
+- type: entity
+  parent: ClothingBackpackSatchel
+  id: ClothingBackpackSatchelSectorCommand
+  name: Sector Command satchel
+  description: A charcoal satchel with orange-gold fittings.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/SectorCommand/Back/satchel.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/SectorCommand/Back/satchel.rsi

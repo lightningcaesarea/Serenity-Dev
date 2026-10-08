@@ -76,7 +76,7 @@
 - type: entity
   parent: GassyStoneBase
   id: GassyStonePlasma
-  suffix: Plasma
+  suffix: Phoron
   components:
   - type: Reactive
     groups:

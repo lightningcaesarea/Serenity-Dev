@@ -11,7 +11,6 @@
   rules:
 #   - DummyNonAntagChance # Starlight
   - WizardDuel
-  - SubGamemodesRuleNoWizard
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler

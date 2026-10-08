@@ -1,0 +1,79 @@
+<controls:FancyWindow xmlns="https://spacestation14.io"
+                      xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+                      Title="{Loc tokamak-ui-title}"
+                      MinSize="560 600">
+    <ScrollContainer HScrollEnabled="False" VerticalExpand="True" HorizontalExpand="True">
+        <BoxContainer Orientation="Vertical" Margin="8" SeparationOverride="8">
+            <Label Name="NoCoreLabel" Text="{Loc tokamak-ui-no-core}" HorizontalAlignment="Center" Visible="False"/>
+
+            <BoxContainer Name="MainBox" Orientation="Vertical" SeparationOverride="8">
+                <!-- Status readouts -->
+                <PanelContainer StyleClasses="BackgroundPanelDark">
+                    <GridContainer Columns="2" Margin="6">
+                        <Label Text="{Loc tokamak-ui-field-state}" StyleClasses="StatusFieldTitle"/>
+                        <Label Name="StateLabel" HorizontalAlignment="Right" HorizontalExpand="True"/>
+                        <Label Text="{Loc tokamak-ui-temperature}" StyleClasses="StatusFieldTitle"/>
+                        <Label Name="TemperatureLabel" HorizontalAlignment="Right" HorizontalExpand="True"/>
+                        <Label Text="{Loc tokamak-ui-output}" StyleClasses="StatusFieldTitle"/>
+                        <Label Name="OutputLabel" HorizontalAlignment="Right" HorizontalExpand="True"/>
+                        <Label Text="{Loc tokamak-ui-draw}" StyleClasses="StatusFieldTitle"/>
+                        <Label Name="DrawLabel" HorizontalAlignment="Right" HorizontalExpand="True"/>
+                        <Label Text="{Loc tokamak-ui-radiation}" StyleClasses="StatusFieldTitle"/>
+                        <Label Name="RadiationLabel" HorizontalAlignment="Right" HorizontalExpand="True"/>
+                        <Label Text="{Loc tokamak-ui-plasma}" StyleClasses="StatusFieldTitle"/>
+                        <Label Name="PlasmaLabel" HorizontalAlignment="Right" HorizontalExpand="True"/>
+                    </GridContainer>
+                </PanelContainer>
+
+                <!-- Instability -->
+                <PanelContainer StyleClasses="BackgroundPanelDark">
+                    <BoxContainer Orientation="Vertical" Margin="6" SeparationOverride="4">
+                        <BoxContainer Orientation="Horizontal">
+                            <Label Text="{Loc tokamak-ui-instability}" StyleClasses="StatusFieldTitle" HorizontalExpand="True"/>
+                            <Label Name="InstabilityLabel"/>
+                        </BoxContainer>
+                        <ProgressBar Name="InstabilityBar" MinValue="0" MaxValue="100" MinHeight="18"/>
+                    </BoxContainer>
+                </PanelContainer>
+
+                <!-- Plasma contents -->
+                <PanelContainer StyleClasses="BackgroundPanelDark">
+                    <BoxContainer Orientation="Vertical" Margin="6" SeparationOverride="2">
+                        <Label Text="{Loc tokamak-ui-reactants}" StyleClasses="LabelKeyText"/>
+                        <BoxContainer Name="ReactantsBox" Orientation="Vertical"/>
+                    </BoxContainer>
+                </PanelContainer>
+
+                <!-- Field controls -->
+                <PanelContainer StyleClasses="BackgroundPanelDark">
+                    <BoxContainer Orientation="Vertical" Margin="6" SeparationOverride="4">
+                        <BoxContainer Orientation="Horizontal" SeparationOverride="4">
+                            <Label Text="{Loc tokamak-ui-field-strength}" StyleClasses="StatusFieldTitle" HorizontalExpand="True"/>
+                            <Label Name="FieldStrengthLabel"/>
+                        </BoxContainer>
+                        <BoxContainer Orientation="Horizontal" SeparationOverride="4">
+                            <Button Name="FieldDownLarge" Text="-10"/>
+                            <Button Name="FieldDown" Text="-1"/>
+                            <BoxContainer HorizontalExpand="True"/>
+                            <Button Name="FieldUp" Text="+1"/>
+                            <Button Name="FieldUpLarge" Text="+10"/>
+                        </BoxContainer>
+                        <BoxContainer Orientation="Horizontal" SeparationOverride="4">
+                            <Button Name="PowerButton" HorizontalExpand="True"/>
+                            <Button Name="ScramButton" Text="{Loc tokamak-ui-scram}" HorizontalExpand="True" ToolTip="{Loc tokamak-ui-scram-tooltip}"/>
+                        </BoxContainer>
+                    </BoxContainer>
+                </PanelContainer>
+
+                <!-- Devices -->
+                <PanelContainer StyleClasses="BackgroundPanelDark">
+                    <BoxContainer Orientation="Vertical" Margin="6" SeparationOverride="4">
+                        <Label Text="{Loc tokamak-ui-devices}" StyleClasses="LabelKeyText"/>
+                        <Label Name="NoDevicesLabel" Text="{Loc tokamak-ui-no-devices}"/>
+                        <BoxContainer Name="DevicesBox" Orientation="Vertical" SeparationOverride="6"/>
+                    </BoxContainer>
+                </PanelContainer>
+            </BoxContainer>
+        </BoxContainer>
+    </ScrollContainer>
+</controls:FancyWindow>

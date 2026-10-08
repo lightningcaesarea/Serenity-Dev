@@ -853,3 +853,60 @@ Entries:
   id: 13701
   time: '2026-10-07T22:10:01.000000+00:00'
   url: https://github.com/lightningcaesarea/Serenity-Dev/pull/137
+- author: SERENITY
+  changes:
+  - message: Plasma is now called Phoron in item, gas, reagent and material names and descriptions.
+    type: Tweak
+  id: 14901
+  time: '2026-10-08T11:27:45.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/149
+- author: Serenity
+  changes:
+  - message: Antagonist round modes no longer come up in Secret or round votes.
+    type: Remove
+  - message: Removed side antagonists and midround antagonist events.
+    type: Remove
+  id: 14201
+  time: '2026-10-08T11:46:06.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/142
+- author: Inny
+  changes:
+  - message: Ship saving.
+    type: Tweak
+  id: 14501
+  time: '2026-10-08T11:46:18.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/145
+- author: Inny
+  changes:
+  - message: Tokamaking it.
+    type: Tweak
+  id: 15001
+  time: '2026-10-08T11:54:46.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/150
+- author: Inny
+  changes:
+  - message: Central Command clothing and items are now Sector Command gear, recolored dark grey with orange-gold trim.
+    type: Tweak
+  - message: Added 48 Sector Command uniforms, coats, armor, helmets, capes and accessories.
+    type: Add
+  id: 14101
+  time: '2026-10-08T11:55:27.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/141
+- author: Inny
+  changes:
+  - message: The milking machine has a control window showing the occupant, pump mode and tank contents.
+    type: Add
+  - message: The milking machine collects regular milk instead of breast milk.
+    type: Tweak
+  - message: Semen is now called cum.
+    type: Tweak
+  id: 13901
+  time: '2026-10-08T11:55:40.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/139
+- author: Inny
+  changes:
+  - message: Pickup and putdown sounds for tools (from RMC).
+    type: Tweak
+  id: 15101
+  time: '2026-10-08T12:08:52.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/151

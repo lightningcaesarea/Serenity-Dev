@@ -100,7 +100,7 @@
   id: TablePlasmaGlassFlipped
   parent: [BaseTableFlipped, TablePlasmaGlass]
   suffix: Flipped
-  name: flipped plasma glass table
+  name: flipped phoron glass table
   components:
   - type: FlippedStructure
     uprightPrototype: TablePlasmaGlass

@@ -1630,7 +1630,7 @@
 # Apollo Plasma Bolt - Focused ship-to-ship bolt: high direct heat, small blast
 - type: entity
   id: ApolloHeavyLaser
-  name: apollo plasma bolt
+  name: apollo phoron bolt
   parent: BaseBulletTrigger
   categories: [ HideSpawnMenu ]
   components:
@@ -1779,7 +1779,7 @@
 # AMX-9 DYNAMRE Large Plasma Blob - Devastating AoE plasma blob (violent capital-class)
 - type: entity
   id: DynamreDualLaser
-  name: dynamre plasma blob
+  name: dynamre phoron blob
   parent: BaseBulletTrigger
   categories: [ HideSpawnMenu ]
   components:

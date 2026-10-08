@@ -345,6 +345,7 @@
   components:
   - type: SpawnPoint
     job_id: HeadOfPersonnel
+    additionalJobs: [ AssistantManager ] # Serenity: Station Officers spawn with the Station Commander
   - type: Sprite
     layers:
       - state: green

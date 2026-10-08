@@ -1,17 +1,12 @@
 - type: job
   id: AssistantManager
-  name: job-name-assistantmanager
-  description: job-description-assistantmanager
+  name: job-name-station-officer # Serenity: reworked into the Station Officer, a junior Command role under the Station Commander
+  description: job-description-station-officer # Serenity
   playTimeTracker: JobAssistantManager
   requirements:
-  - !type:DepartmentTimeRequirement
-    department: Command
-    time: 30h
-  - !type:RoleTimeRequirement
-    role: JobPassenger # How can you lead the masses if you've never been one of them?
-    time: 30h
-  - !type:RolesRequirement
-    proto: ExtRolesReq
+  # Serenity: dropped the Command-time gate (Command is tiny on the Outpost) and Starlight's Discord-role gate (ExtRolesReq), which no one here can meet
+  - !type:OverallPlaytimeRequirement
+    time: 10h
   - !type:TraitsRequirement # I don't think I need to explain why these traits are restricted, but for the inevitable case someone asks...
     traits:
       - Iterator # Can't delegate tasks if nobody can understand you.
@@ -20,12 +15,19 @@
   weight: 15
   startingGear: AssistantManagerGear
   icon: "JobIconAssistantManager"
-  supervisors: job-supervisors-captain
+  supervisors: job-supervisors-hop # Serenity: answers to the Station Commander
   access:
   - Maintenance
+  - Command # Serenity start: Command role
+  - External
+  - Cryogenics
+  - Service # Serenity end
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
+  - !type:AddComponentSpecial # Serenity
+    components:
+      - type: CommandStaff
 
 - type: startingGear
   id: AssistantManagerGear

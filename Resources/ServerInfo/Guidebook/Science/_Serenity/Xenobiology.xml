@@ -33,7 +33,7 @@
   <Box>
     <GuideEntityEmbed Entity="SlimeDocilityPotion" Caption=""/>
   </Box>
-  Inject a [bold]pink[/bold] slime extract with [bold]plasma[/bold] to make a [bold]docility potion[/bold]. Use it on a slime to calm it for good.
+  Inject a [bold]pink[/bold] slime extract with [bold]phoron[/bold] to make a [bold]docility potion[/bold]. Use it on a slime to calm it for good.
   - A docile slime never turns desperate, even when starving.
   - A docile slime can be [bold]picked up and carried[/bold].
   - Docility is not passed on: when a docile slime splits, its children are ordinary slimes.
@@ -58,7 +58,7 @@
     <GuideEntityEmbed Entity="GoldSlimeExtract" Caption=""/>
     <GuideEntityEmbed Entity="RainbowSlimeExtract" Caption=""/>
   </Box>
-  - Inject an extract with [bold]water[/bold], [bold]blood[/bold] or [bold]plasma[/bold] to set off its reaction. What happens depends on the colour and the chemical, and not every colour reacts to all three.
+  - Inject an extract with [bold]water[/bold], [bold]blood[/bold] or [bold]phoron[/bold] to set off its reaction. What happens depends on the colour and the chemical, and not every colour reacts to all three.
   - Reactions make materials, items, and slime potions such as steroid (more extracts per slime), extract enhancer (more uses per extract), speed, fireproofing, sentience, and docility.
 
   ## Bounties

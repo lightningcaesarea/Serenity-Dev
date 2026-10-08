@@ -3,6 +3,7 @@
   name: job-name-ce
   description: job-description-ce
   playTimeTracker: JobChiefEngineer
+  setPreference: false # Serenity: role disabled
   requirements:
     - !type:RoleTimeRequirement
       role: JobAtmosphericTechnician

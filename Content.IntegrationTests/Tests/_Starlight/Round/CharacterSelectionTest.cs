@@ -26,6 +26,8 @@ public sealed class CharacterSelectionTest : GameTest
             InLobby = true,
         };
     // this map has slots for captain, mime, unlimited passengers, and no clowns
+    // Serenity: the Captain, Mime and Clown are disabled here, so the Station Commander (also antag-blacklisted),
+    // Bartender and Chef stand in for them
     private const string Map = "CharacterSelectionTestMap";
 
     // this game mode attempts to make everyone a traitor
@@ -72,16 +74,16 @@ public sealed class CharacterSelectionTest : GameTest
       components:
         - type: StationJobs
           availableJobs:
-            Captain: [ 1, 1 ]
+            HeadOfPersonnel: [ 1, 1 ]
             Assistant: [ -1, -1 ]
-            Mime: [ 1, 1 ]
+            Bartender: [ 1, 1 ]
 ";
 
     // some constants to help test case readability & also make the compiler catch typos
-    private static readonly ProtoId<JobPrototype> Captain = "Captain";
+    private static readonly ProtoId<JobPrototype> Captain = "HeadOfPersonnel";
     private static readonly ProtoId<JobPrototype> Passenger = "Assistant"; //starlight
-    private static readonly ProtoId<JobPrototype> Mime = "Mime";
-    private static readonly ProtoId<JobPrototype> Clown = "Clown";
+    private static readonly ProtoId<JobPrototype> Mime = "Bartender";
+    private static readonly ProtoId<JobPrototype> Clown = "Chef";
     private static readonly ProtoId<AntagPrototype> Traitor = "Traitor";
     private static readonly ProtoId<AntagSpecifierPrototype> TraitorSpecifier = "Traitor";
     private static readonly ProtoId<AntagPrototype> InitialInfected = "InitialInfected";

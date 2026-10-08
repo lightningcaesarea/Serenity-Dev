@@ -1,0 +1,93 @@
+- type: technology
+  id: FusionPowerGeneration
+  name: research-technology-fusion-power
+  icon:
+    sprite: _Serenity/Structures/Power/Tokamak/tokamak_gyrotron.rsi
+    state: idle
+  discipline: Industrial
+  tier: 2
+  cost: 10000
+  recipeUnlocks:
+  - TokamakConsoleCircuitboard
+  - TokamakFuelRodHydrogen
+  - TokamakFuelRodDeuterium
+  - TokamakFuelRodTritium
+  - TokamakFuelRodDeuteriumTritium
+  - TokamakFuelRodHelium3
+  - TokamakFuelRodLithium
+  - TokamakFuelRodBoron
+  - TokamakFuelRodIron
+  technologyPrerequisites:
+  - NuclearPowerGeneration
+  radioChannels:
+  - Engineering
+
+- type: latheRecipe
+  parent: [ BaseCircuitboardRecipe, BaseEngineeringComputerRecipeCategory ]
+  id: TokamakConsoleCircuitboard
+  result: TokamakConsoleCircuitboard
+
+- type: latheRecipe
+  abstract: true
+  id: BaseTokamakFuelRodRecipe
+  categories:
+  - Engineering
+  completetime: 8
+  materials:
+    Steel: 200
+    Glass: 100
+
+- type: latheRecipe
+  parent: BaseTokamakFuelRodRecipe
+  id: TokamakFuelRodHydrogen
+  result: TokamakFuelRodHydrogen
+
+- type: latheRecipe
+  parent: BaseTokamakFuelRodRecipe
+  id: TokamakFuelRodDeuterium
+  result: TokamakFuelRodDeuterium
+
+- type: latheRecipe
+  parent: BaseTokamakFuelRodRecipe
+  id: TokamakFuelRodTritium
+  result: TokamakFuelRodTritium
+  materials:
+    Steel: 200
+    Glass: 100
+    Plasma: 100
+
+- type: latheRecipe
+  parent: BaseTokamakFuelRodRecipe
+  id: TokamakFuelRodDeuteriumTritium
+  result: TokamakFuelRodDeuteriumTritium
+  materials:
+    Steel: 200
+    Glass: 100
+    Plasma: 50
+
+- type: latheRecipe
+  parent: BaseTokamakFuelRodRecipe
+  id: TokamakFuelRodHelium3
+  result: TokamakFuelRodHelium3
+  materials:
+    Steel: 200
+    Glass: 100
+    Plasma: 200
+
+- type: latheRecipe
+  parent: BaseTokamakFuelRodRecipe
+  id: TokamakFuelRodLithium
+  result: TokamakFuelRodLithium
+
+- type: latheRecipe
+  parent: BaseTokamakFuelRodRecipe
+  id: TokamakFuelRodBoron
+  result: TokamakFuelRodBoron
+
+- type: latheRecipe
+  parent: BaseTokamakFuelRodRecipe
+  id: TokamakFuelRodIron
+  result: TokamakFuelRodIron
+  materials:
+    Steel: 400
+    Glass: 100
