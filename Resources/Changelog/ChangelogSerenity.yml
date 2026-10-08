@@ -943,3 +943,10 @@ Entries:
   id: 14701
   time: '2026-10-08T13:14:18.000000+00:00'
   url: https://github.com/lightningcaesarea/Serenity-Dev/pull/147
+- author: Serenity
+  changes:
+  - message: Added a pathology locker holding flatpacks of the blood culture analyzer and antibiotic synthesizer.
+    type: Add
+  id: 15501
+  time: '2026-10-08T13:14:24.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/155
