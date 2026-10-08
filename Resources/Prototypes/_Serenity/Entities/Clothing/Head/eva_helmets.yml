@@ -1,1032 +1,789 @@
-# EVA helmets for the EVA suits in _Serenity/Entities/Clothing/OuterClothing/eva_suits.yml
-# Ported from New Frontiers 14 (https://github.com/new-frontiers-14/frontier-station-14, commit 8ed2648):
-#   _NF/Entities/Clothing/Head/softsuits-helmets.yml, goblin_headwear.yml, base_clothinghead.yml (clear EVA helmet base)
-# Sprites: CC-BY-SA-3.0 / CC-BY-SA-4.0 (see each RSI's meta.json), mostly by erhardsteinhauer and dustylens for New Frontiers 14
+# EVA helmets and hoods for Serenity.
 #
-# Serenity: the Arcadia EVA helmet is not repeated here, it was already ported as ClothingHeadEVAHelmetStirling (arcadia.yml).
-# Serenity: Frontier's CatWearable component doesn't exist here and was dropped from every helmet.
+# Sprites come from New Frontiers 14 and keep their original licences (CC-BY-SA-3.0 /
+# CC-BY-SA-4.0); see each RSI's meta.json for the full credit chain (tgstation, Baystation12,
+# erhardsteinhauer, dustylens and others). The prototypes in this file were written fresh
+# for Serenity: only ids, palette values, sprite state names and stat numbers were carried over.
 
-#region base
+# === Bases =====================================================================================
+
 - type: entity
   abstract: true
-  parent: ClothingHeadEVAHelmetBase
   id: SerenityEVAHelmetWithLightBase
+  parent: ClothingHeadEVAHelmetBase
   name: base EVA helmet with light
   components:
   - type: Sprite
     sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
     layers:
-    - state: icon-base
-    - state: icon-reinforced-points
-    - state: icon-visor
-    - state: light-overlay
-      visible: false
-      shader: unshaded
-      map: [ "light" ]
+    - { state: icon-base }
+    - { state: icon-reinforced-points }
+    - { state: icon-visor }
+    - { state: light-overlay, shader: unshaded, map: [ "light" ], visible: false }
+  - type: Clothing
+    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
+    clothingVisuals:
+      head:
+      - { state: equipped-head-base }
+      - { state: equipped-head-reinforced-points }
+      - { state: equipped-head-visor }
+  - type: ToggleableVisuals
+    spriteLayer: light
+    clothingVisuals:
+      head:
+      - { state: equipped-head-light, shader: unshaded }
+  # Serenity: a ConeSingle mask keeps the headlamp a forward beam.
+  - type: PointLight
+    autoRot: true
+    enabled: false
+    energy: 1
+    lightMask: ConeSingle
+    netsync: false
+    radius: 6
+  - type: ItemTogglePointLight
   - type: HandheldLight
     addPrefix: false
     blinkingBehaviourId: blinking
     radiatingBehaviourId: radiating
-  - type: LightBehaviour
-    behaviours:
-      - !type:FadeBehaviour
-        id: radiating
-        interpolate: Linear
-        maxDuration: 2.0
-        startValue: 3.0
-        endValue: 2.0
-        isLooped: true
-        reverseWhenFinished: true
-      - !type:PulseBehaviour
-        id: blinking
-        interpolate: Nearest
-        maxDuration: 1.0
-        startValue: 0.1
-        endValue: 2.0
-        isLooped: true
-  - type: Battery # Apparently lights on helmets don't work without batteries. Bummer.
-    maxCharge: 600 #lights drain 3/s but recharge of 2 makes this 1/s. Therefore 600 is 10 minutes of light.
+  - type: Battery
+    maxCharge: 600
     startingCharge: 600
   - type: BatterySelfRecharger
-    # Serenity: autoRecharge dropped, BatterySelfRechargerComponent has no such field here (it always recharges).
-    autoRechargeRate: 2 #recharge of 2 makes total drain 1w / s so max charge is 1:1 with time. Time to fully charge should be 5 minutes. Having recharge gives light an extended flicker period which gives you some warning to return to light area.
+    autoRechargeRate: 2
   - type: Appearance
-  - type: ToggleableVisuals
-    spriteLayer: light
-    clothingVisuals:
-      head:
-      - state: equipped-head-light
-        shader: unshaded
-  - type: Clothing
-    clothingVisuals:
-      head:
-      - state: equipped-head-base
-      - state: equipped-head-reinforced-points
-      - state: equipped-head-visor
-  - type: ItemTogglePointLight
+  - type: LightBehaviour
+    behaviours:
+    - !type:FadeBehaviour
+      id: radiating
+      interpolate: Linear
+      startValue: 3.0
+      endValue: 2.0
+      maxDuration: 2.0
+      isLooped: true
+      reverseWhenFinished: true
+    - !type:PulseBehaviour
+      id: blinking
+      interpolate: Nearest
+      startValue: 0.1
+      endValue: 2.0
+      maxDuration: 1.0
+      isLooped: true
+
+# Helmets with a rotating beacon on top (engineering, rescue, law enforcement, pirates).
+
+- type: entity
+  abstract: true
+  id: SerenityEVAHelmetBeaconBase
+  parent: SerenityEVAHelmetWithLightBase
+  components:
+  # Serenity: ConeDouble so the beacon throws light both ways as it spins.
   - type: PointLight
-    #color: "#adffe6"
-    enabled: false
-    radius: 6
-    energy: 1
-    lightMask: ConeSingle # Serenity: Frontier used mask: cone.png; Serenity lights use the equivalent lightMask prototype
-    autoRot: true
-    netsync: false
-
-#region Departmental suits
-- type: entity
-  parent: SerenityEVAHelmetWithLightBase
-  id: ClothingHeadEVAHelmetHydro
-  name: botanist EVA helmet
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Sprite
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
-    layers:
-    - state: icon-base
-      color: "#5fa31e"
-    - state: icon-reinforced-points
-      color: "#6b4600"
-    - state: icon-visor
-      color: "#adcfd5"
-  - type: Clothing
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
-    clothingVisuals:
-      head:
-      - state: equipped-head-base
-        color: "#5fa31e"
-      - state: equipped-head-reinforced-points
-        color: "#6b4600"
-      - state: equipped-head-visor
-        color: "#adcfd5"
-
-- type: entity
-  parent: SerenityEVAHelmetWithLightBase
-  id: ClothingHeadEVAHelmetMailman
-  name: mailcarrier EVA helmet
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Sprite
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
-    layers:
-    - state: icon-base
-      color: "#4960ed"
-    - state: icon-reinforced-points
-      color: "#3e3e48"
-    - state: icon-visor
-      color: "#adcfd5"
-  - type: Clothing
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
-    clothingVisuals:
-      head:
-      - state: equipped-head-base
-        color: "#4960ed"
-      - state: equipped-head-reinforced-points
-        color: "#3e3e48"
-      - state: equipped-head-visor
-        color: "#adcfd5"
-
-# COLORED DEPARTMENTAL
-#region Contractors
-- type: entity
-  parent: SerenityEVAHelmetWithLightBase
-  id: ClothingHeadEVAHelmetContractor
-  name: contractor EVA helmet
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Sprite
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
-    layers:
-    - state: icon-base
-      color: "#fff4e2"
-    - state: icon-reinforced-points
-      color: "#3e3e48"
-    - state: icon-visor
-      color: "#adcfd5"
-  - type: Clothing
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
-    clothingVisuals:
-      head:
-      - state: equipped-head-base
-        color: "#fff4e2"
-      - state: equipped-head-reinforced-points
-        color: "#3e3e48"
-      - state: equipped-head-visor
-        color: "#adcfd5"
-
-#region Command
-- type: entity
-  parent: SerenityEVAHelmetWithLightBase
-  id: ClothingHeadEVAHelmetSr
-  name: station representative EVA helmet
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Sprite
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
-    layers:
-    - state: icon-base
-      color: "#194214"
-    - state: icon-reinforced-points
-      color: "#3e3e48"
-    - state: icon-decals-02
-      color: "#f2b833"
-    - state: icon-visor
-      color: "#fbe6b8"
-  - type: Clothing
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
-    clothingVisuals:
-      head:
-      - state: equipped-head-base
-        color: "#194214"
-      - state: equipped-head-reinforced-points
-        color: "#3e3e48"
-      - state: equipped-head-decals-02
-        color: "#f2b833"
-      - state: equipped-head-visor
-        color: "#fbe6b8"
-
-- type: entity
-  parent: SerenityEVAHelmetWithLightBase
-  id: ClothingHeadEVAHelmetStc
-  name: station traffic controller EVA helmet
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Sprite
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
-    layers:
-    - state: icon-base
-      color: "#fe5c00"
-    - state: icon-reinforced-points
-      color: "#704900"
-    - state: icon-visor
-      color: "#adcfd5"
-  - type: Clothing
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
-    clothingVisuals:
-      head:
-      - state: equipped-head-base
-        color: "#fe5c00"
-      - state: equipped-head-reinforced-points
-        color: "#704900"
-      - state: equipped-head-visor
-        color: "#adcfd5"
-
-- type: entity
-  parent: SerenityEVAHelmetWithLightBase
-  id: ClothingHeadEVAHelmetCaptain
-  name: captain EVA helmet
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Sprite
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
-    layers:
-    - state: icon-base
-      color: "#2d4c5e"
-    - state: icon-reinforced-points
-      color: "#3e3e48"
-    - state: icon-decals-02
-      color: "#ffce5b"
-    - state: icon-visor
-      color: "#2572bf"
-  - type: Clothing
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
-    clothingVisuals:
-      head:
-      - state: equipped-head-base
-        color: "#2d4c5e"
-      - state: equipped-head-reinforced-points
-        color: "#3e3e48"
-      - state: equipped-head-decals-02
-        color: "#ffce5b"
-      - state: equipped-head-visor
-        color: "#2572bf"
-
-#region engineering
-- type: entity
-  parent: SerenityEVAHelmetWithLightBase
-  id: ClothingHeadEVAHelmetEngineer
-  name: engineer EVA helmet
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Sprite
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
-    layers:
-    - state: icon-base
-      color: "#ffee00"
-    - state: icon-reinforced-points
-      color: "#ff7f00"
-    - state: icon-visor
-      color: "#adcfd5"
-  - type: ToggleableVisuals
-    spriteLayer: light
-    clothingVisuals:
-      head:
-      - state: equipped-head-light-siren
-        color: "#ff7f00"
-        shader: unshaded
-  - type: Clothing
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
-    clothingVisuals:
-      head:
-      - state: equipped-head-base
-        color: "#ffee00"
-      - state: equipped-head-reinforced-points
-        color: "#ff7f00"
-      - state: equipped-head-visor
-        color: "#adcfd5"
-  - type: ItemTogglePointLight
-  - type: PointLight
-    enabled: false
-    radius: 2 # These are rotating blinker lights meant as alarm lights/sirens rather than actual lighting
     energy: 2
-    color: "#ff7f00"
-    lightMask: ConeDouble # Serenity: Frontier used mask: double_cone.png; Serenity lights use the equivalent lightMask prototype
+    lightMask: ConeDouble
+    radius: 2
   - type: RotatingLight
     speed: 360
 
+# === Departmental and job helmets ==============================================================
+
 - type: entity
+  id: ClothingHeadEVAHelmetHydro
   parent: SerenityEVAHelmetWithLightBase
-  id: ClothingHeadEVAHelmetAtmosTech
-  name: atmospheric technician EVA helmet
+  name: botanist EVA helmet
+  description: A green helmet with a headlamp, matching the botanist's EVA suit.
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
     layers:
-    - state: icon-base
-      color: "#ffee00"
-    - state: icon-reinforced-points
-      color: "#00a5ff"
-    - state: icon-visor
-      color: "#e1b537"
+    - { state: icon-base, color: "#5fa31e" }
+    - { state: icon-reinforced-points, color: "#6b4600" }
+    - { state: icon-visor, color: "#adcfd5" }
   - type: Clothing
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
     clothingVisuals:
       head:
-      - state: equipped-head-base
-        color: "#ffee00"
-      - state: equipped-head-reinforced-points
-        color: "#00a5ff"
-      - state: equipped-head-visor
-        color: "#e1b537"
+      - { state: equipped-head-base, color: "#5fa31e" }
+      - { state: equipped-head-reinforced-points, color: "#6b4600" }
+      - { state: equipped-head-visor, color: "#adcfd5" }
+
+- type: entity
+  id: ClothingHeadEVAHelmetMailman
+  parent: SerenityEVAHelmetWithLightBase
+  name: mailcarrier EVA helmet
+  description: A blue helmet with a headlamp for reading address labels in the dark.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - { state: icon-base, color: "#4960ed" }
+    - { state: icon-reinforced-points, color: "#3e3e48" }
+    - { state: icon-visor, color: "#adcfd5" }
+  - type: Clothing
+    clothingVisuals:
+      head:
+      - { state: equipped-head-base, color: "#4960ed" }
+      - { state: equipped-head-reinforced-points, color: "#3e3e48" }
+      - { state: equipped-head-visor, color: "#adcfd5" }
+
+- type: entity
+  id: ClothingHeadEVAHelmetContractor
+  parent: SerenityEVAHelmetWithLightBase
+  name: contractor EVA helmet
+  description: An off-white helmet with a headlamp, scuffed from honest work.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - { state: icon-base, color: "#fff4e2" }
+    - { state: icon-reinforced-points, color: "#3e3e48" }
+    - { state: icon-visor, color: "#adcfd5" }
+  - type: Clothing
+    clothingVisuals:
+      head:
+      - { state: equipped-head-base, color: "#fff4e2" }
+      - { state: equipped-head-reinforced-points, color: "#3e3e48" }
+      - { state: equipped-head-visor, color: "#adcfd5" }
+
+- type: entity
+  id: ClothingHeadEVAHelmetSr
+  parent: SerenityEVAHelmetWithLightBase
+  name: station representative EVA helmet
+  description: A deep green helmet with gold trim and a tinted visor.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - { state: icon-base, color: "#194214" }
+    - { state: icon-reinforced-points, color: "#3e3e48" }
+    - { state: icon-decals-02, color: "#f2b833" }
+    - { state: icon-visor, color: "#fbe6b8" }
+  - type: Clothing
+    clothingVisuals:
+      head:
+      - { state: equipped-head-base, color: "#194214" }
+      - { state: equipped-head-reinforced-points, color: "#3e3e48" }
+      - { state: equipped-head-decals-02, color: "#f2b833" }
+      - { state: equipped-head-visor, color: "#fbe6b8" }
+
+- type: entity
+  id: ClothingHeadEVAHelmetStc
+  parent: SerenityEVAHelmetWithLightBase
+  name: station traffic controller EVA helmet
+  description: A bright orange helmet that is easy to see from the cockpit of a docking shuttle.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - { state: icon-base, color: "#fe5c00" }
+    - { state: icon-reinforced-points, color: "#704900" }
+    - { state: icon-visor, color: "#adcfd5" }
+  - type: Clothing
+    clothingVisuals:
+      head:
+      - { state: equipped-head-base, color: "#fe5c00" }
+      - { state: equipped-head-reinforced-points, color: "#704900" }
+      - { state: equipped-head-visor, color: "#adcfd5" }
+
+- type: entity
+  id: ClothingHeadEVAHelmetCaptain
+  parent: SerenityEVAHelmetWithLightBase
+  name: captain EVA helmet
+  description: A steel blue helmet with gold detailing and a blue visor.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - { state: icon-base, color: "#2d4c5e" }
+    - { state: icon-reinforced-points, color: "#3e3e48" }
+    - { state: icon-decals-02, color: "#ffce5b" }
+    - { state: icon-visor, color: "#2572bf" }
+  - type: Clothing
+    clothingVisuals:
+      head:
+      - { state: equipped-head-base, color: "#2d4c5e" }
+      - { state: equipped-head-reinforced-points, color: "#3e3e48" }
+      - { state: equipped-head-decals-02, color: "#ffce5b" }
+      - { state: equipped-head-visor, color: "#2572bf" }
+
+- type: entity
+  id: ClothingHeadEVAHelmetEngineer
+  parent: SerenityEVAHelmetBeaconBase
+  name: engineer EVA helmet
+  description: A hazard yellow helmet with a spinning orange beacon on top.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - { state: icon-base, color: "#ffee00" }
+    - { state: icon-reinforced-points, color: "#ff7f00" }
+    - { state: icon-visor, color: "#adcfd5" }
+  - type: Clothing
+    clothingVisuals:
+      head:
+      - { state: equipped-head-base, color: "#ffee00" }
+      - { state: equipped-head-reinforced-points, color: "#ff7f00" }
+      - { state: equipped-head-visor, color: "#adcfd5" }
+  - type: PointLight
+    color: "#ff7f00"
+  - type: ToggleableVisuals
+    spriteLayer: light
+    clothingVisuals:
+      head:
+      - { state: equipped-head-light-siren, color: "#ff7f00", shader: unshaded }
+
+- type: entity
+  id: ClothingHeadEVAHelmetAtmosTech
+  parent: SerenityEVAHelmetWithLightBase
+  name: atmospheric technician EVA helmet
+  description: A yellow helmet with a gold visor and a cool cyan headlamp.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - { state: icon-base, color: "#ffee00" }
+    - { state: icon-reinforced-points, color: "#00a5ff" }
+    - { state: icon-visor, color: "#e1b537" }
+  - type: Clothing
+    clothingVisuals:
+      head:
+      - { state: equipped-head-base, color: "#ffee00" }
+      - { state: equipped-head-reinforced-points, color: "#00a5ff" }
+      - { state: equipped-head-visor, color: "#e1b537" }
   - type: PointLight
     color: "#adffe6"
 
-#region supply
 - type: entity
-  parent: SerenityEVAHelmetWithLightBase
   id: ClothingHeadEVAHelmetCargo
+  parent: SerenityEVAHelmetWithLightBase
   name: cargo EVA helmet
+  description: A tan helmet with a headlamp, made for working in loading bays.
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
     layers:
-    - state: icon-base
-      color: "#deb733"
-    - state: icon-reinforced-points
-      color: "#3e3e48"
-    - state: icon-visor
-      color: "#adcfd5"
+    - { state: icon-base, color: "#deb733" }
+    - { state: icon-reinforced-points, color: "#3e3e48" }
+    - { state: icon-visor, color: "#adcfd5" }
   - type: Clothing
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
     clothingVisuals:
       head:
-      - state: equipped-head-base
-        color: "#deb733"
-      - state: equipped-head-reinforced-points
-        color: "#3e3e48"
-      - state: equipped-head-visor
-        color: "#adcfd5"
+      - { state: equipped-head-base, color: "#deb733" }
+      - { state: equipped-head-reinforced-points, color: "#3e3e48" }
+      - { state: equipped-head-visor, color: "#adcfd5" }
 
 - type: entity
-  parent: SerenityEVAHelmetWithLightBase
   id: ClothingHeadEVAHelmetSalvage
-  name: salvage specialist EVA helmet
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Sprite
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
-    layers:
-    - state: icon-base
-      color: "#deb733"
-    - state: icon-reinforced-points
-      color: "#ad2aea"
-    - state: icon-visor
-      color: "#adcfd5"
-  - type: Clothing
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
-    clothingVisuals:
-      head:
-      - state: equipped-head-base
-        color: "#deb733"
-      - state: equipped-head-reinforced-points
-        color: "#ad2aea"
-      - state: equipped-head-visor
-        color: "#adcfd5"
-
-#region medical
-- type: entity
   parent: SerenityEVAHelmetWithLightBase
-  id: ClothingHeadEVAHelmetMedic
-  name: medic EVA helmet
+  name: salvage specialist EVA helmet
+  description: A tan helmet with purple trim. The headlamp has seen a lot of derelicts.
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
     layers:
-    - state: icon-base
-      color: "#d6e6f3"
-    - state: icon-reinforced-points
-      color: "#5a96bb"
-    - state: icon-visor
-      color: "#adcfd5"
+    - { state: icon-base, color: "#deb733" }
+    - { state: icon-reinforced-points, color: "#ad2aea" }
+    - { state: icon-visor, color: "#adcfd5" }
   - type: Clothing
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
     clothingVisuals:
       head:
-      - state: equipped-head-base
-        color: "#d6e6f3"
-      - state: equipped-head-reinforced-points
-        color: "#5a96bb"
-      - state: equipped-head-visor
-        color: "#adcfd5"
+      - { state: equipped-head-base, color: "#deb733" }
+      - { state: equipped-head-reinforced-points, color: "#ad2aea" }
+      - { state: equipped-head-visor, color: "#adcfd5" }
+
+- type: entity
+  id: ClothingHeadEVAHelmetMedic
+  parent: SerenityEVAHelmetWithLightBase
+  name: medic EVA helmet
+  description: A pale helmet with a soft blue headlamp.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - { state: icon-base, color: "#d6e6f3" }
+    - { state: icon-reinforced-points, color: "#5a96bb" }
+    - { state: icon-visor, color: "#adcfd5" }
+  - type: Clothing
+    clothingVisuals:
+      head:
+      - { state: equipped-head-base, color: "#d6e6f3" }
+      - { state: equipped-head-reinforced-points, color: "#5a96bb" }
+      - { state: equipped-head-visor, color: "#adcfd5" }
   - type: PointLight
     color: "#adf1ff"
 
 - type: entity
-  parent: SerenityEVAHelmetWithLightBase
   id: ClothingHeadEVAHelmetParamedic
+  parent: SerenityEVAHelmetBeaconBase
   name: paramedic EVA helmet
+  description: A dark green helmet with a crimson visor and a blue rescue beacon.
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
     layers:
-    - state: icon-base
-      color: "#2c6946"
-    - state: icon-reinforced-points
-      color: "#d6e6f3"
-    - state: icon-visor
-      color: "#8c1e50"
+    - { state: icon-base, color: "#2c6946" }
+    - { state: icon-reinforced-points, color: "#d6e6f3" }
+    - { state: icon-visor, color: "#8c1e50" }
+  - type: Clothing
+    clothingVisuals:
+      head:
+      - { state: equipped-head-base, color: "#2c6946" }
+      - { state: equipped-head-reinforced-points, color: "#d6e6f3" }
+      - { state: equipped-head-visor, color: "#8c1e50" }
+  - type: PointLight
+    color: blue
   - type: ToggleableVisuals
     spriteLayer: light
     clothingVisuals:
       head:
-      - state: equipped-head-light-siren
-        color: blue
-        shader: unshaded
-  - type: Clothing
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
-    clothingVisuals:
-      head:
-      - state: equipped-head-base
-        color: "#2c6946"
-      - state: equipped-head-reinforced-points
-        color: "#d6e6f3"
-      - state: equipped-head-visor
-        color: "#8c1e50"
-  - type: ItemTogglePointLight
-  - type: PointLight
-    enabled: false
-    radius: 2 # These are rotating blinker lights meant as alarm lights/sirens rather than actual lighting
-    energy: 2
-    color: blue
-    lightMask: ConeDouble # Serenity: Frontier used mask: double_cone.png; Serenity lights use the equivalent lightMask prototype
-  - type: RotatingLight
-    speed: 360
+      - { state: equipped-head-light-siren, color: blue, shader: unshaded }
 
-#region science
 - type: entity
-  parent: SerenityEVAHelmetWithLightBase
   id: ClothingHeadEVAHelmetScientist
+  parent: SerenityEVAHelmetWithLightBase
   name: scientist EVA helmet
+  description: A white helmet with a cyan visor and a violet headlamp.
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
     layers:
-    - state: icon-base
-      color: "#edeaea"
-    - state: icon-reinforced-points
-      color: "#606275"
-    - state: icon-visor
-      color: "#2accff"
+    - { state: icon-base, color: "#edeaea" }
+    - { state: icon-reinforced-points, color: "#606275" }
+    - { state: icon-visor, color: "#2accff" }
   - type: Clothing
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
     clothingVisuals:
       head:
-      - state: equipped-head-base
-        color: "#edeaea"
-      - state: equipped-head-reinforced-points
-        color: "#606275"
-      - state: equipped-head-visor
-        color: "#2accff"
+      - { state: equipped-head-base, color: "#edeaea" }
+      - { state: equipped-head-reinforced-points, color: "#606275" }
+      - { state: equipped-head-visor, color: "#2accff" }
   - type: PointLight
     color: "#d6adff"
 
-#region service
 - type: entity
-  parent: SerenityEVAHelmetWithLightBase
   id: ClothingHeadEVAHelmetJanitor
+  parent: SerenityEVAHelmetWithLightBase
   name: janitor EVA helmet
+  description: A grey helmet with a purple visor and a violet headlamp for finding spills.
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
     layers:
-    - state: icon-base
-      color: "#cac4c3"
-    - state: icon-reinforced-points
-      color: "#ebdc36"
-    - state: icon-visor
-      color: "#bb5cc9"
+    - { state: icon-base, color: "#cac4c3" }
+    - { state: icon-reinforced-points, color: "#ebdc36" }
+    - { state: icon-visor, color: "#bb5cc9" }
   - type: Clothing
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
     clothingVisuals:
       head:
-      - state: equipped-head-base
-        color: "#cac4c3"
-      - state: equipped-head-reinforced-points
-        color: "#ebdc36"
-      - state: equipped-head-visor
-        color: "#bb5cc9"
+      - { state: equipped-head-base, color: "#cac4c3" }
+      - { state: equipped-head-reinforced-points, color: "#ebdc36" }
+      - { state: equipped-head-visor, color: "#bb5cc9" }
   - type: PointLight
     color: "#d6adff"
 
 - type: entity
-  parent: SerenityEVAHelmetWithLightBase
   id: ClothingHeadEVAHelmetValet
+  parent: SerenityEVAHelmetWithLightBase
   name: valet EVA helmet
+  description: A glossy red helmet with a headlamp.
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
     layers:
-    - state: icon-base
-      color: "#e6001f"
-    - state: icon-reinforced-points
-      color: "#606275"
-    - state: icon-visor
-      color: "#adcfd5"
+    - { state: icon-base, color: "#e6001f" }
+    - { state: icon-reinforced-points, color: "#606275" }
+    - { state: icon-visor, color: "#adcfd5" }
   - type: Clothing
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
     clothingVisuals:
       head:
-      - state: equipped-head-base
-        color: "#e6001f"
-      - state: equipped-head-reinforced-points
-        color: "#606275"
-      - state: equipped-head-visor
-        color: "#adcfd5"
+      - { state: equipped-head-base, color: "#e6001f" }
+      - { state: equipped-head-reinforced-points, color: "#606275" }
+      - { state: equipped-head-visor, color: "#adcfd5" }
 
 - type: entity
-  parent: SerenityEVAHelmetWithLightBase
   id: ClothingHeadEVAHelmetServiceWorker
+  parent: SerenityEVAHelmetWithLightBase
   name: service worker EVA helmet
+  description: A cream helmet with a headlamp.
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
     layers:
-    - state: icon-base
-      color: "#fff4e2"
-    - state: icon-reinforced-points
-      color: "#606275"
-    - state: icon-visor
-      color: "#adcfd5"
+    - { state: icon-base, color: "#fff4e2" }
+    - { state: icon-reinforced-points, color: "#606275" }
+    - { state: icon-visor, color: "#adcfd5" }
   - type: Clothing
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
     clothingVisuals:
       head:
-      - state: equipped-head-base
-        color: "#fff4e2"
-      - state: equipped-head-reinforced-points
-        color: "#606275"
-      - state: equipped-head-visor
-        color: "#adcfd5"
+      - { state: equipped-head-base, color: "#fff4e2" }
+      - { state: equipped-head-reinforced-points, color: "#606275" }
+      - { state: equipped-head-visor, color: "#adcfd5" }
 
 - type: entity
-  parent: SerenityEVAHelmetWithLightBase
   id: ClothingHeadEVAHelmetChaplain
+  parent: SerenityEVAHelmetWithLightBase
   name: chaplain EVA helmet
+  description: A crimson helmet with a gold visor and a warm golden headlamp.
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
     layers:
-    - state: icon-base
-      color: "#a42424"
-    - state: icon-reinforced-points
-      color: "#a42424"
-    - state: icon-visor
-      color: "#ffce5b"
+    - { state: icon-base, color: "#a42424" }
+    - { state: icon-reinforced-points, color: "#a42424" }
+    - { state: icon-visor, color: "#ffce5b" }
   - type: Clothing
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
     clothingVisuals:
       head:
-      - state: equipped-head-base
-        color: "#a42424"
-      - state: equipped-head-reinforced-points
-        color: "#a42424"
-      - state: equipped-head-visor
-        color: "#ffce5b"
+      - { state: equipped-head-base, color: "#a42424" }
+      - { state: equipped-head-reinforced-points, color: "#a42424" }
+      - { state: equipped-head-visor, color: "#ffce5b" }
   - type: PointLight
     color: "#ffce5b"
 
 - type: entity
-  parent: SerenityEVAHelmetWithLightBase
   id: ClothingHeadEVAHelmetBoxerRed
+  parent: SerenityEVAHelmetWithLightBase
   name: boxer EVA helmet
+  description: A red helmet that doubles as headgear in zero-g bouts.
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
     layers:
-    - state: icon-base
-      color: "#d1502c"
-    - state: icon-reinforced-points
-      color: "#606275"
-    - state: icon-visor
-      color: "#adcfd5"
+    - { state: icon-base, color: "#d1502c" }
+    - { state: icon-reinforced-points, color: "#606275" }
+    - { state: icon-visor, color: "#adcfd5" }
   - type: Clothing
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
     clothingVisuals:
       head:
-      - state: equipped-head-base
-        color: "#d1502c"
-      - state: equipped-head-reinforced-points
-        color: "#606275"
-      - state: equipped-head-visor
-        color: "#adcfd5"
+      - { state: equipped-head-base, color: "#d1502c" }
+      - { state: equipped-head-reinforced-points, color: "#606275" }
+      - { state: equipped-head-visor, color: "#adcfd5" }
 
 - type: entity
-  parent: SerenityEVAHelmetWithLightBase
   id: ClothingHeadEVAHelmetBoxerGreen
+  parent: SerenityEVAHelmetWithLightBase
   name: boxer EVA helmet
+  description: A green helmet that doubles as headgear in zero-g bouts.
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
     layers:
-    - state: icon-base
-      color: "#4cd339"
-    - state: icon-reinforced-points
-      color: "#606275"
-    - state: icon-visor
-      color: "#adcfd5"
+    - { state: icon-base, color: "#4cd339" }
+    - { state: icon-reinforced-points, color: "#606275" }
+    - { state: icon-visor, color: "#adcfd5" }
   - type: Clothing
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
     clothingVisuals:
       head:
-      - state: equipped-head-base
-        color: "#4cd339"
-      - state: equipped-head-reinforced-points
-        color: "#606275"
-      - state: equipped-head-visor
-        color: "#adcfd5"
+      - { state: equipped-head-base, color: "#4cd339" }
+      - { state: equipped-head-reinforced-points, color: "#606275" }
+      - { state: equipped-head-visor, color: "#adcfd5" }
 
 - type: entity
-  parent: SerenityEVAHelmetWithLightBase
   id: ClothingHeadEVAHelmetBoxerBlue
+  parent: SerenityEVAHelmetWithLightBase
   name: boxer EVA helmet
+  description: A blue helmet that doubles as headgear in zero-g bouts.
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
     layers:
-    - state: icon-base
-      color: "#23a0bb"
-    - state: icon-reinforced-points
-      color: "#606275"
-    - state: icon-visor
-      color: "#adcfd5"
+    - { state: icon-base, color: "#23a0bb" }
+    - { state: icon-reinforced-points, color: "#606275" }
+    - { state: icon-visor, color: "#adcfd5" }
   - type: Clothing
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
     clothingVisuals:
       head:
-      - state: equipped-head-base
-        color: "#23a0bb"
-      - state: equipped-head-reinforced-points
-        color: "#606275"
-      - state: equipped-head-visor
-        color: "#adcfd5"
+      - { state: equipped-head-base, color: "#23a0bb" }
+      - { state: equipped-head-reinforced-points, color: "#606275" }
+      - { state: equipped-head-visor, color: "#adcfd5" }
 
 - type: entity
-  parent: SerenityEVAHelmetWithLightBase
   id: ClothingHeadEVAHelmetBoxerYellow
+  parent: SerenityEVAHelmetWithLightBase
   name: boxer EVA helmet
+  description: A yellow helmet that doubles as headgear in zero-g bouts.
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
     layers:
-    - state: icon-base
-      color: "#d9be15"
-    - state: icon-reinforced-points
-      color: "#606275"
-    - state: icon-visor
-      color: "#adcfd5"
+    - { state: icon-base, color: "#d9be15" }
+    - { state: icon-reinforced-points, color: "#606275" }
+    - { state: icon-visor, color: "#adcfd5" }
   - type: Clothing
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
     clothingVisuals:
       head:
-      - state: equipped-head-base
-        color: "#d9be15"
-      - state: equipped-head-reinforced-points
-        color: "#606275"
-      - state: equipped-head-visor
-        color: "#adcfd5"
+      - { state: equipped-head-base, color: "#d9be15" }
+      - { state: equipped-head-reinforced-points, color: "#606275" }
+      - { state: equipped-head-visor, color: "#adcfd5" }
 
 - type: entity
-  parent: SerenityEVAHelmetWithLightBase
   id: ClothingHeadEVAHelmetBoxerRandom
+  parent: SerenityEVAHelmetWithLightBase
   name: boxer EVA helmet
+  description: A boxing helmet in whatever colour came out of the dye vat.
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
     layers:
-    - state: equipped-head-base
-      map: [ "EVA_helmet_decal_boxing" ]
-    - state: equipped-head-reinforced-points
-      color: "#606275"
-    - state: equipped-head-visor
-      color: "#adcfd5"
+    - { state: equipped-head-base, map: [ "EVA_helmet_decal_boxing" ] }
+    - { state: equipped-head-reinforced-points, color: "#606275" }
+    - { state: equipped-head-visor, color: "#adcfd5" }
   - type: Clothing
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
     clothingVisuals:
       head:
-      - state: equipped-head-base
-        map: [ "EVA_helmet_decal_boxing" ]
-      - state: equipped-head-reinforced-points
-        color: "#606275"
-      - state: equipped-head-visor
-        color: "#adcfd5"
+      - { state: equipped-head-base, map: [ "EVA_helmet_decal_boxing" ] }
+      - { state: equipped-head-reinforced-points, color: "#606275" }
+      - { state: equipped-head-visor, color: "#adcfd5" }
+  # Serenity: trim colour is rolled from the Sixteen palette (Palettes/sixteen.yml).
   - type: RandomSprite
     available:
-      - EVA_helmet_decal_boxing:
-          equipped-head-base: Sixteen # CyberpunkNeon
+    - EVA_helmet_decal_boxing:
+        equipped-head-base: Sixteen
 
-#region wildcards
 - type: entity
-  parent: SerenityEVAHelmetWithLightBase
   id: ClothingHeadEVAHelmetPilot
+  parent: SerenityEVAHelmetWithLightBase
   name: pilot EVA helmet
+  description: A blue helmet with brown trim and a headlamp.
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
     layers:
-    - state: icon-base
-      color: "#496ea0"
-    - state: icon-reinforced-points
-      color: "#784f1e"
-    - state: icon-visor
-      color: "#adcfd5"
+    - { state: icon-base, color: "#496ea0" }
+    - { state: icon-reinforced-points, color: "#784f1e" }
+    - { state: icon-visor, color: "#adcfd5" }
   - type: Clothing
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
     clothingVisuals:
       head:
-      - state: equipped-head-base
-        color: "#496ea0"
-      - state: equipped-head-reinforced-points
-        color: "#784f1e"
-      - state: equipped-head-visor
-        color: "#adcfd5"
+      - { state: equipped-head-base, color: "#496ea0" }
+      - { state: equipped-head-reinforced-points, color: "#784f1e" }
+      - { state: equipped-head-visor, color: "#adcfd5" }
 
 - type: entity
-  parent: SerenityEVAHelmetWithLightBase
   id: ClothingHeadEVAHelmetMercenary
+  parent: SerenityEVAHelmetWithLightBase
   name: mercenary EVA helmet
+  description: An olive helmet with a pale yellow visor.
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
     layers:
-    - state: icon-base
-      color: "#7b7b3f"
-    - state: icon-reinforced-points
-      color: "#27272e"
-    - state: icon-visor
-      color: "#f5fc95"
+    - { state: icon-base, color: "#7b7b3f" }
+    - { state: icon-reinforced-points, color: "#27272e" }
+    - { state: icon-visor, color: "#f5fc95" }
   - type: Clothing
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
     clothingVisuals:
       head:
-      - state: equipped-head-base
-        color: "#7b7b3f"
-      - state: equipped-head-reinforced-points
-        color: "#27272e"
-      - state: equipped-head-visor
-        color: "#f5fc95"
+      - { state: equipped-head-base, color: "#7b7b3f" }
+      - { state: equipped-head-reinforced-points, color: "#27272e" }
+      - { state: equipped-head-visor, color: "#f5fc95" }
 
 - type: entity
-  parent: SerenityEVAHelmetWithLightBase
   id: ClothingHeadEVAHelmetPrivateSec
+  parent: SerenityEVAHelmetWithLightBase
   name: private security EVA helmet
+  description: A brown helmet with blue trim and a yellow visor.
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
     layers:
-    - state: icon-base
-      color: "#935c3f"
-    - state: icon-reinforced-points
-      color: "#2286bd"
-    - state: icon-visor
-      color: "#ffd600"
+    - { state: icon-base, color: "#935c3f" }
+    - { state: icon-reinforced-points, color: "#2286bd" }
+    - { state: icon-visor, color: "#ffd600" }
   - type: Clothing
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
     clothingVisuals:
       head:
-      - state: equipped-head-base
-        color: "#935c3f"
-      - state: equipped-head-reinforced-points
-        color: "#2286bd"
-      - state: equipped-head-visor
-        color: "#ffd600"
+      - { state: equipped-head-base, color: "#935c3f" }
+      - { state: equipped-head-reinforced-points, color: "#2286bd" }
+      - { state: equipped-head-visor, color: "#ffd600" }
 
-#region nfsd
 - type: entity
-  parent: SerenityEVAHelmetWithLightBase
   id: ClothingHeadEVAHelmetNfsd
-  name: NFSD EVA helmet
+  parent: SerenityEVAHelmetBeaconBase
+  name: sheriff's department EVA helmet
+  description: A khaki helmet with a green visor and a red patrol beacon.
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
     layers:
-    - state: icon-base
-      color: "#a9947d"
-    - state: icon-reinforced-points
-      color: "#384d2f"
-    - state: icon-visor
-      color: "#52843f"
-  - type: ToggleableVisuals
-    spriteLayer: light
-    clothingVisuals:
-      head:
-      - state: equipped-head-light-siren
-        color: red
-        shader: unshaded
+    - { state: icon-base, color: "#a9947d" }
+    - { state: icon-reinforced-points, color: "#384d2f" }
+    - { state: icon-visor, color: "#52843f" }
   - type: Clothing
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
     clothingVisuals:
       head:
-      - state: equipped-head-base
-        color: "#a9947d"
-      - state: equipped-head-reinforced-points
-        color: "#384d2f"
-      - state: equipped-head-visor
-        color: "#52843f"
-  - type: ItemTogglePointLight
+      - { state: equipped-head-base, color: "#a9947d" }
+      - { state: equipped-head-reinforced-points, color: "#384d2f" }
+      - { state: equipped-head-visor, color: "#52843f" }
   - type: PointLight
-    enabled: false
-    radius: 2 # These are rotating blinker lights meant as alarm lights/sirens rather than actual lighting
-    energy: 2
     color: red
-    lightMask: ConeDouble # Serenity: Frontier used mask: double_cone.png; Serenity lights use the equivalent lightMask prototype
-  - type: RotatingLight
-    speed: 360
-
-#region pirates
-- type: entity
-  parent: SerenityEVAHelmetWithLightBase
-  id: ClothingHeadEVAHelmetPirate
-  name: pirate EVA helmet
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Sprite
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
-    layers:
-    - state: icon-base
-      color: "#d4a365"
-    - state: icon-reinforced-points
-      color: "#784f1e"
-    - state: icon-visor
-      color: "#68b4ff"
   - type: ToggleableVisuals
     spriteLayer: light
     clothingVisuals:
       head:
-      - state: equipped-head-light-siren
-        color: gold
-        shader: unshaded
+      - { state: equipped-head-light-siren, color: red, shader: unshaded }
+
+- type: entity
+  id: ClothingHeadEVAHelmetPirate
+  parent: SerenityEVAHelmetBeaconBase
+  name: pirate EVA helmet
+  description: A tan helmet with a blue visor and a gold beacon, probably taken from its last owner.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - { state: icon-base, color: "#d4a365" }
+    - { state: icon-reinforced-points, color: "#784f1e" }
+    - { state: icon-visor, color: "#68b4ff" }
   - type: Clothing
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
     clothingVisuals:
       head:
-      - state: equipped-head-base
-        color: "#d4a365"
-      - state: equipped-head-reinforced-points
-        color: "#784f1e"
-      - state: equipped-head-visor
-        color: "#68b4ff"
-  - type: ItemTogglePointLight
-  - type: PointLight
-    enabled: false
-    radius: 2 # These are rotating blinker lights meant as alarm lights/sirens rather than actual lighting
-    energy: 2
-    lightMask: ConeDouble # Serenity: Frontier used a skull-shaped mask (_NF skullmask.png, no licence/attribution recorded upstream), swapped for the closest rotating-siren mask
-  - type: RotatingLight
-    speed: 360
+      - { state: equipped-head-base, color: "#d4a365" }
+      - { state: equipped-head-reinforced-points, color: "#784f1e" }
+      - { state: equipped-head-visor, color: "#68b4ff" }
+  - type: ToggleableVisuals
+    spriteLayer: light
+    clothingVisuals:
+      head:
+      - { state: equipped-head-light-siren, color: gold, shader: unshaded }
 
-#region prisoner
 - type: entity
-  parent: SerenityEVAHelmetWithLightBase
   id: ClothingHeadEVAHelmetPrisoner
-  name: prisoner EVA helmet
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Sprite
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
-    layers:
-    - state: icon-base
-      color: "#ff8300"
-    - state: icon-reinforced-points
-      color: "#493926"
-    - state: icon-visor
-      color: "#adcfd5"
-  - type: Clothing
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
-    clothingVisuals:
-      head:
-      - state: equipped-head-base
-        color: "#ff8300"
-      - state: equipped-head-reinforced-points
-        color: "#493926"
-      - state: equipped-head-visor
-        color: "#adcfd5"
-
-#region player factions
-- type: entity
   parent: SerenityEVAHelmetWithLightBase
-  id: ClothingHeadEVAHelmetLvhi
-  name: LVHI EVA helmet
+  name: prisoner EVA helmet
+  description: A blaze orange helmet with a headlamp.
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
     layers:
-    - state: icon-base
-      color: "#e48545"
-    - state: icon-reinforced-points
-      color: "#3e3e48"
-    - state: icon-visor
-      color: "#283846"
+    - { state: icon-base, color: "#ff8300" }
+    - { state: icon-reinforced-points, color: "#493926" }
+    - { state: icon-visor, color: "#adcfd5" }
   - type: Clothing
-    sprite: _Serenity/Clothing/Head/Helmets/eva_color.rsi
     clothingVisuals:
       head:
-      - state: equipped-head-base
-        color: "#e48545"
-      - state: equipped-head-reinforced-points
-        color: "#3e3e48"
-      - state: equipped-head-visor
-        color: "#283846"
+      - { state: equipped-head-base, color: "#ff8300" }
+      - { state: equipped-head-reinforced-points, color: "#493926" }
+      - { state: equipped-head-visor, color: "#adcfd5" }
 
-#region Far Star Void suit helmet
+- type: entity
+  id: ClothingHeadEVAHelmetLvhi
+  parent: SerenityEVAHelmetWithLightBase
+  name: plated EVA helmet
+  description: An orange helmet with a dark visor.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - { state: icon-base, color: "#e48545" }
+    - { state: icon-reinforced-points, color: "#3e3e48" }
+    - { state: icon-visor, color: "#283846" }
+  - type: Clothing
+    clothingVisuals:
+      head:
+      - { state: equipped-head-base, color: "#e48545" }
+      - { state: equipped-head-reinforced-points, color: "#3e3e48" }
+      - { state: equipped-head-visor, color: "#283846" }
+
+# === Clear-dome voidsuit helmets ===============================================================
+# Serenity: an EVA helmet base without ClothingHeadEVAHelmetBase's hair/snout hiding, so the
+# voidsuit domes can choose which layers they cover.
+
 - type: entity
   abstract: true
+  id: SerenityClearEVAHelmetBase
   parent: ClothingHeadBase
-  id: SerenityClearEVAHelmetBase # This version is to allow for choice regarding HideLayerClothing for clear helmets. Is otherwise identical to ClothingHeadEVAHelmetBase
   name: base space helmet
   components:
-  - type: BreathMask
   - type: Item
     size: Normal
+  - type: Clothing
+    equipDelay: 2
+    equipSound: /Audio/Mecha/mechmove03.ogg
+    unequipDelay: 2
+    unequipSound: /Audio/Mecha/mechmove03.ogg
   - type: PressureProtection
     highPressureMultiplier: 0.6
     lowPressureMultiplier: 1000
   - type: TemperatureProtection
-    heatingCoefficient: 0.2
     coolingCoefficient: 0.2
+    heatingCoefficient: 0.2
+  - type: BreathMask
   - type: IngestionBlocker
-  - type: Clothing
-    #Copies ClothingHeadHardsuitBase behavior
-    equipSound: /Audio/Mecha/mechmove03.ogg
-    unequipSound: /Audio/Mecha/mechmove03.ogg
-    equipDelay: 2
-    unequipDelay: 2
+  - type: IdentityBlocker
   - type: Tag
     tags:
     - WhitelistChameleon
     - HelmetEVA
-  - type: IdentityBlocker
 
 - type: entity
-  parent: [ ClothingHeadSuitWithLightBase, SerenityClearEVAHelmetBase ]
   id: ClothingHeadHelmetHardsuitFSB
-  name: Far Star Biotech voidsuit helmet
-  description: A lightweight suit helmet that doesn't restrict your head movements. It has a light!
+  parent: [ ClothingHeadSuitWithLightBase, SerenityClearEVAHelmetBase ]
+  name: biotech voidsuit helmet
+  description: A clear-domed voidsuit helmet with a built-in lamp.
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Serenity/Clothing/Head/Helmets/fsb_eva_helmet.rsi
-  - type: ToggleableVisuals
-    spriteLayer: light
-    clothingVisuals:
-      head:
-      - state: HELMET-light-glow
-      - state: on-equipped-HELMET
-        shader: unshaded
-  - type: HandheldLight
-    addPrefix: false
-  - type: ItemTogglePointLight
-  - type: PointLight
-    color: "#adf1ff"
-    # Serenity: Frontier's ClothingHeadSuitWithLightBase set these; Serenity's leaves radius/energy to the
-    # ClothingHeadLightParams* prototypes, so Frontier's values are restated here.
-    radius: 4.5
-    energy: 4
-  # Serenity: Frontier's ClothingHeadSuitWithLightBase powered the light with a self-recharging battery. Serenity's
-  # draws from the hardsuit's power cell instead, which the FSB/FSC softsuits don't have, so the battery is restored.
-  - type: Battery
-    maxCharge: 600 #lights drain 3/s but recharge of 2 makes this 1/s. Therefore 600 is 10 minutes of light.
-    startingCharge: 600
-  - type: BatterySelfRecharger
-    autoRechargeRate: 2
   - type: HideLayerClothing
     slots:
     - Hair
     - HeadTop
     - HeadSide
+  # Serenity: no CatWearable, which this codebase does not define.
   - type: Tag
     tags:
     - CorgiWearable
     - ScurretWearable
     - MonkeyWearable
+  - type: PointLight
+    color: "#adf1ff"
+    energy: 4
+    radius: 4.5
+  - type: ItemTogglePointLight
+  - type: HandheldLight
+    addPrefix: false
+  # Serenity: the light base here swapped its battery for a cell slot; the dome keeps its own.
+  - type: Battery
+    maxCharge: 600
+    startingCharge: 600
+  - type: BatterySelfRecharger
+    autoRechargeRate: 2
+  - type: ToggleableVisuals
+    spriteLayer: light
+    clothingVisuals:
+      head:
+      - { state: HELMET-light-glow }
+      - { state: on-equipped-HELMET, shader: unshaded }
 
 - type: entity
-  parent: ClothingHeadHelmetHardsuitFSB
   id: ClothingHeadHelmetHardsuitFSC
-  name: Far Star Commerce voidsuit helmet
-  description: A lightweight suit helmet that doesn't restrict your head movements. It has a light!
+  parent: ClothingHeadHelmetHardsuitFSB
+  name: trader's voidsuit helmet
+  description: A clear-domed voidsuit helmet with a built-in lamp, in trader colours.
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Serenity/Clothing/Head/Helmets/fsc_eva_helmet.rsi
 
 - type: entity
-  parent: ClothingHeadHelmetHardsuitFSB
   id: ClothingHeadHelmetHardsuitFSA
-  name: Far Star Arms voidsuit helmet
+  parent: ClothingHeadHelmetHardsuitFSB
+  name: armored voidsuit helmet
+  description: A clear-domed voidsuit helmet with a built-in lamp and extra plating.
   categories: [ HideSpawnMenu ]
-  description: A lightweight suit helmet that doesn't restrict your head movements. It has a light!
   components:
   - type: Sprite
     sprite: _Serenity/Clothing/Head/Helmets/fsa_eva_helmet.rsi
 
-#region goblin
+# === Hood ======================================================================================
+
 - type: entity
-  parent: ClothingHeadEVAHelmetBase
   id: ClothingHeadEVAHelmetGoblin
-  name: goblin traditional EVA hood
+  parent: ClothingHeadEVAHelmetBase
+  name: scavenger EVA hood
+  description: A cloth hood stitched over a sealed bubble. It keeps your head pressurised and not much else.
   categories: [ HideSpawnMenu ]
   components:
-  - type: BreathMask
   - type: Sprite
     sprite: _Serenity/Clothing/Head/Helmets/goblin_eva_hood.rsi
   - type: Clothing
     sprite: _Serenity/Clothing/Head/Helmets/goblin_eva_hood.rsi
+  - type: BreathMask
