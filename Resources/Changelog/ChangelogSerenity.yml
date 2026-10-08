@@ -883,3 +883,12 @@ Entries:
   id: 15001
   time: '2026-10-08T11:54:46.000000+00:00'
   url: https://github.com/lightningcaesarea/Serenity-Dev/pull/150
+- author: Inny
+  changes:
+  - message: Central Command clothing and items are now Sector Command gear, recolored dark grey with orange-gold trim.
+    type: Tweak
+  - message: Added 48 Sector Command uniforms, coats, armor, helmets, capes and accessories.
+    type: Add
+  id: 14101
+  time: '2026-10-08T11:55:27.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/141
