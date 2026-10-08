@@ -48,9 +48,11 @@ public sealed partial class PlantTraySystem : EntitySystem
             }
 
             args.PushMarkup(Loc.GetString("tray-component-water-level-message",
-                ("waterLevel", (int)ent.Comp.WaterLevel)));
+                ("waterLevel", (int)ent.Comp.WaterLevel),
+                ("maxWaterLevel", (int)ent.Comp.MaxWaterLevel))); // Serenity
             args.PushMarkup(Loc.GetString("tray-component-nutrient-level-message",
-                ("nutritionLevel", (int)ent.Comp.NutritionLevel)));
+                ("nutritionLevel", (int)ent.Comp.NutritionLevel),
+                ("maxNutritionLevel", (int)ent.Comp.MaxNutritionLevel))); // Serenity
 
             args.PushMarkup(GetTrayWarningsMarkup(ent.AsNullable()));
             if (plantUid != null && ent.Comp.DrawWarnings)

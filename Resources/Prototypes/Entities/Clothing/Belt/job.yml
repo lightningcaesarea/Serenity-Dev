@@ -331,6 +331,7 @@
       components:
       - BotanySampleTaker
       - BotanyHoe
+      - PlantAnalyzer # Serenity
       - Seed
       - Smokable
       - HandLabeler

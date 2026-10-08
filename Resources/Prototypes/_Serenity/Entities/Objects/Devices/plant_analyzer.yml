@@ -1,0 +1,54 @@
+- type: entity
+  parent: BaseItem
+  id: PlantAnalyzer
+  name: plant analyzer
+  description: A handheld scanner for plants. Use it on a tray, a growing plant, a seed packet or a piece of produce to read its stats.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Objects/Devices/plant_analyzer.rsi
+    layers:
+    - state: icon
+    - state: analyzer
+      shader: unshaded
+  - type: Item
+    heldPrefix: analyzer
+    size: Small
+    storedRotation: -90
+  - type: PlantAnalyzer
+    scanSound:
+      path: /Audio/Items/Medical/healthscanner.ogg
+  - type: UserInterface
+    interfaces:
+      enum.PlantAnalyzerUiKey.Key:
+        type: PlantAnalyzerBoundUserInterface
+  - type: GuideHelp
+    guides:
+    - Botany
+  - type: ItemPrice
+    fallbackPrice: 50
+
+- type: entity
+  id: ChemistryBottleRootbinder
+  suffix: rootbinder
+  parent: BaseChemistryBottleFilled
+  components:
+  - type: Label
+    currentLabel: reagent-name-rootbinder
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Rootbinder
+        Quantity: 30
+
+- type: entity
+  id: ChemistryBottleGrowthAccelerant
+  suffix: growth accelerant
+  parent: BaseChemistryBottleFilled
+  components:
+  - type: Label
+    currentLabel: reagent-name-growth-accelerant
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: GrowthAccelerant
+        Quantity: 30

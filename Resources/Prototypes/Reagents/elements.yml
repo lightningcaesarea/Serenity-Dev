@@ -370,6 +370,8 @@
   - !type:PlantAdjustMutationLevel
     amount: 0.6
     mutationTable: RandomPlantMutations
+  - !type:PlantMutagenOutcome # Serenity
+    probability: 0.2
   - !type:PlantAdjustToxins
     amount: 4
   - !type:PlantAdjustHealth

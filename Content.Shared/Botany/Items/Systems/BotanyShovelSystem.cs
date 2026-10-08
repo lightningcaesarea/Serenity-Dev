@@ -1,3 +1,4 @@
+using Content.Shared._Serenity.Botany; // Serenity
 using Content.Shared.Botany.Components;
 using Content.Shared.Botany.Events;
 using Content.Shared.Botany.Systems;
@@ -69,6 +70,10 @@ public sealed partial class BotanyShovelSystem : EntitySystem
             ent.Owner,
             Filter.PvsExcept(args.User),
             true);
+
+        // Serenity: lets the tray compost the plant back into the soil
+        var dugUp = new PlantDugUpEvent(plantUid.Value);
+        RaiseLocalEvent(ent.Owner, ref dugUp);
 
         _plant.RemovePlant(plantUid.Value);
     }
