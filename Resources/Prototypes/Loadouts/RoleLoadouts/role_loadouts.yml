@@ -73,6 +73,7 @@
   - Pins # Starlight
   - Pens # Starlight
   - AssistantJobTrinkets # Starlight
+  - SpacerIdIcon # Serenity: pick the icon on the ID card
   - GroupSpeciesBreathTool
 
 - type: roleLoadout

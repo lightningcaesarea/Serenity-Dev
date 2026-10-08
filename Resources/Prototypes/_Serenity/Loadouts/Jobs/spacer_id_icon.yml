@@ -1,0 +1,119 @@
+# Serenity: lets a Spacer pick the icon on their ID card (PDA with the matching card).
+- type: loadoutGroup
+  id: SpacerIdIcon
+  name: loadout-group-spacer-id-icon
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - SpacerIdAssistant
+  - SpacerIdTechnicalAssistant
+  - SpacerIdResearchAssistant
+  - SpacerIdSecurityCadet
+  - SpacerIdClericalAssistant
+  - SpacerIdCookAssistant
+  - SpacerIdDeliveryAssistant
+  - SpacerIdGardenerAssistant
+  - SpacerIdHandymanAssistant
+  - SpacerIdReligiousAssistant
+  - SpacerIdShopkeeperAssistant
+  - SpacerIdMedicalAssistant
+  - SpacerIdJanitorAssistant
+  - SpacerIdMailTech
+  - SpacerIdMiningSpecialist
+  - SpacerIdRadioHost
+
+- type: loadout
+  id: SpacerIdAssistant
+  dummyEntity: AssistantIDCard
+  equipment:
+    id: AssistantPDA
+
+- type: loadout
+  id: SpacerIdTechnicalAssistant
+  dummyEntity: SpacerIdCardTechnicalAssistant
+  equipment:
+    id: SpacerPdaTechnicalAssistant
+
+- type: loadout
+  id: SpacerIdResearchAssistant
+  dummyEntity: SpacerIdCardResearchAssistant
+  equipment:
+    id: SpacerPdaResearchAssistant
+
+- type: loadout
+  id: SpacerIdSecurityCadet
+  dummyEntity: SpacerIdCardSecurityCadet
+  equipment:
+    id: SpacerPdaSecurityCadet
+
+- type: loadout
+  id: SpacerIdClericalAssistant
+  dummyEntity: SpacerIdCardClericalAssistant
+  equipment:
+    id: SpacerPdaClericalAssistant
+
+- type: loadout
+  id: SpacerIdCookAssistant
+  dummyEntity: SpacerIdCardCookAssistant
+  equipment:
+    id: SpacerPdaCookAssistant
+
+- type: loadout
+  id: SpacerIdDeliveryAssistant
+  dummyEntity: SpacerIdCardDeliveryAssistant
+  equipment:
+    id: SpacerPdaDeliveryAssistant
+
+- type: loadout
+  id: SpacerIdGardenerAssistant
+  dummyEntity: SpacerIdCardGardenerAssistant
+  equipment:
+    id: SpacerPdaGardenerAssistant
+
+- type: loadout
+  id: SpacerIdHandymanAssistant
+  dummyEntity: SpacerIdCardHandymanAssistant
+  equipment:
+    id: SpacerPdaHandymanAssistant
+
+- type: loadout
+  id: SpacerIdReligiousAssistant
+  dummyEntity: SpacerIdCardReligiousAssistant
+  equipment:
+    id: SpacerPdaReligiousAssistant
+
+- type: loadout
+  id: SpacerIdShopkeeperAssistant
+  dummyEntity: SpacerIdCardShopkeeperAssistant
+  equipment:
+    id: SpacerPdaShopkeeperAssistant
+
+- type: loadout
+  id: SpacerIdMedicalAssistant
+  dummyEntity: SpacerIdCardMedicalAssistant
+  equipment:
+    id: SpacerPdaMedicalAssistant
+
+- type: loadout
+  id: SpacerIdJanitorAssistant
+  dummyEntity: SpacerIdCardJanitorAssistant
+  equipment:
+    id: SpacerPdaJanitorAssistant
+
+- type: loadout
+  id: SpacerIdMailTech
+  dummyEntity: SpacerIdCardMailTech
+  equipment:
+    id: SpacerPdaMailTech
+
+- type: loadout
+  id: SpacerIdMiningSpecialist
+  dummyEntity: SpacerIdCardMiningSpecialist
+  equipment:
+    id: SpacerPdaMiningSpecialist
+
+- type: loadout
+  id: SpacerIdRadioHost
+  dummyEntity: SpacerIdCardRadioHost
+  equipment:
+    id: SpacerPdaRadioHost
