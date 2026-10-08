@@ -19,6 +19,8 @@ public sealed partial class HumanoidProfileEditor
         TabContainer.SetTabTitle(0, Loc.GetString("humanoid-profile-editor-appearance-tab"));
         TabContainer.SetTabTitle(1, Loc.GetString("humanoid-profile-editor-jobs-tab"));
         TabContainer.SetTabTitle(2, Loc.GetString("humanoid-profile-editor-antags-tab"));
+        // Antagonists were removed (PR #142); hide the tab but keep saved preference data intact.
+        TabContainer.SetTabVisible(2, false);
         TabContainer.SetTabTitle(3, Loc.GetString("humanoid-profile-editor-traits-tab"));
         TabContainer.SetTabTitle(4, Loc.GetString("humanoid-profile-editor-markings-tab"));
         TabContainer.SetTabTitle(5, Loc.GetString("humanoid-profile-editor-cybernetics-tab"));
