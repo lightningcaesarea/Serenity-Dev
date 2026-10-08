@@ -36,7 +36,7 @@
   id: LockerPathology
   parent: LockerBase
   name: pathology locker
-  description: Holds the equipment for a pathology lab: flatpacked machines for finding out which bacteria is making someone sick.
+  description: "Holds the equipment for a pathology lab: flatpacked machines for finding out which bacteria is making someone sick."
   components:
   - type: Appearance
   - type: EntityStorageVisuals
