@@ -79,6 +79,7 @@
         time: 10
         type: Update
 
+# Antibiox needs diethylamine, which Chemistry mixes from ammonia and ethanol (ammonia needs heating).
 - type: reaction
   id: Antibiox
   reactants:
@@ -86,10 +87,10 @@
       amount: 1
     Sulfur:
       amount: 1
-    Ethanol:
+    Diethylamine:
       amount: 1
   products:
-    Antibiox: 2
+    Antibiox: 3
 
 - type: entity
   parent: ChemicalMedipen
