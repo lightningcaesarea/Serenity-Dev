@@ -75,6 +75,8 @@
     used:
       components: [ AdvancedHealthAnalyzer ]
     required: true
+  - events: [ PathogenAnalyzeDoAfterEvent ]
+    required: true
 
 - type: skill
   id: Chemistry
@@ -82,6 +84,9 @@
   description: skill-chemistry-desc
   category: skill-category-medical
   requires: [ Medicine ]
+  doAfters:
+  - events: [ PathogenSynthesizeDoAfterEvent ]
+    required: true
 
 # Science
 

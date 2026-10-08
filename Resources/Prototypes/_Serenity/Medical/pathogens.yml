@@ -1,0 +1,39 @@
+# The strains of bacteria an infection can be caused by. Every infection carries one. A broad-spectrum antibiotic
+# (Antibiox) only holds any of them back; only the narrow-spectrum antibiotic for its strain cures it, and the strain
+# can only be found out from a blood sample in the blood culture analyzer. See narrow_antibiotics.yml for the drugs.
+#
+# surgeryWeight and woundWeights are how likely each strain is to cause an infection that starts in a dirty operation
+# or in an untreated open wound of that category, relative to the other strains.
+
+- type: pathogen
+  id: Staphylococcus
+  name: pathogen-staphylococcus
+  drug: Cloxacillin
+  cureEffect: StatusEffectCloxacillin
+  surgeryWeight: 5
+  woundWeights:
+    Laceration: 5
+    Puncture: 2
+    Burn: 1
+
+- type: pathogen
+  id: Streptococcus
+  name: pathogen-streptococcus
+  drug: Penicillin
+  cureEffect: StatusEffectPenicillin
+  surgeryWeight: 3
+  woundWeights:
+    Laceration: 2
+    Puncture: 5
+    Burn: 1
+
+- type: pathogen
+  id: Pseudomonas
+  name: pathogen-pseudomonas
+  drug: Ciprofloxacin
+  cureEffect: StatusEffectCiprofloxacin
+  surgeryWeight: 1
+  woundWeights:
+    Laceration: 1
+    Puncture: 1
+    Burn: 6

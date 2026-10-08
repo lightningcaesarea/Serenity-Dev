@@ -1,0 +1,116 @@
+# Narrow-spectrum antibiotics. Each one cures the infections caused by one strain (see pathogens.yml) and does nothing
+# for the others. While the drug is in the blood the patient's matching infection is brought down a tier every
+# cureSecondsPerTier seconds (sterility_config.yml) until it is gone, and it can't get worse or poison them meanwhile.
+# Antibiox, the broad-spectrum one, needs no diagnosis but only holds an infection back.
+#
+# They cannot be mixed from chemicals: the antibiotic synthesizer makes one from Antibiox and a blood culture report
+# naming the strain. 15u (one dose) lasts about 2.5 minutes in the blood and the effect lingers 30 s after the last of
+# it, enough to clear a tier 3 infection (3 x 45 s). At 16u or more the drug poisons the patient, like Antibiox.
+
+- type: entity
+  parent: MobStatusEffectBase
+  id: StatusEffectCloxacillin
+  name: cloxacillin
+  components:
+  - type: StatusEffect
+    whitelist:
+      components:
+      - Wound
+
+- type: reagent
+  id: Cloxacillin
+  name: reagent-name-cloxacillin
+  group: Medicine
+  desc: reagent-desc-cloxacillin
+  physicalDesc: reagent-physical-desc-powdery
+  flavor: bitter
+  color: "#e6d38a"
+  metabolisms:
+    Bloodstream:
+      metabolismRate: 0.1
+      effects:
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectCloxacillin
+        time: 30
+        type: Update
+      # Overdose (16u): poisons the patient, painful but not lethal on its own
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentCondition
+          reagent: Cloxacillin
+          min: 16
+        damage:
+          types:
+            Poison: 0.2
+
+- type: entity
+  parent: MobStatusEffectBase
+  id: StatusEffectPenicillin
+  name: penicillin
+  components:
+  - type: StatusEffect
+    whitelist:
+      components:
+      - Wound
+
+- type: reagent
+  id: Penicillin
+  name: reagent-name-penicillin
+  group: Medicine
+  desc: reagent-desc-penicillin
+  physicalDesc: reagent-physical-desc-powdery
+  flavor: bitter
+  color: "#f3e7b4"
+  metabolisms:
+    Bloodstream:
+      metabolismRate: 0.1
+      effects:
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectPenicillin
+        time: 30
+        type: Update
+      # Overdose (16u): poisons the patient, painful but not lethal on its own
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentCondition
+          reagent: Penicillin
+          min: 16
+        damage:
+          types:
+            Poison: 0.2
+
+- type: entity
+  parent: MobStatusEffectBase
+  id: StatusEffectCiprofloxacin
+  name: ciprofloxacin
+  components:
+  - type: StatusEffect
+    whitelist:
+      components:
+      - Wound
+
+- type: reagent
+  id: Ciprofloxacin
+  name: reagent-name-ciprofloxacin
+  group: Medicine
+  desc: reagent-desc-ciprofloxacin
+  physicalDesc: reagent-physical-desc-powdery
+  flavor: bitter
+  color: "#a9d3ee"
+  metabolisms:
+    Bloodstream:
+      metabolismRate: 0.1
+      effects:
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectCiprofloxacin
+        time: 30
+        type: Update
+      # Overdose (16u): poisons the patient, painful but not lethal on its own
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentCondition
+          reagent: Ciprofloxacin
+          min: 16
+        damage:
+          types:
+            Poison: 0.2

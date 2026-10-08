@@ -88,6 +88,8 @@
   - CondenserMachineCircuitBoard
   - HotplateMachineCircuitboard
   - ChemApprenticeMachineCircuitboard #SL
+  - DiagnoserMachineCircuitboard # Serenity
+  - VaccinatorMachineCircuitboard # Serenity
 
 ## Dynamic
 

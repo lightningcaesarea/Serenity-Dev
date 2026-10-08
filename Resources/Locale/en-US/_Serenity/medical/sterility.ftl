@@ -20,7 +20,7 @@ reagent-desc-antibiox = A broad-spectrum antibiotic. Needs no diagnosis: it bloc
 
 # Admin command: infect
 cmd-infect-desc = Give a mob a wound infection for testing, or move an existing one to the given tier. Ignores antibiotics.
-cmd-infect-help = Usage: infect [entity uid] [tier 1-3]
+cmd-infect-help = Usage: infect [entity uid] [tier 1-3] [pathogen]
     With no entity, targets your own mob. Tier defaults to 1.
 cmd-infect-bad-entity = No such entity: {$entity}
 cmd-infect-no-target = No target: attach to a mob or pass an entity uid.
@@ -29,3 +29,5 @@ cmd-infect-no-wounds = {$entity} has no wound tracking, so it can't be infected.
 cmd-infect-done = {$entity} now has a tier {$tier} infection.
 cmd-infect-hint-entity = <entity uid>
 cmd-infect-hint-tier = <tier 1-3>
+cmd-infect-hint-pathogen = <pathogen id, random if left out>
+cmd-infect-bad-pathogen = No such pathogen: {$pathogen}

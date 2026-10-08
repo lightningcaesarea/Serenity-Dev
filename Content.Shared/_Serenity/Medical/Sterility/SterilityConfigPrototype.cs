@@ -129,6 +129,13 @@ public sealed partial class SterilityConfigPrototype : IPrototype
     public float[] EscalationSeconds = [150f, 150f, 0f];
 
     /// <summary>
+    /// Seconds the matching narrow-spectrum antibiotic has to work to bring an infection down one tier. At tier 1
+    /// it clears the infection.
+    /// </summary>
+    [DataField]
+    public float CureSecondsPerTier = 45f;
+
+    /// <summary>
     /// Poison damage per infection update at infection tier 1, 2 and 3.
     /// </summary>
     [DataField]

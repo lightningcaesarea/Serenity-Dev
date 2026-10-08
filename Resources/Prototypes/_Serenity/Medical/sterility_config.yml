@@ -24,6 +24,8 @@
   # chance (dirtiness - threshold) * surgeryInfectionChancePerDirt (at most surgeryInfectionMaxChance), on top of
   # any sepsis damage. An antibiotic prevents new infections and freezes an existing one.
   infectionTickSeconds: 5
+  # Seconds a matching narrow-spectrum antibiotic must work to lower the infection by one tier.
+  cureSecondsPerTier: 45
   surgeryInfectionThreshold: 30
   surgeryInfectionChancePerDirt: 0.01
   surgeryInfectionMaxChance: 0.9

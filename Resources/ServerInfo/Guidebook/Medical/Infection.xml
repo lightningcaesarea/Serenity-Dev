@@ -29,8 +29,20 @@ An untreated Laceration, Puncture or Burn of tier 2 or worse can become infected
 
 The patient looks flushed, then feverish, then gravely ill when examined. A health analyzer tells you if they are infected.
 
+## Strains
+Every infection is caused by one of three bacteria. Which one is chance, weighted by how it started:
+- [bold]Staphylococcus[/bold]: the common one after dirty surgery and cuts. Cured by [bold]cloxacillin[/bold].
+- [bold]Streptococcus[/bold]: likelier from stab wounds. Cured by [bold]penicillin[/bold].
+- [bold]Pseudomonas[/bold]: rare after surgery, but the usual one in burns. Cured by [bold]ciprofloxacin[/bold].
+
+The strain is not shown by either health analyzer. Find it with the [bold]blood culture analyzer[/bold]: put a container with the patient's blood in it (draw it with a syringe) and, with Diagnostics training, wait 5 seconds for a printed report. The patient must still be around to be matched to the blood.
+
+Take the report to an [bold]antibiotic synthesizer[/bold] to program it, then put in a container of Antibiox. With Chemistry training, it turns all the Antibiox in the container into the narrow-spectrum drug for that strain, unit for unit. You can build both machines from boards printed at a medical techfab.
+
+The right narrow-spectrum drug in the blood wins the infection back one tier every 45 seconds and cures it from tier 1. While it works the infection cannot get worse and its symptoms are suppressed. The wrong one does nothing. Like Antibiox, 16 units or more is an overdose that poisons the patient.
+
 ## Treating it
-[bold]Antibiotics hold an infection back but do not cure it.[/bold] The [bold]Drain Infection[/bold] surgery cures it: after an incision, lance the infected tissue with a scalpel, drain it with a hemostat, and cauterize the wound with a cautery. Draining needs a [bold]container[/bold], like a beaker, in your other hand to catch the exudate (30 units) that comes out; a full container will not do.
+[bold]Broad-spectrum antibiotics hold an infection back but do not cure it.[/bold] The [bold]Drain Infection[/bold] surgery cures it: after an incision, lance the infected tissue with a scalpel, drain it with a hemostat, and cauterize the wound with a cautery. Draining needs a [bold]container[/bold], like a beaker, in your other hand to catch the exudate (30 units) that comes out; a full container will not do.
 
 Dolls are drained the same way once their shell is off. Slimes have no flesh to lance: [bold]Purge Contaminated Jelly[/bold] siphons the infected jelly into a container with a hemostat, then coagulates the rest with a cautery.
 

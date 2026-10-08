@@ -228,7 +228,7 @@
 - type: entity
   id: VaccinatorMachineCircuitboard
   parent: BaseMachineCircuitboard
-  name: vaccinator machine board
+  name: antibiotic synthesizer machine board
   components:
   - type: Sprite
     state: medical
@@ -245,7 +245,7 @@
 - type: entity
   id: DiagnoserMachineCircuitboard
   parent: BaseMachineCircuitboard
-  name: diagnoser machine board
+  name: blood culture analyzer machine board
   components:
   - type: Sprite
     state: medical
