@@ -54,13 +54,6 @@
   category: interaction
   default: false
 
-- type: consentToggle
-  id: PublicScenes
-  name: "Public scenes"
-  description: "Allow adult scenes in areas where other crew may walk in."
-  category: interaction
-  default: false
-
 # ---- chemical and mental ----
 - type: consentToggle
   id: Aphrodisiacs
@@ -72,21 +65,7 @@
 - type: consentToggle
   id: Hypnosis
   name: "Hypnosis and suggestion"
-  description: "Allow your character to be hypnotised or made suggestible."
-  category: chemical
-  default: false
-
-- type: consentToggle
-  id: MindControl
-  name: "Mind control"
-  description: "Allow another player to directly control your character's actions."
-  category: chemical
-  default: false
-
-- type: consentToggle
-  id: MindAlteration
-  name: "Lasting mental changes"
-  description: "Allow personality or memory changes that persist for the rest of the round."
+  description: "Allow your character to be hypnotised, made suggestible or placed under another player's direction."
   category: chemical
   default: false
 
@@ -148,13 +127,6 @@
   category: body
   default: false
 
-- type: consentToggle
-  id: PermanentChanges
-  name: "Changes that outlast the round"
-  description: "Allow transformations or injuries that persist past the end of the shift."
-  category: body
-  default: false
-
 # ---- round flow ----
 - type: consentToggle
   id: MassMindswap
@@ -169,10 +141,3 @@
   description: "Allow your character to be duplicated by paradox anomalies."
   category: roundflow
   default: true
-
-- type: consentToggle
-  id: CharacterDeath
-  name: "Permanent character death"
-  description: "Allow scenes that end in your character's unrecoverable death."
-  category: roundflow
-  default: false
