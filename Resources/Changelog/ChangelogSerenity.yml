@@ -910,3 +910,20 @@ Entries:
   id: 15101
   time: '2026-10-08T12:08:52.000000+00:00'
   url: https://github.com/lightningcaesarea/Serenity-Dev/pull/151
+- author: Inny
+  changes:
+  - message: The Head of Personnel is now the Station Commander, who runs the Outpost with all station access and answers to Central Command.
+    type: Tweak
+  - message: The Assistant Manager is now the Station Officer, a Command role under the Station Commander with two slots on the Outpost.
+    type: Tweak
+  - message: Assistants are now called Spacers and start with a mini jetpack and a pilot EVA suit.
+    type: Tweak
+  - message: Station Engineers now have Atmospherics and Janitor access.
+    type: Tweak
+  - message: Added 33 departmental EVA suits and voidsuits with matching helmets, based on New Frontiers' sprites.
+    type: Add
+  - message: Disabled the Captain, Chaplain, Clown, Janitor, Librarian, Mime, Musician, Performer, Boxer, Reporter, Quartermaster, Cargo Technician, Salvage Specialist, Chief Engineer, Atmospheric Technician, Research Director, Roboticist, Law, Representative and Station AI roles.
+    type: Remove
+  id: 13501
+  time: '2026-10-08T12:24:27.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/135
