@@ -46,20 +46,7 @@
   - type: AccessReader
     access: [ [ "Medical" ] ]
 
-# Bottles of the two Antibiox inputs Chemistry makes, so a pathology lab can mix its own.
-- type: entity
-  id: ChemistryBottleAmmonia
-  suffix: ammonia
-  parent: BaseChemistryBottleFilled
-  components:
-  - type: Label
-    currentLabel: reagent-name-ammonia
-  - type: Solution
-    solution:
-      reagents:
-      - ReagentId: Ammonia
-        Quantity: 30
-
+# A bottle of diethylamine (the Antibiox input Chemistry has to synthesize); the other inputs already have bottles.
 - type: entity
   id: ChemistryBottleDiethylamine
   suffix: diethylamine
