@@ -971,3 +971,10 @@ Entries:
   id: 15601
   time: '2026-10-08T15:46:52.000000+00:00'
   url: https://github.com/lightningcaesarea/Serenity-Dev/pull/156
+- author: Inny
+  changes:
+  - message: Hide the Antagonists tab.
+    type: Tweak
+  id: 15201
+  time: '2026-10-08T16:00:47.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/152
