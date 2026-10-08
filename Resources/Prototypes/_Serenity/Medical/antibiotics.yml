@@ -80,7 +80,7 @@
         type: Update
 
 # Antibiox takes two steps: sulfur and ethanol make an inert sulfa solution, which then needs dylovene and a pinch of
-# silver (a rare element) to become the drug. Silver is the bottleneck, so Antibiox is worth keeping for real use.
+# diethylamine (itself mixed from ammonia and ethanol, and ammonia needs heating) to become the drug.
 - type: reagent
   id: SulfaSolution
   name: reagent-name-sulfa-solution
@@ -107,7 +107,7 @@
       amount: 1
     SulfaSolution:
       amount: 2
-    Silver:
+    Diethylamine:
       amount: 1
   products:
     Antibiox: 3
