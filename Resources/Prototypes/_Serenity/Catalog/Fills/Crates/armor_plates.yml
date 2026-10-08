@@ -1,0 +1,38 @@
+- type: entity
+  parent: CrateSecgear
+  id: CrateArmorPlateTrauma
+  name: trauma plate crate
+  description: Contains two trauma plates for armor vests and hardsuits. Requires Marine Police access to open.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: ArmorPlateTrauma
+          amount: 2
+
+- type: entity
+  parent: CrateSecgear
+  id: CrateArmorPlateBallistic
+  name: ballistic plate crate
+  description: Contains two ballistic plates for armor vests and hardsuits. Requires Marine Police access to open.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: ArmorPlateBallistic
+          amount: 2
+
+- type: entity
+  parent: CrateSecgear
+  id: CrateArmorPlateDiffusion
+  name: diffusion plate crate
+  description: Contains two diffusion plates for armor vests and hardsuits. Requires Marine Police access to open.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: ArmorPlateDiffusion
+          amount: 2
