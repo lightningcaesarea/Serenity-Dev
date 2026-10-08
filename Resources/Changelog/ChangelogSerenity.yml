@@ -978,3 +978,10 @@ Entries:
   id: 15201
   time: '2026-10-08T16:00:47.000000+00:00'
   url: https://github.com/lightningcaesarea/Serenity-Dev/pull/152
+- author: Inny
+  changes:
+  - message: Hide empty department headers in the job menus.
+    type: Tweak
+  id: 15301
+  time: '2026-10-08T16:33:58.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/153
