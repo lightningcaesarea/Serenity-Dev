@@ -1,0 +1,35 @@
+signal-port-name-dealer-market-sender = Dealer market
+signal-port-description-dealer-market-sender = Sends the dealer market's purchases to a mass driver and its goods collection to an intake pad.
+signal-port-name-dealer-market-receiver = Dealer market
+signal-port-description-dealer-market-receiver = Receives the dealer market terminal's link.
+
+dealer-market-title = Dealer Market
+dealer-market-balance = Your account: { $balance } Federal Bills
+dealer-market-status = Intake pad: { $intake }. Mass driver: { $outlet }. Orders on the way: { $incoming }.
+dealer-market-linked = linked
+dealer-market-not-linked = not linked
+dealer-market-contracts = Contracts for you
+dealer-market-no-contracts = Nothing for you right now. The dealer will think of something.
+dealer-market-role-contract = { $title } (for your trade)
+dealer-market-want = { $name }: { $onPad } of { $wanted } on the pad
+dealer-market-contract-footer = Pays { $payout } Federal Bills. Open for about { $minutes } more minutes.
+dealer-market-fulfil = Hand over
+dealer-market-decline = Turn down
+dealer-market-stock = For sale (delivered by mass driver)
+dealer-market-buy = Buy for { $price }
+dealer-market-sell = Sell outright
+dealer-market-sell-blurb = Takes what it wants off the pad for { $rate }% of its worth.
+dealer-market-sell-button = Sell for { $payout }
+dealer-market-pad = On the intake pad
+dealer-market-pad-empty = Nothing on the pad.
+
+dealer-market-delivered = A delivery of { $item } arrives.
+dealer-market-contract-gone = That contract has run out.
+dealer-market-contract-short = The pad doesn't have everything that contract asks for.
+dealer-market-contract-paid = { $dealer } takes the goods and pays { $payout } Federal Bills.
+dealer-market-no-outlet = There is no mass driver linked to take the delivery.
+dealer-market-backed-up = The mass driver is backed up with orders.
+dealer-market-cant-afford = You can't afford that.
+dealer-market-ordered = { $dealer } sends the goods out. They will arrive by mass driver shortly.
+dealer-market-nothing-to-sell = { $dealer } doesn't want anything that is on the pad.
+dealer-market-sold = { $dealer } takes the goods and pays { $payout } Federal Bills.

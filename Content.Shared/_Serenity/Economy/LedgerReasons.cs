@@ -35,4 +35,14 @@ public static class LedgerReasons
     public static string TerminalFee(string requestId) => $"terminal-fee:{requestId}";
 
     public static string TerminalRefund(string requestId) => $"terminal-refund:{requestId}";
+
+    /// <summary>A dealer-market contract paid out; <paramref name="dealer"/> is the dealer's prototype id.</summary>
+    public static string DealerContract(string dealer) => $"dealer-contract:{dealer}";
+
+    /// <summary>Goods sold outright to a dealer off the intake pad.</summary>
+    public static string DealerSale(string dealer) => $"dealer-sale:{dealer}";
+
+    /// <summary>Goods bought from a dealer.</summary>
+    public static string DealerPurchase(string dealer) => $"dealer-purchase:{dealer}";
+
 }

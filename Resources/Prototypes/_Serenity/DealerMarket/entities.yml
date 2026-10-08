@@ -1,0 +1,89 @@
+- type: entity
+  parent: BaseComputerAiAccess
+  id: ComputerDealerMarket
+  name: dealer market terminal
+  description: A battered terminal that talks to a handful of dealers who will buy your goods and sell you theirs. Link it to an intake pad and a mass driver.
+  components:
+  - type: DealerMarketConsole
+  - type: ActivatableUI
+    key: enum.DealerMarketUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.DealerMarketUiKey.Key:
+        type: DealerMarketBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: request
+    - map: ["computerLayerKeys"]
+      state: tech_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+  - type: Computer
+    board: DealerMarketComputerCircuitboard
+  - type: PointLight
+    radius: 2.5
+    energy: 1.5
+    color: "#c9892e"
+    castShadows: false
+  - type: DeviceList
+  - type: DeviceNetwork
+    deviceNetId: Wired
+  - type: DeviceLinkSource
+    range: 5
+    ports:
+      - DealerMarketSender
+  - type: ItemSlots
+  - type: ContainerContainer
+    containers:
+      board: !type:Container
+      pai_slot: !type:ContainerSlot
+
+- type: entity
+  parent: BaseComputerCircuitboard
+  id: DealerMarketComputerCircuitboard
+  name: dealer market computer board
+  description: A computer printed circuit board for a dealer market terminal.
+  components:
+  - type: Sprite
+    state: cpu_supply
+  - type: ComputerBoard
+    prototype: ComputerDealerMarket
+  - type: StaticPrice
+    price: 200
+
+- type: entity
+  id: DealerIntakePad
+  name: dealer intake pad
+  description: A scuffed steel plate that goods land on, whether a mass driver threw them or somebody dragged them there. Nothing leaves it until a dealer is asked to take it.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Transform
+    anchored: true
+  - type: Sprite
+    sprite: _Serenity/Structures/Machines/dealer_intake.rsi
+    drawdepth: FloorObjects
+    layers:
+    - state: pad
+  - type: DealerIntake
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: BasicDevice
+  - type: DeviceList
+  - type: DeviceLinkSink
+    ports:
+      - DealerMarketReceiver
+  - type: Construction
+    graph: DealerIntakePad
+    node: pad
+  - type: StaticPrice
+    price: 100
