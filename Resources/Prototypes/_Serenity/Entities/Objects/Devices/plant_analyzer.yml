@@ -6,12 +6,8 @@
   components:
   - type: Sprite
     sprite: _Serenity/Objects/Devices/plant_analyzer.rsi
-    layers:
-    - state: icon
-    - state: analyzer
-      shader: unshaded
+    state: icon
   - type: Item
-    heldPrefix: analyzer
     size: Small
     storedRotation: -90
   - type: PlantAnalyzer

@@ -1,14 +1,14 @@
 {
     "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken from S.P.L.U.R.T-tg at https://github.com/SPLURT-Station/S.P.L.U.R.T-tg/blob/df3df27e1ddad7aa346affcd82aea3ba143c21a6/icons/obj/devices/scanner.dmi, https://github.com/SPLURT-Station/S.P.L.U.R.T-tg/blob/544b73e13a4b4dc32b0dacdfe4f5772660bc3e1b/icons/mob/inhands/equipment/tools_lefthand.dmi, https://github.com/SPLURT-Station/S.P.L.U.R.T-tg/blob/544b73e13a4b4dc32b0dacdfe4f5772660bc3e1b/icons/mob/inhands/equipment/tools_righthand.dmi",
     "size": {
         "x": 32,
         "y": 32
     },
-    "license": "CC-BY-SA-3.0",
-    "copyright": "Taken from tgstation at commit https://github.com/tgstation/tgstation/commit/f07f847706d85b7cfa4b398e5175732212b69a63 and recolored, in-hand sprites by SeamLesss (github); recolored green for the plant analyzer",
     "states": [
         {
-            "name": "analyzer",
+            "name": "icon",
             "delays": [
                 [
                     0.1,
@@ -22,20 +22,17 @@
                     0.1,
                     0.1,
                     0.1,
-                    0.5
+                    0.1
                 ]
             ]
         },
         {
-            "name": "analyzer-inhand-left",
+            "name": "inhand-left",
             "directions": 4
         },
         {
-            "name": "analyzer-inhand-right",
+            "name": "inhand-right",
             "directions": 4
-        },
-        {
-            "name": "icon"
         }
     ]
 }
