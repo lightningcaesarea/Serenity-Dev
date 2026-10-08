@@ -876,3 +876,10 @@ Entries:
   id: 14501
   time: '2026-10-08T11:46:18.000000+00:00'
   url: https://github.com/lightningcaesarea/Serenity-Dev/pull/145
+- author: Inny
+  changes:
+  - message: Tokamaking it.
+    type: Tweak
+  id: 15001
+  time: '2026-10-08T11:54:46.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/150
