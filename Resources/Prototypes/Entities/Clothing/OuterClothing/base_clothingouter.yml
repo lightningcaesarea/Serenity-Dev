@@ -175,7 +175,7 @@
 
 - type: entity
   abstract: true
-  parent: [ClothingOuterBase, GeigerCounterClothing, AllowSuitStorageClothing]
+  parent: [ClothingOuterBase, GeigerCounterClothing, AllowSuitStorageClothing, ClothingArmorPlateCarrier] # Serenity: armor plates
   id: ClothingOuterHardsuitBase
   name: base hardsuit
   components:

@@ -72,6 +72,10 @@
   parent: [ ClothingOuterArmorBase, ClothingOuterStorageBase ]
   id: ClothingOuterArmorHoS
   components:
+  - type: Storage # Serenity: keep the pocket grid instead of the armor plate compartment from ClothingArmorPlateCarrier
+    grid:
+    - 0,0,2,1
+    maxItemSize: Small
   - type: Pierceable
     level: Metal
   - type: Armor
@@ -89,6 +93,10 @@
   parent: [ ClothingOuterArmorBase, ClothingOuterStorageBase ]
   id: ClothingOuterArmorWarden
   components:
+  - type: Storage # Serenity: keep the pocket grid instead of the armor plate compartment from ClothingArmorPlateCarrier
+    grid:
+    - 0,0,2,1
+    maxItemSize: Small
   - type: Pierceable
     level: Metal
   - type: Armor

@@ -1,0 +1,31 @@
+# The kinetic plate is not sold.
+
+- type: cargoProduct
+  id: SecurityArmorPlateTrauma
+  icon:
+    sprite: _Mono/Clothing/ArmorPlate/armor_plates.rsi
+    state: blunt_slash
+  product: CrateArmorPlateTrauma
+  cost: 3000
+  category: cargoproduct-category-name-security
+  group: market
+
+- type: cargoProduct
+  id: SecurityArmorPlateBallistic
+  icon:
+    sprite: _Mono/Clothing/ArmorPlate/armor_plates.rsi
+    state: pierce
+  product: CrateArmorPlateBallistic
+  cost: 3000
+  category: cargoproduct-category-name-security
+  group: market
+
+- type: cargoProduct
+  id: SecurityArmorPlateDiffusion
+  icon:
+    sprite: _Mono/Clothing/ArmorPlate/armor_plates.rsi
+    state: heat
+  product: CrateArmorPlateDiffusion
+  cost: 3000
+  category: cargoproduct-category-name-security
+  group: market

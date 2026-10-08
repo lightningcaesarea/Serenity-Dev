@@ -1,0 +1,23 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-4.0",
+    "copyright": "Made by Onezero0, edited by tonotom1. Taken from Monolith (https://github.com/Monolith-Station/Monolith) at commit 4543e55e.",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "blunt_slash"
+        },
+        {
+            "name": "pierce"
+        },
+        {
+            "name": "heat"
+        },
+        {
+            "name": "speed"
+        }
+    ]
+}
