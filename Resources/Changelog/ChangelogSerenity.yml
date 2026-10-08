@@ -927,3 +927,10 @@ Entries:
   id: 13501
   time: '2026-10-08T12:24:27.000000+00:00'
   url: https://github.com/lightningcaesarea/Serenity-Dev/pull/135
+- author: Inny
+  changes:
+  - message: The Sector Command wardrobe (SectorDrobe) now sells the new Sector Command uniforms, coats, armor, helmets, hats, capes and accessories.
+    type: Add
+  id: 15801
+  time: '2026-10-08T12:36:30.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/158
