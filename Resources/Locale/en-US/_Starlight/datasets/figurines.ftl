@@ -6,7 +6,7 @@ figurines-assistant-5 = You need help?
 
 figurines-roboticist-1 = State laws!
 figurines-roboticist-2 = AI MALF!
-figurines-roboticist-3 = Where did all the plasma go?
+figurines-roboticist-3 = Where did all the phoron go?
 figurines-roboticist-4 = Surgery form? What for?
 figurines-roboticist-5 = No, you cannot have my welding goggles.
 figurines-roboticist-6 = Why do you eggheads keep using all the materials?

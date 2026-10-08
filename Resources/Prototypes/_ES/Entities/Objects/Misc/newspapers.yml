@@ -138,7 +138,7 @@
   parent: BaseNewspaper
   id: NewspaperMining3
   name: Galaxy NOW - January 9th, 2526 #SL Edit
-  description: "A paperback newspaper. The headline reads: 'New Plasma Deposites Discovered in Asteroid Belt XLR-2781. Bidding War Begins'" #SL Edit
+  description: "A paperback newspaper. The headline reads: 'New Phoron Deposites Discovered in Asteroid Belt XLR-2781. Bidding War Begins'" #SL Edit
 
 - type: entity
   parent: BaseNewspaper

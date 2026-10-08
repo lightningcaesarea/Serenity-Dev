@@ -15,8 +15,7 @@
     children:
       - !type:NestedSelector
         tableId: ShitEventsTable
-      - !type:NestedSelector
-        tableId: DerelictBorgEventTable
+      # Serenity: DerelictBorgEventTable removed, no derelict borg ghost roles.
       - id: IonStormPlus
 
 - type: entity
@@ -262,7 +261,4 @@
     children:
       - !type:NestedSelector
         tableId: UnknownShuttlesFriendlyTable
-      - !type:NestedSelector
-        tableId: UnknownShuttlesFreelanceTable
-      - !type:NestedSelector
-        tableId: UnknownShuttlesHostileTable
+      # Serenity: freelance and hostile shuttle tables removed, no syndicate shuttles or lone ops.

@@ -13,7 +13,7 @@ namespace Content.Server._Serenity.Welcome;
 /// Greets players with little playtime when they spawn: a private welcome in their chat, and a radio call from the
 /// station so others know someone new has arrived and can help them out.
 /// </summary>
-public sealed class NewPlayerWelcomeSystem : EntitySystem
+public sealed partial class NewPlayerWelcomeSystem : EntitySystem
 {
     [Dependency] private IChatManager _chat = default!;
     [Dependency] private IConfigurationManager _cfg = default!;

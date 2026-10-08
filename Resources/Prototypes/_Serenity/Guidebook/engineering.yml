@@ -1,0 +1,4 @@
+- type: guideEntry
+  id: Tokamak
+  name: guide-entry-tokamak
+  text: "/ServerInfo/Guidebook/Engineering/_Serenity/Tokamak.xml"

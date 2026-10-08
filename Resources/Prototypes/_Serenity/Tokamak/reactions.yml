@@ -1,0 +1,93 @@
+# Fusion reactions for the tokamak. Temperatures are in kelvin, rates in units per second.
+# Heat is added to the plasma per unit consumed, so negative heat means the reaction soaks energy up.
+
+- type: fusionReaction
+  id: DeuteriumTritium
+  reactantA: deuterium
+  reactantB: tritium
+  minTemperature: 100000
+  rate: 2
+  heatPerUnit: 5000
+  radiation: 0.15
+  instability: 0.3
+  products:
+    helium4: 1
+
+- type: fusionReaction
+  id: DeuteriumDeuterium
+  reactantA: deuterium
+  reactantB: deuterium
+  minTemperature: 400000
+  rate: 1.5
+  heatPerUnit: 6000
+  radiation: 0.1
+  instability: 0.5
+  products:
+    helium3: 1
+
+- type: fusionReaction
+  id: DeuteriumHelium3
+  reactantA: deuterium
+  reactantB: helium3
+  minTemperature: 800000
+  rate: 1.5
+  heatPerUnit: 12000
+  radiation: 0.02
+  instability: 0.6
+  products:
+    helium4: 1
+
+# Breeds tritium from lithium, at the cost of some of the plasma's heat.
+- type: fusionReaction
+  id: LithiumDeuterium
+  reactantA: lithium
+  reactantB: deuterium
+  minTemperature: 250000
+  rate: 1
+  heatPerUnit: -1000
+  radiation: 0.1
+  instability: 0.4
+  priority: 1
+  products:
+    tritium: 1
+    helium4: 1
+
+# Clean and powerful, but needs plasma hotter than the field is comfortable with.
+- type: fusionReaction
+  id: HydrogenBoron
+  reactantA: hydrogen
+  reactantB: boron
+  minTemperature: 2500000
+  rate: 2
+  heatPerUnit: 20000
+  radiation: 0.01
+  instability: 1.2
+  products:
+    helium4: 3
+
+# Transmutation. Absurdly hot, absurdly unstable, and the reason to build a harvester.
+- type: fusionReaction
+  id: IronHelium4
+  reactantA: iron
+  reactantB: helium4
+  minTemperature: 5000000
+  rate: 1
+  heatPerUnit: -20000
+  radiation: 1
+  instability: 3
+  priority: 10
+  products:
+    silver: 1
+
+- type: fusionReaction
+  id: SilverHelium4
+  reactantA: silver
+  reactantB: helium4
+  minTemperature: 8000000
+  rate: 1
+  heatPerUnit: -30000
+  radiation: 1.5
+  instability: 4
+  priority: 11
+  products:
+    gold: 1

@@ -29,7 +29,7 @@
   id: Phoronic
   parent: BaseStructure
   name: phoronic cascade
-  description: A huge structure made of pure plasma. Dark energy roils and bursts within it.
+  description: A huge structure made of pure phoron. Dark energy roils and bursts within it.
   components:
     - type: StationAnchor
     - type: Transform

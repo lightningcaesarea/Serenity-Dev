@@ -853,3 +853,26 @@ Entries:
   id: 13701
   time: '2026-10-07T22:10:01.000000+00:00'
   url: https://github.com/lightningcaesarea/Serenity-Dev/pull/137
+- author: SERENITY
+  changes:
+  - message: Plasma is now called Phoron in item, gas, reagent and material names and descriptions.
+    type: Tweak
+  id: 14901
+  time: '2026-10-08T11:27:45.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/149
+- author: Serenity
+  changes:
+  - message: Antagonist round modes no longer come up in Secret or round votes.
+    type: Remove
+  - message: Removed side antagonists and midround antagonist events.
+    type: Remove
+  id: 14201
+  time: '2026-10-08T11:46:06.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/142
+- author: Inny
+  changes:
+  - message: Ship saving.
+    type: Tweak
+  id: 14501
+  time: '2026-10-08T11:46:18.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/145

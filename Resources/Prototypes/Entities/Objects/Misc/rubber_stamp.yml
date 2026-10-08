@@ -201,7 +201,7 @@
   name: research director's rubber stamp
   parent: [RubberStampBase, BaseCommandContraband]
   id: RubberStampRd
-  description: A rubber stamp for stamping important documents. Covered in ash and plasma residue. # Starlight
+  description: A rubber stamp for stamping important documents. Covered in ash and phoron residue. # Starlight
   categories: [ DoNotMap ]
   components:
   - type: Stamp

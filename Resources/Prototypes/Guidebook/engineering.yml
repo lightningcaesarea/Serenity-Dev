@@ -294,6 +294,7 @@
     - InspectingPower
     - PowerStorage
     - Ramping
+    - Tokamak
     - VoltageNetworks
 
 - type: guideEntry

@@ -62,8 +62,8 @@
 - type: entity
   parent: WeirdEggBase
   id: WeirdEggPlasma
-  name: plasma egg
-  description: A plasma egg! # Starlight
+  name: phoron egg
+  description: A phoron egg! # Starlight
   components:
   - type: Sprite
     sprite: _Funkystation/Objects/XenoArch/weirdeggs.rsi

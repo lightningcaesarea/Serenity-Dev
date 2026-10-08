@@ -1,0 +1,47 @@
+# Serenity Adventure: the default round mode. Modelled on Frontier Station 14's adventure mode (and Hardlight's
+# take on it): no antagonists, a calm event scheduler, and a round-end list of what each character earned.
+# Points of interest and sector events run in every mode on their own (serenity.poi.enabled,
+# serenity.sector_events.enabled), so they are not listed here.
+
+- type: gamePreset
+  id: SerenityAdventure
+  alias:
+  - adventure
+  - serenityadventure
+  name: serenity-adventure-title
+  description: serenity-adventure-description
+  showInVote: true
+  rules:
+  - SerenityAdventure
+  - SerenityCalmEventScheduler
+  - BasicRoundstartVariation
+
+- type: entity
+  id: SerenityAdventure
+  parent: BaseGameRule
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: SerenityAdventureRule
+
+# Frontier's calm event list, built from the events Serenity already has: no antagonists, meteors or
+# station-wide disasters.
+- type: entity
+  id: SerenityCalmEventScheduler
+  parent: BaseGameRule
+  components:
+  - type: BasicStationEventScheduler
+    scheduledGameRules: !type:NestedSelector
+      tableId: SerenityCalmEventsTable
+
+- type: entityTable
+  id: SerenityCalmEventsTable
+  table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
+    children:
+    - id: BreakerFlip
+    - id: IonStorm
+    - id: PowerGridCheck
+    - id: RandomSentience
+    - id: SolarFlare
+    - id: VentClog
+    - !type:NestedSelector
+      tableId: CalmPestEventsTable

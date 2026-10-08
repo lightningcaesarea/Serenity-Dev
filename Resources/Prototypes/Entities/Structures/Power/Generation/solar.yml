@@ -60,8 +60,8 @@
 - type: entity
   id: SolarPanelPlasma
   parent: SolarPanelBasePhysSprite
-  name: solar panel plasma
-  description: A few sheets of plasma glass that generate electricity when hit by photons.
+  name: solar panel phoron
+  description: A few sheets of phoron glass that generate electricity when hit by photons.
   components:
   - type: PowerSupplier
     supplyRampTolerance: 500
@@ -215,8 +215,8 @@
 - type: entity
   id: SolarPanelPlasmaBroken
   parent: SolarPanelBasePhysSprite
-  name: plasma solar panel
-  description: A broken plasma solar panel.
+  name: phoron solar panel
+  description: A broken phoron solar panel.
   suffix: Broken
   components:
   - type: Sprite

@@ -81,7 +81,7 @@
 - type: entity
   id: PortableGeneratorPacmanShuttle
   parent: PortableGeneratorPacman
-  suffix: Plasma, 5 kW, Ship
+  suffix: Phoron, 5 kW, Ship
   components:
     - type: Transform
       anchored: true
@@ -152,10 +152,10 @@
       mode: 8
 
 - type: entity
-  name: Atmos Fix Plasma Marker
+  name: Atmos Fix Phoron Marker
   suffix: Shuttle
   id: AtmosFixShuttlePlasmaMarker
-  description: "Plasma at lower presure"
+  description: "Phoron at lower presure"
   parent: MarkerBase
   components:
     - type: Sprite
