@@ -46,12 +46,68 @@
   - type: AccessReader
     access: [ [ "Medical" ] ]
 
+# Bottles of the two Antibiox inputs Chemistry makes, so a pathology lab can mix its own.
+- type: entity
+  id: ChemistryBottleAmmonia
+  suffix: ammonia
+  parent: BaseChemistryBottleFilled
+  components:
+  - type: Label
+    currentLabel: reagent-name-ammonia
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Ammonia
+        Quantity: 30
+
+- type: entity
+  id: ChemistryBottleDiethylamine
+  suffix: diethylamine
+  parent: BaseChemistryBottleFilled
+  components:
+  - type: Label
+    currentLabel: reagent-name-diethylamine
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Diethylamine
+        Quantity: 30
+
+# A pouch of three Antibiox auto-injectors.
+- type: entity
+  id: PenPackAntibiox
+  parent: PenPackMedical
+  name: antibiox auto-injector pouch
+  suffix: Filled
+  description: A pouch holding a few antibiox auto-injectors, for holding an infection at bay until it can be treated.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: AntibioxAutoInjector
+        amount: 3
+
 - type: entityTable
   id: LockerFillPathology
   table: !type:AllSelector
     children:
     - id: BloodCultureAnalyzerFlatpack
     - id: AntibioticSynthesizerFlatpack
+    - id: BoxSyringe
+    - id: BoxBeaker
+    - id: Paper
+      amount: 4
+    - id: Pen
+    - id: ClothingHandsGlovesLatex
+    - id: ClothingMaskSterile
+    - id: ClothingOuterBioVirology
+    - id: ClothingHeadHatHoodBioVirology
+    - id: ChemistryBottleDylovene
+    - id: ChemistryBottleSulfur
+    - id: ChemistryBottleEthanol
+    - id: ChemistryBottleAmmonia
+    - id: ChemistryBottleDiethylamine
+    - id: PenPackAntibiox
 
 - type: entity
   id: LockerPathologyFilled
