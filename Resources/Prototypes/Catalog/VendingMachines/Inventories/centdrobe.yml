@@ -23,6 +23,55 @@
     ClothingNeckCloakCentcom: 3
     ClothingBackpackSatchelCentcomm: 3
     ClothingOuterCoatWardenCentcomm: 3
+    # Serenity: Sector Command gear
+    ClothingUniformJumpsuitSectorCommandHighCommand: 3
+    ClothingUniformJumpsuitSectorCommandHighCommandCasual: 3
+    ClothingUniformJumpsuitSectorCommandAdjutantFormal: 3
+    ClothingUniformJumpsuitSectorCommandAdjutantCasual: 3
+    ClothingUniformJumpsuitSectorCommandTrooperFormal: 3
+    ClothingUniformJumpsuitSectorCommandCombat: 3
+    ClothingUniformJumpsuitSectorCommandAttache: 3
+    ClothingOuterCoatSectorCommandHighCommand: 3
+    ClothingOuterCoatSectorCommandParade: 3
+    ClothingOuterCoatSectorCommandAdjutant: 3
+    ClothingOuterCoatSectorCommandMagistrate: 3
+    ClothingOuterCoatSectorCommandInspector: 3
+    ClothingOuterArmorSectorCommandCommand: 3
+    ClothingOuterArmorSectorCommandHonorGuard: 3
+    ClothingOuterArmorSectorCommand: 3
+    ClothingOuterArmorSectorCommandTrooper: 3
+    ClothingOuterHardsuitSectorCommandEVA: 3
+    ClothingHeadHelmetSectorCommandEVA: 3
+    ClothingHeadHelmetSectorCommandCommand: 3
+    ClothingHeadHelmetSectorCommandHonorGuard: 3
+    ClothingHeadHelmetSectorCommand: 3
+    ClothingHeadHelmetSectorCommandTrooper: 3
+    ClothingHeadHelmetSectorCommandInspector: 3
+    ClothingHeadHatSectorCommandBicorne: 3
+    ClothingHeadHatSectorCommandPeakedCap: 3
+    ClothingHeadHatSectorCommandBeret: 3
+    ClothingHeadHatSectorCommandWideBrim: 3
+    ClothingNeckCloakSectorCommandHighCommand: 3
+    ClothingNeckCloakSectorCommandAdjutant: 3
+    ClothingNeckCloakSectorCommandCapelet: 3
+    ClothingNeckCloakSectorCommandMantle: 3
+    ClothingNeckCloakSectorCommandInspector: 3
+    ClothingNeckSectorCommandBow: 3
+    ClothingNeckSectorCommandBowSapphire: 3
+    ClothingNeckSectorCommandBowEmerald: 3
+    ClothingNeckSectorCommandBowTopaz: 3
+    ClothingMaskGasSectorCommand: 3
+    ClothingMaskSectorCommandHighCommand: 3
+    ClothingMaskSectorCommandAdjutant: 3
+    ClothingHandsGlovesSectorCommandHighCommand: 3
+    ClothingHandsGlovesSectorCommandAdjutant: 3
+    ClothingHandsGlovesSectorCommandLong: 3
+    ClothingShoesBootsSectorCommandJack: 3
+    ClothingShoesBootsSectorCommandLong: 3
+    ClothingShoesBootsSectorCommandDress: 3
+    ClothingShoesSectorCommandLaceup: 3
+    ClothingBackpackSectorCommand: 3
+    ClothingBackpackSatchelSectorCommand: 3
   contrabandInventory:
     ToyFigurineCaptain: 1
     ToyFigurineHeadOfPersonnel: 1

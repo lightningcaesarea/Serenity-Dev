@@ -2251,8 +2251,8 @@
 - type: entity
   parent: VendingMachine
   id: VendingMachineCentDrobe
-  name: CentDrobe
-  description: A one-of-a-kind vending machine for all your centcomm aesthetic needs!
+  name: SectorDrobe # Serenity: Sector Command
+  description: A one-of-a-kind vending machine for all your Sector Command aesthetic needs!
   components:
   - type: VendingMachine
     pack: CentDrobeInventory
