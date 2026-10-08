@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from Aurora.3 at 3cbfeffd8806401ff53c0b3222c11820d13b99a0 (icons/obj/machinery/fusion.dmi)",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "rod"
+    }
+  ]
+}

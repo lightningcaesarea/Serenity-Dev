@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from Aurora.3 at 3cbfeffd8806401ff53c0b3222c11820d13b99a0 (icons/obj/machinery/fusion_core.dmi)",
+  "size": {
+    "x": 32,
+    "y": 48
+  },
+  "states": [
+    {
+      "name": "off"
+    },
+    {
+      "name": "on",
+      "delays": [
+        [
+          0.2,
+          0.3,
+          0.2,
+          0.3
+        ]
+      ]
+    }
+  ]
+}
