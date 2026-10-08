@@ -1006,3 +1006,10 @@ Entries:
   id: 16501
   time: '2026-10-08T23:32:44.000000+00:00'
   url: https://github.com/lightningcaesarea/Serenity-Dev/pull/165
+- author: Serenity
+  changes:
+  - message: ID cards now have new hand-drawn job icons that fill the card's icon square.
+    type: Tweak
+  id: 16401
+  time: '2026-10-08T23:34:41.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/164
