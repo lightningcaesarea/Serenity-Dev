@@ -25,7 +25,7 @@
 - type: entity
   parent: [ IDCardStandard, BaseCentcommContraband ]
   id: CentcomIDCardOperator
-  name: CentComm operator ID card
+  name: Sector Command operator ID card
   components:
   - type: Sprite
     sprite: _Starlight/Objects/Misc/id_cards.rsi
@@ -545,7 +545,7 @@
 - type: entity
   parent: IDCardStandard
   id: CentCommIDCardServiceWorker
-  name: CentComm service worker ID card
+  name: Sector Command service worker ID card
   components:
   - type: Sprite
     sprite: _Starlight/Objects/Misc/id_cards.rsi
@@ -553,10 +553,10 @@
     - state: centcom
     - sprite: *id-rsi
       state: stripe_top
-      color: "#cfa500"
+      color: "#cf7c00"
     - sprite: *id-rsi
       state: stripe_bottom
-      color: "#876c00"
+      color: "#875100"
     - sprite: *starlight-icon-rsi
       offset: *icon-offset
       state: CCServiceWorker
@@ -571,7 +571,7 @@
 - type: entity
   parent: IDCardStandard
   id: CentCommIDCardChef
-  name: CentComm chef ID card
+  name: Sector Command chef ID card
   components:
   - type: Sprite
     sprite: _Starlight/Objects/Misc/id_cards.rsi
@@ -579,10 +579,10 @@
     - state: centcom
     - sprite: *id-rsi
       state: stripe_top
-      color: "#cfa500"
+      color: "#cf7c00"
     - sprite: *id-rsi
       state: stripe_bottom
-      color: "#876c00"
+      color: "#875100"
     - sprite: *starlight-icon-rsi
       offset: *icon-offset
       state: CCChef
@@ -597,7 +597,7 @@
 - type: entity
   parent: IDCardStandard
   id: CentCommIDCardBartender
-  name: CentComm bartender ID card
+  name: Sector Command bartender ID card
   components:
   - type: Sprite
     sprite: _Starlight/Objects/Misc/id_cards.rsi
@@ -605,10 +605,10 @@
     - state: centcom
     - sprite: *id-rsi
       state: stripe_top
-      color: "#cfa500"
+      color: "#cf7c00"
     - sprite: *id-rsi
       state: stripe_bottom
-      color: "#876c00"
+      color: "#875100"
     - sprite: *starlight-icon-rsi
       offset: *icon-offset
       state: CCBartender
@@ -623,7 +623,7 @@
 - type: entity
   parent: IDCardStandard
   id: CentCommIDCardJanitor
-  name: CentComm janitor ID card
+  name: Sector Command janitor ID card
   components:
   - type: Sprite
     sprite: _Starlight/Objects/Misc/id_cards.rsi
@@ -631,10 +631,10 @@
     - state: centcom
     - sprite: *id-rsi
       state: stripe_top
-      color: "#cfa500"
+      color: "#cf7c00"
     - sprite: *id-rsi
       state: stripe_bottom
-      color: "#876c00"
+      color: "#875100"
     - sprite: *starlight-icon-rsi
       offset: *icon-offset
       state: CCJanitor
@@ -838,10 +838,10 @@
     - state: centcom
     - sprite: *id-rsi
       state: stripe_top
-      color: "#cfa500"
+      color: "#cf7c00"
     - sprite: *id-rsi
       state: stripe_bottom
-      color: "#876c00"
+      color: "#875100"
     - sprite: *starlight-icon-rsi
       offset: *icon-offset
       state: CentComm

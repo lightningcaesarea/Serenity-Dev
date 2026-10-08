@@ -261,8 +261,8 @@
   parent: BoxFolderBaseEmpty
   id: BoxFolderCentComEmpty
   categories: [ DoNotMap ]
-  name: CentComm folder
-  description: CentComm's miserable little pile of secrets!
+  name: Sector Command folder
+  description: Sector Command's miserable little pile of secrets!
   components:
   - type: Sprite
     layers:
@@ -384,8 +384,8 @@
 - type: entity
   parent: BoxFolderClipboardEmpty
   id: BoxFolderCentComClipboardEmpty
-  name: CentComm clipboard
-  description: A luxurious clipboard upholstered with green velvet. Often seen carried by CentComm officials, seldom seen actually used.
+  name: Sector Command clipboard
+  description: A luxurious clipboard upholstered with charcoal velvet. Often seen carried by Sector Command officials, seldom seen actually used.
   components:
   - type: Sprite
     sprite: Objects/Misc/cc-clipboard.rsi
@@ -403,7 +403,7 @@
   - type: Clothing
     sprite: Objects/Misc/cc-clipboard.rsi
   - type: PhysicalComposition
-    materialComposition: # same composition as regular clipboard + bit of cloth because it's "upholstered with green velvet"
+    materialComposition: # same composition as regular clipboard + bit of cloth because it's "upholstered with charcoal velvet"
       Wood: 50
       Steel: 25
       Cloth: 25
