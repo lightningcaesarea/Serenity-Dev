@@ -867,6 +867,7 @@
   loadouts:
   - AssistantManagerWintercoat
   - StationOfficerWintercoat
+  - StationOfficerCarapace
 
 - type: loadoutGroup
   id: AssistantManagerShoes
