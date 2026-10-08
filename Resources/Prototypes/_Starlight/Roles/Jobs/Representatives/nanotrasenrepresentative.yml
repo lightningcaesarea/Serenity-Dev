@@ -3,6 +3,7 @@
   name: job-name-ntrep
   description: job-description-ntrep
   playTimeTracker: JobNanoTrasenRepresentative
+  setPreference: false # Serenity: role disabled
   requirements:
     - !type:DepartmentTimeRequirement
       department: Command

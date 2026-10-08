@@ -3,6 +3,7 @@
   name: job-name-captain
   description: job-description-captain
   playTimeTracker: JobCaptain
+  setPreference: false # Serenity: role disabled, the Station Commander runs the station
   requirements:
     - !type:DepartmentTimeRequirement
       department: Engineering

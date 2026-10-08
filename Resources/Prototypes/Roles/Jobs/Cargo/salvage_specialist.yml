@@ -4,6 +4,7 @@
   description: job-description-salvagespecSL
   rules: job-rules-itg-aligned #Starlight
   playTimeTracker: JobSalvageSpecialist
+  setPreference: false # Serenity: role disabled
   requirements:
     - !type:DepartmentTimeRequirement
       department: Cargo

@@ -5,6 +5,7 @@
   name: job-name-station-ai
   description: job-description-station-ai
   playTimeTracker: JobStationAi
+  setPreference: false # Serenity: role disabled
   requirements:
   - !type:RoleTimeRequirement
     role: JobBorg

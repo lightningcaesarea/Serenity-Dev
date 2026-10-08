@@ -3,6 +3,7 @@
   name: job-name-janitor
   description: job-description-janitor
   playTimeTracker: JobJanitor
+  setPreference: false # Serenity: role disabled
   startingGear: JanitorGear
   icon: "JobIconJanitor"
   supervisors: job-supervisors-hop
