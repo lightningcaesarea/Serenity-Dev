@@ -31,3 +31,6 @@ cmd-infect-hint-entity = <entity uid>
 cmd-infect-hint-tier = <tier 1-3>
 cmd-infect-hint-pathogen = <pathogen id, random if left out>
 cmd-infect-bad-pathogen = No such pathogen: {$pathogen}
+
+reagent-name-sulfa-solution = sulfa solution
+reagent-desc-sulfa-solution = A pale, inert intermediate made from sulfur and ethanol. Does nothing on its own, but mixed with dylovene and a little silver it becomes antibiox.
