@@ -93,7 +93,7 @@
   id: ShuttleGunApollo
   parent: ShuttleGunBase
   name: Apollo Heavy Laser Cannon
-  description: A precision ship-to-ship plasma cannon. Fires focused plasma bolts that deal concentrated heat damage with a small detonation radius — ideal for disabling enemy systems without collateral devastation. Sustained fire possible while power cells remain. [Hardpoint Class]
+  description: A precision ship-to-ship phoron cannon. Fires focused phoron bolts that deal concentrated heat damage with a small detonation radius — ideal for disabling enemy systems without collateral devastation. Sustained fire possible while power cells remain. [Hardpoint Class]
   components:
   - type: Sprite
     sprite: _Starlight/Objects/Weapons/Guns/Shuttleguns/Apollo.rsi
@@ -919,7 +919,7 @@
   id: ShuttleGunDynamre
   parent: ShuttleGunBase
   name: AMX-9 DYNAMRE Dual Turbolaser
-  description: A twin-barreled plasma cannon built for violent area destruction. Each trigger pull launches two massive plasma blobs simultaneously — each detonating in a catastrophic explosion that obliterates armour, crew, and structure alike. Significantly heavier than the Apollo and requires an Omega-capacity power cage. [Capital Class]
+  description: A twin-barreled phoron cannon built for violent area destruction. Each trigger pull launches two massive phoron blobs simultaneously — each detonating in a catastrophic explosion that obliterates armour, crew, and structure alike. Significantly heavier than the Apollo and requires an Omega-capacity power cage. [Capital Class]
   components:
   - type: Sprite
     sprite: _Starlight/Objects/Weapons/Guns/Shuttleguns/Dynamre.rsi

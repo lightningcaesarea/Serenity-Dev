@@ -52,7 +52,7 @@
 - type: entity
   parent: WindoorSecurePlasma
   id: PlasmaWindoorSecureRoboticsLocked
-  suffix: Robotics, Locked, Plasma
+  suffix: Robotics, Locked, Phoron
   components:
     - type: ContainerFill
       containers:

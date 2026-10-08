@@ -24,7 +24,7 @@
 
 - type: entity
   name: burn treatment kit
-  description: "A specialized medical kit for when somone wants to smoke in the plasma flood."
+  description: "A specialized medical kit for when somone wants to smoke in the phoron flood."
   parent: Medkit
   id: MedkitBurn
   components:

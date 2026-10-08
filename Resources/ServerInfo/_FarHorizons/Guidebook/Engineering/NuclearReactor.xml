@@ -124,16 +124,16 @@
 	<Box>
 		<GuideEntityEmbed Entity="PlasmaCanister" Caption=""/>
 	</Box>
-	[color=#ff3300][bold]Plasma[/bold][/color] has a reactive effect, creating more neutrons and decaying into [color=#13ff4b][bold]Tritium[/bold][/color].
+	[color=#ff3300][bold]Phoron[/bold][/color] has a reactive effect, creating more neutrons and decaying into [color=#13ff4b][bold]Tritium[/bold][/color].
 
-	If there is enough plasma within the Reactor, it may end up going into a runaway reaction and [color=red]melting down[/color].
+	If there is enough phoron within the Reactor, it may end up going into a runaway reaction and [color=red]melting down[/color].
 
 	<Box>
 		<GuideEntityEmbed Entity="CarbonDioxideCanister" Caption=""/>
 	</Box>
 	[color=#4e4e4e][bold]Carbon Dioxide[/bold][/color] has a moderative effect, removing neutrons that come into contact with it.
 
-	This can be used to regulate a plasma reaction or slow down the Reactor.
+	This can be used to regulate a phoron reaction or slow down the Reactor.
 
 	<Box>
 		<GuideEntityEmbed Entity="TritiumCanister" Caption=""/>

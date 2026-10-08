@@ -338,83 +338,83 @@
 
         <ColorBox Color="#7e009e">
             <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
-                Plasma
+                Phoron
             </Box>
         </ColorBox>
         <ColorBox>
             <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
-                [protodata="PlasmaReactorFuelRod" comp="ReactorPart" member="GuidebookThermalTransferValue"/]
+                [protodata="PhoronReactorFuelRod" comp="ReactorPart" member="GuidebookThermalTransferValue"/]
             </Box>
         </ColorBox>
         <ColorBox>
             <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
-                [protodata="PlasmaReactorFuelRod" comp="ReactorPart" member="GuidebookNeutronInteractChance"/]
+                [protodata="PhoronReactorFuelRod" comp="ReactorPart" member="GuidebookNeutronInteractChance"/]
             </Box>
         </ColorBox>
         <ColorBox>
             <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
-                [protodata="PlasmaReactorFuelRod" comp="ReactorPart" member="GuidebookNeutronStimulatedEmmissionChance"/]
+                [protodata="PhoronReactorFuelRod" comp="ReactorPart" member="GuidebookNeutronStimulatedEmmissionChance"/]
             </Box>
         </ColorBox>
         <ColorBox>
             <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
-                [protodata="PlasmaReactorFuelRod" comp="ReactorPart" member="GuidebookStimulatedEmmissionChance"/]
+                [protodata="PhoronReactorFuelRod" comp="ReactorPart" member="GuidebookStimulatedEmmissionChance"/]
             </Box>
         </ColorBox>
         <ColorBox>
             <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
-                [protodata="PlasmaReactorFuelRod" comp="ReactorPart" member="GuidebookNeutronDecayChance"/]
+                [protodata="PhoronReactorFuelRod" comp="ReactorPart" member="GuidebookNeutronDecayChance"/]
             </Box>
         </ColorBox>
         <ColorBox>
             <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
-                [protodata="PlasmaReactorFuelRod" comp="ReactorPart" member="GuidebookDecayChance"/]
+                [protodata="PhoronReactorFuelRod" comp="ReactorPart" member="GuidebookDecayChance"/]
             </Box>
         </ColorBox>
         <ColorBox>
             <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
-                [protodata="PlasmaReactorFuelRod" comp="ReactorPart" member="GuidebookReflectChance"/]
+                [protodata="PhoronReactorFuelRod" comp="ReactorPart" member="GuidebookReflectChance"/]
             </Box>
         </ColorBox>
 
         <ColorBox Color="#b35989">
             <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
-                Plasma Glass
+                Phoron Glass
             </Box>
         </ColorBox>
         <ColorBox>
             <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
-                [protodata="PlasmaGlassReactorControlRod" comp="ReactorPart" member="GuidebookThermalTransferValue"/]
+                [protodata="PhoronGlassReactorControlRod" comp="ReactorPart" member="GuidebookThermalTransferValue"/]
             </Box>
         </ColorBox>
         <ColorBox>
             <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
-                [protodata="PlasmaGlassReactorControlRod" comp="ReactorPart" member="GuidebookNeutronInteractChance"/]
+                [protodata="PhoronGlassReactorControlRod" comp="ReactorPart" member="GuidebookNeutronInteractChance"/]
             </Box>
         </ColorBox>
         <ColorBox>
             <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
-                [protodata="PlasmaGlassReactorControlRod" comp="ReactorPart" member="GuidebookNeutronStimulatedEmmissionChance"/]
+                [protodata="PhoronGlassReactorControlRod" comp="ReactorPart" member="GuidebookNeutronStimulatedEmmissionChance"/]
             </Box>
         </ColorBox>
         <ColorBox>
             <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
-                [protodata="PlasmaGlassReactorControlRod" comp="ReactorPart" member="GuidebookStimulatedEmmissionChance"/]
+                [protodata="PhoronGlassReactorControlRod" comp="ReactorPart" member="GuidebookStimulatedEmmissionChance"/]
             </Box>
         </ColorBox>
         <ColorBox>
             <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
-                [protodata="PlasmaGlassReactorControlRod" comp="ReactorPart" member="GuidebookNeutronDecayChance"/]
+                [protodata="PhoronGlassReactorControlRod" comp="ReactorPart" member="GuidebookNeutronDecayChance"/]
             </Box>
         </ColorBox>
         <ColorBox>
             <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
-                [protodata="PlasmaGlassReactorControlRod" comp="ReactorPart" member="GuidebookDecayChance"/]
+                [protodata="PhoronGlassReactorControlRod" comp="ReactorPart" member="GuidebookDecayChance"/]
             </Box>
         </ColorBox>
         <ColorBox>
             <Box HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="2">
-                [protodata="PlasmaGlassReactorControlRod" comp="ReactorPart" member="GuidebookReflectChance"/]
+                [protodata="PhoronGlassReactorControlRod" comp="ReactorPart" member="GuidebookReflectChance"/]
             </Box>
         </ColorBox>
 

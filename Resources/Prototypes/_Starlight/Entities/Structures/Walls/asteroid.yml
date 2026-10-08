@@ -94,8 +94,8 @@
 - type: entity
   id: WallRockDarkPasma
   parent: WallRockDark
-  description: An ore vein rich with plasma.
-  suffix: Plasma
+  description: An ore vein rich with phoron.
+  suffix: Phoron
   components:
   - type: OreVein
     oreChance: 1.0
