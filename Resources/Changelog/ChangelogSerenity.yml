@@ -992,3 +992,10 @@ Entries:
   id: 16201
   time: '2026-10-08T20:43:42.000000+00:00'
   url: https://github.com/lightningcaesarea/Serenity-Dev/pull/162
+- author: Inny
+  changes:
+  - message: Refresh Discord bot round status every 3 minutes.
+    type: Tweak
+  id: 16601
+  time: '2026-10-08T23:32:20.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/166
