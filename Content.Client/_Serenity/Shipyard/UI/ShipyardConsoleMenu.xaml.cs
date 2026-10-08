@@ -20,6 +20,8 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
     public event Action<string>? OnPurchase;
     public event Action? OnSellShip;
     public event Action? OnToggleId;
+    public event Action? OnSaveShip; // Serenity
+    public event Action<string>? OnLoadShip; // Serenity
 
     private readonly List<string> _categoryStrings = new();
     private string? _category;
@@ -35,6 +37,7 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
         Categories.OnItemSelected += OnCategoryItemSelected;
         SellShipButton.OnPressed += _ => OnSellShip?.Invoke();
         TargetIdButton.OnPressed += _ => OnToggleId?.Invoke();
+        SaveShipButton.OnPressed += _ => OnSaveShip?.Invoke();
     }
 
     private void OnCategoryItemSelected(OptionButton.ItemSelectedEventArgs args)
@@ -123,5 +126,38 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
             ? Loc.GetString("id-card-console-window-eject-button")
             : Loc.GetString("id-card-console-window-insert-button");
         DeedTitle.Text = state.ShipDeedTitle ?? Loc.GetString("shipyard-console-deed-none");
+        SaveShipButton.Disabled = !state.CanSaveShips;
+        PopulateSavedShips(state.SavedShips, state.ShipDeedTitle == null && state.IsTargetIdPresent && state.AccessGranted);
+    }
+
+    /// <summary>
+    /// Serenity: lists the character's saved ships. Loading needs a card with no deed on it, like a purchase.
+    /// </summary>
+    private void PopulateSavedShips(List<SavedShipEntry> ships, bool canLoad)
+    {
+        SavedShips.RemoveAllChildren();
+
+        if (ships.Count == 0)
+        {
+            SavedShips.AddChild(new Label { Text = Loc.GetString("shipyard-console-saved-ships-none") });
+            return;
+        }
+
+        foreach (var ship in ships)
+        {
+            var row = new BoxContainer { Orientation = BoxContainer.LayoutOrientation.Horizontal, HorizontalExpand = true };
+            row.AddChild(new Label { Text = ship.Name, HorizontalExpand = true, ClipText = true });
+
+            var load = new Button
+            {
+                Text = Loc.GetString("shipyard-console-load", ("fee", ship.LoadFee)),
+                Disabled = !canLoad,
+            };
+            var id = ship.Id;
+            load.OnPressed += _ => OnLoadShip?.Invoke(id);
+            row.AddChild(load);
+
+            SavedShips.AddChild(row);
+        }
     }
 }
