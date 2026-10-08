@@ -295,7 +295,7 @@ public sealed partial class ArmorPlateSystem : EntitySystem
         if (plate.Comp.Durability is not { } durability || durability <= 0)
             return false;
 
-        var damage = TryComp<DamageableComponent>(plate, out var damageable) ? damageable.TotalDamage.Float() : 0f;
+        var damage = _damageable.GetTotalDamage(plate.Owner).Float();
         percent = (int) Math.Clamp((durability - damage) / durability * 100f, 0f, 100f);
         return true;
     }
@@ -375,7 +375,7 @@ public sealed partial class ArmorPlateSystem : EntitySystem
             Loc.GetString("serenity-armor-plate-verb-message"));
     }
 
-    private static void AddSpeedLine(FormattedMessage msg, string locId, float modifier)
+    private void AddSpeedLine(FormattedMessage msg, string locId, float modifier)
     {
         var percent = MathF.Round((modifier - 1f) * 100f, 1);
         if (percent == 0f)
