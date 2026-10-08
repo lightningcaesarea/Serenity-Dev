@@ -903,3 +903,10 @@ Entries:
   id: 13901
   time: '2026-10-08T11:55:40.000000+00:00'
   url: https://github.com/lightningcaesarea/Serenity-Dev/pull/139
+- author: Inny
+  changes:
+  - message: Pickup and putdown sounds for tools (from RMC).
+    type: Tweak
+  id: 15101
+  time: '2026-10-08T12:08:52.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/151
