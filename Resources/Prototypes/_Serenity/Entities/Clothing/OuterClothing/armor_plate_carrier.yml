@@ -1,7 +1,8 @@
 # Outer clothing that can take an armor plate: a small compartment, and the first armor plate put
 # in it is the active plate. ClothingOuterArmorBase and ClothingOuterHardsuitBase inherit this.
 # Armor that already had pockets keeps its own Storage settings; plates only fit if the pockets allow
-# Normal-sized items.
+# Normal-sized items. No ContainerContainer here: Storage creates its own container, and declaring one
+# makes hardsuits (which also get toggleable-clothing/cell containers at runtime) fail PrototypeSaveTest.
 
 - type: entity
   abstract: true
@@ -12,10 +13,6 @@
     maxItemSize: Normal
     grid:
     - 0,0,1,1
-  - type: ContainerContainer
-    containers:
-      storagebase: !type:Container
-        ents: []
   - type: UserInterface
     interfaces:
       enum.StorageUiKey.Key:
