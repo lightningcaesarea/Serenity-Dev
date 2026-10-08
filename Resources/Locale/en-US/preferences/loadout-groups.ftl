@@ -218,3 +218,4 @@ loadout-group-reporter-head = Reporter head
 loadout-group-reporter-outerclothing = Reporter vest
 
 loadout-group-psychologist-jumpsuit = Psychologist jumpsuit
+loadout-group-spacer-id-icon = ID card icon

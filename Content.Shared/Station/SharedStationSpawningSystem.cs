@@ -95,7 +95,7 @@ public abstract partial class SharedStationSpawningSystem : EntitySystem
     {
         string? name = null;
 
-        if (roleProto.CanCustomizeName)
+        if (roleProto.CanCustomizeName && !roleProto.EntityNameIsJobTitle) // Serenity: that name is a job title
         {
             name = loadout.EntityName;
         }
@@ -110,6 +110,27 @@ public abstract partial class SharedStationSpawningSystem : EntitySystem
             _metadata.SetEntityName(entity, name);
         }
     }
+
+    // Serenity start
+    /// <summary>
+    /// The job title for an entity's ID card and station record: the player's custom title from their role
+    /// loadout as "Title (Job)" when the role allows it, otherwise the job's own name.
+    /// </summary>
+    public string GetJobTitle(EntityUid entity, JobPrototype job)
+    {
+        if (TryComp<AppliedRoleLoadoutComponent>(entity, out var applied)
+            && applied.Loadout is { EntityName: { } title } loadout
+            && !string.IsNullOrWhiteSpace(title)
+            && PrototypeManager.TryIndex(loadout.Role, out var roleProto)
+            && roleProto.CanCustomizeName
+            && roleProto.EntityNameIsJobTitle)
+        {
+            return $"{title.Trim()} ({job.LocalizedName})";
+        }
+
+        return job.LocalizedName;
+    }
+    // Serenity end
 
     public void EquipStartingGear(EntityUid entity, LoadoutPrototype loadout, bool raiseEvent = true) => EquipStartingGear(entity, loadout, raiseEvent, null); // Starlight
 

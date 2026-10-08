@@ -40,6 +40,7 @@ public sealed partial class StationRecordsSystem : SharedStationRecordsSystem
     [Dependency] private IPrototypeManager _prototypeManager = default!;
     [Dependency] private IdCardSystem _idCard = default!;
     [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private Content.Server.Station.Systems.StationSpawningSystem _spawning = default!; // Serenity: custom job title
 
     public override void Initialize()
     {
@@ -102,7 +103,7 @@ public sealed partial class StationRecordsSystem : SharedStationRecordsSystem
             specie = profile.CustomSpecieName + " (" + profile.Species + ")";
         /// Starlight - End
 
-        CreateGeneralRecord(station, idUid.Value, profile.Name, profile.Age, specie, profile.Gender, jobId, fingerprintComponent?.Fingerprint, dnaComponent?.DNA, profile, records); // Starlight Edited (profile.Species -> specie)
+        CreateGeneralRecord(station, idUid.Value, profile.Name, profile.Age, specie, profile.Gender, jobId, fingerprintComponent?.Fingerprint, dnaComponent?.DNA, profile, records, _spawning.GetJobTitle(player, _prototypeManager.Index<JobPrototype>(jobId))); // Starlight Edited (profile.Species -> specie)
     }
 
 
@@ -144,7 +145,8 @@ public sealed partial class StationRecordsSystem : SharedStationRecordsSystem
         string? mobFingerprint,
         string? dna,
         HumanoidCharacterProfile? profile, // Starlight-edit: optional.
-        StationRecordsComponent records)
+        StationRecordsComponent records,
+        string? jobTitle = null) // Serenity: custom job title
     {
         if (!_prototypeManager.TryIndex<JobPrototype>(jobId, out var jobPrototype))
             throw new ArgumentException($"Invalid job prototype ID: {jobId}");
@@ -161,7 +163,7 @@ public sealed partial class StationRecordsSystem : SharedStationRecordsSystem
         {
             Name = name,
             Age = age,
-            JobTitle = jobPrototype.LocalizedName,
+            JobTitle = jobTitle ?? jobPrototype.LocalizedName,
             JobIcon = jobPrototype.Icon,
             JobPrototype = jobId,
             Species = species,

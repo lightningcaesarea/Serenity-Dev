@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Hand-drawn glyphs for the Goobstation card layout, recoloured from the original Serenity/tgstation 8x8 job icons, made for Serenity",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "idtechnicalassistant"
+    },
+    {
+      "name": "idresearchassistant"
+    },
+    {
+      "name": "idsecuritycadet"
+    },
+    {
+      "name": "idclericalassistant"
+    },
+    {
+      "name": "idcookassistant"
+    },
+    {
+      "name": "iddeliveryassistant"
+    },
+    {
+      "name": "idgardenerassistant"
+    },
+    {
+      "name": "idhandymanassistant"
+    },
+    {
+      "name": "idreligiousassistant"
+    },
+    {
+      "name": "idshopkeeperassistant"
+    },
+    {
+      "name": "idmedicalassistant"
+    },
+    {
+      "name": "idjanitorassistant"
+    },
+    {
+      "name": "idmailtech"
+    },
+    {
+      "name": "idminingspecialist"
+    },
+    {
+      "name": "idradiohost"
+    }
+  ]
+}

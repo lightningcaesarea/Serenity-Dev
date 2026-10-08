@@ -56,6 +56,8 @@
 # Civilian
 - type: roleLoadout
   id: JobAssistant
+  canCustomizeName: true # Serenity: Spacers type a custom job title here
+  entityNameIsJobTitle: true
   groups:
   - GroupTankHarness
   - AssistantJumpsuit
@@ -73,6 +75,7 @@
   - Pins # Starlight
   - Pens # Starlight
   - AssistantJobTrinkets # Starlight
+  - SpacerIdIcon # Serenity: pick the icon on the ID card
   - GroupSpeciesBreathTool
 
 - type: roleLoadout

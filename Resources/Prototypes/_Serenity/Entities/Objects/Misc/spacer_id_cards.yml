@@ -1,0 +1,332 @@
+# Serenity: Spacer ID card/PDA variants, picked in character setup via the SpacerIdIcon loadout group.
+# Only the glyph on the card changes; access, job and HUD icon stay Assistant.
+
+- type: entity
+  parent: AssistantIDCard
+  id: SpacerIdCardTechnicalAssistant
+  name: technical assistant ID card
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Misc/id_cards.rsi
+    layers:
+    - state: default
+    - sprite: _Serenity/Objects/Misc/spacer_id_icons.rsi
+      state: idtechnicalassistant
+
+- type: entity
+  parent: AssistantPDA
+  id: SpacerPdaTechnicalAssistant
+  name: spacer PDA
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Pda
+    id: SpacerIdCardTechnicalAssistant
+
+- type: entity
+  parent: AssistantIDCard
+  id: SpacerIdCardResearchAssistant
+  name: research assistant ID card
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Misc/id_cards.rsi
+    layers:
+    - state: default
+    - sprite: _Serenity/Objects/Misc/spacer_id_icons.rsi
+      state: idresearchassistant
+
+- type: entity
+  parent: AssistantPDA
+  id: SpacerPdaResearchAssistant
+  name: spacer PDA
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Pda
+    id: SpacerIdCardResearchAssistant
+
+- type: entity
+  parent: AssistantIDCard
+  id: SpacerIdCardSecurityCadet
+  name: security cadet ID card
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Misc/id_cards.rsi
+    layers:
+    - state: default
+    - sprite: _Serenity/Objects/Misc/spacer_id_icons.rsi
+      state: idsecuritycadet
+
+- type: entity
+  parent: AssistantPDA
+  id: SpacerPdaSecurityCadet
+  name: spacer PDA
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Pda
+    id: SpacerIdCardSecurityCadet
+
+- type: entity
+  parent: AssistantIDCard
+  id: SpacerIdCardClericalAssistant
+  name: clerical assistant ID card
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Misc/id_cards.rsi
+    layers:
+    - state: default
+    - sprite: _Serenity/Objects/Misc/spacer_id_icons.rsi
+      state: idclericalassistant
+
+- type: entity
+  parent: AssistantPDA
+  id: SpacerPdaClericalAssistant
+  name: spacer PDA
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Pda
+    id: SpacerIdCardClericalAssistant
+
+- type: entity
+  parent: AssistantIDCard
+  id: SpacerIdCardCookAssistant
+  name: cook assistant ID card
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Misc/id_cards.rsi
+    layers:
+    - state: default
+    - sprite: _Serenity/Objects/Misc/spacer_id_icons.rsi
+      state: idcookassistant
+
+- type: entity
+  parent: AssistantPDA
+  id: SpacerPdaCookAssistant
+  name: spacer PDA
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Pda
+    id: SpacerIdCardCookAssistant
+
+- type: entity
+  parent: AssistantIDCard
+  id: SpacerIdCardDeliveryAssistant
+  name: delivery assistant ID card
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Misc/id_cards.rsi
+    layers:
+    - state: default
+    - sprite: _Serenity/Objects/Misc/spacer_id_icons.rsi
+      state: iddeliveryassistant
+
+- type: entity
+  parent: AssistantPDA
+  id: SpacerPdaDeliveryAssistant
+  name: spacer PDA
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Pda
+    id: SpacerIdCardDeliveryAssistant
+
+- type: entity
+  parent: AssistantIDCard
+  id: SpacerIdCardGardenerAssistant
+  name: gardener assistant ID card
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Misc/id_cards.rsi
+    layers:
+    - state: default
+    - sprite: _Serenity/Objects/Misc/spacer_id_icons.rsi
+      state: idgardenerassistant
+
+- type: entity
+  parent: AssistantPDA
+  id: SpacerPdaGardenerAssistant
+  name: spacer PDA
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Pda
+    id: SpacerIdCardGardenerAssistant
+
+- type: entity
+  parent: AssistantIDCard
+  id: SpacerIdCardHandymanAssistant
+  name: handyman assistant ID card
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Misc/id_cards.rsi
+    layers:
+    - state: default
+    - sprite: _Serenity/Objects/Misc/spacer_id_icons.rsi
+      state: idhandymanassistant
+
+- type: entity
+  parent: AssistantPDA
+  id: SpacerPdaHandymanAssistant
+  name: spacer PDA
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Pda
+    id: SpacerIdCardHandymanAssistant
+
+- type: entity
+  parent: AssistantIDCard
+  id: SpacerIdCardReligiousAssistant
+  name: religious assistant ID card
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Misc/id_cards.rsi
+    layers:
+    - state: default
+    - sprite: _Serenity/Objects/Misc/spacer_id_icons.rsi
+      state: idreligiousassistant
+
+- type: entity
+  parent: AssistantPDA
+  id: SpacerPdaReligiousAssistant
+  name: spacer PDA
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Pda
+    id: SpacerIdCardReligiousAssistant
+
+- type: entity
+  parent: AssistantIDCard
+  id: SpacerIdCardShopkeeperAssistant
+  name: shopkeeper assistant ID card
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Misc/id_cards.rsi
+    layers:
+    - state: default
+    - sprite: _Serenity/Objects/Misc/spacer_id_icons.rsi
+      state: idshopkeeperassistant
+
+- type: entity
+  parent: AssistantPDA
+  id: SpacerPdaShopkeeperAssistant
+  name: spacer PDA
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Pda
+    id: SpacerIdCardShopkeeperAssistant
+
+- type: entity
+  parent: AssistantIDCard
+  id: SpacerIdCardMedicalAssistant
+  name: medical assistant ID card
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Misc/id_cards.rsi
+    layers:
+    - state: default
+    - sprite: _Serenity/Objects/Misc/spacer_id_icons.rsi
+      state: idmedicalassistant
+
+- type: entity
+  parent: AssistantPDA
+  id: SpacerPdaMedicalAssistant
+  name: spacer PDA
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Pda
+    id: SpacerIdCardMedicalAssistant
+
+- type: entity
+  parent: AssistantIDCard
+  id: SpacerIdCardJanitorAssistant
+  name: janitor assistant ID card
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Misc/id_cards.rsi
+    layers:
+    - state: default
+    - sprite: _Serenity/Objects/Misc/spacer_id_icons.rsi
+      state: idjanitorassistant
+
+- type: entity
+  parent: AssistantPDA
+  id: SpacerPdaJanitorAssistant
+  name: spacer PDA
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Pda
+    id: SpacerIdCardJanitorAssistant
+
+- type: entity
+  parent: AssistantIDCard
+  id: SpacerIdCardMailTech
+  name: mail technician ID card
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Misc/id_cards.rsi
+    layers:
+    - state: default
+    - sprite: _Serenity/Objects/Misc/spacer_id_icons.rsi
+      state: idmailtech
+
+- type: entity
+  parent: AssistantPDA
+  id: SpacerPdaMailTech
+  name: spacer PDA
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Pda
+    id: SpacerIdCardMailTech
+
+- type: entity
+  parent: AssistantIDCard
+  id: SpacerIdCardMiningSpecialist
+  name: mining specialist ID card
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Misc/id_cards.rsi
+    layers:
+    - state: default
+    - sprite: _Serenity/Objects/Misc/spacer_id_icons.rsi
+      state: idminingspecialist
+
+- type: entity
+  parent: AssistantPDA
+  id: SpacerPdaMiningSpecialist
+  name: spacer PDA
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Pda
+    id: SpacerIdCardMiningSpecialist
+
+- type: entity
+  parent: AssistantIDCard
+  id: SpacerIdCardRadioHost
+  name: radio host ID card
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Misc/id_cards.rsi
+    layers:
+    - state: default
+    - sprite: _Serenity/Objects/Misc/spacer_id_icons.rsi
+      state: idradiohost
+
+- type: entity
+  parent: AssistantPDA
+  id: SpacerPdaRadioHost
+  name: spacer PDA
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Pda
+    id: SpacerIdCardRadioHost

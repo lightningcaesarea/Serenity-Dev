@@ -15,3 +15,4 @@ loadouts-count-items-in-group = {$item} and {$count} other {$count ->
 }
 
 loadouts-points-restriction = Insufficient points
+loadout-title-edit-label = Sets a custom job title shown on your ID card, the crew manifest and information consoles as "Title (Job)". If empty, only the job name is shown.

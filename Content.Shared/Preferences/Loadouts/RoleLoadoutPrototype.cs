@@ -22,6 +22,15 @@ public sealed partial class RoleLoadoutPrototype : IPrototype
     [DataField]
     public bool CanCustomizeName;
 
+    // Serenity start
+    /// <summary>
+    /// If true, the name box on this role loadout is a custom job title instead of the entity name.
+    /// It is shown as "Title (Job)" on the ID card and station records. Needs <see cref="CanCustomizeName"/>.
+    /// </summary>
+    [DataField]
+    public bool EntityNameIsJobTitle;
+    // Serenity end
+
     /// <summary>
     /// Should we use a random name for this loadout?
     /// </summary>
