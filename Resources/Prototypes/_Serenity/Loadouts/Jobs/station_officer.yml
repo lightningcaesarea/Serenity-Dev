@@ -19,3 +19,13 @@
   id: StationOfficerCarapace
   equipment:
     outerClothing: ClothingOuterArmorStationOfficerCarapace
+
+- type: loadout
+  id: StationOfficerDutyGloves
+  equipment:
+    gloves: ClothingHandsGlovesStationOfficerDuty
+
+- type: loadout
+  id: StationOfficerDutyMittens
+  equipment:
+    gloves: ClothingHandsMittensStationOfficerDuty

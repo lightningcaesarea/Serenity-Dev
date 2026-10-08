@@ -856,9 +856,9 @@
   name: loadout-group-assistantmanager-gloves
   minLimit: 0
   loadouts:
-  - AssistantManagerGloves
-  - AssistantManagerMittens
   - StationOfficerGloves
+  - StationOfficerDutyGloves
+  - StationOfficerDutyMittens
 
 - type: loadoutGroup
   id: AssistantManagerOuterClothing
@@ -877,8 +877,6 @@
   loadouts:
   - BlackShoes
   - WhiteShoes
-  - BlueShoes
-  - BlueWinterBoots
   - StationOfficerWinterBoots
   - Heels
 
