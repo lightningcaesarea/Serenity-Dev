@@ -58,7 +58,7 @@
   - type: Clothing
     sprite: _Serenity/Clothing/Shoes/Boots/station_officer_winter.rsi
 
-# Same protection as the captain's carapace, in command teal with silver trim.
+# Same protection as the captain's carapace, in command teal with the Station Officer yellow trim.
 - type: entity
   parent: ClothingOuterArmorCaptainCarapace
   id: ClothingOuterArmorStationOfficerCarapace
