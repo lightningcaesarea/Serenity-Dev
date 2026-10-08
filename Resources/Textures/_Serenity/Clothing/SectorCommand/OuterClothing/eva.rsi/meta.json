@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Made by Shiptest spriters and modified for Crescent use. Ported from Hullrot (Sector Crescent) _Crescent/Clothing/Empire/OuterClothing/mandateeva.rsi and recolored to Sector Command colors for Serenity.",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "icon"
+    },
+    {
+      "name": "equipped-OUTERCLOTHING",
+      "directions": 4
+    }
+  ]
+}
