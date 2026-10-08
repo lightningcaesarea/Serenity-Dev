@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Shared._Serenity.Medical.Sterility;
 using Content.Shared._Serenity.Medical.Wounds;
 using Content.Shared._Serenity.Medical.Wounds.Systems;
@@ -16,8 +17,10 @@ namespace Content.Server._Serenity.Medical.Sterility;
 
 /// <summary>
 /// Infection: a wound that never heals by itself. An unsterile operation or an untreated open wound can give a
-/// patient one; left alone it gets worse tier by tier and poisons them. A broad-spectrum antibiotic freezes it where
-/// it is, suppresses its symptoms and blocks new infections, but doesn't cure it: surgery (draining it) does.
+/// patient one, caused by one of the strains in <see cref="PathogenPrototype"/>; left alone it gets worse tier by tier
+/// and poisons them. A broad-spectrum antibiotic freezes it where it is, suppresses its symptoms and blocks new
+/// infections, but doesn't cure it. Surgery (draining it) does, and so does the narrow-spectrum antibiotic that
+/// matches its strain, which brings it down a tier at a time until it is gone.
 /// All tuning is in <see cref="SterilityConfigPrototype"/>.
 /// </summary>
 public sealed partial class InfectionSystem : EntitySystem
@@ -102,9 +105,33 @@ public sealed partial class InfectionSystem : EntitySystem
     }
 
     /// <summary>
-    /// Gives the mob a tier 1 infection, unless it already has one. Returns true if it was added.
+    /// The strain behind the mob's infection, or null if it has no infection or its infection has no particular strain.
     /// </summary>
-    public bool TryInfect(EntityUid uid, WoundComponent comp)
+    public ProtoId<PathogenPrototype>? GetPathogen(WoundComponent comp)
+    {
+        return GetInfection(comp)?.Pathogen;
+    }
+
+    /// <summary>
+    /// Whether the narrow-spectrum antibiotic for the infection's strain is working on it right now.
+    /// </summary>
+    public bool IsBeingCured(EntityUid uid, WoundEntry infection)
+    {
+        return infection.Pathogen is { } id
+            && _proto.TryIndex(id, out var pathogen)
+            && _statusEffects.HasStatusEffect(uid, pathogen.CureEffect);
+    }
+
+    /// <summary>
+    /// Gives the mob a tier 1 infection, unless it already has one. Returns true if it was added. The strain is the
+    /// given one, or else is picked at random for the <paramref name="source"/>: the category of the open wound it
+    /// started in, or null for a dirty operation.
+    /// </summary>
+    public bool TryInfect(
+        EntityUid uid,
+        WoundComponent comp,
+        ProtoId<PathogenPrototype>? pathogen = null,
+        ProtoId<WoundCategoryPrototype>? source = null)
     {
         if (GetInfection(comp) != null)
             return false;
@@ -113,22 +140,60 @@ public sealed partial class InfectionSystem : EntitySystem
         _wounds.AddWound(uid, comp, new WoundEntry(config.InfectionWound, 1)
         {
             NextDecayTime = _timing.CurTime + EscalationDelay(config, 1),
+            Pathogen = pathogen ?? PickPathogen(source),
         });
         return true;
     }
 
     /// <summary>
-    /// Gives the mob an infection at the given tier, or moves its existing infection to that tier. For admin and test
-    /// tooling: it ignores antibiotics and sterility. Returns the tier it was set to.
+    /// Picks a strain at random, weighted by how likely each is to start in the given kind of open wound, or in a dirty
+    /// operation if <paramref name="source"/> is null. Null if there are no strains.
     /// </summary>
-    public int SetInfection(EntityUid uid, WoundComponent comp, int tier)
+    public ProtoId<PathogenPrototype>? PickPathogen(ProtoId<WoundCategoryPrototype>? source = null)
+    {
+        var weights = new List<(string Id, float Weight)>();
+        foreach (var pathogen in _proto.EnumeratePrototypes<PathogenPrototype>())
+        {
+            var weight = source is { } category
+                ? pathogen.WoundWeights.GetValueOrDefault(category)
+                : pathogen.SurgeryWeight;
+
+            if (weight > 0f)
+                weights.Add((pathogen.ID, weight));
+        }
+
+        // No strain starts in this kind of wound: it is as likely as an operation to be any of them
+        if (weights.Count == 0)
+            return source != null ? PickPathogen() : null;
+
+        var roll = _random.NextFloat() * weights.Sum(w => w.Weight);
+        foreach (var (id, weight) in weights)
+        {
+            roll -= weight;
+            if (roll < 0f)
+                return new ProtoId<PathogenPrototype>(id);
+        }
+
+        return new ProtoId<PathogenPrototype>(weights[^1].Id);
+    }
+
+    /// <summary>
+    /// Gives the mob an infection at the given tier, or moves its existing infection to that tier. For admin and test
+    /// tooling: it ignores antibiotics and sterility. The strain is the given one (changing the existing infection's
+    /// if need be), or a random one for a new infection. Returns the tier it was set to.
+    /// </summary>
+    public int SetInfection(EntityUid uid, WoundComponent comp, int tier, ProtoId<PathogenPrototype>? pathogen = null)
     {
         tier = Math.Clamp(tier, 1, WoundsConstants.MaxWoundTier);
-        TryInfect(uid, comp);
+        TryInfect(uid, comp, pathogen);
 
         if (GetInfection(comp) is not { } infection)
             return 0;
 
+        if (pathogen != null)
+            infection.Pathogen = pathogen;
+
+        infection.CureProgress = 0f;
         infection.Tier = tier;
         infection.NextDecayTime = tier >= WoundsConstants.MaxWoundTier
             ? TimeSpan.MaxValue
@@ -147,8 +212,20 @@ public sealed partial class InfectionSystem : EntitySystem
         if (GetInfection(comp) != null || HasAntibiotic(uid))
             return 0f;
 
+        var chance = OpenWoundRisks(comp).Sum(r => r.Chance);
+
+        if (IsOverdosed(uid))
+            chance *= Config.OverdoseInfectionChanceMultiplier;
+
+        return Math.Min(chance, 1f);
+    }
+
+    /// <summary>
+    /// What each open wound that can get infected adds to the chance of a new infection, and its category.
+    /// </summary>
+    private IEnumerable<(ProtoId<WoundCategoryPrototype> Category, float Chance)> OpenWoundRisks(WoundComponent comp)
+    {
         var risks = Config.OpenWounds;
-        var chance = 0f;
         foreach (var wound in comp.ActiveWounds)
         {
             if (!_proto.TryIndex(wound.WoundTypeId, out var type)
@@ -158,13 +235,29 @@ public sealed partial class InfectionSystem : EntitySystem
                 continue;
             }
 
-            chance += risk.ChancePerTier * wound.Tier;
+            yield return (type.Category, risk.ChancePerTier * wound.Tier);
+        }
+    }
+
+    /// <summary>
+    /// The category of the open wound a new infection starts in, picked in proportion to the risk each wound carries.
+    /// </summary>
+    private ProtoId<WoundCategoryPrototype>? PickWoundSource(WoundComponent comp)
+    {
+        var risks = OpenWoundRisks(comp).ToList();
+        var total = risks.Sum(r => r.Chance);
+        if (total <= 0f)
+            return null;
+
+        var roll = _random.NextFloat() * total;
+        foreach (var (category, chance) in risks)
+        {
+            roll -= chance;
+            if (roll < 0f)
+                return category;
         }
 
-        if (IsOverdosed(uid))
-            chance *= Config.OverdoseInfectionChanceMultiplier;
-
-        return Math.Min(chance, 1f);
+        return risks[^1].Category;
     }
 
     /// <summary>
@@ -178,6 +271,14 @@ public sealed partial class InfectionSystem : EntitySystem
 
         if (GetInfection(comp) is { } infection)
         {
+            // The narrow-spectrum antibiotic for its strain wins it back a tier at a time. While it works the infection
+            // can't get worse and its symptoms are suppressed, as with a broad-spectrum one.
+            if (IsBeingCured(uid, infection))
+            {
+                Cure(uid, comp, infection, now, config);
+                return;
+            }
+
             // A broad-spectrum antibiotic freezes the infection at its current tier: its timer restarts so it can't
             // worsen, and its symptoms are suppressed. It is not cured, so it resumes when the drug wears off.
             if (antibiotic)
@@ -196,7 +297,31 @@ public sealed partial class InfectionSystem : EntitySystem
         }
 
         if (_random.Prob(OpenWoundInfectionChance(uid, comp)))
-            TryInfect(uid, comp);
+            TryInfect(uid, comp, source: PickWoundSource(comp));
+    }
+
+    private void Cure(EntityUid uid, WoundComponent comp, WoundEntry infection, TimeSpan now, SterilityConfigPrototype config)
+    {
+        infection.CureProgress += config.InfectionTickSeconds;
+        if (infection.CureProgress < config.CureSecondsPerTier)
+        {
+            Freeze(infection, now, config);
+            return;
+        }
+
+        infection.CureProgress = 0f;
+
+        // The last tier is the end of it
+        if (infection.Tier <= 1)
+        {
+            _wounds.RemoveWound(uid, comp, infection);
+            return;
+        }
+
+        infection.Tier -= 1;
+        infection.NextDecayTime = now + EscalationDelay(config, infection.Tier);
+        Dirty(uid, comp);
+        RaiseLocalEvent(uid, new WoundsDamagedEvent());
     }
 
     private static void Freeze(WoundEntry infection, TimeSpan now, SterilityConfigPrototype config)

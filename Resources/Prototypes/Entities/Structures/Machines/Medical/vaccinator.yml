@@ -1,8 +1,8 @@
 - type: entity
   id: Vaccinator
   parent: BaseMachinePowered
-  name: vaccinator
-  description: A machine that creates vaccines.
+  name: antibiotic synthesizer
+  description: Turns broad-spectrum antibiotic into the narrow-spectrum drug for one pathogen. Insert a blood culture report to program it, then a container of Antibiox.
   placement:
     mode: SnapgridCenter
   components:
@@ -17,6 +17,7 @@
   - type: Appearance
   - type: Machine
     board: VaccinatorMachineCircuitboard
+  - type: PathogenSynthesizer
   - type: ContainerContainer
     containers:
       machine_board: !type:Container

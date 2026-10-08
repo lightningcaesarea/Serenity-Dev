@@ -11,6 +11,7 @@ using Content.Shared.EntityConditions.Conditions;
 using Content.Shared.EntityEffects.Effects.Damage;
 using Content.Shared.EntityEffects.Effects.StatusEffects;
 using Content.Shared.Damage.Components;
+using Content.Shared.Research.Prototypes;
 using Content.Shared.StatusEffectNew;
 using Robust.Shared.Console;
 using Robust.Shared.GameObjects;
@@ -534,6 +535,117 @@ public sealed class InfectionTest
 
             entMan.DeleteEntity(patient);
         });
+
+        await pair.CleanReturnAsync();
+    }
+
+    /// <summary>
+    /// Every pathogen points at a real narrow-spectrum drug and effect, no two share a drug, and each can be caught
+    /// from surgery and from some kind of open wound.
+    /// </summary>
+    [Test]
+    public async Task PathogenPrototypesAreConsistent()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var proto = pair.Server.ProtoMan;
+        var config = proto.Index<SterilityConfigPrototype>(SterilityConfigPrototype.DefaultId);
+
+        Assert.That(config.CureSecondsPerTier, Is.GreaterThanOrEqualTo(config.InfectionTickSeconds));
+
+        var pathogens = proto.EnumeratePrototypes<PathogenPrototype>().ToList();
+        Assert.That(pathogens, Is.Not.Empty);
+        Assert.That(pathogens.Select(p => p.Drug).Distinct().Count(), Is.EqualTo(pathogens.Count), "one drug per pathogen");
+        Assert.That(pathogens.Sum(p => p.SurgeryWeight), Is.GreaterThan(0f), "something must be catchable from surgery");
+
+        Assert.Multiple(() =>
+        {
+            foreach (var pathogen in pathogens)
+            {
+                Assert.That(proto.HasIndex(pathogen.Drug), $"{pathogen.ID} drug {pathogen.Drug} doesn't exist");
+                Assert.That(proto.HasIndex(pathogen.CureEffect), $"{pathogen.ID} cure effect {pathogen.CureEffect} doesn't exist");
+                foreach (var category in pathogen.WoundWeights.Keys)
+                    Assert.That(proto.HasIndex(category), $"{pathogen.ID} weights unknown category {category}");
+            }
+
+            foreach (var risk in config.OpenWounds.Keys)
+                Assert.That(pathogens.Sum(p => p.WoundWeights.GetValueOrDefault(risk)), Is.GreaterThan(0f), $"nothing can infect through {risk}");
+        });
+
+        await pair.CleanReturnAsync();
+    }
+
+    /// <summary>
+    /// The matching narrow-spectrum antibiotic wins an infection back one tier per cure period and finally removes it;
+    /// the wrong one does nothing.
+    /// </summary>
+    [Test]
+    public async Task NarrowSpectrumDrugCuresOnlyItsPathogen()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var server = pair.Server;
+        var entMan = server.EntMan;
+        var mapData = await pair.CreateTestMap();
+        var infections = entMan.System<InfectionSystem>();
+        var effects = entMan.System<StatusEffectsSystem>();
+        var config = server.ProtoMan.Index<SterilityConfigPrototype>(SterilityConfigPrototype.DefaultId);
+        var now = server.ResolveDependency<IGameTiming>().CurTime;
+        var staph = server.ProtoMan.Index<PathogenPrototype>("Staphylococcus");
+        var strep = server.ProtoMan.Index<PathogenPrototype>("Streptococcus");
+        var ticks = (int) Math.Ceiling(config.CureSecondsPerTier / config.InfectionTickSeconds);
+
+        await server.WaitAssertion(() =>
+        {
+            var patient = entMan.SpawnEntity("MobHuman", mapData.GridCoords);
+            var comp = entMan.GetComponent<WoundComponent>(patient);
+
+            infections.SetInfection(patient, comp, 3, staph.ID);
+            Assert.That(infections.GetPathogen(comp), Is.EqualTo(staph.ID));
+
+            // The wrong drug: it keeps worsening as if untreated
+            Assert.That(effects.TryAddStatusEffectDuration(patient, strep.CureEffect, TimeSpan.FromHours(1)));
+            Assert.That(infections.IsBeingCured(patient, Infection(comp)), Is.False);
+            for (var i = 0; i < ticks * 3; i++)
+                infections.Tick(patient, comp, now);
+            Assert.That(Infection(comp).Tier, Is.EqualTo(3), "the wrong drug neither cures nor lowers it");
+
+            // The right one: a tier per cure period
+            Assert.That(effects.TryAddStatusEffectDuration(patient, staph.CureEffect, TimeSpan.FromHours(1)));
+            Assert.That(infections.IsBeingCured(patient, Infection(comp)));
+            for (var i = 0; i < ticks - 1; i++)
+                infections.Tick(patient, comp, now);
+            Assert.That(Infection(comp).Tier, Is.EqualTo(3), "not yet");
+            infections.Tick(patient, comp, now);
+            Assert.That(Infection(comp).Tier, Is.EqualTo(2));
+
+            for (var i = 0; i < ticks; i++)
+                infections.Tick(patient, comp, now);
+            Assert.That(Infection(comp).Tier, Is.EqualTo(1));
+
+            for (var i = 0; i < ticks; i++)
+                infections.Tick(patient, comp, now);
+            Assert.That(Infection(comp), Is.Null, "cured");
+
+            entMan.DeleteEntity(patient);
+        });
+
+        await pair.CleanReturnAsync();
+    }
+
+    /// <summary>
+    /// The repurposed virology machines exist with their new components, and the lathe can make their boards.
+    /// </summary>
+    [Test]
+    public async Task PathogenMachinesAreSetUp()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var server = pair.Server;
+        var proto = server.ProtoMan;
+        var entMan = server.EntMan;
+
+        Assert.That(proto.Index<EntityPrototype>("DiseaseDiagnoser").HasComponent<PathogenAnalyzerComponent>(entMan.ComponentFactory));
+        Assert.That(proto.Index<EntityPrototype>("Vaccinator").HasComponent<PathogenSynthesizerComponent>(entMan.ComponentFactory));
+        Assert.That(proto.HasIndex<LatheRecipePrototype>("DiagnoserMachineCircuitboard"));
+        Assert.That(proto.HasIndex<LatheRecipePrototype>("VaccinatorMachineCircuitboard"));
 
         await pair.CleanReturnAsync();
     }

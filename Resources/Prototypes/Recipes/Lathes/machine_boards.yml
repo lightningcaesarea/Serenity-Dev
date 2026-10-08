@@ -199,6 +199,16 @@
   id: ChemDispenserMachineCircuitboard
   result: ChemDispenserMachineCircuitboard
 
+- type: latheRecipe
+  parent: [ BaseGoldCircuitboardRecipe, BaseMedicalMachineRecipeCategory ]
+  id: DiagnoserMachineCircuitboard
+  result: DiagnoserMachineCircuitboard
+
+- type: latheRecipe
+  parent: [ BaseGoldCircuitboardRecipe, BaseMedicalMachineRecipeCategory ]
+  id: VaccinatorMachineCircuitboard
+  result: VaccinatorMachineCircuitboard
+
 # Treatment
 - type: latheRecipe
   parent: [ BaseGoldCircuitboardRecipe, BaseMedicalMachineRecipeCategory ]
