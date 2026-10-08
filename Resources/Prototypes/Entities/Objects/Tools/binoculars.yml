@@ -4,6 +4,16 @@
   id: Binoculars
   description: Used for long-distance surveillance.
   components:
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_RMC14/Handling/wirecutter_pickup.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/Items/wirecutter_drop.ogg
+      params:
+        volume: -4
   - type: Sprite
     sprite: Objects/Tools/binoculars.rsi
     state: icon

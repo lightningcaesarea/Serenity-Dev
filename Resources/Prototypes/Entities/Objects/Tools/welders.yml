@@ -13,6 +13,16 @@
   - type: EmitSoundOnLand
     sound:
       path: /Audio/Items/welder_drop.ogg
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_RMC14/Handling/weldingtool_pickup.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/Items/welder_drop.ogg
+      params:
+        volume: -4
   - type: GenericVisualizer
     visuals:
       enum.ToggleableVisuals.Enabled:

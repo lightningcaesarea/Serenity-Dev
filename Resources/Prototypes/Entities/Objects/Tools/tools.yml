@@ -7,6 +7,16 @@
   - type: EmitSoundOnLand
     sound:
       path: /Audio/Items/wirecutter_drop.ogg
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_RMC14/Handling/wirecutter_pickup.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/Items/wirecutter_drop.ogg
+      params:
+        volume: -4
   - type: Tag
     tags:
     - Wirecutter
@@ -68,6 +78,16 @@
   - type: EmitSoundOnLand
     sound:
       path: /Audio/Items/screwdriver_drop.ogg
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_RMC14/Handling/screwdriver_pickup.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/Items/screwdriver_drop.ogg
+      params:
+        volume: -4
   - type: Tag
     tags:
     - Screwdriver
@@ -125,6 +145,16 @@
   - type: EmitSoundOnLand
     sound:
       path: /Audio/Items/wrench_drop.ogg
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_RMC14/Handling/wrench_pickup.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/Items/wrench_drop.ogg
+      params:
+        volume: -4
   - type: Tag
     tags:
     - Wrench
@@ -175,6 +205,16 @@
   - type: EmitSoundOnLand
     sound:
       path: /Audio/Items/multitool_drop.ogg
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_RMC14/Handling/multitool_pickup.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/Items/multitool_drop.ogg
+      params:
+        volume: -4
   - type: Sprite
     sprite: Objects/Tools/multitool.rsi
     layers:
