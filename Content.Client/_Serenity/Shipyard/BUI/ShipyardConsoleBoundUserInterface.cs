@@ -26,6 +26,8 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
         _menu = this.CreateWindow<ShipyardConsoleMenu>();
         _menu.OnPurchase += id => SendMessage(new ShipyardConsolePurchaseMessage(id));
         _menu.OnSellShip += () => SendMessage(new ShipyardConsoleSellMessage());
+        _menu.OnSaveShip += () => SendMessage(new ShipyardConsoleSaveMessage()); // Serenity
+        _menu.OnLoadShip += id => SendMessage(new ShipyardConsoleLoadMessage(id)); // Serenity
         _menu.OnToggleId += () => SendMessage(new ItemSlotButtonPressedEvent(ShipyardConsoleComponent.TargetIdCardSlotId));
     }
 

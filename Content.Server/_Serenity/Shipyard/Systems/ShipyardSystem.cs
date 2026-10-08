@@ -3,6 +3,7 @@
 // delayed FTL-dock arrival kept from Starlight's version, player-credit economy.
 
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using System.Numerics;
 using Content.Server.Cargo.Systems;
 using Content.Server.Shuttles.Components;
@@ -56,6 +57,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestart);
 
         InitializeConsole();
+        InitializeSaves(); // Serenity: ship saving
     }
 
     public override void Shutdown()
@@ -107,39 +109,60 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     /// </summary>
     public bool TryPurchaseShuttle(EntityUid stationUid, ResPath shuttlePath, float delay, [NotNullWhen(true)] out EntityUid? shuttleUid)
     {
+        return TryDeliverShuttle(stationUid, shuttlePath.ToString(), delay, out shuttleUid,
+            (map, offset) => _loader.TryLoadGrid(map, shuttlePath, out var grid, offset: offset) ? grid : null);
+    }
+
+    /// <summary>
+    /// Serenity: same as <see cref="TryPurchaseShuttle"/>, but loads the grid from serialized YAML
+    /// (a saved ship) instead of a resource path.
+    /// </summary>
+    public bool TryDeliverShuttle(EntityUid stationUid, TextReader reader, string source, float delay, [NotNullWhen(true)] out EntityUid? shuttleUid)
+    {
+        return TryDeliverShuttle(stationUid, source, delay, out shuttleUid,
+            (map, offset) => _loader.TryLoadGrid(map, reader, source, out var grid, offset: offset) ? grid : null);
+    }
+
+    private bool TryDeliverShuttle(
+        EntityUid stationUid,
+        string source,
+        float delay,
+        [NotNullWhen(true)] out EntityUid? shuttleUid,
+        Func<MapId, Vector2, Entity<MapGridComponent>?> load)
+    {
         shuttleUid = null;
 
         if (!_enabled)
         {
-            Log.Warning($"Shipyard purchase of {shuttlePath} refused: shipyard is disabled.");
+            Log.Warning($"Shipyard delivery of {source} refused: shipyard is disabled.");
             return false;
         }
 
         if (!TryComp<StationDataComponent>(stationUid, out var stationData))
         {
-            Log.Warning($"Shipyard purchase of {shuttlePath} refused: {ToPrettyString(stationUid)} is not a station.");
+            Log.Warning($"Shipyard delivery of {source} refused: {ToPrettyString(stationUid)} is not a station.");
             return false;
         }
 
         var targetGrid = _station.GetLargestGrid((stationUid, stationData));
         if (targetGrid == null)
         {
-            Log.Warning($"Shipyard purchase of {shuttlePath} refused: station has no grid to dock to.");
+            Log.Warning($"Shipyard delivery of {source} refused: station has no grid to dock to.");
             return false;
         }
 
-        if (!TryAddShuttle(shuttlePath, out var grid))
+        if (!TryAddShuttle(source, load, out var grid))
             return false;
 
         if (!HasComp<ShuttleComponent>(grid.Value))
         {
-            Log.Error($"Shipyard: {shuttlePath} has no ShuttleComponent, deleting it.");
+            Log.Error($"Shipyard: {source} has no ShuttleComponent, deleting it.");
             RemoveFromShipyard(grid.Value);
             return false;
         }
 
         var price = _pricing.AppraiseGrid(grid.Value);
-        Log.Info($"Shipyard: {shuttlePath} purchased at {ToPrettyString(stationUid)}, appraised at {price:f0}");
+        Log.Info($"Shipyard: {source} delivered to {ToPrettyString(stationUid)}, appraised at {price:f0}");
 
         var shuttle = grid.Value;
         var target = targetGrid.Value;
@@ -160,7 +183,10 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         return true;
     }
 
-    private bool TryAddShuttle(ResPath shuttlePath, [NotNullWhen(true)] out EntityUid? shuttleGrid)
+    private bool TryAddShuttle(
+        string source,
+        Func<MapId, Vector2, Entity<MapGridComponent>?> load,
+        [NotNullWhen(true)] out EntityUid? shuttleGrid)
     {
         shuttleGrid = null;
 
@@ -169,19 +195,19 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
 
         if (ShipyardMapId == null)
         {
-            Log.Error($"Shipyard: no shipyard map, cannot load {shuttlePath}.");
+            Log.Error($"Shipyard: no shipyard map, cannot load {source}.");
             return false;
         }
 
         var offset = new Vector2(500f + _shuttleIndex, 1f);
-        if (!_loader.TryLoadGrid(ShipyardMapId.Value, shuttlePath, out var grid, offset: offset))
+        if (load(ShipyardMapId.Value, offset) is not { } grid)
         {
-            Log.Error($"Shipyard: failed to load {shuttlePath}.");
+            Log.Error($"Shipyard: failed to load {source}.");
             return false;
         }
 
-        _shuttleIndex += grid.Value.Comp.LocalAABB.Width + ShuttleSpawnBuffer;
-        shuttleGrid = grid.Value.Owner;
+        _shuttleIndex += grid.Comp.LocalAABB.Width + ShuttleSpawnBuffer;
+        shuttleGrid = grid.Owner;
         return true;
     }
 

@@ -231,6 +231,13 @@ public sealed partial class ShipyardSystem
             return;
         }
 
+        // Serenity: a ship brought back from a save was never bought this round, so it can't be sold for money.
+        if (deed.LoadedFromSave)
+        {
+            Deny(uid, component, player, "shipyard-console-sale-saved");
+            return;
+        }
+
         if (_station.GetOwningStation(uid) is not { Valid: true } station)
         {
             Deny(uid, component, player, "shipyard-console-invalid-station");
@@ -314,6 +321,7 @@ public sealed partial class ShipyardSystem
 
         string? deedTitle = null;
         var sellValue = 0;
+        var canSave = false; // Serenity
         if (targetId != null && TryComp<ShuttleDeedComponent>(targetId.Value, out var deed))
         {
             if (deed.ShuttleUid is not { } ship || !Exists(ship))
@@ -325,6 +333,9 @@ public sealed partial class ShipyardSystem
                 deedTitle = GetFullName(deed);
                 sellValue = (int) _pricing.AppraiseGrid(ship);
                 sellValue -= CalculateSalesTax(component, sellValue);
+                if (deed.LoadedFromSave) // Serenity: not sellable, see OnSellMessage
+                    sellValue = 0;
+                canSave = CanSaveShip(player, deed);
             }
         }
 
@@ -337,7 +348,9 @@ public sealed partial class ShipyardSystem
             deedTitle,
             sellValue,
             targetId != null,
-            GetAvailableShuttles(uid, component));
+            GetAvailableShuttles(uid, component),
+            GetSavedShipEntries(player),
+            canSave);
 
         _ui.SetUiState(uid, ShipyardConsoleUiKey.Shipyard, state);
     }

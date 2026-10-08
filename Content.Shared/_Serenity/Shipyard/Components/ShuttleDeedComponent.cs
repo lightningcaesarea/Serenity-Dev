@@ -51,4 +51,10 @@ public sealed partial class ShuttleDeedComponent : Component
 
     [DataField]
     public string BoundOwnerName = string.Empty;
+
+    /// <summary>
+    /// Serenity: the ship was brought back from a save rather than bought, so it can't be sold. Server-only.
+    /// </summary>
+    [DataField]
+    public bool LoadedFromSave;
 }

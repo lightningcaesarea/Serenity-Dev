@@ -14,6 +14,8 @@ public sealed class ShipyardConsoleInterfaceState : BoundUserInterfaceState
     public readonly int ShipSellValue;
     public readonly bool IsTargetIdPresent;
     public readonly List<string> ShipyardPrototypes;
+    public readonly List<SavedShipEntry> SavedShips; // Serenity
+    public readonly bool CanSaveShips; // Serenity
 
     public ShipyardConsoleInterfaceState(
         int balance,
@@ -21,7 +23,9 @@ public sealed class ShipyardConsoleInterfaceState : BoundUserInterfaceState
         string? shipDeedTitle,
         int shipSellValue,
         bool isTargetIdPresent,
-        List<string> shipyardPrototypes)
+        List<string> shipyardPrototypes,
+        List<SavedShipEntry> savedShips,
+        bool canSaveShips)
     {
         Balance = balance;
         AccessGranted = accessGranted;
@@ -29,5 +33,13 @@ public sealed class ShipyardConsoleInterfaceState : BoundUserInterfaceState
         ShipSellValue = shipSellValue;
         IsTargetIdPresent = isTargetIdPresent;
         ShipyardPrototypes = shipyardPrototypes;
+        SavedShips = savedShips;
+        CanSaveShips = canSaveShips;
     }
 }
+
+/// <summary>
+/// Serenity: one of the playing character's saved ships, as the console lists it.
+/// </summary>
+[NetSerializable, Serializable]
+public sealed record SavedShipEntry(string Id, string Name, int LoadFee);
