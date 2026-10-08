@@ -236,7 +236,7 @@
     state: stamp-hos
 
 - type: entity
-  name: cc department stamps box
+  name: sector command department stamps box
   parent: BoxCardboard
   id: BoxStampsCCDepartments
   description: A small box containing stamps. You would think by the 26th century there would be something more sophisticated than a rubber stamp.
@@ -390,7 +390,7 @@
     state: stamp-standby
 
 - type: entity
-  name: cc administrative stamps box
+  name: sector command administrative stamps box
   parent: BoxCardboard
   id: BoxStampsCCAdministrative
   description: A small box containing stamps. You would think by the 26th century there would be something more sophisticated than a rubber stamp.

@@ -459,7 +459,7 @@
 - type: entity
   parent: [ClothingHeadBase, BaseCentcommContraband]
   id: ClothingHeadHatCCberet
-  name: CentComm beret
+  name: Sector Command beret
   description: a green beret, like any other beret but green and you can't have it.
   components:
     - type: Sprite
@@ -474,7 +474,7 @@
 - type: entity
   parent: [ClothingHeadBase, BaseCentcommContraband]
   id: ClothingHeadHatCapCentcommCMD
-  name: Central Medical Division cap
+  name: Sector Medical Division cap
   description: a light blue cap, that's too cool for you crewmate.
   components:
     - type: Sprite
@@ -489,7 +489,7 @@
 - type: entity
   parent: [ClothingHeadBase, BaseCentcommContraband]
   id: ClothingHeadHatCapCentcommCRD
-  name: Central Research Division cap
+  name: Sector Research Division cap
   description: a light purple cap, that's too cool for you crewmate.
   components:
     - type: Sprite
@@ -504,7 +504,7 @@
 - type: entity
   parent: [ClothingHeadBase, BaseCentcommContraband]
   id: ClothingHeadHatCapCentcommCAD
-  name: Central Administration Division cap
+  name: Sector Administration Division cap
   description: a  blue cap, that's too cool for you crewmate.
   components:
     - type: Sprite
@@ -519,7 +519,7 @@
 - type: entity
   parent: [ClothingHeadBase, BaseCentcommContraband]
   id: ClothingHeadHatCapCentcommCCD
-  name: Central Cargo Division cap
+  name: Sector Cargo Division cap
   description: a orange cap, that's too cool for you crewmate.
   components:
     - type: Sprite
@@ -534,7 +534,7 @@
 - type: entity
   parent: [ClothingHeadBase, BaseCentcommContraband]
   id: ClothingHeadHatCapCentcommCSOD
-  name: Central Special Operations Division cap
+  name: Sector Special Operations Division cap
   description: a pink cap, that's too cool for you crewmate.
   components:
     - type: Sprite
@@ -549,7 +549,7 @@
 - type: entity
   parent: [ClothingHeadBase, BaseCentcommContraband]
   id: ClothingHeadHatCapCentcommCID
-  name: Central Intelligence Division cap
+  name: Sector Intelligence Division cap
   description: a purple cap, that's too cool for you crewmate.
   components:
     - type: Sprite
@@ -564,7 +564,7 @@
 - type: entity
   parent: [ClothingHeadBase, BaseCentcommContraband]
   id: ClothingHeadHatCapCentcommCSD
-  name: Central Security Division cap
+  name: Sector Security Division cap
   description: a red cap, that's too cool for you crewmate.
   components:
     - type: Sprite
@@ -579,7 +579,7 @@
 - type: entity
   parent: [ClothingHeadBase, BaseCentcommContraband]
   id: ClothingHeadHatCapCentcommCED
-  name: Central Engineering Division cap
+  name: Sector Engineering Division cap
   description: a yellow cap, that's too cool for you crewmate.
   components:
     - type: Sprite
@@ -594,8 +594,8 @@
 - type: entity
   parent: [ClothingHeadBase, BaseCentcommContraband]
   id: ClothingHeadHatBountyCentcommCMD
-  name: Central Medical Division bounty hunter hat
-  description: A sheriff's hat in the signature Central Medical Division's colors, one look at this might make a tider think twice from sneaking into debrief.
+  name: Sector Medical Division bounty hunter hat
+  description: A sheriff's hat in the signature Sector Medical Division's colors, one look at this might make a tider think twice from sneaking into debrief.
   components:
     - type: Sprite
       sprite: _Starlight/Clothing/Head/Hats/centcommbountyCMD.rsi
@@ -609,8 +609,8 @@
 - type: entity
   parent: [ClothingHeadBase, BaseCentcommContraband]
   id: ClothingHeadHatBountyCentcommCRD
-  name: Central Research Division bounty hunter hat
-  description: A sheriff's hat in the signature Central Research Division's colors, one look at this might make a tider think twice from sneaking into debrief.
+  name: Sector Research Division bounty hunter hat
+  description: A sheriff's hat in the signature Sector Research Division's colors, one look at this might make a tider think twice from sneaking into debrief.
   components:
     - type: Sprite
       sprite: _Starlight/Clothing/Head/Hats/centcommbountyCRD.rsi
@@ -624,8 +624,8 @@
 - type: entity
   parent: [ClothingHeadBase, BaseCentcommContraband]
   id: ClothingHeadHatBountyCentcommCAD
-  name: Central Administration Division bounty hunter hat
-  description: A sheriff's hat in the signature Central Administration Division's colors, one look at this might make a tider think twice from sneaking into debrief.
+  name: Sector Administration Division bounty hunter hat
+  description: A sheriff's hat in the signature Sector Administration Division's colors, one look at this might make a tider think twice from sneaking into debrief.
   components:
     - type: Sprite
       sprite: _Starlight/Clothing/Head/Hats/centcommbountyCAD.rsi
@@ -639,8 +639,8 @@
 - type: entity
   parent: [ClothingHeadBase, BaseCentcommContraband]
   id: ClothingHeadHatBountyCentcommCCD
-  name: Central Cargo Division bounty hunter hat
-  description: A sheriff's hat in the signature Central Cargo Division's colors, one look at this might make a tider think twice from sneaking into debrief.
+  name: Sector Cargo Division bounty hunter hat
+  description: A sheriff's hat in the signature Sector Cargo Division's colors, one look at this might make a tider think twice from sneaking into debrief.
   components:
     - type: Sprite
       sprite: _Starlight/Clothing/Head/Hats/centcommbountyCCD.rsi
@@ -654,8 +654,8 @@
 - type: entity
   parent: [ClothingHeadBase, BaseCentcommContraband]
   id: ClothingHeadHatBountyCentcommCSOD
-  name: Central Special Operations Division bounty hunter hat
-  description: A sheriff's hat in the signature Central Special Operations Division's colors, one look at this might make a tider think twice from sneaking into debrief.
+  name: Sector Special Operations Division bounty hunter hat
+  description: A sheriff's hat in the signature Sector Special Operations Division's colors, one look at this might make a tider think twice from sneaking into debrief.
   components:
     - type: Sprite
       sprite: _Starlight/Clothing/Head/Hats/centcommbountyCSOD.rsi
@@ -669,8 +669,8 @@
 - type: entity
   parent: [ClothingHeadBase, BaseCentcommContraband]
   id: ClothingHeadHatBountyCentcommCID
-  name: Central Intelligence Division bounty hunter hat
-  description: A sheriff's hat in the signature Central Intelligence Division's colors, one look at this might make a tider think twice from sneaking into debrief.
+  name: Sector Intelligence Division bounty hunter hat
+  description: A sheriff's hat in the signature Sector Intelligence Division's colors, one look at this might make a tider think twice from sneaking into debrief.
   components:
     - type: Sprite
       sprite: _Starlight/Clothing/Head/Hats/centcommbountyCID.rsi
@@ -684,8 +684,8 @@
 - type: entity
   parent: [ClothingHeadBase, BaseCentcommContraband]
   id: ClothingHeadHatBountyCentcommCSD
-  name: Central Security Division bounty hunter hat
-  description: A sheriff's hat in the signature Central Security Division's colors, one look at this might make a tider think twice from sneaking into debrief.
+  name: Sector Security Division bounty hunter hat
+  description: A sheriff's hat in the signature Sector Security Division's colors, one look at this might make a tider think twice from sneaking into debrief.
   components:
     - type: Sprite
       sprite: _Starlight/Clothing/Head/Hats/centcommbountyCSD.rsi
@@ -699,8 +699,8 @@
 - type: entity
   parent: [ClothingHeadBase, BaseCentcommContraband]
   id: ClothingHeadHatBountyCentcommCED
-  name: Central Engineering Division bounty hunter hat
-  description: A sheriff's hat in the signature Central Engineering Division's colors, one look at this might make a tider think twice from sneaking into debrief.
+  name: Sector Engineering Division bounty hunter hat
+  description: A sheriff's hat in the signature Sector Engineering Division's colors, one look at this might make a tider think twice from sneaking into debrief.
   components:
     - type: Sprite
       sprite: _Starlight/Clothing/Head/Hats/centcommbountyCED.rsi
@@ -714,7 +714,7 @@
 - type: entity
   parent: [ClothingHeadBase, BaseCentcommContraband]
   id: ClothingHeadHatBeretCentcommCMD
-  name: Central Medical Division beret
+  name: Sector Medical Division beret
   description: a light blue beret, like any other beret, you can't have it.
   components:
     - type: Sprite
@@ -729,7 +729,7 @@
 - type: entity
   parent: [ClothingHeadBase, BaseCentcommContraband]
   id: ClothingHeadHatBeretCentcommCRD
-  name: Central Research Division beret
+  name: Sector Research Division beret
   description: a light purple beret, like any other beret, you can't have it.
   components:
     - type: Sprite
@@ -744,7 +744,7 @@
 - type: entity
   parent: [ClothingHeadBase, BaseCentcommContraband]
   id: ClothingHeadHatBeretCentcommCAD
-  name: Central Administration Division beret
+  name: Sector Administration Division beret
   description: a blue beret, like any other beret, you can't have it.
   components:
     - type: Sprite
@@ -759,7 +759,7 @@
 - type: entity
   parent: [ClothingHeadBase, BaseCentcommContraband]
   id: ClothingHeadHatBeretCentcommCCD
-  name: Central Cargo Division beret
+  name: Sector Cargo Division beret
   description: a orange beret, like any other beret, you can't have it.
   components:
     - type: Sprite
@@ -774,7 +774,7 @@
 - type: entity
   parent: [ClothingHeadBase, BaseCentcommContraband]
   id: ClothingHeadHatBeretCentcommCSOD
-  name: Central Special Operations Division beret
+  name: Sector Special Operations Division beret
   description: a pink beret, like any other beret, you can't have it.
   components:
     - type: Sprite
@@ -789,7 +789,7 @@
 - type: entity
   parent: [ClothingHeadBase, BaseCentcommContraband]
   id: ClothingHeadHatBeretCentcommCID
-  name: Central Intelligence Division beret
+  name: Sector Intelligence Division beret
   description: a purple beret, like any other beret, you can't have it.
   components:
     - type: Sprite
@@ -804,7 +804,7 @@
 - type: entity
   parent: [ClothingHeadBase, BaseCentcommContraband]
   id: ClothingHeadHatBeretCentcommCSD
-  name: Central Security Division beret
+  name: Sector Security Division beret
   description: a red beret, like any other beret, you can't have it.
   components:
     - type: Sprite
@@ -819,7 +819,7 @@
 - type: entity
   parent: [ClothingHeadBase, BaseCentcommContraband]
   id: ClothingHeadHatBeretCentcommCED
-  name: Central Engineering Division beret
+  name: Sector Engineering Division beret
   description: a yellow beret, like any other beret, you can't have it.
   components:
     - type: Sprite
@@ -834,8 +834,8 @@
 - type: entity
   parent: [ClothingHeadBase, BaseCentcommContraband]
   id: ClothingHeadHatCCSheriffhat
-  name: central command sheriff's hat
-  description: A sheriff's hat in the signature CC colors, one look at this might make a tider think twice from sneaking into debrief.
+  name: sector command sheriff's hat
+  description: A sheriff's hat in the signature Sector Command colors, one look at this might make a tider think twice from sneaking into debrief.
   components:
     - type: Sprite
       sprite: _Starlight/Clothing/Head/Hats/CC_Bounty_Hunter_hat.rsi

@@ -443,7 +443,7 @@
 - type: entity
   parent: ClothingUniformSkirtBase
   id: ClothingUniformJumpskirtPencilCentcomOfficial
-  name: CentComm "pencil" style skirt
+  name: Sector Command "pencil" style skirt
   description: A strict green "pencil" skirt exudes authority and poise. The fitted blazer and straight skirt form an elegant silhouette, suitable for various occasions, from business meetings to a captain's dismissal.
   components:
   - type: Sprite
@@ -465,8 +465,8 @@
 - type: entity
   parent: [ ClothingUniformBase, BaseCentcommContraband ]
   id: ClothingUniformJumpskirtCentcomFormalCAD
-  name: Central Administration Division officer's formal jumpskirt
-  description: It's a formal jumpskirt worn by CentComm officers.
+  name: Sector Administration Division officer's formal jumpskirt
+  description: It's a formal jumpskirt worn by Sector Command officers.
   components:
     - type: Sprite
       sprite: _Starlight/Clothing/Uniforms/Jumpskirt/centcommformalCAD.rsi
@@ -476,8 +476,8 @@
 - type: entity
   parent: [ ClothingUniformBase, BaseCentcommContraband ]
   id: ClothingUniformJumpskirtCentcomFormalCMD
-  name: Central Medical Division  officer's formal jumpskirt
-  description: It's a formal jumpskirt worn by CentComm officers.
+  name: Sector Medical Division  officer's formal jumpskirt
+  description: It's a formal jumpskirt worn by Sector Command officers.
   components:
     - type: Sprite
       sprite: _Starlight/Clothing/Uniforms/Jumpskirt/centcommformalCMD.rsi
@@ -487,8 +487,8 @@
 - type: entity
   parent: [ ClothingUniformBase, BaseCentcommContraband ]
   id: ClothingUniformJumpskirtCentcomFormalCRD
-  name: Central Research Division officer's formal jumpskirt
-  description: It's a formal jumpskirt worn by CentComm officers.
+  name: Sector Research Division officer's formal jumpskirt
+  description: It's a formal jumpskirt worn by Sector Command officers.
   components:
     - type: Sprite
       sprite: _Starlight/Clothing/Uniforms/Jumpskirt/centcommformalCRD.rsi
@@ -498,8 +498,8 @@
 - type: entity
   parent: [ ClothingUniformBase, BaseCentcommContraband ]
   id: ClothingUniformJumpskirtCentcomFormalCCD
-  name: Central Cargo Division officer's formal jumpskirt
-  description: It's a formal jumpskirt worn by CentComm officers.
+  name: Sector Cargo Division officer's formal jumpskirt
+  description: It's a formal jumpskirt worn by Sector Command officers.
   components:
     - type: Sprite
       sprite: _Starlight/Clothing/Uniforms/Jumpskirt/centcommformalCCD.rsi
@@ -509,8 +509,8 @@
 - type: entity
   parent: [ ClothingUniformBase, BaseCentcommContraband ]
   id: ClothingUniformJumpskirtCentcomFormalCSOD
-  name: Central Special Operations Division officer's formal jumpskirt
-  description: It's a formal jumpskirt worn by CentComm officers.
+  name: Sector Special Operations Division officer's formal jumpskirt
+  description: It's a formal jumpskirt worn by Sector Command officers.
   components:
     - type: Sprite
       sprite: _Starlight/Clothing/Uniforms/Jumpskirt/centcommformalCSOD.rsi
@@ -520,8 +520,8 @@
 - type: entity
   parent: [ ClothingUniformBase, BaseCentcommContraband ]
   id: ClothingUniformJumpskirtCentcomFormalCID
-  name: Central Intelligence Division officer's formal jumpskirt
-  description: It's a formal jumpskirt worn by CentComm officers.
+  name: Sector Intelligence Division officer's formal jumpskirt
+  description: It's a formal jumpskirt worn by Sector Command officers.
   components:
     - type: Sprite
       sprite: _Starlight/Clothing/Uniforms/Jumpskirt/centcommformalCID.rsi
@@ -531,8 +531,8 @@
 - type: entity
   parent: [ ClothingUniformBase, BaseCentcommContraband ]
   id: ClothingUniformJumpskirtCentcomFormalCSD
-  name: Central Security Division officer's formal jumpskirt
-  description: It's a formal jumpskirt worn by CentComm officers.
+  name: Sector Security Division officer's formal jumpskirt
+  description: It's a formal jumpskirt worn by Sector Command officers.
   components:
     - type: Sprite
       sprite: _Starlight/Clothing/Uniforms/Jumpskirt/centcommformalCSD.rsi
@@ -542,8 +542,8 @@
 - type: entity
   parent: [ ClothingUniformBase, BaseCentcommContraband ]
   id: ClothingUniformJumpskirtCentcomFormalCED
-  name: Central Engineering Division officer's formal jumpskirt
-  description: It's a formal jumpskirt worn by CentComm officers.
+  name: Sector Engineering Division officer's formal jumpskirt
+  description: It's a formal jumpskirt worn by Sector Command officers.
   components:
     - type: Sprite
       sprite: _Starlight/Clothing/Uniforms/Jumpskirt/centcommformalCED.rsi
@@ -553,8 +553,8 @@
 - type: entity
   parent: [ ClothingUniformBase, BaseCentcommContraband ]
   id: ClothingUniformJumpskirtCentcomFormalDressCAD
-  name: Central Administration Division officer's formal dress jumpskirt
-  description: It's a formal dress jumpskirt worn by CentComm officers.
+  name: Sector Administration Division officer's formal dress jumpskirt
+  description: It's a formal dress jumpskirt worn by Sector Command officers.
   components:
     - type: Sprite
       sprite: _Starlight/Clothing/Uniforms/Jumpskirt/centcommformaldressCAD.rsi
@@ -564,8 +564,8 @@
 - type: entity
   parent: [ ClothingUniformBase, BaseCentcommContraband ]
   id: ClothingUniformJumpskirtCentcomFormalDressCMD
-  name: Central Medical Division officer's formal dress jumpskirt
-  description: It's a formal dress jumpskirt worn by CentComm officers.
+  name: Sector Medical Division officer's formal dress jumpskirt
+  description: It's a formal dress jumpskirt worn by Sector Command officers.
   components:
     - type: Sprite
       sprite: _Starlight/Clothing/Uniforms/Jumpskirt/centcommformaldressCMD.rsi
@@ -575,8 +575,8 @@
 - type: entity
   parent: [ ClothingUniformBase, BaseCentcommContraband ]
   id: ClothingUniformJumpskirtCentcomFormalDressCRD
-  name: Central Research Division officer's formal dress jumpskirt
-  description: It's a formal dress jumpskirt worn by CentComm officers.
+  name: Sector Research Division officer's formal dress jumpskirt
+  description: It's a formal dress jumpskirt worn by Sector Command officers.
   components:
     - type: Sprite
       sprite: _Starlight/Clothing/Uniforms/Jumpskirt/centcommformaldressCRD.rsi
@@ -586,8 +586,8 @@
 - type: entity
   parent: [ ClothingUniformBase, BaseCentcommContraband ]
   id: ClothingUniformJumpskirtCentcomFormalDressCCD
-  name: Central Cargo Division officer's formal dress jumpskirt
-  description: It's a formal dress jumpskirt worn by CentComm officers.
+  name: Sector Cargo Division officer's formal dress jumpskirt
+  description: It's a formal dress jumpskirt worn by Sector Command officers.
   components:
     - type: Sprite
       sprite: _Starlight/Clothing/Uniforms/Jumpskirt/centcommformaldressCCD.rsi
@@ -597,8 +597,8 @@
 - type: entity
   parent: [ ClothingUniformBase, BaseCentcommContraband ]
   id: ClothingUniformJumpskirtCentcomFormalDressCSOD
-  name: Central Special Operations Division officer's formal dress jumpskirt
-  description: It's a formal dress jumpskirt worn by CentComm officers.
+  name: Sector Special Operations Division officer's formal dress jumpskirt
+  description: It's a formal dress jumpskirt worn by Sector Command officers.
   components:
     - type: Sprite
       sprite: _Starlight/Clothing/Uniforms/Jumpskirt/centcommformaldressCSOD.rsi
@@ -608,8 +608,8 @@
 - type: entity
   parent: [ ClothingUniformBase, BaseCentcommContraband ]
   id: ClothingUniformJumpskirtCentcomFormalDressCID
-  name: Central Intelligence Division officer's formal dress jumpskirt
-  description: It's a formal dress jumpskirt worn by CentComm officers.
+  name: Sector Intelligence Division officer's formal dress jumpskirt
+  description: It's a formal dress jumpskirt worn by Sector Command officers.
   components:
     - type: Sprite
       sprite: _Starlight/Clothing/Uniforms/Jumpskirt/centcommformaldressCID.rsi
@@ -619,8 +619,8 @@
 - type: entity
   parent: [ ClothingUniformBase, BaseCentcommContraband ]
   id: ClothingUniformJumpskirtCentcomFormalDressCSD
-  name: Central Security Division officer's formal dress jumpskirt
-  description: It's a formal dress jumpskirt worn by CentComm officers.
+  name: Sector Security Division officer's formal dress jumpskirt
+  description: It's a formal dress jumpskirt worn by Sector Command officers.
   components:
     - type: Sprite
       sprite: _Starlight/Clothing/Uniforms/Jumpskirt/centcommformaldressCSD.rsi
@@ -630,8 +630,8 @@
 - type: entity
   parent: [ ClothingUniformBase, BaseCentcommContraband ]
   id: ClothingUniformJumpskirtCentcomFormalDressCED
-  name: Central Engineering Division officer's formal dress jumpskirt
-  description: It's a formal dress jumpskirt worn by CentComm officers.
+  name: Sector Engineering Division officer's formal dress jumpskirt
+  description: It's a formal dress jumpskirt worn by Sector Command officers.
   components:
     - type: Sprite
       sprite: _Starlight/Clothing/Uniforms/Jumpskirt/centcommformaldressCED.rsi
@@ -740,8 +740,8 @@
 - type: entity
   parent: ClothingUniformSkirtBase
   id: ClothingUniformJumpskirtCentcomOfficial
-  name: CentComm officer's suitskirt
-  description: It's a suitskirt worn by CentComm's highest-tier Commanders.
+  name: Sector Command officer's suitskirt
+  description: It's a suitskirt worn by Sector Command's highest-tier Commanders.
   components:
     - type: Sprite
       sprite: _Starlight/Clothing/Uniforms/Jumpskirt/centcom_official.rsi
@@ -751,8 +751,8 @@
 - type: entity
   parent: ClothingUniformSkirtBase
   id: ClothingUniformJumpskirtCentcomOfficer
-  name: CentComm turtleneck skirt
-  description: A skirt version of the CentComm turtleneck, rarer and more sought after than the original.
+  name: Sector Command turtleneck skirt
+  description: A skirt version of the Sector Command turtleneck, rarer and more sought after than the original.
   components:
   - type: Sprite
     sprite: _Starlight/Clothing/Uniforms/Jumpskirt/centcom_officer.rsi
@@ -907,7 +907,7 @@
 - type: entity
   parent: [ ClothingUniformSkirtBase, BaseCentcommContraband ]
   id: ClothingUniformJumpskirtCentcommDomesticFormalWear
-  name: central command domestic division formal wear
+  name: sector command domestic division formal wear
   description: A dress for special occasions.
   components:
   - type: Sprite
@@ -918,7 +918,7 @@
 - type: entity
   parent: [ ClothingUniformSkirtBase, BaseCentcommContraband ]
   id: ClothingUniformJumpskirtCentcommAdminFormalWear
-  name: central command administrative division formal wear
+  name: sector command administrative division formal wear
   description: A dress for special occasions.
   components:
   - type: Sprite
@@ -929,7 +929,7 @@
 - type: entity
   parent: [ ClothingUniformSkirtBase, BaseCentcommContraband ]
   id: ClothingUniformJumpskirtCentcommCargoFormalWear
-  name: central command cargo division formal wear
+  name: sector command cargo division formal wear
   description: A dress for special occasions.
   components:
   - type: Sprite
@@ -940,7 +940,7 @@
 - type: entity
   parent: [ ClothingUniformSkirtBase, BaseCentcommContraband ]
   id: ClothingUniformJumpskirtEngiCentcommFormalWear
-  name: central command engineering division formal wear
+  name: sector command engineering division formal wear
   description: A dress for special occasions.
   components:
   - type: Sprite
@@ -951,7 +951,7 @@
 - type: entity
   parent: [ ClothingUniformSkirtBase, BaseCentcommContraband ]
   id: ClothingUniformJumpskirtCentcommIntelFormalWear
-  name: central command intelligence division formal wear
+  name: sector command intelligence division formal wear
   description: A dress for special occasions.
   components:
   - type: Sprite
@@ -962,7 +962,7 @@
 - type: entity
   parent: [ ClothingUniformSkirtBase, BaseCentcommContraband ]
   id: ClothingUniformJumpskirtCentcommMedFormalWear
-  name: central command medical division formal wear
+  name: sector command medical division formal wear
   description: A dress for special occasions.
   components:
   - type: Sprite
@@ -973,7 +973,7 @@
 - type: entity
   parent: [ ClothingUniformSkirtBase, BaseCentcommContraband ]
   id: ClothingUniformJumpskirtCentcommResearchFormalWear
-  name: central command research division formal wear
+  name: sector command research division formal wear
   description: A dress for special occasions.
   components:
   - type: Sprite
@@ -984,7 +984,7 @@
 - type: entity
   parent: [ ClothingUniformSkirtBase, BaseCentcommContraband ]
   id: ClothingUniformJumpskirtCentcommSecurityFormalWear
-  name: central command security division formal wear
+  name: sector command security division formal wear
   description: A dress for special occasions.
   components:
   - type: Sprite
@@ -995,7 +995,7 @@
 - type: entity
   parent: [ ClothingUniformSkirtBase, BaseCentcommContraband ]
   id: ClothingUniformJumpskirtCentcommSpecialOpsFormalWear
-  name: central command special operations division formal wear
+  name: sector command special operations division formal wear
   description: A dress for special occasions.
   components:
   - type: Sprite

@@ -1,5 +1,5 @@
 - type: entity
-  name: cc medals box
+  name: sector command medals box
   parent: BoxCardboard
   id: BoxMedalsCC
   components:
@@ -30,8 +30,8 @@
 - type: entity
   parent: ClothingMiscBase
   id: ClothingNeckCentralCommandMedal
-  name: central command medal
-  description: Given by central command to commend exemplary behavior.
+  name: sector command medal
+  description: Given by sector command to commend exemplary behavior.
   components:
     - type: Sprite
       sprite: _Starlight/Clothing/Neck/Medals/Centcomm/ccmedal.rsi
@@ -45,8 +45,8 @@
 - type: entity
   parent: ClothingMiscBase
   id: ClothingNeckCentralCommandMedalValor
-  name: central command medal of valor
-  description: Given by central command to recognize valor.
+  name: sector command medal of valor
+  description: Given by sector command to recognize valor.
   components:
     - type: Sprite
       sprite: _Starlight/Clothing/Neck/Medals/Centcomm/ccmedalvalor.rsi
@@ -60,8 +60,8 @@
 - type: entity
   parent: ClothingMiscBase
   id: ClothingNeckCentralCommandMedalGaudy
-  name: central command medal of excellence
-  description: Humbly given by central command to commend excellency.
+  name: sector command medal of excellence
+  description: Humbly given by sector command to commend excellency.
   components:
     - type: Sprite
       sprite: _Starlight/Clothing/Neck/Medals/Centcomm/ccmedalletters.rsi

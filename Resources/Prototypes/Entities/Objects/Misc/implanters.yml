@@ -324,7 +324,7 @@
 
 - type: entity
   id: RadioImplanterCentcomm
-  name: centcomm radio implanter
+  name: sector command radio implanter
   parent: BaseImplantOnlyImplanter
   components:
   - type: Implanter
@@ -332,7 +332,7 @@
 
 - type: entity
   id: DeathRattleImplanterCentcomm
-  name: centcomm death rattle implanter
+  name: sector command death rattle implanter
   parent: BaseImplantOnlyImplanter
   components:
   - type: Implanter
