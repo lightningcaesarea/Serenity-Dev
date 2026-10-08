@@ -1,0 +1,134 @@
+- type: entity
+  id: CrateTokamakCore
+  parent: CrateEngineeringSecure
+  name: tokamak core crate
+  description: A crate containing a flatpacked tokamak core. Gyrotrons, injectors, fuel and a console sold separately.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: TokamakCoreFlatpack
+
+- type: entity
+  id: CrateTokamakGyrotrons
+  parent: CrateEngineeringSecure
+  name: tokamak gyrotron crate
+  description: A crate containing two flatpacked tokamak gyrotrons.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: TokamakGyrotronFlatpack
+          amount: 2
+
+- type: entity
+  id: CrateTokamakInjectors
+  parent: CrateEngineeringSecure
+  name: tokamak fuel injector crate
+  description: A crate containing two flatpacked tokamak fuel injectors.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: TokamakFuelInjectorFlatpack
+          amount: 2
+
+- type: entity
+  id: CrateTokamakHarvester
+  parent: CrateEngineeringSecure
+  name: tokamak harvester crate
+  description: A crate containing a flatpacked tokamak harvester.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: TokamakHarvesterFlatpack
+
+- type: entity
+  id: CrateTokamakConsole
+  parent: CrateEngineeringSecure
+  name: tokamak console crate
+  description: A crate containing a tokamak console board.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: TokamakConsoleCircuitboard
+
+- type: entity
+  id: CrateTokamakFuel
+  parent: CrateEngineeringSecure
+  name: tokamak starter fuel crate
+  description: Four deuterium-tritium fuel rods, enough to get a tokamak going.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: TokamakFuelRodDeuteriumTritium
+          amount: 4
+
+- type: cargoProduct
+  id: TokamakCorePurchase
+  icon:
+    sprite: _Serenity/Structures/Power/Tokamak/tokamak_gyrotron.rsi
+    state: idle
+  product: CrateTokamakCore
+  cost: 40000
+  category: cargoproduct-category-name-engineering
+  group: market
+
+- type: cargoProduct
+  id: TokamakGyrotronsPurchase
+  icon:
+    sprite: _Serenity/Structures/Power/Tokamak/tokamak_gyrotron.rsi
+    state: idle
+  product: CrateTokamakGyrotrons
+  cost: 12000
+  category: cargoproduct-category-name-engineering
+  group: market
+
+- type: cargoProduct
+  id: TokamakInjectorsPurchase
+  icon:
+    sprite: _Serenity/Structures/Power/Tokamak/tokamak_injector.rsi
+    state: loaded
+  product: CrateTokamakInjectors
+  cost: 9000
+  category: cargoproduct-category-name-engineering
+  group: market
+
+- type: cargoProduct
+  id: TokamakHarvesterPurchase
+  icon:
+    sprite: _Serenity/Structures/Power/Tokamak/tokamak_harvester.rsi
+    state: off
+  product: CrateTokamakHarvester
+  cost: 10000
+  category: cargoproduct-category-name-engineering
+  group: market
+
+- type: cargoProduct
+  id: TokamakConsolePurchase
+  icon:
+    sprite: Objects/Misc/module.rsi
+    state: cpu_engineering
+  product: CrateTokamakConsole
+  cost: 3000
+  category: cargoproduct-category-name-engineering
+  group: market
+
+- type: cargoProduct
+  id: TokamakFuelPurchase
+  icon:
+    sprite: _Serenity/Structures/Power/Tokamak/tokamak_fuel_rod.rsi
+    state: rod
+  product: CrateTokamakFuel
+  cost: 6000
+  category: cargoproduct-category-name-engineering
+  group: market

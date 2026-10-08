@@ -1,0 +1,29 @@
+<Document>
+  # Tokamak
+  The tokamak is a fusion engine. A magnetic field holds a cloud of plasma inside the core while gyrotrons heat it and injectors feed it fuel. The hotter the plasma, the more power the core puts onto the high voltage network.
+  <Box>
+    <GuideEntityEmbed Entity="TokamakCore"/>
+    <GuideEntityEmbed Entity="TokamakGyrotron"/>
+    <GuideEntityEmbed Entity="TokamakFuelInjector"/>
+    <GuideEntityEmbed Entity="TokamakConsole"/>
+  </Box>
+
+  ## Setting it up
+  Place the core and connect its HV cable to the grid. The core, gyrotrons, injectors and harvesters all need ordinary APC power as well.
+
+  Gyrotrons and injectors fire in a straight line, so each one has to face the core with a clear row or column between them. The console shows whether each device is aligned. The console must be within 40 tiles of the core.
+
+  ## Running it
+  - Load a fuel rod into each injector and turn everything on from the console.
+  - Gyrotrons heat the plasma. Fuel only reacts once the plasma is hot enough for that particular reaction.
+  - Raising the field strength lets the core hold more, but draws more power and makes the plasma less stable.
+  - People standing next to the core disturb the field. Keep the area clear.
+  - Helium ash builds up as fuel burns and crowds the plasma. Keep an eye on instability.
+
+  If instability reaches 100% the field ruptures: the core explodes, irradiates the area and sends out an EMP. The console has a SCRAM button that dumps the field safely, but it still releases some radiation.
+
+  ## Fuels
+  Deuterium and tritium ignite first and are the easiest way to get going. Lithium and deuterium breed more tritium. Deuterium and helium-3 burn cleanly, and hydrogen and boron burn hot enough to need a careful hand.
+
+  Hot enough plasma can also transmute iron into silver and silver into gold. Place a harvester within a few tiles of the core to press them into ingots. This is extremely unstable.
+</Document>

@@ -1,0 +1,436 @@
+# Tokamak fusion engine. The code lives in Content.*/_Serenity/Power/Tokamak.
+# Sprites are adapted from Aurora.3 (CC-BY-SA-3.0), see the meta.json next to each RSI.
+
+- type: entity
+  id: TokamakCore
+  parent: BaseStructure
+  name: tokamak core
+  description: A toroidal magnetic bottle for holding fusion plasma. Needs a console, gyrotrons to heat it and injectors to feed it. Do not stand next to it while it is running.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Structures/Power/Tokamak/tokamak_core.rsi
+    offset: 0,0.25
+    layers:
+    - state: off
+      map: [ "enum.TokamakVisualLayers.Base" ]
+    - sprite: _Serenity/Structures/Power/Tokamak/tokamak_field.rsi
+      state: field
+      shader: unshaded
+      visible: false
+      map: [ "enum.TokamakVisualLayers.Field" ]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.TokamakVisuals.CoreState:
+        enum.TokamakVisualLayers.Base:
+          Off: { state: off }
+          On: { state: on }
+          Unstable: { state: on }
+        enum.TokamakVisualLayers.Field:
+          Off: { visible: false }
+          On: { visible: true }
+          Unstable: { visible: true }
+  - type: TokamakCore
+  - type: Anchorable
+  - type: ApcPowerReceiver
+    powerLoad: 0
+  - type: ExtensionCableReceiver
+  - type: NodeContainer
+    examinable: true
+    nodes:
+      output:
+        !type:CableDeviceNode
+        nodeGroupID: HVPower
+  - type: PowerSupplier
+    supplyRate: 0
+    supplyRampRate: 2000000
+    supplyRampTolerance: 100000
+  - type: PowerMonitoringDevice
+    group: Generator
+    loadNode: output
+    sprite: _Serenity/Structures/Power/Tokamak/tokamak_core.rsi
+    state: off
+  - type: Electrified
+    onHandInteract: false
+    onInteractUsing: false
+    onBump: false
+    requirePower: true
+    highVoltageNode: output
+  - type: RadiationSource
+    intensity: 0
+    slope: 0.2
+  - type: AmbientSound
+    enabled: false
+    volume: -4
+    range: 12
+    sound:
+      path: /Audio/Ambience/Objects/gravity_gen_hum.ogg
+  - type: PointLight
+    enabled: true
+    radius: 4
+    energy: 1.2
+    color: "#c78bff"
+    castShadows: false
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 600
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+  - type: StaticPrice
+    price: 5000
+  - type: GuideHelp
+    guides:
+    - Tokamak
+
+- type: entity
+  id: TokamakGyrotron
+  parent: [ BaseStructure, BaseMachinePowered ]
+  name: tokamak gyrotron
+  description: A microwave emitter that heats tokamak plasma. It has to face the core in a straight line.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Structures/Power/Tokamak/tokamak_gyrotron.rsi
+    layers:
+    - state: off
+      map: [ "enum.TokamakVisualLayers.Base" ]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.TokamakVisuals.DeviceState:
+        enum.TokamakVisualLayers.Base:
+          Off: { state: off }
+          Idle: { state: idle }
+          Active: { state: active }
+  - type: Rotatable
+    rotateWhileAnchored: true
+  - type: Anchorable
+  - type: ApcPowerReceiver
+    powerLoad: 0
+  - type: TokamakGyrotron
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+  - type: StaticPrice
+    price: 1500
+  - type: GuideHelp
+    guides:
+    - Tokamak
+
+- type: entity
+  id: TokamakFuelInjector
+  parent: [ BaseStructure, BaseMachinePowered ]
+  name: tokamak fuel injector
+  description: Feeds a fuel rod into tokamak plasma. It has to face the core in a straight line.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Structures/Power/Tokamak/tokamak_injector.rsi
+    layers:
+    - state: off
+      map: [ "enum.TokamakVisualLayers.Base" ]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.TokamakVisuals.DeviceState:
+        enum.TokamakVisualLayers.Base:
+          Off: { state: off }
+          Idle: { state: loaded }
+          Active: { state: active }
+  - type: Rotatable
+    rotateWhileAnchored: true
+  - type: Anchorable
+  - type: ApcPowerReceiver
+    powerLoad: 0
+  - type: TokamakFuelInjector
+  - type: ItemSlots
+    slots:
+      rod:
+        name: tokamak-injector-rod-slot
+        insertSound: /Audio/Machines/ame_fuelinjection.ogg
+        whitelist:
+          components:
+          - TokamakFuelRod
+  - type: ContainerContainer
+    containers:
+      rod: !type:ContainerSlot {}
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+  - type: StaticPrice
+    price: 1200
+  - type: GuideHelp
+    guides:
+    - Tokamak
+
+- type: entity
+  id: TokamakHarvester
+  parent: [ BaseStructure, BaseMachinePowered ]
+  name: tokamak harvester
+  description: Pulls transmuted metals out of tokamak plasma and presses them into ingots. Must be within a few tiles of the core.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Structures/Power/Tokamak/tokamak_harvester.rsi
+    layers:
+    - state: off
+      map: [ "enum.TokamakVisualLayers.Base" ]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.TokamakVisuals.DeviceState:
+        enum.TokamakVisualLayers.Base:
+          Off: { state: off }
+          Idle: { state: off }
+          Active: { state: on }
+  - type: Anchorable
+  - type: ApcPowerReceiver
+    powerLoad: 0
+  - type: TokamakHarvester
+    outputs:
+      gold: Gold
+      silver: Silver
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+  - type: StaticPrice
+    price: 1500
+  - type: GuideHelp
+    guides:
+    - Tokamak
+
+- type: entity
+  id: TokamakConsole
+  parent: BaseComputerAiAccess
+  name: tokamak console
+  description: Controls the field of a nearby tokamak and every gyrotron, injector and harvester around it.
+  components:
+  - type: Sprite
+    layers:
+    - map: [ "computerLayerBody" ]
+      state: computer
+    - map: [ "computerLayerKeyboard" ]
+      state: generic_keyboard
+    - map: [ "computerLayerScreen" ]
+      state: power_monitor
+    - map: [ "computerLayerKeys" ]
+      state: power_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+  - type: PointLight
+    radius: 2.5
+    energy: 1.5
+    color: "#c78bff"
+  - type: Computer
+    board: TokamakConsoleCircuitboard
+  - type: TokamakConsole
+  - type: ActivatableUI
+    singleUser: true
+    key: enum.TokamakConsoleUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.TokamakConsoleUiKey.Key:
+        type: TokamakConsoleBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+  - type: GuideHelp
+    guides:
+    - Tokamak
+
+- type: entity
+  id: TokamakConsoleCircuitboard
+  parent: BaseComputerCircuitboard
+  name: tokamak console board
+  description: A computer printed circuit board for a tokamak console.
+  components:
+  - type: Sprite
+    state: cpu_engineering
+  - type: ComputerBoard
+    prototype: TokamakConsole
+
+# Flatpacks
+
+- type: entity
+  id: TokamakCoreFlatpack
+  parent: [ BaseStructureFlatpack, BaseEngineeringContraband ]
+  name: tokamak core flatpack
+  description: A flatpack used for constructing a tokamak core. Gyrotrons, injectors and a console sold separately.
+  components:
+  - type: Sprite
+    sprite: Objects/Devices/flatpack.rsi
+    layers:
+    - state: large
+  - type: Flatpack
+    entity: TokamakCore
+
+- type: entity
+  id: TokamakGyrotronFlatpack
+  parent: [ BaseStructureFlatpack, BaseEngineeringContraband ]
+  name: tokamak gyrotron flatpack
+  description: A flatpack used for constructing a tokamak gyrotron.
+  components:
+  - type: Flatpack
+    entity: TokamakGyrotron
+
+- type: entity
+  id: TokamakFuelInjectorFlatpack
+  parent: [ BaseStructureFlatpack, BaseEngineeringContraband ]
+  name: tokamak fuel injector flatpack
+  description: A flatpack used for constructing a tokamak fuel injector.
+  components:
+  - type: Flatpack
+    entity: TokamakFuelInjector
+
+- type: entity
+  id: TokamakHarvesterFlatpack
+  parent: [ BaseStructureFlatpack, BaseEngineeringContraband ]
+  name: tokamak harvester flatpack
+  description: A flatpack used for constructing a tokamak harvester.
+  components:
+  - type: Flatpack
+    entity: TokamakHarvester
+
+# Fuel rods
+
+- type: entity
+  id: BaseTokamakFuelRod
+  abstract: true
+  parent: BaseItem
+  name: tokamak fuel rod
+  description: A sealed rod of fusion fuel for a tokamak injector.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Structures/Power/Tokamak/tokamak_fuel_rod.rsi
+    state: rod
+  - type: TokamakFuelRod
+  - type: StaticPrice
+    price: 300
+
+- type: entity
+  id: TokamakFuelRodHydrogen
+  parent: BaseTokamakFuelRod
+  name: hydrogen fuel rod
+  components:
+  - type: Sprite
+    color: "#d6e6ff"
+  - type: TokamakFuelRod
+    reactants:
+      hydrogen: 100
+
+- type: entity
+  id: TokamakFuelRodDeuterium
+  parent: BaseTokamakFuelRod
+  name: deuterium fuel rod
+  components:
+  - type: Sprite
+    color: "#7fb2ff"
+  - type: TokamakFuelRod
+    reactants:
+      deuterium: 100
+
+- type: entity
+  id: TokamakFuelRodTritium
+  parent: BaseTokamakFuelRod
+  name: tritium fuel rod
+  components:
+  - type: Sprite
+    color: "#a07fff"
+  - type: TokamakFuelRod
+    reactants:
+      tritium: 100
+
+- type: entity
+  id: TokamakFuelRodDeuteriumTritium
+  parent: BaseTokamakFuelRod
+  name: deuterium-tritium fuel rod
+  description: A sealed rod of an even mix of deuterium and tritium, the easiest fuel to ignite.
+  components:
+  - type: Sprite
+    color: "#8f99ff"
+  - type: TokamakFuelRod
+    reactants:
+      deuterium: 50
+      tritium: 50
+
+- type: entity
+  id: TokamakFuelRodHelium3
+  parent: BaseTokamakFuelRod
+  name: helium-3 fuel rod
+  components:
+  - type: Sprite
+    color: "#ffd27f"
+  - type: TokamakFuelRod
+    reactants:
+      helium3: 100
+
+- type: entity
+  id: TokamakFuelRodLithium
+  parent: BaseTokamakFuelRod
+  name: lithium fuel rod
+  components:
+  - type: Sprite
+    color: "#ff8f8f"
+  - type: TokamakFuelRod
+    reactants:
+      lithium: 100
+
+- type: entity
+  id: TokamakFuelRodBoron
+  parent: BaseTokamakFuelRod
+  name: boron fuel rod
+  components:
+  - type: Sprite
+    color: "#7fffb5"
+  - type: TokamakFuelRod
+    reactants:
+      boron: 100
+
+- type: entity
+  id: TokamakFuelRodIron
+  parent: BaseTokamakFuelRod
+  name: iron fuel rod
+  components:
+  - type: Sprite
+    color: "#b0b0b8"
+  - type: TokamakFuelRod
+    reactants:
+      iron: 100
