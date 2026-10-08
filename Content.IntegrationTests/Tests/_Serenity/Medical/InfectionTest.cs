@@ -568,7 +568,7 @@ public sealed class InfectionTest
             }
 
             foreach (var risk in config.OpenWounds.Keys)
-                Assert.That(pathogens.Sum(p => p.WoundWeights.GetValueOrDefault(risk)), Is.GreaterThan(0f), $"nothing can infect through {risk}");
+                Assert.That(pathogens.Sum(p => (p.WoundWeights.TryGetValue(risk, out var weight) ? weight : 0f)), Is.GreaterThan(0f), $"nothing can infect through {risk}");
         });
 
         await pair.CleanReturnAsync();
@@ -640,10 +640,9 @@ public sealed class InfectionTest
         await using var pair = await PoolManager.GetServerClient();
         var server = pair.Server;
         var proto = server.ProtoMan;
-        var entMan = server.EntMan;
 
-        Assert.That(proto.Index<EntityPrototype>("DiseaseDiagnoser").HasComponent<PathogenAnalyzerComponent>(entMan.ComponentFactory));
-        Assert.That(proto.Index<EntityPrototype>("Vaccinator").HasComponent<PathogenSynthesizerComponent>(entMan.ComponentFactory));
+        Assert.That(proto.Index<EntityPrototype>("DiseaseDiagnoser").Components.ContainsKey("PathogenAnalyzer"));
+        Assert.That(proto.Index<EntityPrototype>("Vaccinator").Components.ContainsKey("PathogenSynthesizer"));
         Assert.That(proto.HasIndex<LatheRecipePrototype>("DiagnoserMachineCircuitboard"));
         Assert.That(proto.HasIndex<LatheRecipePrototype>("VaccinatorMachineCircuitboard"));
 
