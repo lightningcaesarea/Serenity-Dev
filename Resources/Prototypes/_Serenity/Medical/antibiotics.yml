@@ -79,34 +79,14 @@
         time: 10
         type: Update
 
-# Antibiox takes two steps: sulfur and ethanol make an inert sulfa solution, which then needs dylovene and a pinch of
-# diethylamine (itself mixed from ammonia and ethanol, and ammonia needs heating) to become the drug.
-- type: reagent
-  id: SulfaSolution
-  name: reagent-name-sulfa-solution
-  group: Medicine
-  desc: reagent-desc-sulfa-solution
-  physicalDesc: reagent-physical-desc-cloudy
-  flavor: bitter
-  color: "#e3dc8f"
-
-- type: reaction
-  id: SulfaSolution
-  reactants:
-    Sulfur:
-      amount: 1
-    Ethanol:
-      amount: 1
-  products:
-    SulfaSolution: 2
-
+# Antibiox needs diethylamine, which Chemistry mixes from ammonia and ethanol (ammonia needs heating).
 - type: reaction
   id: Antibiox
   reactants:
     Dylovene:
       amount: 1
-    SulfaSolution:
-      amount: 2
+    Sulfur:
+      amount: 1
     Diethylamine:
       amount: 1
   products:

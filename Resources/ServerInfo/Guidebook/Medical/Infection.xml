@@ -57,9 +57,7 @@ While antibiox is in the blood:
 
 [color=red]Overdose (16 units or more):[/color] the patient is poisoned (a double dose is painful but not deadly by itself), the protection is lost, a new infection from dirty surgery or open wounds becomes about three times as likely, and any infection escalates about three times faster. Do not double up on doses.
 
-[bold]Making it:[/bold] antibiox takes two steps. Mix equal parts sulfur and ethanol to get [bold]sulfa solution[/bold], an inert intermediate. Then combine 1 part dylovene, 2 parts sulfa solution and 1 part [bold]diethylamine[/bold] to get 3 parts antibiox. Diethylamine is mixed from ammonia and ethanol, and ammonia from hydrogen and nitrogen, heated to 370 K.
-
-<GuideReagentEmbed Reagent="SulfaSolution"/>
+[bold]Making it:[/bold] combine 1 part dylovene, 1 part sulfur and 1 part [bold]diethylamine[/bold] to get 3 parts antibiox. Diethylamine is mixed from ammonia and ethanol, and ammonia from hydrogen and nitrogen, heated to 370 K.
 
 <Box>
     <GuideEntityEmbed Entity="AntibioxAutoInjector"/>
