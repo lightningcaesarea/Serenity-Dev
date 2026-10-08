@@ -1,0 +1,64 @@
+# Flatpacks of the pathogen machines (see pathogens.yml), so a pathology lab can be set up anywhere.
+
+- type: entity
+  parent: BaseFlatpack
+  id: BloodCultureAnalyzerFlatpack
+  name: blood culture analyzer flatpack
+  description: A flatpack used for constructing a blood culture analyzer.
+  components:
+  - type: Flatpack
+    entity: DiseaseDiagnoser
+  - type: Sprite
+    layers:
+    - state: base
+    - state: overlay
+      color: "#52B4E9"
+      map: ["enum.FlatpackVisualLayers.Overlay"]
+    - state: icon-default
+
+- type: entity
+  parent: BaseFlatpack
+  id: AntibioticSynthesizerFlatpack
+  name: antibiotic synthesizer flatpack
+  description: A flatpack used for constructing an antibiotic synthesizer.
+  components:
+  - type: Flatpack
+    entity: Vaccinator
+  - type: Sprite
+    layers:
+    - state: base
+    - state: overlay
+      color: "#52B4E9"
+      map: ["enum.FlatpackVisualLayers.Overlay"]
+    - state: icon-default
+
+- type: entity
+  id: LockerPathology
+  parent: LockerBase
+  name: pathology locker
+  description: Holds the equipment for a pathology lab: flatpacked machines for finding out which bacteria is making someone sick.
+  components:
+  - type: Appearance
+  - type: EntityStorageVisuals
+    stateBaseClosed: med
+    stateDoorOpen: med_open
+    stateDoorClosed: med_door
+  - type: AccessReader
+    access: [ [ "Medical" ] ]
+
+- type: entityTable
+  id: LockerFillPathology
+  table: !type:AllSelector
+    children:
+    - id: BloodCultureAnalyzerFlatpack
+    - id: AntibioticSynthesizerFlatpack
+
+- type: entity
+  id: LockerPathologyFilled
+  parent: LockerPathology
+  suffix: Filled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: LockerFillPathology
