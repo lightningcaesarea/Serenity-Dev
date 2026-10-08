@@ -1,0 +1,166 @@
+# Station Commander versions of the HoP and Captain clothing.
+
+- type: loadout
+  id: StationCommanderHeadHatStationCommanderPeaked
+  equipment:
+    head: ClothingHeadHatStationCommanderPeaked
+
+- type: loadout
+  id: StationCommanderHeadHatStationCommanderFormal
+  equipment:
+    head: ClothingHeadHatStationCommanderFormal
+
+- type: loadout
+  id: StationCommanderHeadHatStationCommanderOfficer
+  equipment:
+    head: ClothingHeadHatStationCommanderOfficer
+
+- type: loadout
+  id: StationCommanderHeadHatStationCommanderOfficerBeret
+  equipment:
+    head: ClothingHeadHatStationCommanderOfficerBeret
+
+- type: loadout
+  id: StationCommanderUniformJumpsuitStationCommanderDuty
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitStationCommanderDuty
+
+- type: loadout
+  id: StationCommanderUniformJumpskirtStationCommanderDuty
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtStationCommanderDuty
+
+- type: loadout
+  id: StationCommanderUniformJumpsuitStationCommanderTurtleneck
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitStationCommanderTurtleneck
+
+- type: loadout
+  id: StationCommanderUniformJumpskirtStationCommanderTurtleneck
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtStationCommanderTurtleneck
+
+- type: loadout
+  id: StationCommanderUniformJumpsuitStationCommanderFormal
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitStationCommanderFormal
+
+- type: loadout
+  id: StationCommanderUniformJumpskirtStationCommanderFormal
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtStationCommanderFormal
+
+- type: loadout
+  id: StationCommanderUniformJumpsuitStationCommanderCommand
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitStationCommanderCommand
+
+- type: loadout
+  id: StationCommanderUniformJumpskirtStationCommanderCommand
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtStationCommanderCommand
+
+- type: loadout
+  id: StationCommanderUniformJumpsuitStationCommanderDress
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitStationCommanderDress
+
+- type: loadout
+  id: StationCommanderUniformJumpskirtStationCommanderDress
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtStationCommanderDress
+
+- type: loadout
+  id: StationCommanderUniformJumpsuitStationCommanderCommandTurtleneck
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitStationCommanderCommandTurtleneck
+
+- type: loadout
+  id: StationCommanderUniformJumpskirtStationCommanderCommandTurtleneck
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtStationCommanderCommandTurtleneck
+
+- type: loadout
+  id: StationCommanderUniformJumpsuitStationCommanderNoble
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitStationCommanderNoble
+
+- type: loadout
+  id: StationCommanderNeckCloakStationCommanderDuty
+  equipment:
+    neck: ClothingNeckCloakStationCommanderDuty
+
+- type: loadout
+  id: StationCommanderNeckMantleStationCommanderDuty
+  equipment:
+    neck: ClothingNeckMantleStationCommanderDuty
+
+- type: loadout
+  id: StationCommanderNeckCloakStationCommanderFormal
+  equipment:
+    neck: ClothingNeckCloakStationCommanderFormal
+
+- type: loadout
+  id: StationCommanderNeckCloakStationCommanderCommand
+  equipment:
+    neck: ClothingNeckCloakStationCommanderCommand
+
+- type: loadout
+  id: StationCommanderNeckCloakStationCommanderCeremonial
+  equipment:
+    neck: ClothingNeckCloakStationCommanderCeremonial
+
+- type: loadout
+  id: StationCommanderNeckMantleStationCommanderCommand
+  equipment:
+    neck: ClothingNeckMantleStationCommanderCommand
+
+- type: loadout
+  id: StationCommanderNeckCloakStationCommanderBoat
+  equipment:
+    neck: ClothingNeckCloakStationCommanderBoat
+
+- type: loadout
+  id: StationCommanderBackpackStationCommander
+  equipment:
+    back: ClothingBackpackStationCommander
+
+- type: loadout
+  id: StationCommanderBackpackSatchelStationCommander
+  equipment:
+    back: ClothingBackpackSatchelStationCommander
+
+- type: loadout
+  id: StationCommanderBackpackDuffelStationCommanderDuty
+  equipment:
+    back: ClothingBackpackDuffelStationCommanderDuty
+
+- type: loadout
+  id: StationCommanderBackpackStationCommanderCommand
+  equipment:
+    back: ClothingBackpackStationCommanderCommand
+
+- type: loadout
+  id: StationCommanderBackpackSatchelStationCommanderCommand
+  equipment:
+    back: ClothingBackpackSatchelStationCommanderCommand
+
+- type: loadout
+  id: StationCommanderBackpackDuffelStationCommanderCommand
+  equipment:
+    back: ClothingBackpackDuffelStationCommanderCommand
+
+- type: loadout
+  id: StationCommanderOuterArmorStationCommanderCommandCarapace
+  equipment:
+    outerClothing: ClothingOuterArmorStationCommanderCommandCarapace
+
+- type: loadout
+  id: StationCommanderOuterWinterStationCommander
+  equipment:
+    outerClothing: ClothingOuterWinterStationCommander
+
+- type: loadout
+  id: StationCommanderOuterWinterStationCommanderCommand
+  equipment:
+    outerClothing: ClothingOuterWinterStationCommanderCommand

@@ -126,6 +126,7 @@
   name: loadout-group-pens
   minLimit: 1
   loadouts:
+  - StationCommanderPen # Serenity: the Station Commander's own pen is the default
   - PenHop
   - Pen
   - FancyPen

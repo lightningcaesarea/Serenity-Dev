@@ -47,9 +47,6 @@ public sealed partial class SocialInteractionSystem : EntitySystem
         if (IsDeadOrIncapacitated(args.User))
             return;
 
-        //create a verb subcategory
-        var category = new VerbCategory("social-interaction-component-verb", null);
-
         //enumerate all the physical social interaction prototypes
         foreach (var protoid in component.InteractionPrototypes)
         {
@@ -73,7 +70,10 @@ public sealed partial class SocialInteractionSystem : EntitySystem
             Verb verb = new()
             {
                 Text = Loc.GetString(proto.VerbName),
-                Category = category,
+                Category = proto.OwnVerb ? null : VerbCategory.Social, // Serenity - share the Social submenu with hug
+                InSocialMenu = proto.OwnVerb, // Serenity
+                Icon = proto.Icon, // Serenity
+                Priority = proto.Priority, // Serenity
                 Act = () => InteractionAction(uid, args, proto)
             };
 
@@ -162,7 +162,22 @@ public sealed partial class SocialInteractionSystem : EntitySystem
                 ("user", Identity.Entity(args.User, EntityManager)),
                 ("target", Identity.Entity(args.Target, EntityManager)));
 
-            _popupSystem.PopupEntity(msgOthers, uid, Filter.PvsExcept(args.User, entityManager: EntityManager), true);
+            var othersFilter = Filter.PvsExcept(args.User, entityManager: EntityManager);
+            // Serenity - the target gets its own message instead
+            if (proto.MessagePerceivedByTarget != null)
+                othersFilter.RemovePlayerByAttachedEntity(args.Target);
+
+            _popupSystem.PopupEntity(msgOthers, uid, othersFilter, true);
+        }
+
+        // Serenity - popup only the target sees
+        if (!selfTarget && proto.MessagePerceivedByTarget is { } targetMessage)
+        {
+            var msgTarget = Loc.GetString(targetMessage,
+                ("user", Identity.Entity(args.User, EntityManager)),
+                ("target", Identity.Entity(args.Target, EntityManager)));
+
+            _popupSystem.PopupEntity(msgTarget, uid, args.Target);
         }
 
         // emote message for chat

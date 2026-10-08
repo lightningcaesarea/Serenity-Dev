@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "license": "CC0-1.0",
+  "copyright": "Original work by TJohnson. | Recolored to green and gold for Serenity's Station Commander from DeltaV/Clothing/Neck/Cloaks/boatcloak.rsi.",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "icon"
+    },
+    {
+      "name": "equipped-NECK",
+      "directions": 4
+    }
+  ]
+}

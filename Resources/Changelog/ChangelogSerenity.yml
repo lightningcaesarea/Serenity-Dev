@@ -795,3 +795,61 @@ Entries:
   id: 13101
   time: '2026-10-07T15:37:57.000000+00:00'
   url: https://github.com/lightningcaesarea/Serenity-Dev/pull/131
+- author: Inny
+  changes:
+  - message: Staff can answer ahelps by replying in the Discord ahelp relay channel.
+    type: Add
+  - message: The Discord bot's status shows the player count and round time.
+    type: Add
+  id: 13301
+  time: '2026-10-07T19:21:15.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/133
+- author: Inny
+  changes:
+  - message: The ahelp window has a panic button for extreme consent violations, for when asking in LOOC, SOOC and in character hasn't worked. It alerts every online admin.
+    type: Add
+  id: 13201
+  time: '2026-10-07T19:21:25.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/132
+- author: Inny
+  changes:
+  - message: The Station Commander can pick a new green-and-gold uniform, beret, cap, cloak, mantle, jacket, carapace, EVA suit, duffel and messenger bag in their loadout.
+    type: Add
+  - message: The Station Commander can also wear green-and-gold versions of every Head of Personnel and Captain hat, uniform, cloak, mantle, bag and winter coat.
+    type: Add
+  - message: Added the Station Commander's Pen, which the Station Commander starts with.
+    type: Add
+  - message: The Head of Personnel's PDA and locker are now the Station Commander PDA and Station Commander locker, with new colors.
+    type: Tweak
+  id: 13601
+  time: '2026-10-07T19:33:46.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/136
+- author: Inny
+  changes:
+  - message: The click and right-click menus on another player now show a Social submenu (Hug, Boop, Pet, Wave) plus Look at, Check out, Strip and Intimacy as separate options.
+    type: Tweak
+  - message: Look at is its own verb; the person you look at gets a popup instead of a chat emote.
+    type: Tweak
+  - message: Added a Check out verb that only you and the other person see.
+    type: Add
+  id: 13801
+  time: '2026-10-07T19:53:30.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/138
+- author: Inny
+  changes:
+  - message: 'Serenity Outpost is now a safe zone: you can''t attack anyone while you''re on the outpost itself. Command, Marines and Marine Raiders are exempt.'
+    type: Add
+  - message: New players get a welcome message when they spawn, and the station lets everyone know someone new has arrived.
+    type: Add
+  id: 13401
+  time: '2026-10-07T22:09:06.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/134
+- author: Inny
+  changes:
+  - message: Characters now moan when a pleasurable intimacy act is done to them, and moan on their own sooner while aroused.
+    type: Tweak
+  - message: The Kinks & Consent button is now a light blue heart, matching the other top-bar buttons.
+    type: Tweak
+  id: 13701
+  time: '2026-10-07T22:10:01.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/137

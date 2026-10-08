@@ -100,6 +100,7 @@ namespace Content.Server.Administration.Systems
             Subs.CVar(_config, CCVars.DiscordAHelpAvatar, OnAvatarChanged, true);
             Subs.CVar(_config, CVars.GameHostName, OnServerNameChanged, true);
             Subs.CVar(_config, CCVars.AdminAhelpOverrideClientName, OnOverrideChanged, true);
+            InitializeDiscordBot(); // Serenity
             _sawmill = IoCManager.Resolve<ILogManager>().GetSawmill("AHELP");
 
             var defaultParams = new AHelpMessageParams(
@@ -116,6 +117,7 @@ namespace Content.Server.Administration.Systems
             SubscribeLocalEvent<GameRunLevelChangedEvent>(OnGameRunLevelChanged);
             SubscribeNetworkEvent<BwoinkClientTypingUpdated>(OnClientTypingUpdated);
             SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => _activeConversations.Clear());
+            InitializePanic(); // Serenity
 
         	_rateLimit.Register(
                 RateLimitKey,
@@ -208,7 +210,7 @@ namespace Content.Server.Administration.Systems
             if (e.NewStatus != SessionStatus.InGame)
                 return;
 
-            RaiseNetworkEvent(new BwoinkDiscordRelayUpdated(!string.IsNullOrWhiteSpace(_webhookUrl)), e.Session);
+            RaiseNetworkEvent(new BwoinkDiscordRelayUpdated(RelaysAhelps), e.Session); // Serenity: or the bot
         }
 
         private void NotifyAdmins(ICommonSession session, string message, PlayerStatusType statusType)
@@ -268,7 +270,7 @@ namespace Content.Server.Administration.Systems
             }
 
             // Enqueue the message for Discord relay
-            if (_webhookUrl != string.Empty)
+            if (RelaysAhelps) // Serenity: or the bot
             {
                 // if (!_messageQueues.ContainsKey(session.UserId))
                 //     _messageQueues[session.UserId] = new Queue<string>();
@@ -346,7 +348,7 @@ namespace Content.Server.Administration.Systems
         {
             _webhookUrl = url;
 
-            RaiseNetworkEvent(new BwoinkDiscordRelayUpdated(!string.IsNullOrWhiteSpace(url)));
+            RaiseNetworkEvent(new BwoinkDiscordRelayUpdated(RelaysAhelps)); // Serenity: or the bot
 
             if (url == string.Empty)
                 return;
@@ -424,7 +426,7 @@ namespace Content.Server.Administration.Systems
                 var linkToPrevious = string.Empty;
 
                 // If we have all the data required, we can link to the embed of the previous round or embed that was too long
-                if (_webhookData is { GuildId: { } guildId, ChannelId: { } channelId })
+                if (TryGetRelayLocation(out var guildId, out var channelId)) // Serenity: the bot can post the relay too
                 {
                     if (tooLong && existingEmbed?.Id != null)
                     {
@@ -489,6 +491,18 @@ namespace Content.Server.Administration.Systems
                 existingEmbed.Username,
                 existingEmbed.CharacterName);
 
+            // Serenity start: without a webhook the Discord bot posts the relay itself
+            if (BotPostsAhelps)
+            {
+                if (!await BotRelayAhelpAsync(existingEmbed, payload))
+                {
+                    _relayMessages.Remove(userId);
+                    _processingChannels.Remove(userId);
+                    return;
+                }
+            }
+            else
+            // Serenity end
             // If there is no existing embed, create a new one
             // Otherwise patch (edit) it
             if (existingEmbed.Id == null)
@@ -532,6 +546,7 @@ namespace Content.Server.Administration.Systems
             }
 
             _relayMessages[userId] = existingEmbed;
+            TrackAhelpEmbed(existingEmbed.Id, userId); // Serenity
 
             // Actually do the on call relay last, we just need to grab it before we dequeue every message above.
             if (onCallRelay &&
@@ -547,7 +562,7 @@ namespace Content.Server.Administration.Systems
                     message.AppendLine("Unanswered SOS");
 
                     // Need webhook data to get the correct link for that channel rather than on-call data.
-                    if (_webhookData is { GuildId: { } guildId, ChannelId: { } channelId })
+                    if (TryGetRelayLocation(out var guildId, out var channelId)) // Serenity
                     {
                         message.AppendLine(
                             $"**[Go to ahelp](https://discord.com/channels/{guildId}/{channelId}/{existingEmbed.Id})**");
@@ -754,7 +769,7 @@ namespace Content.Server.Administration.Systems
                 }
             }
 
-            var sendsWebhook = _webhookUrl != string.Empty;
+            var sendsWebhook = RelaysAhelps; // Serenity: or the bot
             if (sendsWebhook)
             {
                 if (!_messageQueues.ContainsKey(msg.UserId))
