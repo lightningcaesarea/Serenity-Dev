@@ -31,8 +31,8 @@
   equipment:
     #shoes: ClothingShoesColorBrown # 🌟Starlight🌟
     id: HoPPDA
-    gloves: ClothingHandsGlovesHop
-    ears: ClothingHeadsetHoP
+    gloves: ClothingHandsGlovesStationCommander
+    ears: ClothingHeadsetStationCommander
     belt: BoxFolderClipboardThreePapers
     #eyes: ClothingEyesHudCommand #Starlight
   storage:
@@ -44,9 +44,9 @@
   job: HeadOfPersonnel
   hasMindShield: true
   equipment:
-    head: ClothingHeadHatHopcap
+    head: ClothingHeadHatStationCommanderCap
     eyes: ClothingEyesHudCommand
     mask: ClothingMaskNeckGaiterRed
-    neck: ClothingNeckCloakHop
-    outerClothing: ClothingOuterWinterHoP
+    neck: ClothingNeckCloakStationCommander
+    outerClothing: ClothingOuterWinterStationCommander
 

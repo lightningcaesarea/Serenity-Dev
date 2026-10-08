@@ -189,7 +189,7 @@
   id: LockerFillHeadOfPersonnel
   table: !type:AllSelector
     children:
-    - id: ClothingNeckCloakHopElite
+    - id: ClothingNeckCloakStationCommanderCeremonial
     - id: AccessConfigurator
     - id: BoxEncryptionKeyAssistant
     - id: BoxEncryptionKeyService
@@ -204,7 +204,7 @@
       # Yes they do fuck you.
     - id: ClothingBackpackIan
       prob: 0.5
-    - id: ClothingHeadsetHoP
+    - id: ClothingHeadsetStationCommander
     - id: ClothingNeckGoldmedal
     - id: DoorRemoteService
     - id: HoPIDCard

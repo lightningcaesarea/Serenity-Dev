@@ -1,7 +1,7 @@
 # Command
 # Starlight start
 highlights-captain = Captain, "Cap", Bridge, "Command"
-highlights-head-of-personnel = Head Of Personnel, "HoP", Service, Bridge, "Command"
+highlights-head-of-personnel = Station Commander, "Commander", Head Of Personnel, "HoP", Service, Bridge, "Command"
 highlights-chief-engineer = Chief Engineer, "CE", Engineering, Engineer, "Engi", Bridge, "Command"
 highlights-chief-medical-officer = Chief Medical Officer, "CMO", Medbay, Medical, "Med", Bridge, "Command"
 highlights-head-of-security = Marine CO, "CO", Armory, Marine Police, "MP", Bridge, "Command"

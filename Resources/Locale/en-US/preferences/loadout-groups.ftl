@@ -29,11 +29,11 @@ loadout-group-captain-backpack = Captain backpack
 loadout-group-captain-outerclothing = Captain outer clothing
 loadout-group-captain-eyewear = Captain eyewear
 
-loadout-group-hop-head = Head of Personnel head
-loadout-group-hop-jumpsuit = Head of Personnel jumpsuit
-loadout-group-hop-neck = Head of Personnel neck
-loadout-group-hop-backpack = Head of Personnel backpack
-loadout-group-hop-outerclothing = Head of Personnel outer clothing
+loadout-group-hop-head = Station Commander head
+loadout-group-hop-jumpsuit = Station Commander jumpsuit
+loadout-group-hop-neck = Station Commander neck
+loadout-group-hop-backpack = Station Commander backpack
+loadout-group-hop-outerclothing = Station Commander outer clothing
 
 # Civilian
 loadout-group-assistant-jumpsuit = Assistant jumpsuit

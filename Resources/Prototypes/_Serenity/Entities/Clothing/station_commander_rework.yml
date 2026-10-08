@@ -421,3 +421,25 @@
     sprite: _Serenity/Clothing/StationCommander/Head/command_winter_coat_hood.rsi
   - type: Clothing
     sprite: _Serenity/Clothing/StationCommander/Head/command_winter_coat_hood.rsi
+
+# ── Gloves and headset ───────────────────────────────────────────────────────
+
+- type: entity
+  parent: ClothingHandsGlovesHop
+  id: ClothingHandsGlovesStationCommander
+  name: Station Commander gloves
+  description: Papercut-proof gloves for the Station Commander, perfect for dealing with paperwork and matters of command.
+
+- type: entity
+  parent: ClothingHeadsetHoP
+  id: ClothingHeadsetStationCommander
+  name: Station Commander headset
+  description: The over-ear headset of the Station Commander, keyed for service and command traffic.
+
+# ── Scarf ────────────────────────────────────────────────────────────────────
+
+- type: entity
+  parent: ClothingNeckScarfStripedGreen
+  id: ClothingNeckScarfStationCommander
+  name: Station Commander scarf
+  description: A warm green scarf for the Station Commander, for long watches on a cold bridge.

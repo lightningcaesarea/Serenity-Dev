@@ -77,20 +77,20 @@
 - type: entity
   parent: [IDCardStandard, BaseGrandTheftContraband]
   id: HoPIDCard
-  name: head of personnel ID card
+  name: Station Commander ID card
   components:
   - type: Sprite
     layers:
-    - state: silver
+    - state: gold
     - state: stripe_top
-      color: &color-service-top "#639137"
+      color: "#2c6a30"
     - state: stripe_bottom
-      color: &color-service-bottom "#446326"
+      color: "#194214"
     - sprite: *icon-rsi
       offset: *icon-offset
-      state: HeadOfPersonnel
+      state: StationCommander
   - type: Item
-    heldPrefix: silver
+    heldPrefix: gold
   - type: PresetIdCard
     job: HeadOfPersonnel
   - type: StealTarget # Starlight
@@ -551,9 +551,9 @@
     layers:
     - state: default
     - state: stripe_top
-      color: *color-service-top
+      color: &color-service-top "#639137"
     - state: stripe_bottom
-      color: *color-service-bottom
+      color: &color-service-bottom "#446326"
     - sprite: *icon-rsi
       offset: *icon-offset
       state: ServiceWorker
