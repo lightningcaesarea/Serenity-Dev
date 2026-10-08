@@ -24,10 +24,9 @@
   name: xenoborgs-title
   description: xenoborgs-description
   minPlayers: 20
-  showInVote: true
+  showInVote: false # Serenity: no antag round modes in votes
   rules:
   - SubXenoborgs
-  - SubGamemodesRuleNoXenoborg # No two motherships. Allows wizards to spawn on Xenoborgs. Space is dangerous, yo.
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
@@ -49,7 +48,6 @@
     - BasicStationEventScheduler
     - BasicStationEventScheduler # More events without ramping events. What could go wrong?
     - MeteorSwarmMildScheduler
-    - SubGamemodesRule
     - BasicRoundstartVariation
     - BasicRoundstartVariation
     - BasicRoundstartVariation
@@ -65,11 +63,10 @@
   - vampires
   name: vampire-gamemode-title
   description: vampire-gamemode-description
-  showInVote: True
+  showInVote: false # Serenity: no antag round modes in votes
   minPlayers: 50
   rules:
   - Vampire
-  - SubGamemodesRuleNoVampires
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
   - BasicRoundstartVariation
@@ -87,7 +84,6 @@
   rules:
     - SLChangeling
     - SLChangelingLess
-    - SubGamemodesRuleNoChangelings
     - BasicStationEventScheduler
     - BasicRoundstartVariation
 
@@ -98,12 +94,11 @@
     - traitorling
   name: traitorling-title
   description: traitorling-description
-  showInVote: true
+  showInVote: false # Serenity: no antag round modes in votes
   minPlayers: 50
   rules:
     - SLChangeling
     - Traitor
-    - SubGamemodesRuleNoChangelings
     - BasicStationEventScheduler
     - BasicRoundstartVariation
 
@@ -118,13 +113,12 @@
     - traitorvampling
   name: vamptraitorling-title
   description: vamptraitorling-description
-  showInVote: true
+  showInVote: false # Serenity: no antag round modes in votes
   minPlayers: 50
   rules:
     - SLChangelingLess
     - TraitorLess
     - VampireLess
-    - SubGamemodesRuleVampTraitorLing
     - BasicStationEventScheduler
     - BasicRoundstartVariation
 
@@ -208,11 +202,10 @@
   - spider
   name: terrorspiders-gamemode-title
   description: terrorspiders-gamemode-description
-  showInVote: True
+  showInVote: false # Serenity: no antag round modes in votes
   minPlayers: 50
   rules:
   - TerrorSpidersSpawn
-  - SubGamemodesRuleNoChangelings
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
