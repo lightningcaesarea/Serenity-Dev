@@ -44,7 +44,8 @@ public sealed partial class LoadoutWindow : FancyWindow
         {
             var name = loadout.EntityName;
 
-            LoadoutNameLabel.Text = proto.NameDataset == null ?
+            LoadoutNameLabel.Text = proto.EntityNameIsJobTitle ? Loc.GetString("loadout-title-edit-label") : // Serenity
+                proto.NameDataset == null ?
                 Loc.GetString("loadout-name-edit-label") :
                 Loc.GetString("loadout-name-edit-label-dataset");
 

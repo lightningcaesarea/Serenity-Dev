@@ -250,7 +250,7 @@ public sealed partial class ProfilePreviewSpriteView
     private string? GetLoadoutName(RoleLoadout loadout)
     {
         if (_prototypeManager.TryIndex(loadout.Role, out var roleLoadoutPrototype) &&
-            roleLoadoutPrototype.CanCustomizeName)
+            roleLoadoutPrototype is { CanCustomizeName: true, EntityNameIsJobTitle: false }) // Serenity: a job title is not a name
             return loadout.EntityName;
         return null;
     }
