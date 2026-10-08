@@ -141,9 +141,8 @@
     sprite: _Starlight/Objects/Misc/id_cards.rsi
     layers:
     - state: silver
-    - sprite: *starlight-icon-rsi
-      offset: *icon-offset
-      state: AssistantManager
+    - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
+      state: idassistantmanager
   - type: PresetIdCard
     job: AssistantManager
 
@@ -216,9 +215,8 @@
     - sprite: *id-rsi
       state: stripe_bottom
       color: &color-supply-bottom "#5b4523"
-    - sprite: *starlight-icon-rsi
-      offset: *icon-offset
-      state: SalvageLead
+    - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
+      state: idsalvagelead
   - type: PresetIdCard
     job: SalvageLead
 
@@ -237,9 +235,8 @@
     - sprite: *id-rsi
       state: stripe_bottom
       color: *color-supply-bottom
-    - sprite: *icon-rsi
-      offset: *icon-offset
-      state: ShaftMiner
+    - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
+      state: idminingspecialist
   - type: PresetIdCard
     job: MiningSpecialist
 
@@ -258,9 +255,8 @@
     - sprite: *id-rsi
       state: stripe_bottom
       color: *color-supply-bottom
-    - sprite: *starlight-icon-rsi
-      offset: *icon-offset
-      state: MailTech
+    - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
+      state: idmailtech
   - type: PresetIdCard
     job: MailTech
 
@@ -315,9 +311,8 @@
       color: *color-service-top
     - state: stripe_bottom
       color: *color-service-bottom
-    - sprite: *icon-rsi
-      offset: *icon-offset
-      state: Botanist
+    - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
+      state: idbotanist
   - type: PresetIdCard
     job: Botanist
     name: Kiki

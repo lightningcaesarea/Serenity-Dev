@@ -1,0 +1,134 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Hand-drawn 9x9 job glyphs coloured after the tgstation/Serenity 8x8 job icons, drawn onto the Goobstation (Lavaland) ID card layout. Station Commander/Officer colours follow the Serenity clothing.",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "idassistant"
+    },
+    {
+      "name": "idassistantmanager"
+    },
+    {
+      "name": "idbartender"
+    },
+    {
+      "name": "idborg"
+    },
+    {
+      "name": "idborgengineer"
+    },
+    {
+      "name": "idborgmedical"
+    },
+    {
+      "name": "idborgmining"
+    },
+    {
+      "name": "idborgscience"
+    },
+    {
+      "name": "idborgsecurity"
+    },
+    {
+      "name": "idborgservice"
+    },
+    {
+      "name": "idbotanist"
+    },
+    {
+      "name": "idbrigmedic"
+    },
+    {
+      "name": "idchef"
+    },
+    {
+      "name": "idclericalassistant"
+    },
+    {
+      "name": "idcookassistant"
+    },
+    {
+      "name": "iddeliveryassistant"
+    },
+    {
+      "name": "idgardenerassistant"
+    },
+    {
+      "name": "idhandymanassistant"
+    },
+    {
+      "name": "idheadofpersonnel"
+    },
+    {
+      "name": "idheadofsecurity"
+    },
+    {
+      "name": "idjanitorassistant"
+    },
+    {
+      "name": "idmailtech"
+    },
+    {
+      "name": "idmakeshiftid"
+    },
+    {
+      "name": "idmedicalassistant"
+    },
+    {
+      "name": "idmedicaldoctor"
+    },
+    {
+      "name": "idmedicalintern"
+    },
+    {
+      "name": "idminingspecialist"
+    },
+    {
+      "name": "idparamedic"
+    },
+    {
+      "name": "idradiohost"
+    },
+    {
+      "name": "idreligiousassistant"
+    },
+    {
+      "name": "idresearchassistant"
+    },
+    {
+      "name": "idsalvagelead"
+    },
+    {
+      "name": "idscientist"
+    },
+    {
+      "name": "idsecuritycadet"
+    },
+    {
+      "name": "idsecurityofficer"
+    },
+    {
+      "name": "idseniorofficer"
+    },
+    {
+      "name": "idserviceworker"
+    },
+    {
+      "name": "idshopkeeperassistant"
+    },
+    {
+      "name": "idstationengineer"
+    },
+    {
+      "name": "idtechnicalassistant"
+    },
+    {
+      "name": "idwarden"
+    }
+  ]
+}
