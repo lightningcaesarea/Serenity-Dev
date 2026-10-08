@@ -295,6 +295,13 @@
   - StationCommanderNeckCloakStationCommanderBoat # Serenity
 
 - type: loadoutGroup
+  id: HoPScarves
+  name: loadout-group-scarves
+  minLimit: 0
+  loadouts:
+  - StationCommanderScarf # Serenity
+
+- type: loadoutGroup
   id: HoPBackpack
   name: loadout-group-hop-backpack
   loadouts:

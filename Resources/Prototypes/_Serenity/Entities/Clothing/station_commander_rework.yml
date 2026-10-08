@@ -435,3 +435,11 @@
   id: ClothingHeadsetStationCommander
   name: Station Commander headset
   description: The over-ear headset of the Station Commander, keyed for service and command traffic.
+
+# ── Scarf ────────────────────────────────────────────────────────────────────
+
+- type: entity
+  parent: ClothingNeckScarfStripedGreen
+  id: ClothingNeckScarfStationCommander
+  name: Station Commander scarf
+  description: A warm green scarf for the Station Commander, for long watches on a cold bridge.

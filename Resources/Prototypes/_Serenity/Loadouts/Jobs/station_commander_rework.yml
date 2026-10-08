@@ -164,3 +164,8 @@
   id: StationCommanderOuterWinterStationCommanderCommand
   equipment:
     outerClothing: ClothingOuterWinterStationCommanderCommand
+
+- type: loadout
+  id: StationCommanderScarf
+  equipment:
+    neck: ClothingNeckScarfStationCommander
