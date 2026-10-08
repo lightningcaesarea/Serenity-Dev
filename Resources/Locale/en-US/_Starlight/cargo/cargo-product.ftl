@@ -5,8 +5,8 @@ cargo-product-gas-nitrogen = bulk nitrogen gas (1000 mol, 293K)
 cargo-product-gas-nitrogen-liquid = bulk nitrogen gas (1000 mol, 72K)
 cargo-product-gas-carbon-dioxide = bulk carbon dioxide gas (1000 mol, 72K)
 cargo-product-gas-carbon-dioxide-liquid = bulk carbon dioxide gas (1000 mol, 72K)
-cargo-product-gas-plasma = bulk plasma gas (1000 mol, 293K)
-cargo-product-gas-plasma-liquid = bulk plasma gas (1000 mol, 72K)
+cargo-product-gas-plasma = bulk phoron gas (1000 mol, 293K)
+cargo-product-gas-plasma-liquid = bulk phoron gas (1000 mol, 72K)
 cargo-product-gas-water-vapor = bulk water vapor (1000 mol, 293K)
 
 # Funky gases

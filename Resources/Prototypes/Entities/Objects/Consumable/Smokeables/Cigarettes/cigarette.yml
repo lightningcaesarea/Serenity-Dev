@@ -341,7 +341,7 @@
 - type: entity
   id: CigaretteWeldingFuel
   parent: SoakedCigarette
-  name: Plasma Sauce
+  name: Phoron Sauce
   components:
   - type: Solution
     solution:

@@ -112,7 +112,7 @@
   name: energy sword
   parent: [BaseMeleeWeaponEnergy, BaseSyndicateContraband]
   id: EnergySword
-  description: A very loud & dangerous sword with a beam made of pure, concentrated plasma. Cuts through unarmored targets like butter.
+  description: A very loud & dangerous sword with a beam made of pure, concentrated phoron. Cuts through unarmored targets like butter.
   components:
   - type: Sprite
     sprite: Objects/Weapons/Melee/e_sword.rsi
@@ -132,7 +132,7 @@
   name: energy dagger
   parent: [BaseMeleeWeaponEnergy, BaseSyndicateContraband]
   id: EnergyDaggerLoud
-  description: A not as loud and dangerous dagger with a beam made of pure, concentrated plasma. This one is completely undisguised.
+  description: A not as loud and dangerous dagger with a beam made of pure, concentrated phoron. This one is completely undisguised.
   components:
   - type: ItemToggle
     soundActivate:
@@ -437,7 +437,7 @@
   parent: EnergySword
   id: CyborgEnergySword
   suffix: For Borgs
-  description: A very loud & dangerous sword with a beam made of pure, concentrated plasma. Specially designed for syndicate cyborgs.
+  description: A very loud & dangerous sword with a beam made of pure, concentrated phoron. Specially designed for syndicate cyborgs.
 
 - type: entity
   parent: EnergySwordDouble

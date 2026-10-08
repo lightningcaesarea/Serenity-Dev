@@ -16,7 +16,7 @@ construction-recipe-round-wood = round wood table
 construction-recipe-round-carpet = round carpeted table
 construction-recipe-round-plastic = round plastic table
 construction-recipe-round-glass = round glass table
-construction-recipe-round-plasma = round plasma table
+construction-recipe-round-plasma = round phoron table
 
 # Misc
 construction-recipe-window-blinds = window blinds

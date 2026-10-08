@@ -32,7 +32,7 @@
   parent: PosterBase
   id: PosterContrabandYoutoolpia
   name: "Youtoolpia"
-  description: "A dream that went up in plasma fire."
+  description: "A dream that went up in phoron fire."
   components:
   - type: Sprite
     sprite: _Starlight/Structures/Wallmounts/posters/youtoolpia.rsi
@@ -520,8 +520,8 @@
 - type: entity
   parent: PosterBase
   id: PosterLegitPlasma
-  name: "Plasma and You"
-  description: "Espousing the life changing benefits of plasma. Fails to mention how flammable it is."
+  name: "Phoron and You"
+  description: "Espousing the life changing benefits of phoron. Fails to mention how flammable it is."
   components:
   - type: Sprite
     sprite: _Starlight/Structures/Wallmounts/posters/plasma.rsi

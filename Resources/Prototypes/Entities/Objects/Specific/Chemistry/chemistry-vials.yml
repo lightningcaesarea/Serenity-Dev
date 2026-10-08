@@ -149,7 +149,7 @@
 - type: entity
   parent: ChemistryEmptyVialSmall
   id: PlasmaChemistryVial
-  suffix: plasma
+  suffix: phoron
   components:
   - type: Label
     currentLabel: reagent-name-plasma

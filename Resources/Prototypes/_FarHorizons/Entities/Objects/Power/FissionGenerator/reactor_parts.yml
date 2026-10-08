@@ -225,7 +225,7 @@
 - type: entity
   id: PlasmaReactorFuelRod
   parent: BaseReactorFuelRod
-  name: Plasma Fuel Rod
+  name: Phoron Fuel Rod
   components:
   - type: ReactorPart
     material: Plasma
@@ -328,7 +328,7 @@
 - type: entity
   id: PlasmaGlassReactorControlRod
   parent: [BaseReactorControlRod, ReactorPartMaterialPlasmaGlass]
-  name: Plasma Glass Control Rod
+  name: Phoron Glass Control Rod
   components:
   - type: PhysicalComposition
     materialComposition:
@@ -409,7 +409,7 @@
 - type: entity
   id: PlasmaGlassReactorGasChannel
   parent: [BaseReactorGasChannel, ReactorPartMaterialPlasmaGlass]
-  name: Plasma Glass Gas Channel Rod
+  name: Phoron Glass Gas Channel Rod
   components:
   - type: PhysicalComposition
     materialComposition:
@@ -490,7 +490,7 @@
 - type: entity
   id: PlasmaGlassReactorHeatExchanger
   parent: [BaseReactorHeatExchanger, ReactorPartMaterialPlasmaGlass]
-  name: Plasma Glass Heat Exchanger Rod
+  name: Phoron Glass Heat Exchanger Rod
   components:
   - type: PhysicalComposition
     materialComposition:
