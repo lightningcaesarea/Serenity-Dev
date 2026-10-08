@@ -54,13 +54,6 @@
   category: interaction
   default: false
 
-- type: consentToggle
-  id: PublicScenes
-  name: "Public scenes"
-  description: "Allow adult scenes in areas where other crew may walk in."
-  category: interaction
-  default: false
-
 # ---- chemical and mental ----
 - type: consentToggle
   id: Aphrodisiacs
@@ -72,14 +65,7 @@
 - type: consentToggle
   id: Hypnosis
   name: "Hypnosis and suggestion"
-  description: "Allow your character to be hypnotised or made suggestible."
-  category: chemical
-  default: false
-
-- type: consentToggle
-  id: MindControl
-  name: "Mind control"
-  description: "Allow another player to directly control your character's actions."
+  description: "Allow your character to be hypnotised, made suggestible or placed under another player's direction."
   category: chemical
   default: false
 
