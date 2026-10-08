@@ -934,3 +934,12 @@ Entries:
   id: 15801
   time: '2026-10-08T12:36:30.000000+00:00'
   url: https://github.com/lightningcaesarea/Serenity-Dev/pull/158
+- author: Serenity
+  changes:
+  - message: Infections now have a strain (Staphylococcus, Streptococcus or Pseudomonas), each cured by its own narrow-spectrum antibiotic.
+    type: Add
+  - message: The blood culture analyzer finds an infection's strain from a blood sample, and the antibiotic synthesizer makes the matching drug from Antibiox.
+    type: Add
+  id: 14701
+  time: '2026-10-08T13:14:18.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/147
