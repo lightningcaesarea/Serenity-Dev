@@ -35,7 +35,6 @@
     id: AssistantManagerPDA
     eyes: ClothingEyesEyepatchHudAssistantManager
     ears: ClothingHeadsetAssistantManager
-    belt: BoxFolderAssistantManagerClipboard
     pocket1: RubberStampAssistantManager
 
 - type: chameleonOutfit

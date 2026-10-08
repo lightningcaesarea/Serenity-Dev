@@ -57,3 +57,64 @@
     sprite: _Serenity/Clothing/Shoes/Boots/station_officer_winter.rsi
   - type: Clothing
     sprite: _Serenity/Clothing/Shoes/Boots/station_officer_winter.rsi
+
+# Same protection as the captain's carapace, in command teal with the Station Officer yellow trim.
+- type: entity
+  parent: ClothingOuterArmorCaptainCarapace
+  id: ClothingOuterArmorStationOfficerCarapace
+  name: station officer's carapace
+  description: An armored chestpiece that protects without slowing the Station Officer down.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/OuterClothing/Armor/station_officer_carapace.rsi
+  - type: Clothing
+    sprite: _Serenity/Clothing/OuterClothing/Armor/station_officer_carapace.rsi
+
+# Copies of the blue gloves and mittens in command teal, with yellow trim on the mittens.
+- type: entity
+  parent: ClothingHandsGlovesSyntheticBase
+  id: ClothingHandsGlovesStationOfficerDuty
+  name: station officer's duty gloves
+  description: Regular command teal gloves that do not keep you from frying.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/Hands/Gloves/station_officer_blue.rsi
+    layers:
+    - state: icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+      right:
+      - state: inhand-right
+  - type: Clothing
+    sprite: _Serenity/Clothing/Hands/Gloves/station_officer_blue.rsi
+    clothingVisuals:
+      gloves:
+      - state: equipped-HAND
+  - type: Fiber
+    fiberColor: fibers-blue
+
+- type: entity
+  parent: ClothingHandsMittensBase
+  id: ClothingHandsMittensStationOfficerDuty
+  name: station officer's duty mittens
+  description: Command teal mittens with a yellow trim to keep the cold out.
+  components:
+  - type: Sprite
+    sprite: _Serenity/Clothing/Hands/Mittens/station_officer.rsi
+    layers:
+    - state: icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+      right:
+      - state: inhand-right
+  - type: Clothing
+    sprite: _Serenity/Clothing/Hands/Mittens/station_officer.rsi
+    clothingVisuals:
+      gloves:
+      - state: equipped-HAND
+  - type: Fiber
+    fiberColor: fibers-blue-fur
