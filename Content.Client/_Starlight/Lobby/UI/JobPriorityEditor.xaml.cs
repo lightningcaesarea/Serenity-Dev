@@ -105,6 +105,14 @@ public sealed partial class JobPriorityEditor : BoxContainer
 
         foreach (var department in departments)
         {
+            var jobs = department.Roles.Select(jobId => _prototypeManager.Index(jobId))
+                .Where(job => job.SetPreference)
+                .ToList();
+
+            // Serenity: skip departments whose roles are all disabled instead of showing an empty header.
+            if (jobs.Count == 0)
+                continue;
+
             var departmentName = Loc.GetString(department.Name);
 
             // If a department category hasn't yet been created in _jobCategories,
@@ -146,10 +154,6 @@ public sealed partial class JobPriorityEditor : BoxContainer
                 _jobCategories[department.ID] = category;
                 JobList.AddChild(category);
             }
-
-            var jobs = department.Roles.Select(jobId => _prototypeManager.Index(jobId))
-                .Where(job => job.SetPreference)
-                .ToList();
 
             jobs.Sort(JobUIComparer.Instance);
 
