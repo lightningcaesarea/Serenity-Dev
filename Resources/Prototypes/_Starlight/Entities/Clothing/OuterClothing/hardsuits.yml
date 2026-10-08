@@ -246,6 +246,8 @@
       containers:
         cell_slot: !type:ContainerSlot
         toggleable-clothing: !type:ContainerSlot
+        storagebase: !type:Container # Serenity: armor plates
+          ents: []
     - type: ItemSlots
       slots:
         cell_slot:

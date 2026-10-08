@@ -213,6 +213,8 @@
   - type: ContainerContainer
     containers:
       toggleable-clothing: !type:ContainerSlot {}
+      storagebase: !type:Container # Serenity: armor plates
+        ents: []
       cell_slot: !type:ContainerSlot # Starlight-edit
   - type: GroupExamine
   - type: Tag
