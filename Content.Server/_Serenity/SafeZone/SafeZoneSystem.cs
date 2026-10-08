@@ -16,7 +16,7 @@ namespace Content.Server._Serenity.SafeZone;
 /// Pacifies players while they stand on the main grid of a station with a <see cref="SafeZoneComponent"/>, and lifts
 /// it again when they leave. Checked once a second rather than on every move.
 /// </summary>
-public sealed class SafeZoneSystem : EntitySystem
+public sealed partial class SafeZoneSystem : EntitySystem
 {
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private PopupSystem _popup = default!;
