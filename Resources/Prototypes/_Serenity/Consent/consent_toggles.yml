@@ -83,13 +83,6 @@
   category: chemical
   default: false
 
-- type: consentToggle
-  id: MindAlteration
-  name: "Lasting mental changes"
-  description: "Allow personality or memory changes that persist for the rest of the round."
-  category: chemical
-  default: false
-
 # ---- vore ----
 - type: consentToggle
   id: PredVore
