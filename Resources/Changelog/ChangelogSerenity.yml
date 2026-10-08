@@ -964,3 +964,10 @@ Entries:
   id: 15901
   time: '2026-10-08T15:16:25.000000+00:00'
   url: https://github.com/lightningcaesarea/Serenity-Dev/pull/159
+- author: Inny
+  changes:
+  - message: Station Commander rework.
+    type: Tweak
+  id: 15601
+  time: '2026-10-08T15:46:52.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/156
