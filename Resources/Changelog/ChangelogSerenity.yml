@@ -985,3 +985,10 @@ Entries:
   id: 15301
   time: '2026-10-08T16:33:58.000000+00:00'
   url: https://github.com/lightningcaesarea/Serenity-Dev/pull/153
+- author: Serenity
+  changes:
+  - message: Antibiox now also needs diethylamine, which is mixed from ammonia and ethanol.
+    type: Tweak
+  id: 16201
+  time: '2026-10-08T20:43:42.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/162
