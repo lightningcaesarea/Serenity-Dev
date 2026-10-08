@@ -184,7 +184,7 @@
   name: traitor-title
   description: traitor-description
   minPlayers: 5 # 🌟Starlight🌟
-  showInVote: true # 🌟Starlight🌟
+  showInVote: false # Serenity: no antag round modes in votes
   rules:
   # - DummyNonAntagChance 🌟Starlight🌟
   - Traitor
@@ -216,7 +216,7 @@
   name: nukeops-title
   description: nukeops-description
   minPlayers: 40
-  showInVote: true # 🌟Starlight🌟
+  showInVote: false # Serenity: no antag round modes in votes
   rules:
   - Nukeops
   # - DummyNonAntagChance 🌟Starlight🌟
@@ -234,7 +234,7 @@
   name: rev-title
   description: rev-description
   minPlayers: 30
-  showInVote: true # 🌟Starlight🌟
+  showInVote: false # Serenity: no antag round modes in votes
   rules:
   # - DummyNonAntagChance 🌟Starlight🌟
   - Revolutionary
@@ -266,7 +266,7 @@
   name: xenoborgs-title
   description: xenoborgs-description
   minPlayers: 30 # 🌟Starlight🌟
-  showInVote: true # 🌟Starlight🌟
+  showInVote: false # Serenity: no antag round modes in votes
   rules:
   - Xenoborgs
   # - DummyNonAntagChance 🌟Starlight🌟
@@ -286,7 +286,7 @@
   name: zombie-title
   description: zombie-description
   minPlayers: 50 # 🌟Starlight🌟
-  showInVote: true # 🌟Starlight🌟
+  showInVote: false # Serenity: no antag round modes in votes
   rules:
   - Zombie
   - BasicStationEventScheduler
@@ -303,7 +303,7 @@
   name: zombieteors-title
   description: zombieteors-description
   minPlayers: 50 # 🌟Starlight🌟
-  showInVote: true # 🌟Starlight🌟
+  showInVote: false # Serenity: no antag round modes in votes
   rules:
   - Zombie
   - BasicStationEventScheduler
