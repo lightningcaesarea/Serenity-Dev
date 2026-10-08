@@ -957,3 +957,10 @@ Entries:
   id: 15701
   time: '2026-10-08T15:15:47.000000+00:00'
   url: https://github.com/lightningcaesarea/Serenity-Dev/pull/157
+- author: Inny
+  changes:
+  - message: Remove five unused or redundant consent toggles.
+    type: Remove
+  id: 15901
+  time: '2026-10-08T15:16:25.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/159
