@@ -892,3 +892,14 @@ Entries:
   id: 14101
   time: '2026-10-08T11:55:27.000000+00:00'
   url: https://github.com/lightningcaesarea/Serenity-Dev/pull/141
+- author: Inny
+  changes:
+  - message: The milking machine has a control window showing the occupant, pump mode and tank contents.
+    type: Add
+  - message: The milking machine collects regular milk instead of breast milk.
+    type: Tweak
+  - message: Semen is now called cum.
+    type: Tweak
+  id: 13901
+  time: '2026-10-08T11:55:40.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/139
