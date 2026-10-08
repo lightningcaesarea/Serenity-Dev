@@ -860,3 +860,12 @@ Entries:
   id: 14901
   time: '2026-10-08T11:27:45.000000+00:00'
   url: https://github.com/lightningcaesarea/Serenity-Dev/pull/149
+- author: Serenity
+  changes:
+  - message: Antagonist round modes no longer come up in Secret or round votes.
+    type: Remove
+  - message: Removed side antagonists and midround antagonist events.
+    type: Remove
+  id: 14201
+  time: '2026-10-08T11:46:06.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/142
