@@ -1,0 +1,18 @@
+<Document>
+  # Arachne
+
+  <Box>
+    <GuideEntityEmbed Entity="AppearanceArachne" Caption=""/>
+  </Box>
+
+  Arachne have a humanoid upper body on top of a large spider's body. They bleed Copper Blood, like Arachnids, which can't be restored from Iron like normal blood.
+
+  ## Spider body
+  Their spider body means [color=#ffa500]no shoes[/color] can be worn, and jumpsuits and suits are fitted around the body. They are a little faster and a little lighter than a human.
+
+  ## Silk and webs
+  Like Arachnids, Arachne can spin silk when well fed, and can [color=yellow]lay a web[/color] on the tile they are standing on. They are not slowed down by spider webs.
+
+  ## Other traits
+  Arachne can click and chitter as emotes.
+</Document>

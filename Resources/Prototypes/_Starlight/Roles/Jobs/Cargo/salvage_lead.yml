@@ -4,6 +4,7 @@
   description: job-description-salvagelead
   rules: job-rules-itg-aligned
   playTimeTracker: JobSalvageLead
+  setPreference: false # Serenity: role disabled
   supervisors: job-supervisors-guild
   requirements:
     - !type:DepartmentTimeRequirement

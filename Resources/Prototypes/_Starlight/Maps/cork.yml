@@ -26,12 +26,9 @@
             ServiceWorker: [ 3, 3 ]
 
             # Cargo
-            MiningSpecialist: [ 2, 2 ]
             MailTech: [ 1, 1 ]
 
             # ITG
-            SalvageLead: [ 1, 1 ]
-            SalvageMedic: [ 1, 1 ]
 
             # Engineering
             StationEngineer: [ 2, 2 ]

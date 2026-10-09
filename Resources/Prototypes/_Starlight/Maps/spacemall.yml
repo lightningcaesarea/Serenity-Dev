@@ -42,10 +42,7 @@
             SecurityCadet: [ 6, 6 ]
             Brigmedic: [ 2, 2 ]
             #supply
-            MiningSpecialist: [ 4, 4 ]
-            SalvageMedic: [ 1, 1 ]
             MailTech: [ 2, 2 ]
-            SalvageLead: [ 1, 1 ]
             #civilian
             AssistantManager: [ 2, 2 ]
             Assistant: [ -1, -1 ]

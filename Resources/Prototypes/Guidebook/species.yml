@@ -4,6 +4,7 @@
   text: "/ServerInfo/Guidebook/Mobs/Species.xml"
   children:
   - Elf # Starlight
+  - Arachne # Serenity
   - Arachnid
   - Avali
   - Chitinid # Serenity

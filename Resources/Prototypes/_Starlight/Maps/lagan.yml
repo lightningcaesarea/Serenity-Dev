@@ -49,9 +49,6 @@
             SecurityCadet: [ 6, 6 ]
 
             # Cargo
-            SalvageLead: [ 1, 1 ]
-            SalvageMedic: [ 1, 1 ]
-            MiningSpecialist: [ 4, 4 ]
             MailTech: [ 2, 2 ]
 
             # Civilian

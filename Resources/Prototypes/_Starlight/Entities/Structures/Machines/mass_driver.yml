@@ -59,6 +59,7 @@
     ports:
       - MassDriverConsoleReceiver
       - Launch
+      - DealerMarketReceiver # Serenity: dealer market purchases leave by mass driver
   - type: WiresPanel
   - type: WiresVisuals
   - type: Wires

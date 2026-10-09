@@ -1,0 +1,592 @@
+# The dealers of the station-wide market. Every name, line and contract here is written for Serenity.
+# Prices are in Federal Bills. Contracts are dealt per player: counts are rolled between min and max and the
+# payout is bonus plus count times unitPrice. Contracts with `jobs` only go to players on those jobs.
+
+- type: dealer
+  id: DealerTamsinQuill
+  name: Tamsin Quill
+  trade: Surplus tools, cable and hardware
+  greeting: Bring me anything with a handle or a wire on it and I'll tell you what it's worth. Don't haggle, it only makes me slower.
+  portrait: /Textures/_Serenity/Interface/Dealers/tamsin_quill.png
+  buyRate: 0.6
+  buys:
+    components:
+    - Tool
+    - PowerCell
+  stock:
+  - item: Crowbar
+    price: 400
+  - item: Wrench
+    price: 400
+  - item: Welder
+    price: 600
+  - item: Multitool
+    price: 900
+  - item: ClothingBeltUtility
+    price: 1200
+  - item: ToolboxMechanical
+    price: 1500
+  - item: PowerCellMedium
+    price: 1800
+  contracts:
+  - title: Spools for the long haul
+    flavour: A hauler's rewiring and the supplier fell through. I need cable, any colour, and I need it before they notice.
+    wants:
+    - item: CableApcStack
+      min: 20
+      max: 60
+      unitPrice: 25
+    lifetimeMinutes: 45
+  - title: Plate for a patch job
+    flavour: I'm patching a hull I'm not allowed to talk about. Steel sheets, the plain kind.
+    wants:
+    - item: SheetSteel
+      min: 15
+      max: 40
+      unitPrice: 30
+    lifetimeMinutes: 40
+  - title: Keep the engine hall humming
+    flavour: A friend with a reactor owes me a favour, and I owe the same friend a stack of medium-voltage cable and a pane of glass.
+    jobs: [ StationEngineer, AtmosphericTechnician ]
+    bonus: 800
+    wants:
+    - item: CableMVStack
+      min: 10
+      max: 30
+      unitPrice: 55
+    - item: SheetGlass
+      min: 5
+      max: 15
+      unitPrice: 40
+    lifetimeMinutes: 45
+  - title: Spare cells, no questions
+    flavour: Cargo keeps losing power cells in transit. I'd like to be the one who finds them.
+    jobs: [ CargoTechnician, SalvageSpecialist ]
+    bonus: 500
+    wants:
+    - item: PowerCellMedium
+      min: 2
+      max: 4
+      unitPrice: 700
+    lifetimeMinutes: 50
+
+- type: dealer
+  id: DealerOrrinBellwether
+  name: Orrin Bellwether
+  trade: Galley wholesale, food and drink
+  greeting: A kitchen is only as good as its stockroom, friend. Send me yours and I'll make it worth your while.
+  portrait: /Textures/_Serenity/Interface/Dealers/orrin_bellwether.png
+  buyRate: 0.5
+  buys:
+    components:
+    - Edible
+  stock:
+  - item: FoodBreadPlain
+    price: 300
+  - item: FoodCheese
+    price: 350
+  - item: FoodPieApple
+    price: 500
+  - item: FoodBurgerCheese
+    price: 600
+  - item: DrinkWineBottleFull
+    price: 900
+  - item: FoodCakeBirthday
+    price: 1400
+  contracts:
+  - title: Feed the night shift
+    flavour: Forty hungry mouths, one cold hob. Cheese burgers, hot or not, and nobody asks where they came from.
+    wants:
+    - item: FoodBurgerCheese
+      min: 4
+      max: 10
+      unitPrice: 300
+    lifetimeMinutes: 35
+  - title: A proper loaf
+    flavour: There's a captain somewhere who swears by baguettes. I swear by delivering them.
+    wants:
+    - item: FoodBreadBaguette
+      min: 3
+      max: 8
+      unitPrice: 280
+    lifetimeMinutes: 40
+  - title: Banquet for the bridge
+    flavour: A table for twelve and a menu I haven't written. Salad, pizza and a cake worth a toast.
+    jobs: [ Chef ]
+    bonus: 1200
+    wants:
+    - item: FoodSaladCaesar
+      min: 2
+      max: 4
+      unitPrice: 350
+    - item: FoodPizzaMargherita
+      min: 2
+      max: 4
+      unitPrice: 450
+    - item: FoodCakeBirthday
+      min: 1
+      max: 1
+      unitPrice: 1100
+    lifetimeMinutes: 50
+  - title: Something from the soil
+    flavour: My customers want it fresh, and fresh means from your trays. Bananas, as many as you can spare.
+    jobs: [ Botanist ]
+    bonus: 400
+    wants:
+    - item: FoodBanana
+      min: 6
+      max: 16
+      unitPrice: 120
+    lifetimeMinutes: 45
+  - title: The good stuff, glass by glass
+    flavour: The house wine is gone and the house is not pleased. Beer will do, in bottles, unopened.
+    jobs: [ Bartender ]
+    bonus: 600
+    wants:
+    - item: DrinkBeerBottleFull
+      min: 4
+      max: 10
+      unitPrice: 260
+    lifetimeMinutes: 45
+
+- type: dealer
+  id: DealerIsoldeMarrow
+  name: Dr. Isolde Marrow
+  trade: Medical supplies, no paperwork
+  greeting: I used to sign forms for all of this. Now I sign nothing and everyone's healthier for it.
+  portrait: /Textures/_Serenity/Interface/Dealers/isolde_marrow.png
+  buyRate: 0.55
+  buys:
+    components:
+    - Healing
+  stock:
+  - item: Gauze
+    price: 350
+  - item: Brutepack
+    price: 500
+  - item: Ointment
+    price: 500
+  - item: Syringe
+    price: 250
+  - item: LargeBeaker
+    price: 600
+  - item: Medkit
+    price: 1800
+  - item: MedkitBurn
+    price: 2200
+  contracts:
+  - title: Dressings by the dozen
+    flavour: A clinic I can't name has run out of gauze. I'll take it clean and in volume.
+    wants:
+    - item: Gauze
+      min: 6
+      max: 14
+      unitPrice: 200
+    lifetimeMinutes: 40
+  - title: For the burns ward
+    flavour: Ointment, tubes of it, for a ship that learned about open flames the hard way.
+    wants:
+    - item: Ointment
+      min: 3
+      max: 8
+      unitPrice: 330
+    lifetimeMinutes: 40
+  - title: Restock a ward
+    flavour: You hold the licence, I hold the buyers. Bring me packs and a medkit and I'll make the licence pay.
+    jobs: [ MedicalDoctor, Paramedic ]
+    bonus: 700
+    wants:
+    - item: Brutepack
+      min: 3
+      max: 6
+      unitPrice: 330
+    - item: Medkit
+      min: 1
+      max: 2
+      unitPrice: 1200
+    lifetimeMinutes: 50
+  - title: Glassware for the bench
+    flavour: Beakers, clean and unchipped. A chemist knows why.
+    jobs: [ Chemist ]
+    bonus: 300
+    wants:
+    - item: LargeBeaker
+      min: 3
+      max: 8
+      unitPrice: 380
+    lifetimeMinutes: 45
+
+- type: dealer
+  id: DealerCasimirVey
+  name: Casimir Vey
+  trade: Ore, curios and anything odd
+  greeting: Rocks are only rocks until the right person asks for them. I am always the right person.
+  portrait: /Textures/_Serenity/Interface/Dealers/casimir_vey.png
+  buyRate: 0.7
+  buys:
+    components:
+    - Material
+  stock:
+  - item: SheetSteel
+    price: 500
+    amount: 10
+  - item: SheetGlass
+    price: 500
+    amount: 10
+  - item: Lantern
+    price: 700
+  - item: ToyAi
+    price: 900
+  contracts:
+  - title: Rock for a ring
+    flavour: Gold, by the lump. Don't polish it, they like it raw.
+    wants:
+    - item: GoldOre1
+      min: 4
+      max: 12
+      unitPrice: 300
+    lifetimeMinutes: 40
+  - title: A quiet shipment
+    flavour: Silver ore for a buyer who prefers I don't say who.
+    wants:
+    - item: SilverOre1
+      min: 5
+      max: 14
+      unitPrice: 240
+    lifetimeMinutes: 40
+  - title: Something to burn
+    flavour: Plasma ore. I shan't say what for, but I'll say how much I'll pay.
+    jobs: [ SalvageSpecialist, Scientist ]
+    bonus: 1000
+    wants:
+    - item: PlasmaOre1
+      min: 4
+      max: 10
+      unitPrice: 450
+    lifetimeMinutes: 50
+  - title: Heavy and quietly valuable
+    flavour: Uranium ore, in sealed bags, to a man who thanks me every time and never gives a name.
+    jobs: [ SalvageSpecialist, CargoTechnician ]
+    bonus: 1500
+    wants:
+    - item: UraniumOre1
+      min: 3
+      max: 8
+      unitPrice: 600
+    lifetimeMinutes: 50
+
+- type: dealer
+  id: DealerPipHallowell
+  name: Pip Hallowell
+  trade: Small goods and good company
+  greeting: Soap, candles, a pen that writes, a toy that won't. Small things sell fastest, and I sell the small things.
+  portrait: /Textures/_Serenity/Interface/Dealers/pip_hallowell.png
+  buyRate: 0.5
+  buys:
+    components:
+    - Paper
+  stock:
+  - item: Pen
+    price: 150
+  - item: Candle
+    price: 120
+  - item: BoxCandle
+    price: 600
+  - item: Soap
+    price: 250
+  - item: PlushieCarp
+    price: 800
+  - item: ToyAmongPequeno
+    price: 700
+  contracts:
+  - title: Candles for a vigil
+    flavour: A small ceremony, a long night, and I need the wicks to hold. Plain candles, as many as you can find.
+    wants:
+    - item: Candle
+      min: 5
+      max: 15
+      unitPrice: 90
+    lifetimeMinutes: 40
+  - title: Clean hands, clean books
+    flavour: I'll trade coin for soap bars. Do not ask what I'm washing.
+    wants:
+    - item: Soap
+      min: 3
+      max: 8
+      unitPrice: 200
+    lifetimeMinutes: 35
+  - title: Tidy the place up
+    flavour: A cleaner knows the value of a good mop. Bring me three, and a bucket, and I'll make it worth the walk.
+    jobs: [ Janitor ]
+    bonus: 500
+    wants:
+    - item: MopItem
+      min: 2
+      max: 4
+      unitPrice: 260
+    - item: Bucket
+      min: 1
+      max: 3
+      unitPrice: 180
+    lifetimeMinutes: 45
+  - title: Anything for a laugh
+    flavour: A birthday, a funeral, a toy shop. It's all the same market. Bring me something that squeaks.
+    jobs: [ Clown, Assistant ]
+    bonus: 400
+    wants:
+    - item: ToyAmongPequeno
+      min: 2
+      max: 4
+      unitPrice: 450
+    lifetimeMinutes: 45
+
+# Dealers whose portraits come from Goonstation's trader art (CC-BY-NC-SA-3.0, see goonstation.rsi/meta.json).
+# The names are theirs, the lines, stock and contracts are written fresh for Serenity.
+
+- type: dealer
+  id: DealerGragg
+  name: Gragg
+  trade: Deep-rock salvage and stranger things
+  greeting: You bring shiny. Gragg brings coin. Gragg has no use for stories.
+  portrait:
+    sprite: _Serenity/Interface/Dealers/goonstation.rsi
+    state: gragg
+  portraitScale: 1
+  buyRate: 0.65
+  buys:
+    components:
+    - Material
+  stock:
+  - item: SheetSteel
+    price: 450
+    amount: 10
+  - item: SheetGlass
+    price: 450
+    amount: 10
+  - item: Lantern
+    price: 650
+  contracts:
+  - title: Hard rock, soft payment
+    flavour: Steel ore by the heap. Gragg likes things that clank when dropped.
+    wants:
+    - item: SteelOre1
+      min: 10
+      max: 25
+      unitPrice: 90
+    lifetimeMinutes: 40
+  - title: Bright lumps
+    flavour: Gold for a burrow that needs more glitter. Raw is fine, clean is a waste.
+    wants:
+    - item: GoldOre1
+      min: 3
+      max: 9
+      unitPrice: 320
+    lifetimeMinutes: 40
+
+- type: dealer
+  id: DealerJosh
+  name: Josh
+  trade: Party supplies and good vibes
+  greeting: Hey, hey! Perfect timing. Everything is a party if you bring the right stuff.
+  portrait:
+    sprite: _Serenity/Interface/Dealers/goonstation.rsi
+    state: josh
+  portraitScale: 1
+  buyRate: 0.5
+  buys:
+    components:
+    - Edible
+  stock:
+  - item: DrinkBeerBottleFull
+    price: 450
+  - item: FoodCakeBirthday
+    price: 1400
+  - item: ToyAmongPequeno
+    price: 700
+  contracts:
+  - title: Snacks for a long night
+    flavour: The guests are hungry and the dancefloor is not going to fuel itself. Pizza, as many as you can.
+    wants:
+    - item: FoodPizzaMargherita
+      min: 3
+      max: 8
+      unitPrice: 420
+    lifetimeMinutes: 35
+  - title: One more round
+    flavour: The bar ran dry an hour ago and nobody's leaving. Bottles of beer, sealed.
+    jobs: [ Bartender, Assistant ]
+    bonus: 500
+    wants:
+    - item: DrinkBeerBottleFull
+      min: 4
+      max: 10
+      unitPrice: 260
+    lifetimeMinutes: 45
+
+- type: dealer
+  id: DealerPianziHundan
+  name: Pianzi Hundan
+  trade: Fine goods for the discerning
+  greeting: Welcome, welcome. Quality is its own reward, though payment is better.
+  portrait:
+    sprite: _Serenity/Interface/Dealers/goonstation.rsi
+    state: pianzi_hundan
+  portraitScale: 1
+  buyRate: 0.6
+  buys:
+    components:
+    - Healing
+  stock:
+  - item: Gauze
+    price: 350
+  - item: Ointment
+    price: 500
+  - item: Medkit
+    price: 1800
+  contracts:
+  - title: A tidy shipment
+    flavour: Gauze, clean and in volume, for a customer who prizes neatness above all.
+    wants:
+    - item: Gauze
+      min: 6
+      max: 14
+      unitPrice: 200
+    lifetimeMinutes: 40
+  - title: For a patient client
+    flavour: A medkit and a few packs, delivered with discretion. The client does not need to know your name.
+    jobs: [ MedicalDoctor, Paramedic ]
+    bonus: 600
+    wants:
+    - item: Medkit
+      min: 1
+      max: 2
+      unitPrice: 1200
+    - item: Brutepack
+      min: 2
+      max: 5
+      unitPrice: 330
+    lifetimeMinutes: 50
+
+- type: dealer
+  id: DealerVurdalak
+  name: Vurdalak
+  trade: Candles, curios and quiet favours
+  greeting: Sit. The candles burn low, and so does the offer. Name what you carry.
+  portrait:
+    sprite: _Serenity/Interface/Dealers/goonstation.rsi
+    state: vurdalak
+  portraitScale: 1
+  buyRate: 0.6
+  buys:
+    components:
+    - Paper
+  stock:
+  - item: Candle
+    price: 120
+  - item: BoxCandle
+    price: 600
+  - item: Lantern
+    price: 650
+  contracts:
+  - title: A hundred small lights
+    flavour: The vigil must not go dark. Bring candles, and do not ask how many are needed.
+    wants:
+    - item: Candle
+      min: 8
+      max: 20
+      unitPrice: 85
+    lifetimeMinutes: 40
+  - title: Uranium, wrapped well
+    flavour: A heavy thing in a quiet bag. The less said about its use, the better.
+    jobs: [ SalvageSpecialist, Scientist ]
+    bonus: 1200
+    wants:
+    - item: UraniumOre1
+      min: 3
+      max: 6
+      unitPrice: 600
+    lifetimeMinutes: 50
+
+- type: dealer
+  id: DealerBufordTenin
+  name: Buford Tenin
+  trade: Mellow wares from the greenhouse
+  greeting: Heyyy. Take your time. Nothing here is in a hurry, least of all me.
+  portrait:
+    sprite: _Serenity/Interface/Dealers/goonstation.rsi
+    state: buford_tenin
+  portraitScale: 1
+  buyRate: 0.5
+  buys:
+    components:
+    - Edible
+  stock:
+  - item: FoodBanana
+    price: 150
+  - item: FoodBreadPlain
+    price: 300
+  - item: DrinkWineBottleFull
+    price: 900
+  contracts:
+  - title: Fresh from the garden
+    flavour: The customers want it picked today. Bananas, a good heap of them, as ripe as you like.
+    wants:
+    - item: FoodBanana
+      min: 8
+      max: 20
+      unitPrice: 110
+    lifetimeMinutes: 40
+  - title: Something to share
+    flavour: A table of friends and nothing to put on it. Cheese burgers would do nicely.
+    jobs: [ Chef, Botanist ]
+    bonus: 500
+    wants:
+    - item: FoodBurgerCheese
+      min: 4
+      max: 8
+      unitPrice: 300
+    lifetimeMinutes: 45
+
+- type: dealer
+  id: DealerHumanSteve
+  name: Human Steve
+  trade: Odds, ends and anything with a use
+  greeting: Hello. I am a normal human, and I would like to buy normal things. Do you have any.
+  portrait:
+    sprite: _Serenity/Interface/Dealers/goonstation.rsi
+    state: human_steve
+  portraitScale: 1
+  buyRate: 0.55
+  buys:
+    components:
+    - Tool
+  stock:
+  - item: Crowbar
+    price: 400
+  - item: Wrench
+    price: 400
+  - item: Multitool
+    price: 900
+  contracts:
+  - title: Ordinary tools for ordinary jobs
+    flavour: I need a screwdriver and a wrench, both of the sort a person uses on a regular day.
+    wants:
+    - item: Screwdriver
+      min: 2
+      max: 5
+      unitPrice: 260
+    - item: Wrench
+      min: 1
+      max: 3
+      unitPrice: 300
+    lifetimeMinutes: 40
+  - title: Wiring, for human reasons
+    flavour: Cable, of the kind humans use. A fair amount, please, I have a lot to do.
+    jobs: [ StationEngineer, AtmosphericTechnician ]
+    bonus: 600
+    wants:
+    - item: CableApcStack
+      min: 20
+      max: 50
+      unitPrice: 30
+    lifetimeMinutes: 45
