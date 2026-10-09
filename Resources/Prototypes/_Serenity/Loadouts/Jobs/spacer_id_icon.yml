@@ -15,6 +15,8 @@
   - SpacerIdShopkeeperAssistant
   - SpacerIdJanitorAssistant
   - SpacerIdMailTech
+  - SpacerIdMiningSpecialist
+  - SpacerIdSalvageLead
   - SpacerIdRadioHost
 
 - type: loadout
@@ -82,3 +84,15 @@
   dummyEntity: SpacerIdCardRadioHost
   equipment:
     id: SpacerPdaRadioHost
+
+- type: loadout
+  id: SpacerIdMiningSpecialist
+  dummyEntity: SpacerIdCardMiningSpecialist
+  equipment:
+    id: SpacerPdaMiningSpecialist
+
+- type: loadout
+  id: SpacerIdSalvageLead
+  dummyEntity: SpacerIdCardSalvageLead
+  equipment:
+    id: SpacerPdaSalvageLead

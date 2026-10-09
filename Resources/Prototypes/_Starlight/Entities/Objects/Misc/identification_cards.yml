@@ -210,7 +210,7 @@
     sprite: _Starlight/Objects/Misc/id_cards.rsi
     layers:
     - sprite: _Serenity/Objects/Misc/id_card_bases.rsi
-      state: supply
+      state: default
     - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
       state: idsalvagelead
   - type: PresetIdCard
@@ -225,7 +225,7 @@
     sprite: _Starlight/Objects/Misc/id_cards.rsi
     layers:
     - sprite: _Serenity/Objects/Misc/id_card_bases.rsi
-      state: supply
+      state: default
     - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
       state: idminingspecialist
   - type: PresetIdCard

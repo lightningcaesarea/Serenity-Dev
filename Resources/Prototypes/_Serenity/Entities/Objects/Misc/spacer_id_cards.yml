@@ -220,3 +220,47 @@
   components:
   - type: Pda
     id: SpacerIdCardRadioHost
+
+- type: entity
+  parent: AssistantIDCard
+  id: SpacerIdCardMiningSpecialist
+  name: mining specialist ID card
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - sprite: _Serenity/Objects/Misc/id_card_bases.rsi
+      state: default
+    - sprite: _Serenity/Objects/Misc/spacer_id_icons.rsi
+      state: idminingspecialist
+
+- type: entity
+  parent: AssistantPDA
+  id: SpacerPdaMiningSpecialist
+  name: spacer PDA
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Pda
+    id: SpacerIdCardMiningSpecialist
+
+- type: entity
+  parent: AssistantIDCard
+  id: SpacerIdCardSalvageLead
+  name: salvage lead ID card
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - sprite: _Serenity/Objects/Misc/id_card_bases.rsi
+      state: default
+    - sprite: _Serenity/Objects/Misc/spacer_id_icons.rsi
+      state: idsalvagelead
+
+- type: entity
+  parent: AssistantPDA
+  id: SpacerPdaSalvageLead
+  name: spacer PDA
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Pda
+    id: SpacerIdCardSalvageLead
