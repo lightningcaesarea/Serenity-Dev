@@ -27,7 +27,7 @@ namespace Content.Server._Serenity.Power.Tokamak;
 /// <remarks>
 /// Mechanics are an original implementation inspired by the R-UST / INDRA tokamaks of other space station games.
 /// </remarks>
-public sealed class TokamakCoreSystem : EntitySystem
+public sealed partial class TokamakCoreSystem : EntitySystem
 {
     [Dependency] private IAdminLogManager _adminLog = default!;
     [Dependency] private IGameTiming _timing = default!;
