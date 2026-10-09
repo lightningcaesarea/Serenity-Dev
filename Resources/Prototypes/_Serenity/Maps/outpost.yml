@@ -76,3 +76,77 @@
             StationEngineer: [ 2, 3 ]
             TechnicalAssistant: [ 1, 2 ]
             Borg: [ 1, 2 ]
+
+# The original (Frontier-derived) Outpost, kept so it can be swapped back: put SerenityOutpostOriginal in
+# pool.yml (or set game.map) instead of SerenityOutpost. Not in any pool, so it never loads on its own.
+- type: gameMap
+  id: SerenityOutpostOriginal
+  mapName: 'Serenity Outpost (Original)'
+  mapPath: /Maps/_Serenity/Outpost/outpost-original.yml
+  minPlayers: 0
+  maxPlayers: 100
+  randomRotation: false
+  maxRandomOffset: 0
+  stations:
+    SerenityOutpostOriginal:
+      stationProto: StandardNanotrasenStation
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Serenity Outpost'
+        - type: SafeZone # No fighting on the outpost itself; docked ships are their own grids.
+          exemptDepartments:
+          - Command
+          - Security # Marines
+          - CentralCommand # Marine Raiders, ERT
+        - type: GridSpawn
+          groups:
+            trade: !type:GridSpawnGroup
+              addComponents:
+                - type: TradeStation
+              paths:
+                - /Maps/_Starlight/trading_outpost.yml
+              minimumDistance: 100
+              maximumDistance: 200
+            cargo_salvage_shuttle: !type:GridSpawnGroup
+              paths:
+                - /Maps/_Starlight/Shuttles/Salvage/expeditioneer.yml
+              nameGrid: false
+            cargo_mining_shuttle: !type:GridSpawnGroup
+              paths:
+                - /Maps/_Starlight/Shuttles/Mining/asteroidcracker.yml
+              nameGrid: false
+            vgroid: !type:DungeonSpawnGroup
+              minimumDistance: 600
+              maximumDistance: 650
+              directDungeonSpawn: true
+              nameDataset: NamesBorer
+              stationGrid: false
+              addComponents:
+              - type: Gravity
+                enabled: true
+                inherent: true
+              - type: VGRoidSpawnMarker
+              protos:
+              - VGRoid
+        - type: StationJobs
+          availableJobs:
+            Assistant: [ -1, -1 ]
+            HeadOfPersonnel: [ 1, 1 ]
+            AssistantManager: [ 2, 2 ]
+            Bartender: [ 1, 2 ]
+            ServiceWorker: [ 2, 3 ]
+            RadioHost: [ 1, 1 ]
+            MailTech: [ 1, 1 ]
+            MiningSpecialist: [ 1, 2 ]
+            HeadOfSecurity: [ 1, 1 ]
+            Warden: [ 1, 1 ]
+            SeniorOfficer: [ 1, 1 ]
+            SecurityOfficer: [ 2, 3 ]
+            SecurityCadet: [ 1, 2 ]
+            Brigmedic: [ 1, 1 ]
+            MedicalDoctor: [ 2, 3 ]
+            MedicalIntern: [ 1, 2 ]
+            Paramedic: [ 1, 1 ]
+            StationEngineer: [ 2, 3 ]
+            TechnicalAssistant: [ 1, 2 ]
+            Borg: [ 1, 2 ]
