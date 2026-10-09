@@ -1072,3 +1072,10 @@ Entries:
   id: 17501
   time: '2026-10-09T20:25:02.000000+00:00'
   url: https://github.com/lightningcaesarea/Serenity-Dev/pull/175
+- author: Inny
+  changes:
+  - message: Add the dealer market.
+    type: Add
+  id: 16701
+  time: '2026-10-09T20:46:16.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/167
