@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "license": "CC-BY-NC-SA-3.0",
+  "copyright": "Trader portraits from Goonstation (github.com/goonstation/goonstation, browserassets/src/images/traders): gragg, josh, lizardman, cloakdude, gethighfrog, shambles. Human Steve (shambles) by cogworks; other artists are credited in Goonstation's history. Non-commercial use only.",
+  "size": {
+    "x": 200,
+    "y": 150
+  },
+  "states": [
+    {
+      "name": "gragg"
+    },
+    {
+      "name": "josh"
+    },
+    {
+      "name": "pianzi_hundan"
+    },
+    {
+      "name": "vurdalak"
+    },
+    {
+      "name": "buford_tenin"
+    },
+    {
+      "name": "human_steve"
+    }
+  ]
+}

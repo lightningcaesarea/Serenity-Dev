@@ -53,12 +53,9 @@
             SecurityCadet: [ 6, 6 ]
 
             # Supply
-            MiningSpecialist: [ 4, 4 ]
             MailTech: [ 2, 2 ]
 
             # ITG
-            SalvageLead: [ 1, 1 ]
-            SalvageMedic: [ 1, 1 ]
 
             # Civilian
             Assistant: [ -1, -1 ]

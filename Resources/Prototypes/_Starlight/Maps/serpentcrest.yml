@@ -54,11 +54,8 @@
 
             # Supply
             MailTech: [ 2, 2 ]
-            MiningSpecialist: [ 4, 4 ]
 
             # ITG
-            SalvageLead: [ 1, 1 ]
-            SalvageMedic: [ 1, 1 ]
 
             # Civilian
             AssistantManager: [ 2, 2 ]

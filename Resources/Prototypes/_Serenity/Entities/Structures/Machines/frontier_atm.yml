@@ -1,0 +1,12 @@
+- type: entity
+  parent: ATM
+  id: SerenityATMFrontier
+  suffix: Frontier
+  components:
+  - type: Sprite
+    sprite: _Serenity/Structures/Machines/frontier_atm.rsi
+    layers:
+    - map: ["computerLayerBody"]
+      state: icon
+    - map: ["computerLayerScreen"]
+      state: unshaded

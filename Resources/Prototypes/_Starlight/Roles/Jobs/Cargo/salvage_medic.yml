@@ -4,6 +4,7 @@
   description: job-description-salvagemedic
   rules: job-rules-itg-aligned
   playTimeTracker: JobSalvageMedic
+  setPreference: false # Serenity: role disabled
   requirements:
     - !type:RoleTimeRequirement
       role: JobSalvageSpecialist

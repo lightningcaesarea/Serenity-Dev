@@ -5,7 +5,7 @@
   color: "#b48b57"
   roles:
   - CargoTechnician
-  - MailTech
+  # - MailTech # Serenity: the Mail Technician is in Service (Civilian)
   - Quartermaster
   - MiningSpecialist
 
@@ -37,6 +37,7 @@
   - Boxer
   - Prisoner
   - RadioHost
+  - MailTech # Serenity: moved from Cargo
   # Starlight end
 
 - type: department
