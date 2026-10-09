@@ -1,4 +1,9 @@
 - type: guideEntry
+  id: Arachne
+  name: species-name-arachne
+  text: "/ServerInfo/Guidebook/Mobs/_Serenity/Arachne.xml"
+
+- type: guideEntry
   id: Chitinid
   name: species-name-chitinid
   text: "/ServerInfo/Guidebook/Mobs/_Serenity/Chitinid.xml"
