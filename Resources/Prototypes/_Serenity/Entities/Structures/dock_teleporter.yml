@@ -1,0 +1,25 @@
+- type: entity
+  id: SerenityDockTeleporter
+  name: dock teleporter
+  description: A pad that beams you between the station and its docking pier. Use it to travel.
+  components:
+  - type: Transform
+    anchored: true
+    noRot: true
+  - type: Physics
+    bodyType: Static
+    canCollide: false
+  - type: InteractionOutline
+  - type: Clickable
+  - type: Sprite
+    sprite: Structures/cargo_telepad.rsi
+    drawdepth: HighFloorObjects
+    layers:
+    - state: idle
+    - state: beam
+      shader: unshaded
+  - type: PointLight
+    radius: 1.5
+    energy: 1.2
+    color: "#5FA8D3"
+  - type: DockTeleporter

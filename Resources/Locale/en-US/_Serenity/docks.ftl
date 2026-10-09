@@ -1,0 +1,10 @@
+dock-request-verb = Request dock
+dock-request-verb-message = Call in a docking pier for another ship to moor at.
+dock-request-disabled = Dock requests are switched off.
+dock-request-limit = The sector already has the maximum number of docks ({$max}).
+dock-request-cooldown = The dock loader is recharging. Try again in {$seconds} seconds.
+dock-request-no-space = No clear space was found for a dock. Try again shortly.
+dock-request-failed = The dock could not be built.
+dock-request-success = Dock {$number} is on its way and will show on the shuttle console shortly.
+dock-name = Dock {$number}
+dock-teleporter-no-link = The pad is dark. Its partner pad is gone.
