@@ -1,0 +1,35 @@
+# Clothing displacement for Ovinia's hooved legs. The map sprites already lived in
+# _Serenity/Mobs/Species/Ovinia/displacement.rsi but nothing pointed at them.
+- type: entity
+  id: BaseInventoryOvinia
+  abstract: true
+  components:
+  - type: Inventory
+    speciesId: ovinia
+    displacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: _Serenity/Mobs/Species/Ovinia/displacement.rsi
+            state: jumpsuit
+      shoes:
+        sizeMaps:
+          32:
+            sprite: _Serenity/Mobs/Species/Ovinia/displacement.rsi
+            state: shoes
+      outerClothing:
+        sizeMaps:
+          32:
+            sprite: _Serenity/Mobs/Species/Ovinia/displacement.rsi
+            state: outerclothing_hardsuit
+    femaleDisplacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: _Serenity/Mobs/Species/Ovinia/displacement.rsi
+            state: jumpsuit-female
+      shoes:
+        sizeMaps:
+          32:
+            sprite: _Serenity/Mobs/Species/Ovinia/displacement.rsi
+            state: shoes
