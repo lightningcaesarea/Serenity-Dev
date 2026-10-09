@@ -1065,3 +1065,10 @@ Entries:
   id: 17601
   time: '2026-10-09T20:24:27.000000+00:00'
   url: https://github.com/lightningcaesarea/Serenity-Dev/pull/176
+- author: Inny
+  changes:
+  - message: Fix Frontier ships that can't be bought (NS Garden).
+    type: Fix
+  id: 17501
+  time: '2026-10-09T20:25:02.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/175
