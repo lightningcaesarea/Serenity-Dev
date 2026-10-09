@@ -1020,3 +1020,10 @@ Entries:
   id: 17701
   time: '2026-10-09T13:39:20.000000+00:00'
   url: https://github.com/lightningcaesarea/Serenity-Dev/pull/177
+- author: Inny
+  changes:
+  - message: Wire up Ovinia clothing displacement maps.
+    type: Tweak
+  id: 17901
+  time: '2026-10-09T18:15:17.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/179
