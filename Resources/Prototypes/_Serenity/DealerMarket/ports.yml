@@ -1,0 +1,10 @@
+- type: sourcePort
+  id: DealerMarketSender
+  name: signal-port-name-dealer-market-sender
+  description: signal-port-description-dealer-market-sender
+  defaultLinks: [ DealerMarketReceiver ]
+
+- type: sinkPort
+  id: DealerMarketReceiver
+  name: signal-port-name-dealer-market-receiver
+  description: signal-port-description-dealer-market-receiver

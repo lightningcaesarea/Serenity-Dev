@@ -1,0 +1,143 @@
+- type: entity
+  parent: BaseComputerAiAccess
+  id: ComputerDealerMarket
+  name: dealer market terminal
+  description: A battered terminal that talks to a handful of dealers who will buy your goods and sell you theirs. Link it to a contract elevator, and optionally an intake pad and a mass driver.
+  components:
+  - type: DealerMarketConsole
+  - type: ActivatableUI
+    key: enum.DealerMarketUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.DealerMarketUiKey.Key:
+        type: DealerMarketBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      sprite: _Serenity/Structures/Machines/dealer_computer.rsi # Frontier cargo_market screen, CC-BY-SA-3.0
+      state: market
+    - map: ["computerLayerKeys"]
+      state: tech_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+  - type: Computer
+    board: DealerMarketComputerCircuitboard
+  - type: PointLight
+    radius: 2.5
+    energy: 1.5
+    color: "#c9892e"
+    castShadows: false
+  - type: DeviceList
+  - type: DeviceNetwork
+    deviceNetId: Wired
+  - type: DeviceLinkSource
+    range: 5
+    ports:
+      - DealerMarketSender
+  - type: ItemSlots
+  - type: ContainerContainer
+    containers:
+      board: !type:Container
+      pai_slot: !type:ContainerSlot
+
+- type: entity
+  parent: BaseComputerCircuitboard
+  id: DealerMarketComputerCircuitboard
+  name: dealer market computer board
+  description: A computer printed circuit board for a dealer market terminal.
+  components:
+  - type: Sprite
+    state: cpu_supply
+  - type: ComputerBoard
+    prototype: ComputerDealerMarket
+  - type: StaticPrice
+    price: 200
+
+- type: entity
+  id: DealerIntakePad
+  name: dealer intake pad
+  description: A scuffed steel plate that goods land on, whether a mass driver threw them or somebody dragged them there. A dealer takes what is on it when asked to buy outright.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Transform
+    anchored: true
+  - type: Sprite
+    sprite: _Serenity/Structures/Machines/dealer_intake.rsi
+    drawdepth: FloorObjects
+    layers:
+    - state: pad
+  - type: DealerIntake
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: BasicDevice
+  - type: DeviceList
+  - type: DeviceLinkSink
+    ports:
+      - DealerMarketReceiver
+  - type: Construction
+    graph: DealerIntakePad
+    node: pad
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  id: DealerElevator
+  name: dealer elevator
+  description: A small freight lift that brings up a crate for each contract. Fill the crate, hand it over at the terminal, and the lift takes it away.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Transform
+    anchored: true
+  - type: Appearance
+  - type: Sprite
+    sprite: _Serenity/Structures/Machines/dealer_elevator.rsi # Frontier crate machine, CC-BY-SA-3.0
+    drawdepth: FloorObjects
+    layers:
+    - state: background
+    - state: closed
+      map: [ "base" ]
+  - type: GenericVisualizer
+    visuals:
+      enum.DealerElevatorVisuals.Raised:
+        base:
+          True: { state: open }
+          False: { state: closed }
+  - type: DealerElevator
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: BasicDevice
+  - type: DeviceList
+  - type: DeviceLinkSink
+    ports:
+      - DealerMarketReceiver
+  - type: StaticPrice
+    price: 300
+
+# A crate that is only ever raised by a dealer elevator. Sprites are Frontier's trade crate; YAML is fresh.
+- type: entity
+  parent: CrateGeneric
+  id: DealerContractCrate
+  name: contract crate
+  description: A plain crate that the dealer's elevator sent up for a contract. Put what was asked for inside.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Icon
+    sprite: _Serenity/Structures/Storage/Crates/dealer_contract.rsi
+    state: icon
+  - type: Sprite
+    sprite: _Serenity/Structures/Storage/Crates/dealer_contract.rsi
+  - type: DealerContractCrate
+  - type: StaticPrice
+    price: 0

@@ -1,0 +1,36 @@
+- type: constructionGraph
+  id: DealerIntakePad
+  start: start
+  graph:
+  - node: start
+    actions:
+    - !type:DestroyEntity {}
+    edges:
+    - to: pad
+      steps:
+      - material: Steel
+        amount: 4
+        doAfter: 2
+  - node: pad
+    entity: DealerIntakePad
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 4
+      steps:
+      - tool: Prying
+        doAfter: 3
+
+- type: construction
+  id: DealerIntakePad
+  graph: DealerIntakePad
+  startNode: start
+  targetNode: pad
+  category: construction-category-machines
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
