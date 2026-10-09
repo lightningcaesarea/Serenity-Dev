@@ -1051,3 +1051,10 @@ Entries:
   id: 18101
   time: '2026-10-09T18:42:35.000000+00:00'
   url: https://github.com/lightningcaesarea/Serenity-Dev/pull/181
+- author: Inny
+  changes:
+  - message: Remove salvage, mining and cargo shuttles from roundstart.
+    type: Remove
+  id: 17801
+  time: '2026-10-09T19:46:00.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/178
