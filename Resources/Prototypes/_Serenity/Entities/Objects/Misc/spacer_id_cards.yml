@@ -8,9 +8,9 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Goobstation/Objects/Misc/id_cards.rsi
     layers:
-    - state: default
+    - sprite: _Serenity/Objects/Misc/id_card_bases.rsi
+      state: default
     - sprite: _Serenity/Objects/Misc/spacer_id_icons.rsi
       state: idtechnicalassistant
 
@@ -30,9 +30,9 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Goobstation/Objects/Misc/id_cards.rsi
     layers:
-    - state: default
+    - sprite: _Serenity/Objects/Misc/id_card_bases.rsi
+      state: default
     - sprite: _Serenity/Objects/Misc/spacer_id_icons.rsi
       state: idresearchassistant
 
@@ -52,9 +52,9 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Goobstation/Objects/Misc/id_cards.rsi
     layers:
-    - state: default
+    - sprite: _Serenity/Objects/Misc/id_card_bases.rsi
+      state: default
     - sprite: _Serenity/Objects/Misc/spacer_id_icons.rsi
       state: idsecuritycadet
 
@@ -74,9 +74,9 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Goobstation/Objects/Misc/id_cards.rsi
     layers:
-    - state: default
+    - sprite: _Serenity/Objects/Misc/id_card_bases.rsi
+      state: default
     - sprite: _Serenity/Objects/Misc/spacer_id_icons.rsi
       state: idclericalassistant
 
@@ -96,9 +96,9 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Goobstation/Objects/Misc/id_cards.rsi
     layers:
-    - state: default
+    - sprite: _Serenity/Objects/Misc/id_card_bases.rsi
+      state: default
     - sprite: _Serenity/Objects/Misc/spacer_id_icons.rsi
       state: idcookassistant
 
@@ -118,9 +118,9 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Goobstation/Objects/Misc/id_cards.rsi
     layers:
-    - state: default
+    - sprite: _Serenity/Objects/Misc/id_card_bases.rsi
+      state: default
     - sprite: _Serenity/Objects/Misc/spacer_id_icons.rsi
       state: iddeliveryassistant
 
@@ -140,9 +140,9 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Goobstation/Objects/Misc/id_cards.rsi
     layers:
-    - state: default
+    - sprite: _Serenity/Objects/Misc/id_card_bases.rsi
+      state: default
     - sprite: _Serenity/Objects/Misc/spacer_id_icons.rsi
       state: idgardenerassistant
 
@@ -162,9 +162,9 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Goobstation/Objects/Misc/id_cards.rsi
     layers:
-    - state: default
+    - sprite: _Serenity/Objects/Misc/id_card_bases.rsi
+      state: default
     - sprite: _Serenity/Objects/Misc/spacer_id_icons.rsi
       state: idhandymanassistant
 
@@ -184,9 +184,9 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Goobstation/Objects/Misc/id_cards.rsi
     layers:
-    - state: default
+    - sprite: _Serenity/Objects/Misc/id_card_bases.rsi
+      state: default
     - sprite: _Serenity/Objects/Misc/spacer_id_icons.rsi
       state: idreligiousassistant
 
@@ -206,9 +206,9 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Goobstation/Objects/Misc/id_cards.rsi
     layers:
-    - state: default
+    - sprite: _Serenity/Objects/Misc/id_card_bases.rsi
+      state: default
     - sprite: _Serenity/Objects/Misc/spacer_id_icons.rsi
       state: idshopkeeperassistant
 
@@ -228,9 +228,9 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Goobstation/Objects/Misc/id_cards.rsi
     layers:
-    - state: default
+    - sprite: _Serenity/Objects/Misc/id_card_bases.rsi
+      state: default
     - sprite: _Serenity/Objects/Misc/spacer_id_icons.rsi
       state: idmedicalassistant
 
@@ -250,9 +250,9 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Goobstation/Objects/Misc/id_cards.rsi
     layers:
-    - state: default
+    - sprite: _Serenity/Objects/Misc/id_card_bases.rsi
+      state: default
     - sprite: _Serenity/Objects/Misc/spacer_id_icons.rsi
       state: idjanitorassistant
 
@@ -272,9 +272,9 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Goobstation/Objects/Misc/id_cards.rsi
     layers:
-    - state: default
+    - sprite: _Serenity/Objects/Misc/id_card_bases.rsi
+      state: default
     - sprite: _Serenity/Objects/Misc/spacer_id_icons.rsi
       state: idmailtech
 
@@ -294,9 +294,9 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Goobstation/Objects/Misc/id_cards.rsi
     layers:
-    - state: default
+    - sprite: _Serenity/Objects/Misc/id_card_bases.rsi
+      state: default
     - sprite: _Serenity/Objects/Misc/spacer_id_icons.rsi
       state: idminingspecialist
 
@@ -316,9 +316,9 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Goobstation/Objects/Misc/id_cards.rsi
     layers:
-    - state: default
+    - sprite: _Serenity/Objects/Misc/id_card_bases.rsi
+      state: default
     - sprite: _Serenity/Objects/Misc/spacer_id_icons.rsi
       state: idradiohost
 

@@ -1,14 +1,38 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Card bases taken from Goob Station (https://github.com/Goob-Station/Goob-Station, Resources/Textures/Objects/Misc/id_cards.rsi), itself taken from tgstation at commit https://github.com/tgstation/tgstation/commit/d917f4c2a088419d5c3aec7656b7ff8cebd1822e | officer is the Goob silver card recoloured fully blue with gold stripes by Serenity",
+  "copyright": "Card bases taken from Goob Station (https://github.com/Goob-Station/Goob-Station, Resources/Textures/Objects/Misc/id_cards.rsi), itself taken from tgstation at commit https://github.com/tgstation/tgstation/commit/d917f4c2a088419d5c3aec7656b7ff8cebd1822e | department variants are the Goob silver card recoloured by Serenity (see project make_bases.py)",
   "size": {
     "x": 32,
     "y": 32
   },
   "states": [
     {
+      "name": "default"
+    },
+    {
       "name": "gold"
+    },
+    {
+      "name": "engineering"
+    },
+    {
+      "name": "medical"
+    },
+    {
+      "name": "science"
+    },
+    {
+      "name": "security"
+    },
+    {
+      "name": "securityhead"
+    },
+    {
+      "name": "service"
+    },
+    {
+      "name": "supply"
     },
     {
       "name": "officer"

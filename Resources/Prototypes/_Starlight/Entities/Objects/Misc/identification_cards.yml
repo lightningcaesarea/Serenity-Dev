@@ -209,13 +209,8 @@
   - type: Sprite
     sprite: _Starlight/Objects/Misc/id_cards.rsi
     layers:
-    - state: default
-    - sprite: *id-rsi
-      state: stripe_top
-      color: &color-supply-top "#b18644"
-    - sprite: *id-rsi
-      state: stripe_bottom
-      color: &color-supply-bottom "#5b4523"
+    - sprite: _Serenity/Objects/Misc/id_card_bases.rsi
+      state: supply
     - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
       state: idsalvagelead
   - type: PresetIdCard
@@ -229,13 +224,8 @@
   - type: Sprite
     sprite: _Starlight/Objects/Misc/id_cards.rsi
     layers:
-    - state: default
-    - sprite: *id-rsi
-      state: stripe_top
-      color: *color-supply-top
-    - sprite: *id-rsi
-      state: stripe_bottom
-      color: *color-supply-bottom
+    - sprite: _Serenity/Objects/Misc/id_card_bases.rsi
+      state: supply
     - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
       state: idminingspecialist
   - type: PresetIdCard
@@ -249,13 +239,8 @@
   - type: Sprite
     sprite: _Starlight/Objects/Misc/id_cards.rsi
     layers:
-    - state: default
-    - sprite: *id-rsi
-      state: stripe_top
-      color: *color-supply-top
-    - sprite: *id-rsi
-      state: stripe_bottom
-      color: *color-supply-bottom
+    - sprite: _Serenity/Objects/Misc/id_card_bases.rsi
+      state: supply
     - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
       state: idmailtech
   - type: PresetIdCard
@@ -307,11 +292,8 @@
   components:
   - type: Sprite
     layers:
-    - state: default
-    - state: stripe_top
-      color: *color-service-top
-    - state: stripe_bottom
-      color: *color-service-bottom
+    - sprite: _Serenity/Objects/Misc/id_card_bases.rsi
+      state: service
     - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
       state: idbotanist
   - type: PresetIdCard
@@ -1069,10 +1051,10 @@
     - state: default
     - sprite: *id-rsi
       state: stripe_top
-      color: *color-supply-top
+      color: "#b18644"
     - sprite: *id-rsi
       state: stripe_bottom
-      color: *color-supply-top
+      color: "#b18644"
     - sprite: *starlight-icon-rsi
       offset: *icon-offset
       state: SalvageMedic
