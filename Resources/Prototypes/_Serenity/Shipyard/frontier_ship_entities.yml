@@ -219,6 +219,20 @@
     - map: ["computerLayerKeys"]
       sprite: Structures/Machines/computers.rsi
       state: generic_keys
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      sprite: Structures/Machines/computers.rsi
+      state: generic_panel_open
+      visible: false
+  # Serenity: the Starlight EdgeConnection visualizer resets computerLayerBody to the
+  # full-size computer sprite, which swapped the tabletop body out on spawn. Tabletops
+  # don't connect to their neighbours, so pin the body to the tabletop state.
+  - type: EdgeConnection
+    allowedDirections: None
+  - type: GenericVisualizer
+    visuals:
+      enum.EdgeConnectionVisuals.ConnectionMask:
+        computerLayerBody:
+          None: { state: computer_tabletop, sprite: _NF/Structures/Machines/computer_tabletop.rsi }
 
 - type: entity
   parent: ComputerPowerMonitoring
@@ -239,6 +253,20 @@
     - map: ["computerLayerKeys"]
       sprite: Structures/Machines/computers.rsi
       state: power_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      sprite: Structures/Machines/computers.rsi
+      state: generic_panel_open
+      visible: false
+  # Serenity: the Starlight EdgeConnection visualizer resets computerLayerBody to the
+  # full-size computer sprite, which swapped the tabletop body out on spawn. Tabletops
+  # don't connect to their neighbours, so pin the body to the tabletop state.
+  - type: EdgeConnection
+    allowedDirections: None
+  - type: GenericVisualizer
+    visuals:
+      enum.EdgeConnectionVisuals.ConnectionMask:
+        computerLayerBody:
+          None: { state: computer_tabletop, sprite: _NF/Structures/Machines/computer_tabletop.rsi }
 
 - type: entity
   parent: ComputerStationRecords
@@ -259,6 +287,20 @@
     - map: ["computerLayerKeys"]
       sprite: Structures/Machines/computers.rsi
       state: generic_keys
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      sprite: Structures/Machines/computers.rsi
+      state: generic_panel_open
+      visible: false
+  # Serenity: the Starlight EdgeConnection visualizer resets computerLayerBody to the
+  # full-size computer sprite, which swapped the tabletop body out on spawn. Tabletops
+  # don't connect to their neighbours, so pin the body to the tabletop state.
+  - type: EdgeConnection
+    allowedDirections: None
+  - type: GenericVisualizer
+    visuals:
+      enum.EdgeConnectionVisuals.ConnectionMask:
+        computerLayerBody:
+          None: { state: computer_tabletop, sprite: _NF/Structures/Machines/computer_tabletop.rsi }
 
 - type: entity
   parent: ComputerCrewMonitoring
@@ -279,6 +321,20 @@
     - map: ["computerLayerKeys"]
       sprite: Structures/Machines/computers.rsi
       state: med_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      sprite: Structures/Machines/computers.rsi
+      state: generic_panel_open
+      visible: false
+  # Serenity: the Starlight EdgeConnection visualizer resets computerLayerBody to the
+  # full-size computer sprite, which swapped the tabletop body out on spawn. Tabletops
+  # don't connect to their neighbours, so pin the body to the tabletop state.
+  - type: EdgeConnection
+    allowedDirections: None
+  - type: GenericVisualizer
+    visuals:
+      enum.EdgeConnectionVisuals.ConnectionMask:
+        computerLayerBody:
+          None: { state: computer_tabletop, sprite: _NF/Structures/Machines/computer_tabletop.rsi }
 
 - type: entity
   parent: ComputerResearchAndDevelopment
@@ -299,6 +355,20 @@
     - map: ["computerLayerKeys"]
       sprite: Structures/Machines/computers.rsi
       state: rd_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      sprite: Structures/Machines/computers.rsi
+      state: generic_panel_open
+      visible: false
+  # Serenity: the Starlight EdgeConnection visualizer resets computerLayerBody to the
+  # full-size computer sprite, which swapped the tabletop body out on spawn. Tabletops
+  # don't connect to their neighbours, so pin the body to the tabletop state.
+  - type: EdgeConnection
+    allowedDirections: None
+  - type: GenericVisualizer
+    visuals:
+      enum.EdgeConnectionVisuals.ConnectionMask:
+        computerLayerBody:
+          None: { state: computer_tabletop, sprite: _NF/Structures/Machines/computer_tabletop.rsi }
 
 - type: entity
   parent: ComputerAnalysisConsole
@@ -319,6 +389,20 @@
     - map: ["computerLayerKeys"]
       sprite: Structures/Machines/computers.rsi
       state: tech_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      sprite: Structures/Machines/computers.rsi
+      state: generic_panel_open
+      visible: false
+  # Serenity: the Starlight EdgeConnection visualizer resets computerLayerBody to the
+  # full-size computer sprite, which swapped the tabletop body out on spawn. Tabletops
+  # don't connect to their neighbours, so pin the body to the tabletop state.
+  - type: EdgeConnection
+    allowedDirections: None
+  - type: GenericVisualizer
+    visuals:
+      enum.EdgeConnectionVisuals.ConnectionMask:
+        computerLayerBody:
+          None: { state: computer_tabletop, sprite: _NF/Structures/Machines/computer_tabletop.rsi }
 
 - type: entity
   parent: ComputerSolarControl
@@ -339,6 +423,20 @@
     - map: ["computerLayerKeys"]
       sprite: Structures/Machines/computers.rsi
       state: generic_keys
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      sprite: Structures/Machines/computers.rsi
+      state: generic_panel_open
+      visible: false
+  # Serenity: the Starlight EdgeConnection visualizer resets computerLayerBody to the
+  # full-size computer sprite, which swapped the tabletop body out on spawn. Tabletops
+  # don't connect to their neighbours, so pin the body to the tabletop state.
+  - type: EdgeConnection
+    allowedDirections: None
+  - type: GenericVisualizer
+    visuals:
+      enum.EdgeConnectionVisuals.ConnectionMask:
+        computerLayerBody:
+          None: { state: computer_tabletop, sprite: _NF/Structures/Machines/computer_tabletop.rsi }
 
 - type: entity
   parent: ComputerRadar
@@ -359,6 +457,20 @@
     - map: ["computerLayerKeys"]
       sprite: Structures/Machines/computers.rsi
       state: generic_keys
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      sprite: Structures/Machines/computers.rsi
+      state: generic_panel_open
+      visible: false
+  # Serenity: the Starlight EdgeConnection visualizer resets computerLayerBody to the
+  # full-size computer sprite, which swapped the tabletop body out on spawn. Tabletops
+  # don't connect to their neighbours, so pin the body to the tabletop state.
+  - type: EdgeConnection
+    allowedDirections: None
+  - type: GenericVisualizer
+    visuals:
+      enum.EdgeConnectionVisuals.ConnectionMask:
+        computerLayerBody:
+          None: { state: computer_tabletop, sprite: _NF/Structures/Machines/computer_tabletop.rsi }
 
 - type: entity
   parent: ComputerSurveillanceCameraMonitor
@@ -379,6 +491,20 @@
     - map: ["computerLayerKeys"]
       sprite: Structures/Machines/computers.rsi
       state: tech_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      sprite: Structures/Machines/computers.rsi
+      state: generic_panel_open
+      visible: false
+  # Serenity: the Starlight EdgeConnection visualizer resets computerLayerBody to the
+  # full-size computer sprite, which swapped the tabletop body out on spawn. Tabletops
+  # don't connect to their neighbours, so pin the body to the tabletop state.
+  - type: EdgeConnection
+    allowedDirections: None
+  - type: GenericVisualizer
+    visuals:
+      enum.EdgeConnectionVisuals.ConnectionMask:
+        computerLayerBody:
+          None: { state: computer_tabletop, sprite: _NF/Structures/Machines/computer_tabletop.rsi }
 
 - type: entity
   parent: ComputerMassMedia
@@ -399,6 +525,20 @@
     - map: ["computerLayerKeys"]
       sprite: Structures/Machines/computers.rsi
       state: service_keys
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      sprite: Structures/Machines/computers.rsi
+      state: generic_panel_open
+      visible: false
+  # Serenity: the Starlight EdgeConnection visualizer resets computerLayerBody to the
+  # full-size computer sprite, which swapped the tabletop body out on spawn. Tabletops
+  # don't connect to their neighbours, so pin the body to the tabletop state.
+  - type: EdgeConnection
+    allowedDirections: None
+  - type: GenericVisualizer
+    visuals:
+      enum.EdgeConnectionVisuals.ConnectionMask:
+        computerLayerBody:
+          None: { state: computer_tabletop, sprite: _NF/Structures/Machines/computer_tabletop.rsi }
 
 # ── Suit Storage ─────────────────────────────────────────────────────────────
 
