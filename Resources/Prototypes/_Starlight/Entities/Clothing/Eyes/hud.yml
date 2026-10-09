@@ -51,7 +51,7 @@
 - type: entity
   parent: [BaseCommandManagerContraband, ClothingEyesHudCommand]
   id: ClothingEyesEyepatchHudAssistantManager
-  name: assistant manager hud eyepatch
+  name: station officer hud eyepatch # Serenity
   description: A jade-colored heads-up display that scans the humanoids in view and provides accurate data about their ID status. Surrender witness to its' near-invisible string.
   components:
   - type: Sprite

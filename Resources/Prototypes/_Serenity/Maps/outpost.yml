@@ -2,7 +2,9 @@
 # GridSpawn (see BaseStationShuttles in Entities/Stations/base.yml, which this copies) to drop the `ruins`
 # derelicts and the `wrecks` dungeons: derelicts are off for this map, and wrecks now come from worldgen as
 # DungeonDebris instead of a fixed ring around the station. Keep the remaining groups in sync with base.yml.
-# The job list below is a placeholder until the real list is decided.
+# Jobs: every enabled role that has a home on the Outpost. Chef, Botanist, Scientist and Research Assistant stay
+# off until the map has a kitchen, hydroponics and a science area. Roles without their own spawn point on the map
+# share one via additionalJobs on the spawners in Entities/Markers/Spawners/jobs.yml.
 - type: gameMap
   id: SerenityOutpost
   mapName: 'Serenity Outpost'
@@ -59,8 +61,18 @@
             AssistantManager: [ 2, 2 ]
             Bartender: [ 1, 2 ]
             ServiceWorker: [ 2, 3 ]
+            RadioHost: [ 1, 1 ]
+            MailTech: [ 1, 1 ]
+            MiningSpecialist: [ 1, 2 ]
+            HeadOfSecurity: [ 1, 1 ]
+            Warden: [ 1, 1 ]
+            SeniorOfficer: [ 1, 1 ]
             SecurityOfficer: [ 2, 3 ]
+            SecurityCadet: [ 1, 2 ]
+            Brigmedic: [ 1, 1 ]
             MedicalDoctor: [ 2, 3 ]
+            MedicalIntern: [ 1, 2 ]
             Paramedic: [ 1, 1 ]
             StationEngineer: [ 2, 3 ]
+            TechnicalAssistant: [ 1, 2 ]
             Borg: [ 1, 2 ]

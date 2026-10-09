@@ -135,7 +135,7 @@
 - type: entity
   parent: IDCardStandard
   id: AssistantManagerIDCard
-  name: assistant manager ID card
+  name: station officer ID card # Serenity
   components:
   - type: Sprite
     sprite: _Starlight/Objects/Misc/id_cards.rsi

@@ -193,7 +193,7 @@
   id: BoxFolderAssistantManagerClipboard
   parent: [BoxFolderClipboard]
   name: task master digi-board
-  description: Allows an assistant manager to assign titles and change the job icons of their yellow gloved underlings. Doesn't change access.
+  description: Allows a station officer to assign titles and change the job icons of their yellow gloved underlings. Doesn't change access.
   components:
     - type: Sprite
       sprite: _Starlight/Objects/Misc/assistantmanager_clipboard.rsi

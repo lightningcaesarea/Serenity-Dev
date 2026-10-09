@@ -67,9 +67,9 @@
       mode: 4
 
 - type: entity
-  name: Atmos Fix Instant Plasmafire Marker
+  name: Atmos Fix Instant Phoronfire Marker # Serenity
   id: AtmosFixInstantPlasmaFireMarker
-  description: "INSTANT PLASMAFIRE"
+  description: "INSTANT PHORONFIRE" # Serenity
   parent: MarkerBase
   components:
     - type: Sprite

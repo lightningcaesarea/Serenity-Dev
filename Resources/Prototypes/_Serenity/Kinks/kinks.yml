@@ -1194,7 +1194,7 @@
 - type: kink
   id: antag
   name: "Antagonist Scenes"
-  description: "Scenes tied to antag roles."
+  description: "Villain or adversary scenes played out between consenting players; there are no antagonist roles on Serenity."
   category: scenario
 
 # ---- transformation ----
