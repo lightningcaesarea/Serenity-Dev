@@ -11,7 +11,7 @@
       "name": "icon"
     },
     {
-      "name": "printing", 
+      "name": "printing",
       "delays": [[0.25, 0.25, 0.25, 0.25]]
     },
     {
