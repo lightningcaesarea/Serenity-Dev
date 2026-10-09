@@ -13,12 +13,11 @@ namespace Content.Server._Serenity.Power.Tokamak;
 /// <summary>
 /// Drives the tokamak console: finds the nearest core, sends its state to the UI and applies the controls.
 /// </summary>
-public sealed class TokamakConsoleSystem : EntitySystem
+public sealed partial class TokamakConsoleSystem : EntitySystem
 {
     [Dependency] private IAdminLogManager _adminLog = default!;
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private ItemSlotsSystem _slots = default!;
-    [Dependency] private MetaDataSystem _meta = default!;
     [Dependency] private SharedPowerReceiverSystem _receiver = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private TokamakCoreSystem _core = default!;

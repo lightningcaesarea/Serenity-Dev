@@ -15,7 +15,7 @@ namespace Content.Server._Serenity.Power.Tokamak;
 /// <summary>
 /// Gyrotrons, fuel injectors, fuel rods and harvesters of the tokamak.
 /// </summary>
-public sealed class TokamakDeviceSystem : EntitySystem
+public sealed partial class TokamakDeviceSystem : EntitySystem
 {
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private ItemSlotsSystem _slots = default!;

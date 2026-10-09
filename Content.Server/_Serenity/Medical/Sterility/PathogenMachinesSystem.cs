@@ -22,7 +22,7 @@ namespace Content.Server._Serenity.Medical.Sterility;
 /// from (blood carries its owner's DNA) and prints which pathogen is infecting them. The synthesizer is programmed
 /// from that report and turns broad-spectrum antibiotic into the narrow-spectrum drug for it.
 /// </summary>
-public sealed class PathogenMachinesSystem : EntitySystem
+public sealed partial class PathogenMachinesSystem : EntitySystem
 {
     [Dependency] private SharedDoAfterSystem _doAfter = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
