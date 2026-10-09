@@ -1,0 +1,206 @@
+# Arachne mob: the human mob with a spider body. See _Serenity/Species/arachne.yml for credits.
+- type: entity
+  id: BaseInventoryArachne
+  abstract: true
+  components:
+  - type: Inventory
+    speciesId: arachne
+    templateId: arachne
+    femaleDisplacements: { } # Same map for both sexes, set below.
+    displacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: _Serenity/Mobs/Species/Arachne/displacement.rsi
+            state: jumpsuit
+      outerClothing:
+        sizeMaps:
+          32:
+            sprite: _Serenity/Mobs/Species/Arachne/displacement.rsi
+            state: jumpsuit
+
+- type: entity
+  save: false
+  name: Urist McArachne
+  parent: [BaseMobHuman, BaseInventoryArachne]
+  id: BaseMobArachne
+  abstract: true
+  components:
+  - type: HumanoidAppearance
+    species: Arachne
+    hideLayersOnEquip:
+    - Hair
+    - Snout
+  - type: Icon
+    sprite: Mobs/Species/Human/parts.rsi
+    state: full
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.40
+        density: 140
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3.0
+    baseSprintSpeed: 5.0
+  - type: Bloodstream
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: CopperBlood
+        Quantity: 600
+  - type: Tag
+    tags:
+    - CanPilot
+    - FootstepSound
+    - DoorBumpOpener
+    - AnomalyHost
+    - NotLabelable
+    - SpiderCraft
+  - type: Speech
+    allowedEmotes: ['Chitter', 'Click']
+  - type: Vocal
+    sounds:
+      Male: UnisexArachnid
+      Female: UnisexArachnid
+      Unsexed: UnisexArachnid
+  # Spins silk like an Arachnid, and can lay a web on the tile they stand on.
+  - type: Sericulture
+    productionLength: 2
+    entityProduced: MaterialWebSilk1
+    hungerCost: 4
+  - type: Spider
+    spawnsWebsAsNonPlayer: false
+    cantBreakWeb: false
+  - type: IgnoreSpiderWeb
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    layers:
+      - map: [ "enum.HumanoidVisualLayers.LLeg" ]
+        sprite: _Serenity/Mobs/Species/Arachne/parts.rsi
+        state: spider_body
+      - map: [ "enum.HumanoidVisualLayers.Chest" ]
+      - map: [ "enum.HumanoidVisualLayers.RLeg" ]
+        sprite: _Serenity/Mobs/Species/Arachne/parts.rsi
+        state: spider_body_front
+      - map: [ "enum.HumanoidVisualLayers.Head" ]
+      - map: [ "enum.HumanoidVisualLayers.Snout" ]
+      - map: [ "enum.HumanoidVisualLayers.Eyes" ]
+      - map: [ "enum.HumanoidVisualLayers.RArm" ]
+      - map: [ "enum.HumanoidVisualLayers.LArm" ]
+      - map: [ "enum.HumanoidVisualLayers.Butt" ]
+      - map: [ "enum.HumanoidVisualLayers.Vagina" ]
+      - map: [ "enum.HumanoidVisualLayers.Testicles" ]
+      - map: [ "enum.HumanoidVisualLayers.Penis" ]
+      - map: [ "enum.HumanoidVisualLayers.Belly" ]
+      - map: [ "enum.HumanoidVisualLayers.Breasts" ]
+      - map: [ "enum.HumanoidVisualLayers.UndergarmentBottom" ]
+      - map: [ "enum.HumanoidVisualLayers.UndergarmentTop" ]
+      - map: [ "jumpsuit" ]
+      - map: [ "enum.HumanoidVisualLayers.LHand" ]
+      - map: [ "enum.HumanoidVisualLayers.RHand" ]
+      - map: [ "enum.HumanoidVisualLayers.Handcuffs" ]
+        color: "#ffffff"
+        sprite: Objects/Misc/handcuffs.rsi
+        state: body-overlay-2
+        visible: false
+      - map: [ "gloves" ]
+      - map: [ "ears" ]
+      - map: [ "eyes" ]
+      - map: [ "outerClothing" ]
+      - map: [ "belt" ]
+      - map: [ "id" ]
+      - map: [ "enum.HumanoidVisualLayers.Tail" ]
+      - map: [ "back" ]
+      - map: [ "enum.HumanoidVisualLayers.NeckFluff" ]
+      - map: [ "neck" ]
+      - map: [ "misc" ]
+      - map: [ "enum.HumanoidVisualLayers.SnoutCover" ]
+      - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
+      - map: [ "enum.HumanoidVisualLayers.Hair" ]
+      - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
+      - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
+      - map: [ "mask" ]
+      - map: [ "head" ]
+      - map: [ "pocket1" ]
+      - map: [ "pocket2" ]
+      - map: [ "clownedon" ] # Dynamically generated
+        sprite: "Effects/creampie.rsi"
+        state: "creampie_human"
+        visible: false
+
+- type: entity
+  save: false
+  name: Urist McArachne
+  parent: BaseMobArachne
+  id: MobArachne
+
+- type: entity
+  parent: [BaseSpeciesDummy, BaseInventoryArachne]
+  id: AppearanceArachne
+  categories: [ HideSpawnMenu ]
+  description: A dummy arachne meant to be used in character setup.
+  components:
+  - type: HumanoidAppearance
+    species: Arachne
+    hideLayersOnEquip:
+    - Hair
+    - Snout
+  - type: Sprite
+    drawdepth: Mobs
+    noRot: true
+    layers:
+      - map: [ "enum.HumanoidVisualLayers.LLeg" ]
+        sprite: _Serenity/Mobs/Species/Arachne/parts.rsi
+        state: spider_body
+      - map: [ "enum.HumanoidVisualLayers.Chest" ]
+      - map: [ "enum.HumanoidVisualLayers.RLeg" ]
+        sprite: _Serenity/Mobs/Species/Arachne/parts.rsi
+        state: spider_body_front
+      - map: [ "enum.HumanoidVisualLayers.Head" ]
+      - map: [ "enum.HumanoidVisualLayers.Snout" ]
+      - map: [ "enum.HumanoidVisualLayers.Eyes" ]
+      - map: [ "enum.HumanoidVisualLayers.RArm" ]
+      - map: [ "enum.HumanoidVisualLayers.LArm" ]
+      - map: [ "enum.HumanoidVisualLayers.Butt" ]
+      - map: [ "enum.HumanoidVisualLayers.Vagina" ]
+      - map: [ "enum.HumanoidVisualLayers.Testicles" ]
+      - map: [ "enum.HumanoidVisualLayers.Penis" ]
+      - map: [ "enum.HumanoidVisualLayers.Belly" ]
+      - map: [ "enum.HumanoidVisualLayers.Breasts" ]
+      - map: [ "enum.HumanoidVisualLayers.UndergarmentBottom" ]
+      - map: [ "enum.HumanoidVisualLayers.UndergarmentTop" ]
+      - map: [ "jumpsuit" ]
+      - map: [ "enum.HumanoidVisualLayers.LHand" ]
+      - map: [ "enum.HumanoidVisualLayers.RHand" ]
+      - map: [ "enum.HumanoidVisualLayers.Handcuffs" ]
+        color: "#ffffff"
+        sprite: Objects/Misc/handcuffs.rsi
+        state: body-overlay-2
+        visible: false
+      - map: [ "gloves" ]
+      - map: [ "ears" ]
+      - map: [ "eyes" ]
+      - map: [ "outerClothing" ]
+      - map: [ "belt" ]
+      - map: [ "id" ]
+      - map: [ "enum.HumanoidVisualLayers.Tail" ]
+      - map: [ "back" ]
+      - map: [ "enum.HumanoidVisualLayers.NeckFluff" ]
+      - map: [ "neck" ]
+      - map: [ "misc" ]
+      - map: [ "enum.HumanoidVisualLayers.SnoutCover" ]
+      - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
+      - map: [ "enum.HumanoidVisualLayers.Hair" ]
+      - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
+      - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
+      - map: [ "mask" ]
+      - map: [ "head" ]
+      - map: [ "pocket1" ]
+      - map: [ "pocket2" ]
