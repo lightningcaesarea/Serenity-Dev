@@ -27,9 +27,13 @@ public sealed partial class DealerPrototype : IPrototype
     [DataField(required: true)]
     public string Greeting = string.Empty;
 
-    /// <summary>A texture to show as the dealer's portrait.</summary>
+    /// <summary>The dealer's portrait: a texture path, or an RSI and state.</summary>
     [DataField(required: true)]
-    public ResPath Portrait;
+    public SpriteSpecifier Portrait = default!;
+
+    /// <summary>How many times to enlarge the portrait when it is shown.</summary>
+    [DataField]
+    public float PortraitScale = 3f;
 
     /// <summary>What they sell, delivered by mass driver.</summary>
     [DataField]

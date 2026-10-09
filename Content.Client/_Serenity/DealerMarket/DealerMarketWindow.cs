@@ -2,7 +2,7 @@ using System.Linq;
 using System.Numerics;
 using Content.Client.UserInterface.Controls;
 using Content.Shared._Serenity.DealerMarket;
-using Robust.Client.ResourceManagement;
+using Robust.Client.GameObjects;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Prototypes;
@@ -17,7 +17,7 @@ namespace Content.Client._Serenity.DealerMarket;
 public sealed partial class DealerMarketWindow : FancyWindow
 {
     [Dependency] private IPrototypeManager _proto = default!;
-    [Dependency] private IResourceCache _cache = default!;
+    [Dependency] private IEntityManager _entMan = default!;
 
     public event Action<int>? OnFulfil;
     public event Action<int>? OnDecline;
@@ -99,10 +99,10 @@ public sealed partial class DealerMarketWindow : FancyWindow
         var header = new BoxContainer { Orientation = BoxContainer.LayoutOrientation.Horizontal, Margin = new Thickness(0, 6) };
         header.AddChild(new TextureRect
         {
-            Texture = _cache.GetResource<TextureResource>(dealer.Portrait).Texture,
-            TextureScale = new Vector2(3, 3),
+            Texture = _entMan.System<SpriteSystem>().Frame0(dealer.Portrait),
+            TextureScale = new Vector2(dealer.PortraitScale, dealer.PortraitScale),
             Stretch = TextureRect.StretchMode.Keep,
-            MinSize = new Vector2(112, 112),
+            MinSize = new Vector2(150, 112),
         });
 
         var intro = new BoxContainer { Orientation = BoxContainer.LayoutOrientation.Vertical, HorizontalExpand = true, Margin = new Thickness(10, 0) };
