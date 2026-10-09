@@ -73,7 +73,7 @@ public sealed partial class ShuttleSystem
 
     private void CargoSpawn(EntityUid uid, StationCargoShuttleComponent component)
     {
-        if (!_cfg.GetCVar(CCVars.GridFill))
+        if (!_cfg.GetCVar(CCVars.GridFill) || !component.Enabled) // Serenity: Enabled
             return;
 
         var targetGrid = _station.GetLargestGrid(uid);

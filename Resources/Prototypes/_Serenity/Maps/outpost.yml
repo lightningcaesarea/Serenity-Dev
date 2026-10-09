@@ -1,6 +1,7 @@
 # Serenity Outpost: the hub station for the sector. Uses the standard station prototype, but overrides
 # GridSpawn (see BaseStationShuttles in Entities/Stations/base.yml, which this copies) to drop the `ruins`
-# derelicts and the `wrecks` dungeons: derelicts are off for this map, and wrecks now come from worldgen as
+# derelicts, the `wrecks` dungeons and the roundstart salvage, mining and cargo shuttles (the shuttle maps stay
+# in the repo for manual loading/purchase): derelicts are off for this map, and wrecks now come from worldgen as
 # DungeonDebris instead of a fixed ring around the station. Keep the remaining groups in sync with base.yml.
 # The job list below is a placeholder until the real list is decided.
 - type: gameMap
@@ -22,6 +23,9 @@
           - Command
           - Security # Marines
           - CentralCommand # Marine Raiders, ERT
+        - type: StationCargoShuttle # No roundstart cargo shuttle; orders are delivered via the trade station. Map kept for manual loading.
+          enabled: false
+          path: /Maps/_Starlight/Shuttles/Cargo/cargo.yml
         - type: GridSpawn
           groups:
             trade: !type:GridSpawnGroup
@@ -31,14 +35,6 @@
                 - /Maps/_Starlight/trading_outpost.yml
               minimumDistance: 100
               maximumDistance: 200
-            cargo_salvage_shuttle: !type:GridSpawnGroup
-              paths:
-                - /Maps/_Starlight/Shuttles/Salvage/expeditioneer.yml
-              nameGrid: false
-            cargo_mining_shuttle: !type:GridSpawnGroup
-              paths:
-                - /Maps/_Starlight/Shuttles/Mining/asteroidcracker.yml
-              nameGrid: false
             vgroid: !type:DungeonSpawnGroup
               minimumDistance: 600
               maximumDistance: 650
