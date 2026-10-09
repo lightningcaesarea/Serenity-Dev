@@ -510,8 +510,10 @@ public sealed partial class DealerMarketSystem : EntitySystem
         if (!TryComp(item, out StackComponent? stack))
             return false;
 
-        return _proto.Index(want).TryGetComponent<StackComponent>(out var wanted, _compFactory)
-               && wanted.StackTypeId == stack.StackTypeId;
+        if (!_proto.Index(want).TryGetComponent<StackComponent>(out var wanted, _compFactory))
+            return false;
+
+        return wanted.StackTypeId == stack.StackTypeId;
     }
 
     private void Consume(EntityUid item, int count)
