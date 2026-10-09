@@ -3905,7 +3905,7 @@ entities:
     - type: GasTileOverlay
     - type: RadiationGridResistance
     - type: BecomesStation
-      id: SerenityOutpost
+      id: SerenityOutpostOriginal
     - type: WorldgenExclusionZone
       radius: 300
     - type: StationTransit
