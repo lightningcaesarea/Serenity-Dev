@@ -2,6 +2,11 @@ using System.Collections.Generic;
 using System.Numerics;
 using Content.Server._Serenity.Docks;
 using Content.Server.Atmos.EntitySystems;
+using Content.Server.Atmos.Piping.Unary.Components;
+using Content.Server.NodeContainer.EntitySystems;
+using Content.Server.NodeContainer.Nodes;
+using Content.Server.Power.Components;
+using Content.Shared.Atmos;
 using Content.Shared._Serenity.CCVar;
 using Robust.Shared.Configuration;
 using Robust.Shared.GameObjects;
@@ -102,28 +107,59 @@ public sealed class SpawnableDockTest
     }
 
     /// <summary>
-    ///     The dock is a sealed hull: its interior starts and stays at breathable pressure.
+    ///     The dock is a sealed hull with a working life support plant: every room starts at breathable
+    ///     pressure, the RTGs power the APC network, the miner chambers fill, and the vents in the hall
+    ///     are fed with a breathable oxygen/nitrogen mix.
     /// </summary>
     [Test]
-    public async Task DockIsSealedAndHoldsAir()
+    public async Task DockIsSealedPoweredAndVented()
     {
         var (pair, console, host) = await Setup(0f);
         var entMan = pair.Server.ResolveDependency<IEntityManager>();
         var docks = entMan.System<SpawnableDockSystem>();
         var atmos = entMan.System<AtmosphereSystem>();
+        var nodes = entMan.System<NodeContainerSystem>();
 
         await pair.Server.WaitAssertion(() => Assert.That(docks.TryRequestDock(console, console), Is.True));
-        await pair.RunTicksSync(120);
+        await pair.RunTicksSync(1500);
 
         await pair.Server.WaitAssertion(() =>
         {
             var dock = OtherGrids(entMan, host)[0];
-            foreach (var tile in new[] { new Vector2i(0, 0), new Vector2i(-4, -16), new Vector2i(3, 15) })
+
+            float Pressure(int x, int y)
             {
-                var mixture = atmos.GetTileMixture((dock, null, null), null, tile);
-                Assert.That(mixture, Is.Not.Null, $"no air at {tile}");
-                Assert.That(mixture!.Pressure, Is.GreaterThan(90f), $"pressure at {tile}");
+                var mixture = atmos.GetTileMixture((dock, null, null), null, new Vector2i(x, y));
+                Assert.That(mixture, Is.Not.Null, $"no air at {x},{y}");
+                return mixture!.Pressure;
             }
+
+            // Hall corners and middle, power room, atmos room: all sealed and breathable.
+            foreach (var (x, y) in new[] { (0, 0), (-4, -16), (3, 15), (-3, -22), (3, -18), (-3, 18), (3, 20) })
+                Assert.That(Pressure(x, y), Is.GreaterThan(90f), $"pressure at {x},{y}");
+
+            // The miners have filled their sealed chambers.
+            Assert.That(Pressure(-3, 27), Is.GreaterThan(150f), "nitrogen chamber");
+            Assert.That(Pressure(2, 27), Is.GreaterThan(150f), "oxygen chamber");
+
+            var vents = 0;
+            var query = entMan.EntityQueryEnumerator<GasVentPumpComponent, ApcPowerReceiverComponent, TransformComponent>();
+            while (query.MoveNext(out var uid, out _, out var power, out var xform))
+            {
+                if (xform.GridUid != dock)
+                    continue;
+
+                vents++;
+                Assert.That(power.Powered, Is.True, "vent is powered by the dock's APC network");
+                Assert.That(nodes.TryGetNode<PipeNode>(uid, "pipe", out var pipe), Is.True);
+                Assert.That(pipe!.Air.Pressure, Is.GreaterThan(80f), "supply pipe pressure");
+                var oxygen = pipe.Air.GetMoles(Gas.Oxygen) / pipe.Air.TotalMoles;
+                var nitrogen = pipe.Air.GetMoles(Gas.Nitrogen) / pipe.Air.TotalMoles;
+                Assert.That(oxygen, Is.InRange(0.15f, 0.27f), "oxygen share of the supply");
+                Assert.That(nitrogen, Is.InRange(0.73f, 0.85f), "nitrogen share of the supply");
+            }
+
+            Assert.That(vents, Is.EqualTo(4));
         });
 
         await pair.CleanReturnAsync();

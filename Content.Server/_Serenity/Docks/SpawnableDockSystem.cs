@@ -33,9 +33,10 @@ public sealed partial class SpawnableDockSystem : EntitySystem
 
     /// <summary>
     /// Half-width, in tiles, of the square that must be free of other grids before a dock is loaded.
-    /// The hull is 10x34, so this leaves a margin around its corners (about 17.7 tiles from the centre).
+    /// The dock (power room, hall and atmos room) is 10 wide and 56 long and spans 25 tiles south and
+    /// 31 north of its origin, so this keeps every tile of it inside the checked square.
     /// </summary>
-    public const float ClearanceRadius = 24f;
+    public const float ClearanceRadius = 36f;
 
     /// <summary>How many evenly spaced bearings are tried before giving up.</summary>
     public const int Bearings = 16;
