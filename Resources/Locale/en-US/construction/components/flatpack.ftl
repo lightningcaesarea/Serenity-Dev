@@ -1,5 +1,5 @@
 flatpack-unpack-no-room = No room to unpack!
-flatpack-examine = Use a [color=yellow]multitool[/color] to unpack this.
+flatpack-examine = Use a [color=yellow]multitool[/color] on this, or Alt+Left Click it, to unpack it.
 flatpack-entity-name = {$name} flatpack
 flatpack-entity-description = A flatpack used for constructing {INDEFINITE($name)} {$name}.
 
@@ -12,3 +12,4 @@ flatpacker-ui-board-invalid-label = [color=red]Invalid board!
     Unable to print![/color]
 flatpacker-ui-insert-board = Insert a board to begin.
 flatpacker-ui-pack-button = Pack
+flatpack-verb-unpack = Unpack
