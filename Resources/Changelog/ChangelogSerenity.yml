@@ -1027,3 +1027,20 @@ Entries:
   id: 17901
   time: '2026-10-09T18:15:17.000000+00:00'
   url: https://github.com/lightningcaesarea/Serenity-Dev/pull/179
+- author: Inny
+  changes:
+  - message: New players' arrival is now announced on the radio as intended.
+    type: Fix
+  - message: Tokamak warnings are heard on ships without a telecom server.
+    type: Fix
+  - message: The Outpost now offers Senior Officer, Warden, Head of Security, Security Cadet, Brig Medic, Medical Intern, Technical Assistant, Mail Technician, Mining Specialist and Radio Host.
+    type: Tweak
+  - message: Secret rounds mostly run Serenity Adventure.
+    type: Tweak
+  - message: Station Commander and Station Officer gear and menus no longer mention Head of Personnel or Assistant Manager.
+    type: Tweak
+  - message: The Antagonists chapter is gone from the guidebook.
+    type: Remove
+  id: 17001
+  time: '2026-10-09T18:21:25.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/170
