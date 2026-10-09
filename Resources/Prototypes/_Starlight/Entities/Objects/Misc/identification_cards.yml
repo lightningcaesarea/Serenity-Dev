@@ -140,7 +140,8 @@
   - type: Sprite
     sprite: _Starlight/Objects/Misc/id_cards.rsi
     layers:
-    - state: silver
+    - sprite: _Serenity/Objects/Misc/id_card_bases.rsi
+      state: officer
     - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
       state: idassistantmanager
   - type: PresetIdCard
@@ -201,46 +202,6 @@
       listNumber: false
 
 - type: entity
-  parent: [ IDCardStandard, BaseSalvageContraband ]
-  id: SalvageLeadIDCard
-  name: salvage lead ID card
-  components:
-  - type: Sprite
-    sprite: _Starlight/Objects/Misc/id_cards.rsi
-    layers:
-    - state: default
-    - sprite: *id-rsi
-      state: stripe_top
-      color: &color-supply-top "#b18644"
-    - sprite: *id-rsi
-      state: stripe_bottom
-      color: &color-supply-bottom "#5b4523"
-    - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
-      state: idsalvagelead
-  - type: PresetIdCard
-    job: SalvageLead
-
-- type: entity
-  parent: [ IDCardStandard, BaseCargoContraband ]
-  id: MiningIDCard
-  name: mining ID card
-  components:
-  - type: Sprite
-    sprite: _Starlight/Objects/Misc/id_cards.rsi
-    layers:
-    - state: default
-    - sprite: *id-rsi
-      state: stripe_top
-      color: *color-supply-top
-    - sprite: *id-rsi
-      state: stripe_bottom
-      color: *color-supply-bottom
-    - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
-      state: idminingspecialist
-  - type: PresetIdCard
-    job: MiningSpecialist
-
-- type: entity
   parent: [ IDCardStandard, BaseCargoContraband ]
   id: MailTechIDCard
   name: mail technician ID card
@@ -248,13 +209,8 @@
   - type: Sprite
     sprite: _Starlight/Objects/Misc/id_cards.rsi
     layers:
-    - state: default
-    - sprite: *id-rsi
-      state: stripe_top
-      color: *color-supply-top
-    - sprite: *id-rsi
-      state: stripe_bottom
-      color: *color-supply-bottom
+    - sprite: _Serenity/Objects/Misc/id_card_bases.rsi
+      state: service
     - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
       state: idmailtech
   - type: PresetIdCard
@@ -306,11 +262,8 @@
   components:
   - type: Sprite
     layers:
-    - state: default
-    - state: stripe_top
-      color: *color-service-top
-    - state: stripe_bottom
-      color: *color-service-bottom
+    - sprite: _Serenity/Objects/Misc/id_card_bases.rsi
+      state: service
     - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
       state: idbotanist
   - type: PresetIdCard
@@ -1068,10 +1021,10 @@
     - state: default
     - sprite: *id-rsi
       state: stripe_top
-      color: *color-supply-top
+      color: "#b18644"
     - sprite: *id-rsi
       state: stripe_bottom
-      color: *color-supply-top
+      color: "#b18644"
     - sprite: *starlight-icon-rsi
       offset: *icon-offset
       state: SalvageMedic

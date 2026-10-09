@@ -336,7 +336,7 @@
   - type: Sprite
     sprite: _Starlight/Objects/Devices/pda.rsi
   - type: Pda
-    id: SalvageLeadIDCard
+    id: AssistantIDCard
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
@@ -368,7 +368,7 @@
   - type: Sprite
     sprite: _Starlight/Objects/Devices/pda.rsi
   - type: Pda
-    id: SalvageLeadIDCard
+    id: AssistantIDCard
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
@@ -413,7 +413,7 @@
   - type: Sprite
     sprite: _Starlight/Objects/Devices/pda.rsi
   - type: Pda
-    id: MiningIDCard
+    id: AssistantIDCard
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
@@ -444,7 +444,7 @@
   - type: Sprite
     sprite: _Starlight/Objects/Devices/pda.rsi
   - type: Pda
-    id: MiningIDCard
+    id: AssistantIDCard
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
