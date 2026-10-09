@@ -3887,7 +3887,7 @@ entities:
     - type: Transform
       pos: -4.5,-16.5
       parent: 1
-- proto: ClosetBase
+- proto: ClosetMaintenance
   entities:
   - uid: 752
     components:

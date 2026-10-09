@@ -222,3 +222,482 @@
   id: CaduceusMothershipComputer
   parent: ComputerPersonalDesktop
   name: caduceus mothership computer
+
+# ── Ship-map gap fill (2026-10-09) ────────────────────────────────────────────
+# Every `proto:` used by a Resources/Maps/_Serenity/Shuttles/Shipyard map must exist or the whole map
+# refuses to load ("Missing prototype for map") and the ship cannot be bought. These cover the rest.
+# Content/ShipyardMapPrototypesTest.cs fails if a new gap appears.
+
+- type: entity
+  id: AirlockExternalGlassMailCarrierLocked
+  parent: AirlockExternalGlassCargoLocked
+  name: mail carrier external airlock
+
+- type: entity
+  id: AirlockMercenary
+  parent: AirlockSecurity
+  name: mercenary airlock
+
+- type: entity
+  id: AirlockMercenaryGlassLocked
+  parent: AirlockSecurityGlassLocked
+  name: mercenary glass airlock
+
+- type: entity
+  id: AirlockMercenaryLocked
+  parent: AirlockSecurityLocked
+  name: mercenary airlock
+
+- type: entity
+  id: AtmosFixSaunaMarker
+  parent: AtmosFixAirMarker
+  name: atmos fix marker (sauna)
+
+- type: entity
+  id: BenchPewLeft
+  parent: PewEndLeft
+  name: pew
+
+- type: entity
+  id: BenchPewMiddle
+  parent: PewMiddle
+  name: pew
+
+- type: entity
+  id: BenchPewRight
+  parent: PewEndRight
+  name: pew
+
+- type: entity
+  id: BenchSteelLeft
+  parent: BenchSteelWhiteLeft
+  name: steel bench
+
+- type: entity
+  id: BenchSteelMiddle
+  parent: BenchSteelWhiteMiddle
+  name: steel bench
+
+- type: entity
+  id: BenchSteelRight
+  parent: BenchSteelWhiteRight
+  name: steel bench
+
+- type: entity
+  id: BorgModuleDefibrillator
+  parent: BorgModuleGaming
+  name: defibrillator cyborg module
+
+- type: entity
+  id: BorgModuleTreatment
+  parent: BorgModuleGaming
+  name: treatment cyborg module
+
+- type: entity
+  id: BoxExteriorLightTube
+  parent: BoxLighttube
+  name: exterior light tube box
+
+- type: entity
+  id: BoxPaper
+  parent: BoxCardboard
+  name: paper box
+
+- type: entity
+  id: ClothingHeadHatMcCrown
+  parent: ClothingHeadHatFancyCrown
+  name: burger crown
+
+- type: entity
+  id: ClothingNeckCloakJanitorFilled
+  parent: ClothingNeckCloakSupremeJanitor
+  name: janitor cloak
+
+- type: entity
+  id: ClothingNeckCloakMiner
+  parent: ClothingNeckCloakCe
+  name: miner cloak
+
+- type: entity
+  id: ClothingNeckHeadphones
+  parent: ClothingMultipleHeadphones
+  name: headphones
+
+- type: entity
+  id: ClothingOuterWinterCoatPlaid
+  parent: ClothingOuterWinterCoat
+  name: plaid winter coat
+
+- type: entity
+  id: ClothingUniformJumpskirtNurse
+  parent: ClothingUniformJumpskirtSuitNurse
+  name: nurse jumpskirt
+
+- type: entity
+  id: ClothingUniformJumpsuitTshirtJeans
+  parent: ClothingUniformJumpsuitAssistant
+  name: t-shirt and jeans
+
+- type: entity
+  id: ClothingUniformJumpsuitTshirtJeansGray
+  parent: ClothingUniformJumpsuitAssistant
+  name: gray t-shirt and jeans
+
+- type: entity
+  id: ComputerTabletopAlert
+  parent: ComputerAlert
+  name: tabletop alerts computer
+
+- type: entity
+  id: ComputerTabletopBodyScanner
+  parent: computerBodyScanner
+  name: tabletop body scanner computer
+
+- type: entity
+  id: ComputerTabletopMedicalRecords
+  parent: ComputerMedicalRecords
+  name: tabletop medical records computer
+
+- type: entity
+  id: ComputerWithdrawBankATM
+  parent: ComputerWallmountWithdrawBankATM
+  name: automated teller machine
+
+- type: entity
+  id: CrateMaterials
+  parent: CrateGeneric
+  name: materials crate
+
+- type: entity
+  id: EZNutrientChemistryBottle
+  parent: ChemistryBottleOil
+  name: EZ nutrient bottle
+
+- type: entity
+  id: EncryptionKeyTraffic
+  parent: EncryptionKeyService
+  name: traffic encryption key
+
+- type: entity
+  id: EpinephrineChemistryBottle
+  parent: ChemistryBottleOil
+  name: epinephrine bottle
+
+- type: entity
+  id: FaceHuggerPlushie
+  parent: PlushieSlime
+  name: facehugger plushie
+
+- type: entity
+  id: FloraTree05
+  parent: FloraTree
+  name: tree
+
+- type: entity
+  id: FoodMothEyeballSoup
+  parent: FoodSoupEyeball
+  name: eyeball soup
+
+- type: entity
+  id: GoldenRose
+  parent: FoodPoppy
+  name: golden rose
+
+- type: entity
+  id: GunSafeShuttleT1Spawner
+  parent: GunSafeShuttleT2Spawner
+  name: gun safe spawner
+
+- type: entity
+  id: HappyHonkCargo
+  parent: HappyHonk
+  name: happy honk meal
+
+- type: entity
+  id: HeadBorgMedical
+  parent: LeftArmBorg
+  name: medical cyborg head
+
+- type: entity
+  id: LeftArmBorgMedical
+  parent: LeftArmBorg
+  name: medical cyborg left arm
+
+- type: entity
+  id: LeftLegBorgMedical
+  parent: LeftLegBorg
+  name: medical cyborg left leg
+
+- type: entity
+  id: LockableButtonMailCarrier
+  parent: LockableButtonCargo
+  name: mail carrier button
+
+- type: entity
+  id: LockerMercenary
+  parent: LockerSecurity
+  name: mercenary locker
+
+- type: entity
+  id: LockerParamedicFilledHardsuit
+  parent: LockerParamedicFilled
+  name: paramedic locker
+
+- type: entity
+  id: LockerPilot
+  parent: LockerPilotFilled
+  name: pilot locker
+
+- type: entity
+  id: LockerPsychologistFilled
+  parent: LockerMedical
+  name: psychologist locker
+
+- type: entity
+  id: MedicalTrackingImplanter
+  parent: TrackingImplanter
+  name: medical tracking implanter
+
+- type: entity
+  id: PetRockCarrier
+  parent: PetCarrier
+  name: pet rock carrier
+
+- type: entity
+  id: PlushieCatBlack
+  parent: PlushieSlime
+  name: black cat plushie
+
+- type: entity
+  id: PortableGeneratorJrPacmanShuttle
+  parent: PortableGeneratorPacmanShuttle
+  name: portable generator
+
+- type: entity
+  id: PosterContrabandBreadLies
+  parent: PosterBase
+  name: poster
+
+- type: entity
+  id: PosterContrabandSaucerNumberOne
+  parent: PosterBase
+  name: poster
+
+- type: entity
+  id: PosterLegitBarDrinks
+  parent: PosterBase
+  name: poster
+
+- type: entity
+  id: PosterLegitBotanyFood
+  parent: PosterBase
+  name: poster
+
+- type: entity
+  id: PosterLegitDejaVu
+  parent: PosterBase
+  name: poster
+
+- type: entity
+  id: PosterLegitDontPanic
+  parent: PosterBase
+  name: poster
+
+- type: entity
+  id: PosterLegitEatMeat
+  parent: PosterBase
+  name: poster
+
+- type: entity
+  id: PosterLegitNoTouching
+  parent: PosterBase
+  name: poster
+
+- type: entity
+  id: PosterLegitPieSlice
+  parent: PosterBase
+  name: poster
+
+- type: entity
+  id: PosterLegitPizzaHope
+  parent: PosterBase
+  name: poster
+
+- type: entity
+  id: PosterLegitSMBoH
+  parent: PosterBase
+  name: poster
+
+- type: entity
+  id: PoweredLightPostSmallRed
+  parent: PoweredLightPostSmall
+  name: red post light
+
+- type: entity
+  id: PoweredlightBlueInterior
+  parent: PoweredlightBlue
+  name: blue light
+
+- type: entity
+  id: RandomItem
+  parent: BoxCardboard
+  name: random item
+
+- type: entity
+  id: ReagentContainerSalt
+  parent: ReagentContainerSugar
+  name: salt
+
+- type: entity
+  id: Rickenbacker4003Instrument
+  parent: RockGuitarInstrument
+  name: bass guitar
+
+- type: entity
+  id: RightArmBorgMedical
+  parent: RightArmBorg
+  name: medical cyborg right arm
+
+- type: entity
+  id: RightLegBorgMedical
+  parent: RightLegBorg
+  name: medical cyborg right leg
+
+- type: entity
+  id: RobustHarvestChemistryBottle
+  parent: ChemistryBottleOil
+  name: robust harvest bottle
+
+- type: entity
+  id: SalvageTechfabNF
+  parent: ServiceTechFab
+  name: salvage techfab
+
+- type: entity
+  id: ShadowTree01
+  parent: ShadowTree
+  name: shadow tree
+
+- type: entity
+  id: ShipyardKilderkinInfo
+  parent: ShipyardLanternInfo
+  name: ship info
+
+- type: entity
+  id: ShipyardLegmanInfo
+  parent: ShipyardLanternInfo
+  name: ship info
+
+- type: entity
+  id: ShipyardPioneerInfo
+  parent: ShipyardLanternInfo
+  name: ship info
+
+- type: entity
+  id: ShipyardSearchlightInfo
+  parent: ShipyardLanternInfo
+  name: ship info
+
+- type: entity
+  id: ShuttleSecretDoor
+  parent: SolidSecretDoor
+  name: secret door
+
+- type: entity
+  id: SignChemistry2
+  parent: SignChemistry1
+  name: chemistry sign
+
+- type: entity
+  id: SignScience2
+  parent: SignScience1
+  name: science sign
+
+- type: entity
+  id: SignXenolab
+  parent: SignXenobio
+  name: xenolab sign
+
+- type: entity
+  id: SolidReinforcedSecretDoor
+  parent: SolidSecretDoor
+  name: reinforced secret door
+
+- type: entity
+  id: SpacemenFigureSpawner
+  parent: SpacemenFigurineSpawner90
+  name: spaceman figure spawner
+
+- type: entity
+  id: SpawnVehicleJanicart
+  parent: SpawnPointJanitor
+  name: janicart spawner
+
+- type: entity
+  id: SuitStorageClown
+  parent: SuitStorageCE
+  name: suit storage unit
+
+- type: entity
+  id: SuitStorageWallmountCE
+  parent: SuitStorageWallmount
+  name: suit storage unit
+
+- type: entity
+  id: SuitStorageWallmountCMO
+  parent: SuitStorageWallmount
+  name: suit storage unit
+
+- type: entity
+  id: SuitStorageWallmountEVAPrisoner
+  parent: SuitStorageWallmountEVA
+  name: suit storage unit
+
+- type: entity
+  id: SuitStorageWallmountQuartermaster
+  parent: SuitStorageWallmount
+  name: suit storage unit
+
+- type: entity
+  id: SuitStorageWallmountRD
+  parent: SuitStorageWallmount
+  name: suit storage unit
+
+- type: entity
+  id: SuitStorageWallmountSalv
+  parent: SuitStorageWallmount
+  name: suit storage unit
+
+- type: entity
+  id: TorsoBorgMedical
+  parent: TorsoBorg
+  name: medical cyborg torso
+
+- type: entity
+  id: ToySkeleton
+  parent: ToyFigurineSkeleton
+  name: toy skeleton
+
+- type: entity
+  id: VehicleKeyJanicart
+  parent: BaseItem
+  name: janicart key
+  components:
+  - type: Sprite
+    sprite: Objects/Tools/crowbar.rsi
+    state: icon
+
+- type: entity
+  id: VendingMachineBoxingDrobe
+  parent: VendingMachineSecDrobe
+  name: BoxingDrobe
+
+- type: entity
+  id: VendingMachineRepDrobe
+  parent: VendingMachineSecDrobe
+  name: RepDrobe
+
+- type: entity
+  id: WindoorSecureMercenaryLocked
+  parent: WindoorSecureSecurityLocked
+  name: mercenary windoor
