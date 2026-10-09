@@ -1013,3 +1013,10 @@ Entries:
   id: 16401
   time: '2026-10-08T23:34:41.000000+00:00'
   url: https://github.com/lightningcaesarea/Serenity-Dev/pull/164
+- author: Inny
+  changes:
+  - message: Make the shipyard cryo sleep pod a cryogenic sleep unit.
+    type: Tweak
+  id: 17701
+  time: '2026-10-09T13:39:20.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/177
