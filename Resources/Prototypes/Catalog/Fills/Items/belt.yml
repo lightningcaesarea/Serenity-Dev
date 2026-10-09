@@ -158,6 +158,7 @@
         - id: HydroponicsToolSpade
         - id: HydroponicsToolClippers
         - id: ChemistryBottleRobustHarvest
+        - id: PlantAnalyzer # Serenity
 
 - type: entity
   id: ClothingBeltSheathFilled

@@ -12,15 +12,16 @@
     WeedSpray: 20
     PestSpray: 20
     Syringe: 5
-    ChemistryBottleRobustHarvest: 3
-    ChemistryBottleEZNutrient: 3
+    ChemistryBottleRobustHarvest: 5 # Serenity: restocked, was 3
+    ChemistryBottleEZNutrient: 5 # Serenity: restocked, was 3
+    ChemistryBottleRootbinder: 2 # Serenity
+    ChemistryBottleGrowthAccelerant: 2 # Serenity
     Bucket: 3
     BoxMouthSwab: 1
     BoxAgrichem: 1
     MortarAndPestle: 1
     HandheldJuicer: 1
-    #TO DO:
-    #plant analyzer
+    PlantAnalyzer: 4 # Serenity
   contrabandInventory:
     ChemistryBottleUnstableMutagen: 1
     Joint: 1
