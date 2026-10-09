@@ -176,12 +176,12 @@ guide-entry-sl-nano-trasen-employee-sop-nct = NanoTrasen Career Trainer
 guide-entry-sl-service-sop-intro = Service
 guide-entry-sl-service-sop-genproc-intro = General Procedures
 guide-entry-sl-service-sop-staff-intro = Staff Procedures
-guide-entry-sl-service-sop-headofpersonnel = Head of Personnel
+guide-entry-sl-service-sop-headofpersonnel = Station Commander
 guide-entry-sl-service-sop-lawyer = Lawyer
 guide-entry-sl-service-sop-reporter = Reporter
 
 guide-entry-sl-assistant-sop-staff-intro = Assistant
-guide-entry-sl-assistant-sop-assistantmanager = Assistant Manager
+guide-entry-sl-assistant-sop-assistantmanager = Station Officer
 guide-entry-sl-assistant = Assistant
 
 guide-entry-abductors = Abductors

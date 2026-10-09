@@ -6,7 +6,7 @@
   children:
   - Jobs
   - Survival
-  - Antagonists
+  # Serenity: no Antagonists chapter, antagonist roles are disabled (the entries stay for admin reference)
   - Glossary
 
 - type: guideEntry

@@ -70,7 +70,7 @@
 - type: entity
   id: SpawnPointAssistantManager
   parent: SpawnPointJobBase
-  name: assistant manager
+  name: station officer # Serenity
   components:
   - type: SpawnPoint
     job_id: AssistantManager

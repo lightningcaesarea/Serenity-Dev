@@ -476,6 +476,7 @@ public sealed partial class ShipyardSystem
         deed.ShuttleName = shipDeed.ShuttleName;
         deed.ShuttleNameSuffix = shipDeed.ShuttleNameSuffix;
         deed.ShuttleOwner = shipDeed.ShuttleOwner;
+        deed.LoadedFromSave = shipDeed.LoadedFromSave; // a loaded ship stays unsellable through copied deeds too
         deed.OwnerUserId = shipDeed.OwnerUserId;
         Dirty(uid, deed);
     }

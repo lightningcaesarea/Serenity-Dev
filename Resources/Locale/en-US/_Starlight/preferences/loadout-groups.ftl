@@ -13,12 +13,12 @@ loadout-group-assistant-glasses = Assistant glasses
 loadout-group-assistant-head = Assistant head
 loadout-group-assistant-backpack = Assistant backpack
 
-loadout-group-assistantmanager-head = Assistant Manager head
-loadout-group-assistantmanager-jumpsuit = Assistant Manager jumpsuit
-loadout-group-assistantmanager-backpack = Assistant Manager backpack
-loadout-group-assistantmanager-gloves = Assistant Manager gloves
-loadout-group-assistantmanager-outerclothing = Assistant Manager outer clothing
-loadout-group-assistantmanager-shoes = Assistant Manager shoes
+loadout-group-assistantmanager-head = Station Officer head
+loadout-group-assistantmanager-jumpsuit = Station Officer jumpsuit
+loadout-group-assistantmanager-backpack = Station Officer backpack
+loadout-group-assistantmanager-gloves = Station Officer gloves
+loadout-group-assistantmanager-outerclothing = Station Officer outer clothing
+loadout-group-assistantmanager-shoes = Station Officer shoes
 
 loadout-group-boxer-jumpsuit = Boxer jumpsuit
 loadout-group-boxer-gloves = Boxer gloves
@@ -35,7 +35,7 @@ loadout-group-nanotrasenrepresentative-shoes = NanoTrasen representative shoes
 loadout-group-nanotrasenrepresentative-neck = NanoTrasen representative neck
 
 loadout-group-captain-shoes = Captain shoes
-loadout-group-hop-shoes = Head of Personnel shoes
+loadout-group-hop-shoes = Station Commander shoes
 
 loadout-group-blueshield-head = Blueshield head
 loadout-group-blueshield-backpack = Blueshield backpack

@@ -1,7 +1,7 @@
 - type: entity
   save: false
   name: Urist McSheepy
-  parent: BaseMobHuman
+  parent: [BaseMobHuman, BaseInventoryOvinia]
   id: BaseMobOvinia
   abstract: true
   components:
@@ -51,7 +51,7 @@
   id: MobOvinia
 
 - type: entity
-  parent: [BaseSpeciesDummy, BaseInventoryFemaleJumpsuit]
+  parent: [BaseSpeciesDummy, BaseInventoryOvinia]
   id: AppearanceOvinia
   categories: [ HideSpawnMenu ]
   description: A dummy ovinia meant to be used in character setup.
