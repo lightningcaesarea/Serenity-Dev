@@ -251,10 +251,10 @@ public sealed partial class DealerMarketWindow : FancyWindow
         _side.RemoveAllChildren();
         _side.AddChild(new Label { Text = Loc.GetString("dealer-market-your-contract"), StyleClasses = { "LabelSubText" } });
 
-        var contract = state.Contracts.FirstOrDefault(c => c.Dealer == _selected && c.HasCrate)
-                       ?? state.Contracts.FirstOrDefault(c => c.HasCrate)
-                       ?? state.Contracts.FirstOrDefault(c => c.Dealer == _selected)
-                       ?? state.Contracts.FirstOrDefault();
+        var contract = state.Contracts.FirstOrDefault(c => c.Dealer == _selected && c.HasCrate);
+        contract ??= state.Contracts.FirstOrDefault(c => c.HasCrate);
+        contract ??= state.Contracts.FirstOrDefault(c => c.Dealer == _selected);
+        contract ??= state.Contracts.FirstOrDefault();
         if (contract == null)
         {
             _side.AddChild(Quiet(Loc.GetString("dealer-market-no-contracts")));
