@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Numerics;
 using Content.Server._Serenity.Docks;
+using Content.Server.Atmos.EntitySystems;
 using Content.Shared._Serenity.CCVar;
 using Robust.Shared.Configuration;
 using Robust.Shared.GameObjects;
@@ -94,6 +95,34 @@ public sealed class SpawnableDockTest
             {
                 var distance = (xforms.GetWorldPosition(dock) - hostOrigin).Length();
                 Assert.That(distance, Is.EqualTo(160f).Within(0.5f), "dock distance from the host grid");
+            }
+        });
+
+        await pair.CleanReturnAsync();
+    }
+
+    /// <summary>
+    ///     The dock is a sealed hull: its interior starts and stays at breathable pressure.
+    /// </summary>
+    [Test]
+    public async Task DockIsSealedAndHoldsAir()
+    {
+        var (pair, console, host) = await Setup(0f);
+        var entMan = pair.Server.ResolveDependency<IEntityManager>();
+        var docks = entMan.System<SpawnableDockSystem>();
+        var atmos = entMan.System<AtmosphereSystem>();
+
+        await pair.Server.WaitAssertion(() => Assert.That(docks.TryRequestDock(console, console), Is.True));
+        await pair.RunTicksSync(120);
+
+        await pair.Server.WaitAssertion(() =>
+        {
+            var dock = OtherGrids(entMan, host)[0];
+            foreach (var tile in new[] { new Vector2i(0, 0), new Vector2i(-4, -16), new Vector2i(3, 15) })
+            {
+                var mixture = atmos.GetTileMixture((dock, null, null), null, tile);
+                Assert.That(mixture, Is.Not.Null, $"no air at {tile}");
+                Assert.That(mixture!.Pressure, Is.GreaterThan(90f), $"pressure at {tile}");
             }
         });
 

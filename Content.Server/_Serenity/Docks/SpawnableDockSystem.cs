@@ -33,7 +33,7 @@ public sealed partial class SpawnableDockSystem : EntitySystem
 
     /// <summary>
     /// Half-width, in tiles, of the square that must be free of other grids before a dock is loaded.
-    /// The pier is 5x30, so this leaves a wide margin around its corners (about 15.2 tiles from the centre).
+    /// The hull is 10x34, so this leaves a margin around its corners (about 17.7 tiles from the centre).
     /// </summary>
     public const float ClearanceRadius = 24f;
 
