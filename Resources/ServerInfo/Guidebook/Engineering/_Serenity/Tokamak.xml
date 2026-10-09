@@ -1,29 +1,31 @@
 <Document>
   # Tokamak
-  The tokamak is a fusion engine. A magnetic field holds a cloud of plasma inside the core while gyrotrons heat it and injectors feed it fuel. The hotter the plasma, the more power the core puts onto the high voltage network.
+  The tokamak is a fusion engine. A magnetic field holds a cloud of plasma inside the [bold]core[/bold], [bold]gyrotrons[/bold] heat the plasma, and [bold]fuel injectors[/bold] feed it fuel rods. The hotter the plasma, the more power the core puts onto the [textlink="high voltage network" link="VoltageNetworks"], up to 5 MW.
+
+  It is a demanding engine. There is no coolant loop: the plasma only loses heat slowly by itself, and it gets harder to hold the hotter and busier it is. Left alone it ruptures, which wrecks the room and irradiates the area.
+
   <Box>
     <GuideEntityEmbed Entity="TokamakCore"/>
     <GuideEntityEmbed Entity="TokamakGyrotron"/>
     <GuideEntityEmbed Entity="TokamakFuelInjector"/>
+    <GuideEntityEmbed Entity="TokamakHarvester"/>
     <GuideEntityEmbed Entity="TokamakConsole"/>
   </Box>
 
-  ## Setting it up
-  Place the core and connect its HV cable to the grid. The core, gyrotrons, injectors and harvesters all need ordinary APC power as well.
+  ## The parts
+  - [bold]Core.[/bold] Holds up to 400 units of plasma. Connects to the grid with an HV cable and also needs ordinary APC power to keep its field up.
+  - [bold]Gyrotron.[/bold] Fires microwave pulses along a straight line to heat the plasma.
+  - [bold]Fuel injector.[/bold] Holds one fuel rod and feeds it into the plasma along a straight line.
+  - [bold]Harvester.[/bold] Optional. Pulls silver and gold out of the plasma and presses them into sheets.
+  - [bold]Console.[/bold] Starts and stops the field, sets its strength, and controls every device around the core. It also has the SCRAM button.
 
-  Gyrotrons and injectors fire in a straight line, so each one has to face the core with a clear row or column between them. The console shows whether each device is aligned. The console must be within 40 tiles of the core.
+  ## Getting one
+  The tokamak is unlocked by the [bold]Fusion Power[/bold] technology in the Industrial discipline, which needs Nuclear Power Generation first. It unlocks the console board and all of the fuel rod designs.
 
-  ## Running it
-  - Load a fuel rod into each injector and turn everything on from the console.
-  - Gyrotrons heat the plasma. Fuel only reacts once the plasma is hot enough for that particular reaction.
-  - Raising the field strength lets the core hold more, but draws more power and makes the plasma less stable.
-  - People standing next to the core disturb the field. Keep the area clear.
-  - Helium ash builds up as fuel burns and crowds the plasma. Keep an eye on instability.
+  Cargo also sells the parts as flatpacks and crates: the core, a pair of gyrotrons, a pair of injectors, a harvester, a console board and a starter crate of four deuterium-tritium rods. Unpack flatpacks to build the machines.
 
-  If instability reaches 100% the field ruptures: the core explodes, irradiates the area and sends out an EMP. The console has a SCRAM button that dumps the field safely, but it still releases some radiation.
-
-  ## Fuels
-  Deuterium and tritium ignite first and are the easiest way to get going. Lithium and deuterium breed more tritium. Deuterium and helium-3 burn cleanly, and hydrogen and boron burn hot enough to need a careful hand.
-
-  Hot enough plasma can also transmute iron into silver and silver into gold. Place a harvester within a few tiles of the core to press them into ingots. This is extremely unstable.
+  ## Reading on
+  - [textlink="Building and starting a tokamak" link="TokamakSetup"]: wiring, alignment, the console and a start-up routine.
+  - [textlink="Fuels and reactions" link="TokamakFuels"]: what each fuel does, temperatures, power output and the harvester.
+  - [textlink="Hazards and shutdown" link="TokamakSafety"]: instability, warnings, rupture, radiation, power loss and how to stop it.
 </Document>

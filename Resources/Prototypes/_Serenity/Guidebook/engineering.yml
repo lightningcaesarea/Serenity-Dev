@@ -2,3 +2,22 @@
   id: Tokamak
   name: guide-entry-tokamak
   text: "/ServerInfo/Guidebook/Engineering/_Serenity/Tokamak.xml"
+  children:
+  - TokamakSetup
+  - TokamakFuels
+  - TokamakSafety
+
+- type: guideEntry
+  id: TokamakSetup
+  name: guide-entry-tokamak-setup
+  text: "/ServerInfo/Guidebook/Engineering/_Serenity/TokamakSetup.xml"
+
+- type: guideEntry
+  id: TokamakFuels
+  name: guide-entry-tokamak-fuels
+  text: "/ServerInfo/Guidebook/Engineering/_Serenity/TokamakFuels.xml"
+
+- type: guideEntry
+  id: TokamakSafety
+  name: guide-entry-tokamak-safety
+  text: "/ServerInfo/Guidebook/Engineering/_Serenity/TokamakSafety.xml"

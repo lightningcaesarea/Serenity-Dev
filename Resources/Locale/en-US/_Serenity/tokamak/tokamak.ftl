@@ -2,6 +2,9 @@
 
 research-technology-fusion-power = Fusion Power
 guide-entry-tokamak = Tokamak
+guide-entry-tokamak-setup = Building and starting a tokamak
+guide-entry-tokamak-fuels = Fuels and reactions
+guide-entry-tokamak-safety = Hazards and shutdown
 
 tokamak-injector-rod-slot = Fuel rod
 
