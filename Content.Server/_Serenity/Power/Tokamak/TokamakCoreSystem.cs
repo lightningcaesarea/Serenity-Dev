@@ -143,7 +143,8 @@ public sealed partial class TokamakCoreSystem : EntitySystem
     }
 
     /// <summary>
-    /// Emergency shutdown. The field is dumped, which irradiates the area in proportion to the plasma lost.
+    /// Emergency shutdown. The field is dumped, which irradiates the area in proportion to the plasma lost,
+    /// but the plasma is settled at once, so instability drops to zero. A normal stop leaves instability to decay.
     /// </summary>
     public void Scram(Entity<TokamakCoreComponent> ent, EntityUid? user = null)
     {
@@ -151,6 +152,7 @@ public sealed partial class TokamakCoreSystem : EntitySystem
             return;
 
         ent.Comp.RadiationLevel += Total(ent.Comp.Reactants) * 0.1f;
+        ent.Comp.Instability = 0f;
         SetActive(ent, false, user);
     }
 
