@@ -231,7 +231,7 @@ public sealed partial class DealerMarketWindow : FancyWindow
     private static RichTextLabel Wrapped(string text, float width)
     {
         var label = new RichTextLabel { MaxWidth = width, Margin = new Thickness(0, 2) };
-        label.SetMessage(FormattedMessage.FromMarkup($"[color=#aaaaaa]{FormattedMessage.EscapeText(text)}[/color]"));
+        label.SetMessage(FormattedMessage.FromMarkupOrThrow($"[color=#aaaaaa]{FormattedMessage.EscapeText(text)}[/color]"));
         return label;
     }
 

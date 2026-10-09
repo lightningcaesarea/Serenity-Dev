@@ -63,7 +63,7 @@ public sealed partial class DealerContractCrateComponent : Component
     public int ContractId;
 
     [ViewVariables]
-    public NetUserId Owner;
+    public NetUserId Buyer;
 }
 
 [Serializable, NetSerializable]

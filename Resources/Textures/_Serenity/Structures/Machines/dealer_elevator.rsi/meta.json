@@ -1,17 +1,17 @@
 {
   "version": 1,
-  "license": "CC0-1.0",
-  "copyright": "Created for Serenity by Claude, original work",
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from cmss13 at https://github.com/cmss13-devs/cmss13/blob/0d55a8ab1eb56d87e94ea65b60e79b1dfea3722a/icons/effects/160x160.dmi, via RMC14 and HardLight",
   "size": {
-    "x": 32,
-    "y": 32
+    "x": 160,
+    "y": 160
   },
   "states": [
     {
-      "name": "down"
+      "name": "supply_elevator_lowered"
     },
     {
-      "name": "up"
+      "name": "supply_elevator_raised"
     }
   ]
 }

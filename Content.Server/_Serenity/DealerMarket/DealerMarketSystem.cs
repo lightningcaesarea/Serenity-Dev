@@ -191,7 +191,7 @@ public sealed partial class DealerMarketSystem : EntitySystem
                 continue;
             }
 
-            if (!_books.TryGetValue(marker.Owner, out var book)
+            if (!_books.TryGetValue(marker.Buyer, out var book)
                 || book.Contracts.All(c => c.Id != marker.ContractId || c.Expires <= _timing.CurTime))
             {
                 Retract(uid, elevator);
@@ -222,7 +222,7 @@ public sealed partial class DealerMarketSystem : EntitySystem
         var coords = Transform(origin).Coordinates;
         var proto = _proto.Index(delivery.Offer.Item);
 
-        if (proto.TryGetComponent<StackComponent>(out _, _compFactory))
+        if (proto.Components.ContainsKey(_compFactory.GetComponentName<StackComponent>()))
         {
             _stack.SpawnMultipleAtPosition(delivery.Offer.Item, delivery.Offer.Amount, coords);
         }
@@ -434,7 +434,7 @@ public sealed partial class DealerMarketSystem : EntitySystem
         var crate = Spawn(elevator.Crate, Transform(elevatorUid).Coordinates);
         var marker = EnsureComp<DealerContractCrateComponent>(crate);
         marker.ContractId = contract.Id;
-        marker.Owner = session.UserId;
+        marker.Buyer = session.UserId;
         _metaData.SetEntityName(crate, Loc.GetString("dealer-market-crate-name", ("title", contract.Template.Title)));
         elevator.ActiveCrate = crate;
         _appearance.SetData(elevatorUid, DealerElevatorVisuals.Raised, true);
@@ -454,7 +454,7 @@ public sealed partial class DealerMarketSystem : EntitySystem
                 || Terminating(crate))
                 continue;
 
-            if (marker.Owner == session.UserId && marker.ContractId == contractId)
+            if (marker.Buyer == session.UserId && marker.ContractId == contractId)
                 return (uid, elevator);
         }
 
@@ -510,17 +510,15 @@ public sealed partial class DealerMarketSystem : EntitySystem
         if (!TryComp(item, out StackComponent? stack))
             return false;
 
-        if (!_proto.Index(want).TryGetComponent<StackComponent>(out var wanted, _compFactory))
-            return false;
-
-        return wanted.StackTypeId == stack.StackTypeId;
+        return _proto.Index(want).Components.TryGetValue(_compFactory.GetComponentName<StackComponent>(), out var wanted)
+            && ((StackComponent) wanted.Component).StackTypeId == stack.StackTypeId;
     }
 
     private void Consume(EntityUid item, int count)
     {
         if (HasComp<StackComponent>(item))
         {
-            _stack.SetCount(item, _stack.GetCount(item) - count);
+            _stack.SetCount((item, null), _stack.GetCount(item) - count);
             return;
         }
 
@@ -625,10 +623,7 @@ public sealed partial class DealerMarketSystem : EntitySystem
 
     #region UI
 
-    private void OnOpened(Entity<DealerMarketConsoleComponent> ent, ref BoundUIOpenedEvent args)
-    {
-        SendState(ent, args.Actor);
-    }
+    private void OnOpened(Entity<DealerMarketConsoleComponent> ent, ref BoundUIOpenedEvent args) => SendState(ent, args.Actor);
 
     private void SendState(Entity<DealerMarketConsoleComponent> ent, EntityUid actor)
     {

@@ -92,7 +92,7 @@
 - type: entity
   id: DealerElevator
   name: dealer elevator
-  description: A freight lift that brings up a crate for each contract. Fill the crate, hand it over at the terminal, and the lift takes it away.
+  description: A big freight lift, five tiles across, that brings up a crate for each contract. Fill the crate, hand it over at the terminal, and the lift takes it away.
   placement:
     mode: SnapgridCenter
   components:
@@ -102,17 +102,17 @@
     anchored: true
   - type: Appearance
   - type: Sprite
-    sprite: _Serenity/Structures/Machines/dealer_elevator.rsi
+    sprite: _Serenity/Structures/Machines/dealer_elevator.rsi # CM13 supply elevator, via RMC14 and HardLight, CC-BY-SA-3.0
     drawdepth: FloorObjects
     layers:
-    - state: down
+    - state: supply_elevator_lowered
       map: [ "base" ]
   - type: GenericVisualizer
     visuals:
       enum.DealerElevatorVisuals.Raised:
         base:
-          True: { state: up }
-          False: { state: down }
+          True: { state: supply_elevator_raised }
+          False: { state: supply_elevator_lowered }
   - type: DealerElevator
   - type: DeviceNetwork
     deviceNetId: Wireless
@@ -121,9 +121,6 @@
   - type: DeviceLinkSink
     ports:
       - DealerMarketReceiver
-  - type: Construction
-    graph: DealerElevator
-    node: elevator
   - type: StaticPrice
     price: 300
 
