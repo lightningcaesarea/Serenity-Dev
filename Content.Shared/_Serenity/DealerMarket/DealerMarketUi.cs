@@ -11,7 +11,7 @@ public enum DealerMarketUiKey : byte
 
 /// <summary>One line of what a contract asks for.</summary>
 [NetSerializable, Serializable]
-public sealed record DealerContractWantInfo(string Name, int Wanted, int OnPad);
+public sealed record DealerContractWantInfo(string Name, int Wanted, int InCrate);
 
 /// <summary>A contract dealt to the player looking at the terminal.</summary>
 [NetSerializable, Serializable]
@@ -23,6 +23,7 @@ public sealed record DealerContractInfo(
     List<DealerContractWantInfo> Wants,
     int Payout,
     int SecondsLeft,
+    bool HasCrate,
     bool Ready,
     bool RoleContract);
 
@@ -37,6 +38,7 @@ public sealed class DealerMarketStateMessage : BoundUserInterfaceMessage
     public readonly int Balance;
     public readonly bool HasIntake;
     public readonly bool HasOutlet;
+    public readonly bool HasElevator;
     public readonly int Incoming;
     public readonly List<DealerContractInfo> Contracts;
     public readonly List<DealerPadItem> Pad;
@@ -47,6 +49,7 @@ public sealed class DealerMarketStateMessage : BoundUserInterfaceMessage
         int balance,
         bool hasIntake,
         bool hasOutlet,
+        bool hasElevator,
         int incoming,
         List<DealerContractInfo> contracts,
         List<DealerPadItem> pad,
@@ -55,6 +58,7 @@ public sealed class DealerMarketStateMessage : BoundUserInterfaceMessage
         Balance = balance;
         HasIntake = hasIntake;
         HasOutlet = hasOutlet;
+        HasElevator = hasElevator;
         Incoming = incoming;
         Contracts = contracts;
         Pad = pad;
@@ -62,7 +66,14 @@ public sealed class DealerMarketStateMessage : BoundUserInterfaceMessage
     }
 }
 
-/// <summary>Hand over what is on the pad against a contract.</summary>
+/// <summary>Have the elevator bring up a crate to fill for a contract.</summary>
+[NetSerializable, Serializable]
+public sealed class DealerRequestCrateMessage(int id) : BoundUserInterfaceMessage
+{
+    public readonly int Id = id;
+}
+
+/// <summary>Hand over the contract's crate.</summary>
 [NetSerializable, Serializable]
 public sealed class DealerFulfilMessage(int id) : BoundUserInterfaceMessage
 {

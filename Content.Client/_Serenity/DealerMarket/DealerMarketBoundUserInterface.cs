@@ -15,6 +15,7 @@ public sealed class DealerMarketBoundUserInterface(EntityUid owner, Enum uiKey) 
 
         _window = this.CreateWindow<DealerMarketWindow>();
         _window.OnFulfil += id => SendMessage(new DealerFulfilMessage(id));
+        _window.OnRequestCrate += id => SendMessage(new DealerRequestCrateMessage(id));
         _window.OnDecline += id => SendMessage(new DealerDeclineMessage(id));
         _window.OnBuy += (dealer, offer) => SendMessage(new DealerBuyMessage(dealer, offer));
         _window.OnSell += dealer => SendMessage(new DealerSellMessage(dealer));

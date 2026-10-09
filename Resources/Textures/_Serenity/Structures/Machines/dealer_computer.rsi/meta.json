@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "cargo_market by whatston3, from Frontier Station 14 (new-frontiers-14/frontier-station-14), renamed to market",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "market",
+      "directions": 4,
+      "delays": [
+        [
+          0.45,
+          0.45,
+          0.45,
+          0.45
+        ],
+        [
+          0.45,
+          0.45,
+          0.45,
+          0.45
+        ],
+        [
+          0.45,
+          0.45,
+          0.45,
+          0.45
+        ],
+        [
+          0.45,
+          0.45,
+          0.45,
+          0.45
+        ]
+      ]
+    }
+  ]
+}

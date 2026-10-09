@@ -1,5 +1,7 @@
 using System.Linq;
 using Content.Server.Popups;
+using Content.Shared.Storage.Components;
+using Content.Shared.Storage.EntitySystems;
 using Content.Server.Stack;
 using Content.Shared._Serenity.DealerMarket;
 using Content.Shared._Serenity.Economy;
@@ -43,10 +45,13 @@ public sealed partial class DealerMarketSystem : EntitySystem
     [Dependency] private PricingSystem _pricing = default!;
     [Dependency] private StackSystem _stack = default!;
     [Dependency] private SharedMindSystem _mind = default!;
+    [Dependency] private MetaDataSystem _metaData = default!;
     [Dependency] private SharedJobSystem _jobs = default!;
     [Dependency] private EntityWhitelistSystem _whitelist = default!;
     [Dependency] private PopupSystem _popup = default!;
     [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private SharedEntityStorageSystem _storage = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
 
     private const int InitialContracts = 3;
     private const int MaxContracts = 4;
@@ -87,6 +92,7 @@ public sealed partial class DealerMarketSystem : EntitySystem
         SubscribeLocalEvent<DealerMarketConsoleComponent, BoundUIOpenedEvent>(OnOpened);
         SubscribeLocalEvent<DealerMarketConsoleComponent, DealerFulfilMessage>(OnFulfil);
         SubscribeLocalEvent<DealerMarketConsoleComponent, DealerDeclineMessage>(OnDecline);
+        SubscribeLocalEvent<DealerMarketConsoleComponent, DealerRequestCrateMessage>(OnRequestCrate);
         SubscribeLocalEvent<DealerMarketConsoleComponent, DealerBuyMessage>(OnBuy);
         SubscribeLocalEvent<DealerMarketConsoleComponent, DealerSellMessage>(OnSell);
         SubscribeLocalEvent<DealerMarketConsoleComponent, NewLinkEvent>(OnNewLink);
@@ -107,6 +113,8 @@ public sealed partial class DealerMarketSystem : EntitySystem
 
         if (HasComp<DealerIntakeComponent>(args.Sink))
             ent.Comp.Intakes.Add(args.Sink);
+        else if (HasComp<DealerElevatorComponent>(args.Sink))
+            ent.Comp.Elevators.Add(args.Sink);
         else if (HasComp<MassDriverComponent>(args.Sink))
             ent.Comp.Outlets.Add(args.Sink);
     }
@@ -117,6 +125,7 @@ public sealed partial class DealerMarketSystem : EntitySystem
             return;
 
         ent.Comp.Intakes.Remove(args.Sink);
+        ent.Comp.Elevators.Remove(args.Sink);
         ent.Comp.Outlets.Remove(args.Sink);
     }
 
@@ -155,6 +164,7 @@ public sealed partial class DealerMarketSystem : EntitySystem
             return;
 
         _nextUiRefresh = now + UiRefresh;
+        SweepElevators();
         var query = EntityQueryEnumerator<DealerMarketConsoleComponent, UserInterfaceComponent>();
         while (query.MoveNext(out var uid, out var console, out _))
         {
@@ -163,6 +173,43 @@ public sealed partial class DealerMarketSystem : EntitySystem
                 SendState((uid, console), actor);
             }
         }
+    }
+
+    /// <summary>Take down crates whose contract is gone, and forget crates that were destroyed.</summary>
+    private void SweepElevators()
+    {
+        var query = EntityQueryEnumerator<DealerElevatorComponent>();
+        while (query.MoveNext(out var uid, out var elevator))
+        {
+            if (elevator.ActiveCrate is not { } crate)
+                continue;
+
+            if (!TryComp(crate, out DealerContractCrateComponent? marker) || Terminating(crate))
+            {
+                elevator.ActiveCrate = null;
+                _appearance.SetData(uid, DealerElevatorVisuals.Raised, false);
+                continue;
+            }
+
+            if (!_books.TryGetValue(marker.Owner, out var book)
+                || book.Contracts.All(c => c.Id != marker.ContractId || c.Expires <= _timing.CurTime))
+            {
+                Retract(uid, elevator);
+            }
+        }
+    }
+
+    /// <summary>The elevator takes its crate back down; anything left inside is tipped out onto the platform.</summary>
+    private void Retract(EntityUid uid, DealerElevatorComponent elevator)
+    {
+        if (elevator.ActiveCrate is { } crate && Exists(crate) && !Terminating(crate))
+        {
+            _storage.OpenStorage(crate);
+            QueueDel(crate);
+        }
+
+        elevator.ActiveCrate = null;
+        _appearance.SetData(uid, DealerElevatorVisuals.Raised, false);
     }
 
     private void Deliver(Delivery delivery)
@@ -303,7 +350,14 @@ public sealed partial class DealerMarketSystem : EntitySystem
             return;
         }
 
-        var pad = PadEntities(ent.Comp);
+        if (CrateFor(ent.Comp, session, contract.Id) is not { } elevator)
+        {
+            _popup.PopupEntity(Loc.GetString("dealer-market-no-crate"), ent, args.Actor, PopupType.SmallCaution);
+            SendState(ent, args.Actor);
+            return;
+        }
+
+        var pad = CrateContents(elevator.Comp.ActiveCrate!.Value);
         var take = new List<(EntityUid Entity, int Count)>();
         for (var i = 0; i < contract.Template.Wants.Count; i++)
         {
@@ -336,11 +390,99 @@ public sealed partial class DealerMarketSystem : EntitySystem
             Consume(item, used);
         }
 
+        Retract(elevator.Owner, elevator.Comp);
+
         book.Contracts.Remove(contract);
         _resources.TryUpdateResource(session, "credits", contract.Payout, LedgerReasons.DealerContract(contract.Dealer));
         _popup.PopupEntity(Loc.GetString("dealer-market-contract-paid",
             ("dealer", _proto.Index(contract.Dealer).Name), ("payout", contract.Payout)), ent, args.Actor, PopupType.Medium);
         SendState(ent, args.Actor);
+    }
+
+    private void OnRequestCrate(Entity<DealerMarketConsoleComponent> ent, ref DealerRequestCrateMessage args)
+    {
+        if (!_players.TryGetSessionByEntity(args.Actor, out var session))
+            return;
+
+        var book = GetBook(session);
+        Refresh(session, book);
+
+        var contractId = args.Id;
+        var contract = book.Contracts.FirstOrDefault(c => c.Id == contractId);
+        if (contract == null)
+        {
+            _popup.PopupEntity(Loc.GetString("dealer-market-contract-gone"), ent, args.Actor, PopupType.SmallCaution);
+            SendState(ent, args.Actor);
+            return;
+        }
+
+        if (FirstValid(ent.Comp.Elevators) is not { } elevatorUid || !TryComp(elevatorUid, out DealerElevatorComponent? elevator))
+        {
+            _popup.PopupEntity(Loc.GetString("dealer-market-no-elevator"), ent, args.Actor, PopupType.SmallCaution);
+            return;
+        }
+
+        if (CrateFor(ent.Comp, session, contract.Id) != null)
+        {
+            _popup.PopupEntity(Loc.GetString("dealer-market-crate-already"), ent, args.Actor, PopupType.SmallCaution);
+            return;
+        }
+
+        // One crate at a time: whatever was up for another contract goes back down, its contents tipped out.
+        Retract(elevatorUid, elevator);
+
+        var crate = Spawn(elevator.Crate, Transform(elevatorUid).Coordinates);
+        var marker = EnsureComp<DealerContractCrateComponent>(crate);
+        marker.ContractId = contract.Id;
+        marker.Owner = session.UserId;
+        _metaData.SetEntityName(crate, Loc.GetString("dealer-market-crate-name", ("title", contract.Template.Title)));
+        elevator.ActiveCrate = crate;
+        _appearance.SetData(elevatorUid, DealerElevatorVisuals.Raised, true);
+        _popup.PopupEntity(Loc.GetString("dealer-market-crate-up"), elevatorUid, PopupType.Medium);
+        SendState(ent, args.Actor);
+    }
+
+    /// <summary>The elevator that currently has this player's crate for this contract up, if any.</summary>
+    private Entity<DealerElevatorComponent>? CrateFor(DealerMarketConsoleComponent console, ICommonSession session, int contractId)
+    {
+        foreach (var uid in console.Elevators)
+        {
+            if (!Exists(uid)
+                || !TryComp(uid, out DealerElevatorComponent? elevator)
+                || elevator.ActiveCrate is not { } crate
+                || !TryComp(crate, out DealerContractCrateComponent? marker)
+                || Terminating(crate))
+                continue;
+
+            if (marker.Owner == session.UserId && marker.ContractId == contractId)
+                return (uid, elevator);
+        }
+
+        return null;
+    }
+
+    /// <summary>Everything inside a crate, including what is in boxes inside it.</summary>
+    private List<EntityUid> CrateContents(EntityUid crate)
+    {
+        var found = new List<EntityUid>();
+        if (!TryComp(crate, out EntityStorageComponent? storage))
+            return found;
+
+        var queue = new Queue<EntityUid>(storage.Contents.ContainedEntities);
+        while (queue.Count > 0)
+        {
+            var item = queue.Dequeue();
+            found.Add(item);
+            foreach (var container in _container.GetAllContainers(item))
+            {
+                foreach (var inner in container.ContainedEntities)
+                {
+                    queue.Enqueue(inner);
+                }
+            }
+        }
+
+        return found;
     }
 
     private void OnDecline(Entity<DealerMarketConsoleComponent> ent, ref DealerDeclineMessage args)
@@ -501,13 +643,15 @@ public sealed partial class DealerMarketSystem : EntitySystem
         foreach (var contract in book.Contracts)
         {
             var wants = new List<DealerContractWantInfo>();
-            var ready = true;
+            var crate = CrateFor(ent.Comp, session, contract.Id);
+            var inCrate = crate?.Comp.ActiveCrate is { } c ? CrateContents(c) : new List<EntityUid>();
+            var ready = crate != null;
             for (var i = 0; i < contract.Template.Wants.Count; i++)
             {
                 var item = contract.Template.Wants[i].Item;
-                var onPad = pad.Where(p => Matches(p, item)).Sum(p => _stack.GetCount(p));
-                ready &= onPad >= contract.Counts[i];
-                wants.Add(new DealerContractWantInfo(_proto.Index(item).Name, contract.Counts[i], onPad));
+                var have = inCrate.Where(p => Matches(p, item)).Sum(p => _stack.GetCount(p));
+                ready &= have >= contract.Counts[i];
+                wants.Add(new DealerContractWantInfo(_proto.Index(item).Name, contract.Counts[i], have));
             }
 
             contracts.Add(new DealerContractInfo(
@@ -518,6 +662,7 @@ public sealed partial class DealerMarketSystem : EntitySystem
                 wants,
                 contract.Payout,
                 (int) Math.Max(0, (contract.Expires - _timing.CurTime).TotalSeconds),
+                crate != null,
                 ready,
                 contract.RoleContract));
         }
@@ -550,6 +695,7 @@ public sealed partial class DealerMarketSystem : EntitySystem
             (int) (balance ?? 0),
             hasIntake,
             FirstValid(ent.Comp.Outlets) != null,
+            FirstValid(ent.Comp.Elevators) != null,
             _deliveries.Count(d => d.Console == ent.Owner),
             contracts,
             padList,

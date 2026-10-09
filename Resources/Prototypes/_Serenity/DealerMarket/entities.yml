@@ -2,7 +2,7 @@
   parent: BaseComputerAiAccess
   id: ComputerDealerMarket
   name: dealer market terminal
-  description: A battered terminal that talks to a handful of dealers who will buy your goods and sell you theirs. Link it to an intake pad and a mass driver.
+  description: A battered terminal that talks to a handful of dealers who will buy your goods and sell you theirs. Link it to a contract elevator, and optionally an intake pad and a mass driver.
   components:
   - type: DealerMarketConsole
   - type: ActivatableUI
@@ -20,7 +20,8 @@
     - map: ["computerLayerKeyboard"]
       state: generic_keyboard
     - map: ["computerLayerScreen"]
-      state: request
+      sprite: _Serenity/Structures/Machines/dealer_computer.rsi # Frontier cargo_market screen, CC-BY-SA-3.0
+      state: market
     - map: ["computerLayerKeys"]
       state: tech_key
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
@@ -61,7 +62,7 @@
 - type: entity
   id: DealerIntakePad
   name: dealer intake pad
-  description: A scuffed steel plate that goods land on, whether a mass driver threw them or somebody dragged them there. Nothing leaves it until a dealer is asked to take it.
+  description: A scuffed steel plate that goods land on, whether a mass driver threw them or somebody dragged them there. A dealer takes what is on it when asked to buy outright.
   placement:
     mode: SnapgridCenter
   components:
@@ -87,3 +88,58 @@
     node: pad
   - type: StaticPrice
     price: 100
+
+- type: entity
+  id: DealerElevator
+  name: dealer elevator
+  description: A freight lift that brings up a crate for each contract. Fill the crate, hand it over at the terminal, and the lift takes it away.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Transform
+    anchored: true
+  - type: Appearance
+  - type: Sprite
+    sprite: _Serenity/Structures/Machines/dealer_elevator.rsi
+    drawdepth: FloorObjects
+    layers:
+    - state: down
+      map: [ "base" ]
+  - type: GenericVisualizer
+    visuals:
+      enum.DealerElevatorVisuals.Raised:
+        base:
+          True: { state: up }
+          False: { state: down }
+  - type: DealerElevator
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: BasicDevice
+  - type: DeviceList
+  - type: DeviceLinkSink
+    ports:
+      - DealerMarketReceiver
+  - type: Construction
+    graph: DealerElevator
+    node: elevator
+  - type: StaticPrice
+    price: 300
+
+# A crate that is only ever raised by a dealer elevator. Sprites are Frontier's trade crate; YAML is fresh.
+- type: entity
+  parent: CrateGeneric
+  id: DealerContractCrate
+  name: contract crate
+  description: A plain crate that the dealer's elevator sent up for a contract. Put what was asked for inside.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Icon
+    sprite: _Serenity/Structures/Storage/Crates/dealer_contract.rsi
+    state: icon
+  - type: Sprite
+    sprite: _Serenity/Structures/Storage/Crates/dealer_contract.rsi
+  - type: DealerContractCrate
+  - type: StaticPrice
+    price: 0

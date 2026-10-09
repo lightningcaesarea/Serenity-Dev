@@ -21,6 +21,7 @@ public sealed partial class DealerMarketWindow : FancyWindow
 
     public event Action<int>? OnFulfil;
     public event Action<int>? OnDecline;
+    public event Action<int>? OnRequestCrate;
     public event Action<ProtoId<DealerPrototype>, int>? OnBuy;
     public event Action<ProtoId<DealerPrototype>>? OnSell;
 
@@ -57,6 +58,7 @@ public sealed partial class DealerMarketWindow : FancyWindow
 
         _balance.Text = Loc.GetString("dealer-market-balance", ("balance", state.Balance));
         _status.Text = Loc.GetString("dealer-market-status",
+            ("elevator", Loc.GetString(state.HasElevator ? "dealer-market-linked" : "dealer-market-not-linked")),
             ("intake", Loc.GetString(state.HasIntake ? "dealer-market-linked" : "dealer-market-not-linked")),
             ("outlet", Loc.GetString(state.HasOutlet ? "dealer-market-linked" : "dealer-market-not-linked")),
             ("incoming", state.Incoming));
@@ -195,8 +197,8 @@ public sealed partial class DealerMarketWindow : FancyWindow
         {
             inner.AddChild(new Label
             {
-                Text = Loc.GetString("dealer-market-want", ("name", want.Name), ("onPad", want.OnPad), ("wanted", want.Wanted)),
-                FontColorOverride = want.OnPad >= want.Wanted ? Color.LightGreen : null,
+                Text = Loc.GetString("dealer-market-want", ("name", want.Name), ("inCrate", want.InCrate), ("wanted", want.Wanted)),
+                FontColorOverride = want.InCrate >= want.Wanted ? Color.LightGreen : null,
             });
         }
 
@@ -210,9 +212,18 @@ public sealed partial class DealerMarketWindow : FancyWindow
         var decline = new Button { Text = Loc.GetString("dealer-market-decline") };
         decline.OnPressed += _ => OnDecline?.Invoke(contract.Id);
         footer.AddChild(decline);
-        var fulfil = new Button { Text = Loc.GetString("dealer-market-fulfil"), Disabled = !contract.Ready };
-        fulfil.OnPressed += _ => OnFulfil?.Invoke(contract.Id);
-        footer.AddChild(fulfil);
+        if (contract.HasCrate)
+        {
+            var fulfil = new Button { Text = Loc.GetString("dealer-market-fulfil"), Disabled = !contract.Ready };
+            fulfil.OnPressed += _ => OnFulfil?.Invoke(contract.Id);
+            footer.AddChild(fulfil);
+        }
+        else
+        {
+            var request = new Button { Text = Loc.GetString("dealer-market-request-crate") };
+            request.OnPressed += _ => OnRequestCrate?.Invoke(contract.Id);
+            footer.AddChild(request);
+        }
         inner.AddChild(footer);
         return box;
     }
