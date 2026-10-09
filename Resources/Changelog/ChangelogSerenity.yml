@@ -1079,3 +1079,10 @@ Entries:
   id: 16701
   time: '2026-10-09T20:46:16.000000+00:00'
   url: https://github.com/lightningcaesarea/Serenity-Dev/pull/167
+- author: Inny
+  changes:
+  - message: Add the rest of the Marine roles to the Outpost.
+    type: Add
+  id: 17301
+  time: '2026-10-09T20:46:30.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/173
