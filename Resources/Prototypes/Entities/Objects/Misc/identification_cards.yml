@@ -80,11 +80,8 @@
   components:
   - type: Sprite
     layers:
-    - state: gold
-    - state: stripe_top
-      color: "#2c6a30"
-    - state: stripe_bottom
-      color: "#194214"
+    - sprite: _Serenity/Objects/Misc/id_card_bases.rsi
+      state: gold
     - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
       state: idheadofpersonnel
   - type: Item
