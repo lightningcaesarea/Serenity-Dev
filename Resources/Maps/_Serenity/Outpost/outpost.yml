@@ -14253,7 +14253,7 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -41.5,11.5
       parent: 2173
-- proto: ATM
+- proto: SerenityATMFrontier
   entities:
   - uid: 2660
     components:
