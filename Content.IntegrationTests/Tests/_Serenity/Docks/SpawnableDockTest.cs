@@ -6,7 +6,9 @@ using Content.Server.Atmos.Piping.Unary.Components;
 using Content.Server.NodeContainer.EntitySystems;
 using Content.Server.NodeContainer.Nodes;
 using Content.Server.Power.Components;
+using Content.Shared._Serenity.Docks;
 using Content.Shared.Atmos;
+using Content.Shared.Interaction;
 using Content.Shared._Serenity.CCVar;
 using Robust.Shared.Configuration;
 using Robust.Shared.GameObjects;
@@ -160,6 +162,84 @@ public sealed class SpawnableDockTest
             }
 
             Assert.That(vents, Is.EqualTo(4));
+        });
+
+        await pair.CleanReturnAsync();
+    }
+
+    /// <summary>
+    ///     The hall has two service and two salvage shuttle consoles, two ATMs and a teleporter pad, all
+    ///     powered, and the pad is linked to a pad beside the console that requested the dock.
+    /// </summary>
+    [Test]
+    public async Task DockHasConsolesAtmsAndALinkedTeleporter()
+    {
+        var (pair, console, host) = await Setup(0f);
+        var entMan = pair.Server.ResolveDependency<IEntityManager>();
+        var docks = entMan.System<SpawnableDockSystem>();
+        var maps = entMan.System<SharedMapSystem>();
+        var tileDefs = pair.Server.ResolveDependency<ITileDefinitionManager>();
+
+        // The test grid is tiny; give the console some floor to put the host pad on.
+        await pair.Server.WaitPost(() =>
+        {
+            var plating = new Tile(tileDefs["Plating"].TileId);
+            for (var x = -3; x <= 3; x++)
+            {
+                for (var y = -3; y <= 3; y++)
+                    maps.SetTile(host, entMan.GetComponent<MapGridComponent>(host), new Vector2i(x, y), plating);
+            }
+        });
+
+        await pair.Server.WaitAssertion(() => Assert.That(docks.TryRequestDock(console, console), Is.True));
+        await pair.RunTicksSync(1500);
+
+        await pair.Server.WaitAssertion(() =>
+        {
+            var dock = OtherGrids(entMan, host)[0];
+            var counts = new Dictionary<string, int>();
+            var query = entMan.EntityQueryEnumerator<ApcPowerReceiverComponent, MetaDataComponent, TransformComponent>();
+            while (query.MoveNext(out _, out var power, out var meta, out var xform))
+            {
+                if (xform.GridUid != dock || meta.EntityPrototype is not { } proto)
+                    continue;
+
+                if (proto.ID is "ComputerShipyardService" or "ComputerShipyardSalvage" or "SerenityATMFrontier")
+                {
+                    counts[proto.ID] = counts.GetValueOrDefault(proto.ID) + 1;
+                    Assert.That(power.Powered, Is.True, $"{proto.ID} {xform.LocalPosition} is powered");
+                }
+            }
+
+            Assert.That(counts.GetValueOrDefault("ComputerShipyardService"), Is.EqualTo(2));
+            Assert.That(counts.GetValueOrDefault("ComputerShipyardSalvage"), Is.EqualTo(2));
+            Assert.That(counts.GetValueOrDefault("SerenityATMFrontier"), Is.EqualTo(2));
+
+            var pads = 0;
+            var pad = entMan.EntityQueryEnumerator<DockTeleporterComponent, TransformComponent>();
+            while (pad.MoveNext(out _, out var comp, out var xform))
+            {
+                pads++;
+                Assert.That(comp.Partner, Is.Not.Null, "pad is linked");
+                var partnerGrid = entMan.GetComponent<TransformComponent>(comp.Partner!.Value).GridUid;
+                Assert.That(partnerGrid, Is.Not.EqualTo(xform.GridUid), "partner is on the other grid");
+            }
+
+            Assert.That(pads, Is.EqualTo(2), "one pad on the dock and one on the host grid");
+
+            // Using the dock's pad drops the user beside the host pad.
+            var xforms = entMan.System<SharedTransformSystem>();
+            EntityUid dockPad = default;
+            var find = entMan.EntityQueryEnumerator<DockTeleporterComponent, TransformComponent>();
+            while (find.MoveNext(out var uid, out _, out var xform))
+            {
+                if (xform.GridUid == dock)
+                    dockPad = uid;
+            }
+
+            var user = entMan.SpawnAtPosition("MobHuman", entMan.GetComponent<TransformComponent>(dockPad).Coordinates);
+            entMan.EventBus.RaiseLocalEvent(dockPad, new ActivateInWorldEvent(user, dockPad, true));
+            Assert.That(entMan.GetComponent<TransformComponent>(user).GridUid, Is.EqualTo(host), "user arrived on the host grid");
         });
 
         await pair.CleanReturnAsync();

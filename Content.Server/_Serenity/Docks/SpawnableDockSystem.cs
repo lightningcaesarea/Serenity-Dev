@@ -1,8 +1,10 @@
 using System.Numerics;
 using Content.Server.Shuttles.Systems;
 using Content.Shared._Serenity.CCVar;
+using Content.Shared._Serenity.Docks;
 using Content.Shared._Serenity.Shipyard.Components;
 using Content.Shared.GameTicking;
+using Content.Shared.Maps;
 using Content.Shared.Popups;
 using Content.Shared.Verbs;
 using Robust.Server.GameObjects;
@@ -11,6 +13,7 @@ using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
+using Content.Shared.Physics;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
@@ -45,13 +48,15 @@ public sealed partial class SpawnableDockSystem : EntitySystem
 
     [Dependency] private IConfigurationManager _cfg = default!;
     [Dependency] private IGameTiming _timing = default!;
-        [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private IRobustRandom _random = default!;
     [Dependency] private MapLoaderSystem _loader = default!;
     [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private MetaDataSystem _meta = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private ShuttleSystem _shuttle = default!;
+    [Dependency] private DockTeleporterSystem _teleporter = default!;
+    [Dependency] private TurfSystem _turf = default!;
 
     private readonly List<EntityUid> _docks = new();
     private TimeSpan _nextSpawn;
@@ -138,10 +143,61 @@ public sealed partial class SpawnableDockSystem : EntitySystem
             return false;
         }
 
+        LinkTeleporters(console, dock);
+
         _nextSpawn = now + TimeSpan.FromSeconds(_cfg.GetCVar(SerenityCCVars.DocksCooldown));
         _popup.PopupEntity(Loc.GetString("dock-request-success", ("number", _counter)), console, user);
         Log.Info($"{ToPrettyString(user)} requested a dock from {ToPrettyString(console)}; {ToPrettyString(dock)} placed at {position}.");
         return true;
+    }
+
+    /// <summary>
+    /// Puts a teleporter pad on a free tile near <paramref name="console"/> and links it to the pad in the
+    /// middle of <paramref name="dock"/>, so people can get to the pier without a ship.
+    /// </summary>
+    private void LinkTeleporters(EntityUid console, EntityUid dock)
+    {
+        Entity<DockTeleporterComponent>? dockPad = null;
+        var query = EntityQueryEnumerator<DockTeleporterComponent, TransformComponent>();
+        while (query.MoveNext(out var uid, out var comp, out var xform))
+        {
+            if (xform.GridUid == dock)
+            {
+                dockPad = (uid, comp);
+                break;
+            }
+        }
+
+        if (dockPad is not { } pier)
+            return;
+
+        var consoleXform = Transform(console);
+        if (consoleXform.GridUid is not { } grid || !TryComp<MapGridComponent>(grid, out var gridComp))
+            return;
+
+        var centre = _map.TileIndicesFor(grid, gridComp, consoleXform.Coordinates);
+        for (var radius = 1; radius <= 4; radius++)
+        {
+            for (var dx = -radius; dx <= radius; dx++)
+            {
+                for (var dy = -radius; dy <= radius; dy++)
+                {
+                    if (Math.Max(Math.Abs(dx), Math.Abs(dy)) != radius)
+                        continue;
+
+                    var tile = _map.GetTileRef(grid, gridComp, centre + new Vector2i(dx, dy));
+                    if (_turf.IsSpace(tile) || _turf.IsTileBlocked(tile, CollisionGroup.MobMask))
+                        continue;
+
+                    var pad = Spawn("SerenityDockTeleporter", _map.GridTileToLocal(grid, gridComp, tile.GridIndices));
+                    if (TryComp<DockTeleporterComponent>(pad, out var padComp))
+                        _teleporter.Link((pad, padComp), pier);
+                    return;
+                }
+            }
+        }
+
+        Log.Warning($"No free tile near {ToPrettyString(console)} for a dock teleporter pad.");
     }
 
     /// <summary>
