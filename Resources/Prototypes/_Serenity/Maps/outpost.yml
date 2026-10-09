@@ -59,7 +59,12 @@
             AssistantManager: [ 2, 2 ]
             Bartender: [ 1, 2 ]
             ServiceWorker: [ 2, 3 ]
-            SecurityOfficer: [ 2, 3 ]
+            HeadOfSecurity: [ 1, 1 ] # Marine CO
+            Warden: [ 1, 1 ] # Marine Quartermaster
+            SeniorOfficer: [ 1, 2 ] # Senior Marine Trooper
+            SecurityOfficer: [ 2, 3 ] # Marine Trooper
+            SecurityCadet: [ 2, 2 ] # Marine Cadet
+            Brigmedic: [ 1, 2 ] # Marine Corpsman
             MedicalDoctor: [ 2, 3 ]
             Paramedic: [ 1, 1 ]
             StationEngineer: [ 2, 3 ]

@@ -510,7 +510,7 @@
   components:
   - type: SpawnPoint
     job_id: SecurityOfficer
-    additionalJobs: [ SeniorOfficer ] # Serenity
+    additionalJobs: [ SeniorOfficer, SecurityCadet, Warden, HeadOfSecurity, Brigmedic ] # Serenity: the Outpost has one Marine spawn point, shared by every Marine job
   - type: Sprite
     layers:
       - state: green
