@@ -202,36 +202,6 @@
       listNumber: false
 
 - type: entity
-  parent: [ IDCardStandard, BaseSalvageContraband ]
-  id: SalvageLeadIDCard
-  name: salvage lead ID card
-  components:
-  - type: Sprite
-    sprite: _Starlight/Objects/Misc/id_cards.rsi
-    layers:
-    - sprite: _Serenity/Objects/Misc/id_card_bases.rsi
-      state: default
-    - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
-      state: idsalvagelead
-  - type: PresetIdCard
-    job: SalvageLead
-
-- type: entity
-  parent: [ IDCardStandard, BaseCargoContraband ]
-  id: MiningIDCard
-  name: mining ID card
-  components:
-  - type: Sprite
-    sprite: _Starlight/Objects/Misc/id_cards.rsi
-    layers:
-    - sprite: _Serenity/Objects/Misc/id_card_bases.rsi
-      state: default
-    - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
-      state: idminingspecialist
-  - type: PresetIdCard
-    job: MiningSpecialist
-
-- type: entity
   parent: [ IDCardStandard, BaseCargoContraband ]
   id: MailTechIDCard
   name: mail technician ID card
