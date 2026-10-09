@@ -34,6 +34,7 @@ public sealed partial class GameMapManager : IGameMapManager
     private int _mapQueueDepth = 1;
 
     private ISawmill _log = default!;
+    private bool _warnedConfigMapNotInPool;
 
     public void Initialize()
     {
@@ -131,7 +132,21 @@ public sealed partial class GameMapManager : IGameMapManager
 
     public GameMapPrototype? GetSelectedMap()
     {
-        return _configSelectedMap ?? _selectedMap;
+        // Serenity: a stale `game.map` cvar (e.g. StarlightPacked left in the live server config) must not
+        // override the map pool, which only holds Serenity Outpost. Admin-chosen maps (_selectedMap) still work.
+        if (_configSelectedMap != null)
+        {
+            if (AllVotableMaps().Any(x => x.ID == _configSelectedMap.ID))
+                return _configSelectedMap;
+
+            if (!_warnedConfigMapNotInPool)
+            {
+                _log.Warning($"game.map is set to {_configSelectedMap.ID}, which is not in the map pool; ignoring it.");
+                _warnedConfigMapNotInPool = true;
+            }
+        }
+
+        return _selectedMap;
     }
 
     public void ClearSelectedMap()
