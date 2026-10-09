@@ -540,7 +540,7 @@
 
 - type: entity
   id: RandomItem
-  parent: BaseItem
+  parent: BoxCardboard
   name: random item
 
 - type: entity
@@ -682,6 +682,10 @@
   id: VehicleKeyJanicart
   parent: BaseItem
   name: janicart key
+  components:
+  - type: Sprite
+    sprite: Objects/Tools/crowbar.rsi
+    state: icon
 
 - type: entity
   id: VendingMachineBoxingDrobe
