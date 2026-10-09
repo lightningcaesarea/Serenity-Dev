@@ -1044,3 +1044,10 @@ Entries:
   id: 17001
   time: '2026-10-09T18:21:25.000000+00:00'
   url: https://github.com/lightningcaesarea/Serenity-Dev/pull/170
+- author: Inny
+  changes:
+  - message: Easy unflatpack (Alt-click, no tool).
+    type: Tweak
+  id: 18101
+  time: '2026-10-09T18:42:35.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/181
