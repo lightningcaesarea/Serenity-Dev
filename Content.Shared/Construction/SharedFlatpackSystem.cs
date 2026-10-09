@@ -9,6 +9,7 @@ using Content.Shared.Materials;
 using Content.Shared.Tag;
 using Content.Shared.Popups;
 using Content.Shared.Tools.Systems;
+using Content.Shared.Verbs;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Map.Components;
@@ -48,6 +49,7 @@ public abstract partial class SharedFlatpackSystem : EntitySystem
     {
         SubscribeLocalEvent<FlatpackComponent, InteractUsingEvent>(OnFlatpackInteractUsing);
         SubscribeLocalEvent<FlatpackComponent, ExaminedEvent>(OnFlatpackExamined);
+        SubscribeLocalEvent<FlatpackComponent, GetVerbsEvent<AlternativeVerb>>(OnFlatpackGetVerbs);
 
         SubscribeLocalEvent<FlatpackCreatorComponent, ItemSlotInsertAttemptEvent>(OnInsertAttempt);
     }
@@ -75,16 +77,45 @@ public abstract partial class SharedFlatpackSystem : EntitySystem
 
     private void OnFlatpackInteractUsing(Entity<FlatpackComponent> ent, ref InteractUsingEvent args)
     {
-        var (uid, comp) = ent;
-        if (!_tool.HasQuality(args.Used, comp.QualityNeeded) || _container.IsEntityInContainer(ent))
+        if (!_tool.HasQuality(args.Used, ent.Comp.QualityNeeded) || _container.IsEntityInContainer(ent))
             return;
 
+        if (!HasComp<MapGridComponent>(Transform(ent).GridUid))
+            return;
+
+        args.Handled = true;
+        TryUnpack(ent, args.User, args.Used);
+    }
+
+    // Serenity: tool-free unpacking through the Alt-click menu.
+    private void OnFlatpackGetVerbs(Entity<FlatpackComponent> ent, ref GetVerbsEvent<AlternativeVerb> args)
+    {
+        if (!args.CanAccess || !args.CanInteract || _container.IsEntityInContainer(ent))
+            return;
+
+        if (!HasComp<MapGridComponent>(Transform(ent).GridUid))
+            return;
+
+        var user = args.User;
+        args.Verbs.Add(new AlternativeVerb
+        {
+            Text = Loc.GetString("flatpack-verb-unpack"),
+            Priority = 1,
+            Act = () => TryUnpack(ent, user, user),
+        });
+    }
+
+    /// <summary>
+    /// Unpacks the flatpack on its current tile. Shared by the tool interaction and the Alt-click verb.
+    /// </summary>
+    /// <param name="soundSource">Entity the unpack sound is played from.</param>
+    private void TryUnpack(Entity<FlatpackComponent> ent, EntityUid user, EntityUid soundSource)
+    {
+        var (uid, comp) = ent;
         var xform = Transform(ent);
 
         if (xform.GridUid is not { } grid || !TryComp<MapGridComponent>(grid, out var gridComp))
             return;
-
-        args.Handled = true;
 
         if (comp.Entity == null && comp.RandomEntities == null)
         {
@@ -107,7 +138,7 @@ public abstract partial class SharedFlatpackSystem : EntitySystem
         {
             // this popup is on the server because the predicts on the intersection is crazy
             if (_net.IsServer)
-                _popup.PopupEntity(Loc.GetString("flatpack-unpack-no-room"), uid, args.User);
+                _popup.PopupEntity(Loc.GetString("flatpack-unpack-no-room"), uid, user);
             return;
         }
 
@@ -119,11 +150,11 @@ public abstract partial class SharedFlatpackSystem : EntitySystem
             var spawn = Spawn(comp.Entity, _map.GridTileToLocal(grid, gridComp, buildPos));
             _adminLogger.Add(LogType.Construction,
                 LogImpact.Low,
-                $"{ToPrettyString(args.User):player} unpacked {ToPrettyString(spawn):entity} at {xform.Coordinates} from {ToPrettyString(uid):entity}");
+                $"{ToPrettyString(user):player} unpacked {ToPrettyString(spawn):entity} at {xform.Coordinates} from {ToPrettyString(uid):entity}");
             QueueDel(uid);
         }
 
-        _audio.PlayPredicted(comp.UnpackSound, args.Used, args.User);
+        _audio.PlayPredicted(comp.UnpackSound, soundSource, user);
     }
 
     private void OnFlatpackExamined(Entity<FlatpackComponent> ent, ref ExaminedEvent args)
