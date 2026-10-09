@@ -140,7 +140,8 @@
   - type: Sprite
     sprite: _Starlight/Objects/Misc/id_cards.rsi
     layers:
-    - state: silver
+    - sprite: _Serenity/Objects/Misc/id_card_bases.rsi
+      state: officer
     - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
       state: idassistantmanager
   - type: PresetIdCard
