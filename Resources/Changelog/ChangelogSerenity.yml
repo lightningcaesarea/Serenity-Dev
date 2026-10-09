@@ -1058,3 +1058,10 @@ Entries:
   id: 17801
   time: '2026-10-09T19:46:00.000000+00:00'
   url: https://github.com/lightningcaesarea/Serenity-Dev/pull/178
+- author: Inny
+  changes:
+  - message: Fix tabletop consoles rendering as full-size computers.
+    type: Fix
+  id: 17601
+  time: '2026-10-09T20:24:27.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/176
