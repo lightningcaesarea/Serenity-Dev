@@ -141,7 +141,7 @@
     state: stamp-cmo
 
 - type: entity
-  name: head of personnel's rubber stamp
+  name: station commander's rubber stamp # Serenity
   parent: [RubberStampBase, BaseCommandContraband]
   id: RubberStampHop
   description: A rubber stamp for stamping important documents. Slightly chewed. # Starlight

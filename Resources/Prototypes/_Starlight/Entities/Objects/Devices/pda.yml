@@ -308,7 +308,7 @@
 - type: entity
   parent: BasePDA
   id: AssistantManagerPDA
-  name: assistant manager PDA
+  name: station officer PDA # Serenity
   description: The least poor among the poor.
   components:
   - type: Sprite

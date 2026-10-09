@@ -23,7 +23,7 @@ job-name-salvagelead = Salvage Lead
 job-name-salvagemedic = Salvage Medic
 job-name-dutyofficer = Duty Officer
 job-name-k9 = Marine Police K9
-job-name-assistantmanager = Assistant Manager
+job-name-assistantmanager = Station Officer
 job-name-abductor = Abductor
 job-title-borgi = Borgi
 

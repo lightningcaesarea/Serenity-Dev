@@ -34,6 +34,7 @@ loadout-group-hop-jumpsuit = Station Commander jumpsuit
 loadout-group-hop-neck = Station Commander neck
 loadout-group-hop-backpack = Station Commander backpack
 loadout-group-hop-outerclothing = Station Commander outer clothing
+loadout-group-hop-scarves = Station Commander scarf
 
 # Civilian
 loadout-group-assistant-jumpsuit = Assistant jumpsuit

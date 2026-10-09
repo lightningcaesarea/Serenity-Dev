@@ -78,6 +78,7 @@
   components:
   - type: SpawnPoint
     job_id: CargoTechnician
+    additionalJobs: [ MiningSpecialist, MailTech ] # Serenity: the Outpost's cargo spawn serves mining and mail
   - type: Sprite
     layers:
       - state: green
@@ -171,6 +172,7 @@
   components:
   - type: SpawnPoint
     job_id: ServiceWorker
+    additionalJobs: [ RadioHost ] # Serenity: the radio host spawns with service on the Outpost
   - type: Sprite
     layers:
       - state: green
@@ -374,6 +376,7 @@
   components:
   - type: SpawnPoint
     job_id: StationEngineer
+    additionalJobs: [ TechnicalAssistant ] # Serenity: technical assistants spawn with the engineers on the Outpost
   - type: Sprite
     layers:
       - state: green
@@ -415,6 +418,7 @@
   components:
   - type: SpawnPoint
     job_id: MedicalDoctor
+    additionalJobs: [ MedicalIntern ] # Serenity: interns spawn with the doctors on the Outpost
   - type: Sprite
     layers:
       - state: green
@@ -510,7 +514,7 @@
   components:
   - type: SpawnPoint
     job_id: SecurityOfficer
-    additionalJobs: [ SeniorOfficer ] # Serenity
+    additionalJobs: [ SeniorOfficer, Warden, HeadOfSecurity, Brigmedic, SecurityCadet ] # Serenity: the Outpost has one security spawn
   - type: Sprite
     layers:
       - state: green

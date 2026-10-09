@@ -31,7 +31,9 @@ foundation and extends it in three directions:
 
 Fork-specific code lives under `_Serenity` namespaces and directories; Starlight's own work stays under
 `_Starlight`. Player-facing text uses Serenity's names (Federation, Sector Station Administration,
-Federal Bills, Sector Credits).
+Federal Bills, Sector Credits, Station Commander and Station Officer for the HoP and Assistant Manager jobs).
+Plasma is called **phoron** in every name, description and locale string; prototype and material ids keep
+`plasma` so upstream content still loads, and new display text must not reintroduce the old word.
 
 ## Building and running
 

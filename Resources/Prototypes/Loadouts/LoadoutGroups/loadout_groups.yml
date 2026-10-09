@@ -296,7 +296,7 @@
 
 - type: loadoutGroup
   id: HoPScarves
-  name: loadout-group-scarves
+  name: loadout-group-hop-scarves
   minLimit: 0
   loadouts:
   - StationCommanderScarf # Serenity

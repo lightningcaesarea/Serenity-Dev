@@ -77,14 +77,14 @@
 
 # Assistant Manager stamp
 - type: entity
-  name: assistant manager's stamp
+  name: station officer's stamp # Serenity
   parent: RubberStampBase
   id: RubberStampAssistantManager
   description: A rubber stamp for stamping important documents. The only vestige of authority for middle managers.
   suffix: DO NOT MAP
   components:
     - type: Stamp
-      stampedName: "Assistant Manager"
+      stampedName: "Station Officer" # Serenity
       stampedColor: "#51c053"
       stampState: "paper_stamp-assistantmanager"
     - type: Sprite

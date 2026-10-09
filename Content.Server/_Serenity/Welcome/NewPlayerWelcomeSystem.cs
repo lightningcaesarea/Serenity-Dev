@@ -1,9 +1,11 @@
 using Content.Server.Chat.Managers;
 using Content.Server.Players.PlayTimeTracking;
 using Content.Server.Radio.EntitySystems;
+using Content.Server.Station.Systems;
 using Content.Shared._Serenity.CCVar;
 using Content.Shared.GameTicking;
 using Content.Shared.Radio;
+using Content.Shared.Radio.Components;
 using Robust.Shared.Configuration;
 using Robust.Shared.Prototypes;
 
@@ -20,6 +22,7 @@ public sealed partial class NewPlayerWelcomeSystem : EntitySystem
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private PlayTimeTrackingManager _playTime = default!;
     [Dependency] private RadioSystem _radio = default!;
+    [Dependency] private StationSystem _station = default!;
 
     public override void Initialize()
     {
@@ -53,9 +56,16 @@ public sealed partial class NewPlayerWelcomeSystem : EntitySystem
             || !_proto.TryIndex<RadioChannelPrototype>(channel, out var channelProto))
             return;
 
+        // The station entity lives in nullspace, so a radio call sent from it reaches nobody: RadioSystem drops
+        // receivers on other maps and wants a telecom server on the source map. Send from the station's main grid
+        // instead, exempt from the telecom check like an intercom, so the call is heard without a server.
+        if (_station.GetLargestGrid(args.Station) is not { } grid)
+            return;
+
+        EnsureComp<TelecomExemptComponent>(grid);
         _radio.SendRadioMessage(args.Station,
             Loc.GetString("new-player-welcome-radio", ("character", Name(args.Mob))),
             channelProto,
-            args.Station);
+            grid);
     }
 }

@@ -51,16 +51,16 @@
 - type: entity
   id: DresserHeadOfPersonnelFilled
   parent: Dresser
-  suffix: Filled, Head Of Personnel
+  suffix: Filled, Station Commander # Serenity
   components:
   - type: EntityTableContainerFill
     containers:
       storagebase: !type:AllSelector
         children:
-        - id: ClothingHeadHatHopcap
-        - id: ClothingOuterWinterHoP
+        - id: ClothingHeadHatStationCommanderCap # Serenity
+        - id: ClothingOuterWinterStationCommander # Serenity
         - id: ClothingEyesGlasses
-        - id: ClothingNeckCloakHop
+        - id: ClothingNeckCloakStationCommander # Serenity
 
 - type: entity
   id: DresserHeadOfSecurityFilled

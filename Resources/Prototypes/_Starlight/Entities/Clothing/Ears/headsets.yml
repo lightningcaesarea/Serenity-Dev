@@ -50,7 +50,7 @@
 - type: entity
   parent: [ ClothingHeadset, BaseCommandManagerContraband ]
   id: ClothingHeadsetAssistantManager
-  name: assistant manager headset
+  name: station officer headset # Serenity
   description: A headset for the least poor among the poor.
   components:
     - type: ContainerFill
