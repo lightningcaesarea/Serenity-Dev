@@ -6,9 +6,6 @@
   maxLimit: 1
   loadouts:
   - SpacerIdAssistant
-  - SpacerIdTechnicalAssistant
-  - SpacerIdResearchAssistant
-  - SpacerIdSecurityCadet
   - SpacerIdClericalAssistant
   - SpacerIdCookAssistant
   - SpacerIdDeliveryAssistant
@@ -16,10 +13,8 @@
   - SpacerIdHandymanAssistant
   - SpacerIdReligiousAssistant
   - SpacerIdShopkeeperAssistant
-  - SpacerIdMedicalAssistant
   - SpacerIdJanitorAssistant
   - SpacerIdMailTech
-  - SpacerIdMiningSpecialist
   - SpacerIdRadioHost
 
 - type: loadout
@@ -27,24 +22,6 @@
   dummyEntity: AssistantIDCard
   equipment:
     id: AssistantPDA
-
-- type: loadout
-  id: SpacerIdTechnicalAssistant
-  dummyEntity: SpacerIdCardTechnicalAssistant
-  equipment:
-    id: SpacerPdaTechnicalAssistant
-
-- type: loadout
-  id: SpacerIdResearchAssistant
-  dummyEntity: SpacerIdCardResearchAssistant
-  equipment:
-    id: SpacerPdaResearchAssistant
-
-- type: loadout
-  id: SpacerIdSecurityCadet
-  dummyEntity: SpacerIdCardSecurityCadet
-  equipment:
-    id: SpacerPdaSecurityCadet
 
 - type: loadout
   id: SpacerIdClericalAssistant
@@ -89,12 +66,6 @@
     id: SpacerPdaShopkeeperAssistant
 
 - type: loadout
-  id: SpacerIdMedicalAssistant
-  dummyEntity: SpacerIdCardMedicalAssistant
-  equipment:
-    id: SpacerPdaMedicalAssistant
-
-- type: loadout
   id: SpacerIdJanitorAssistant
   dummyEntity: SpacerIdCardJanitorAssistant
   equipment:
@@ -105,12 +76,6 @@
   dummyEntity: SpacerIdCardMailTech
   equipment:
     id: SpacerPdaMailTech
-
-- type: loadout
-  id: SpacerIdMiningSpecialist
-  dummyEntity: SpacerIdCardMiningSpecialist
-  equipment:
-    id: SpacerPdaMiningSpecialist
 
 - type: loadout
   id: SpacerIdRadioHost

@@ -3,72 +3,6 @@
 
 - type: entity
   parent: AssistantIDCard
-  id: SpacerIdCardTechnicalAssistant
-  name: technical assistant ID card
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Sprite
-    layers:
-    - sprite: _Serenity/Objects/Misc/id_card_bases.rsi
-      state: default
-    - sprite: _Serenity/Objects/Misc/spacer_id_icons.rsi
-      state: idtechnicalassistant
-
-- type: entity
-  parent: AssistantPDA
-  id: SpacerPdaTechnicalAssistant
-  name: spacer PDA
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Pda
-    id: SpacerIdCardTechnicalAssistant
-
-- type: entity
-  parent: AssistantIDCard
-  id: SpacerIdCardResearchAssistant
-  name: research assistant ID card
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Sprite
-    layers:
-    - sprite: _Serenity/Objects/Misc/id_card_bases.rsi
-      state: default
-    - sprite: _Serenity/Objects/Misc/spacer_id_icons.rsi
-      state: idresearchassistant
-
-- type: entity
-  parent: AssistantPDA
-  id: SpacerPdaResearchAssistant
-  name: spacer PDA
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Pda
-    id: SpacerIdCardResearchAssistant
-
-- type: entity
-  parent: AssistantIDCard
-  id: SpacerIdCardSecurityCadet
-  name: security cadet ID card
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Sprite
-    layers:
-    - sprite: _Serenity/Objects/Misc/id_card_bases.rsi
-      state: default
-    - sprite: _Serenity/Objects/Misc/spacer_id_icons.rsi
-      state: idsecuritycadet
-
-- type: entity
-  parent: AssistantPDA
-  id: SpacerPdaSecurityCadet
-  name: spacer PDA
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Pda
-    id: SpacerIdCardSecurityCadet
-
-- type: entity
-  parent: AssistantIDCard
   id: SpacerIdCardClericalAssistant
   name: clerical assistant ID card
   categories: [ HideSpawnMenu ]
@@ -223,28 +157,6 @@
 
 - type: entity
   parent: AssistantIDCard
-  id: SpacerIdCardMedicalAssistant
-  name: medical assistant ID card
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Sprite
-    layers:
-    - sprite: _Serenity/Objects/Misc/id_card_bases.rsi
-      state: default
-    - sprite: _Serenity/Objects/Misc/spacer_id_icons.rsi
-      state: idmedicalassistant
-
-- type: entity
-  parent: AssistantPDA
-  id: SpacerPdaMedicalAssistant
-  name: spacer PDA
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Pda
-    id: SpacerIdCardMedicalAssistant
-
-- type: entity
-  parent: AssistantIDCard
   id: SpacerIdCardJanitorAssistant
   name: janitor assistant ID card
   categories: [ HideSpawnMenu ]
@@ -286,28 +198,6 @@
   components:
   - type: Pda
     id: SpacerIdCardMailTech
-
-- type: entity
-  parent: AssistantIDCard
-  id: SpacerIdCardMiningSpecialist
-  name: mining specialist ID card
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Sprite
-    layers:
-    - sprite: _Serenity/Objects/Misc/id_card_bases.rsi
-      state: default
-    - sprite: _Serenity/Objects/Misc/spacer_id_icons.rsi
-      state: idminingspecialist
-
-- type: entity
-  parent: AssistantPDA
-  id: SpacerPdaMiningSpecialist
-  name: spacer PDA
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Pda
-    id: SpacerIdCardMiningSpecialist
 
 - type: entity
   parent: AssistantIDCard

@@ -240,7 +240,7 @@
     sprite: _Starlight/Objects/Misc/id_cards.rsi
     layers:
     - sprite: _Serenity/Objects/Misc/id_card_bases.rsi
-      state: supply
+      state: service
     - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
       state: idmailtech
   - type: PresetIdCard
