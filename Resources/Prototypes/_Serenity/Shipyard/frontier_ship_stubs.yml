@@ -285,12 +285,12 @@
 
 - type: entity
   id: BorgModuleDefibrillator
-  parent: BaseBorgModule
+  parent: BorgModuleGaming
   name: defibrillator cyborg module
 
 - type: entity
   id: BorgModuleTreatment
-  parent: BaseBorgModule
+  parent: BorgModuleGaming
   name: treatment cyborg module
 
 - type: entity
@@ -320,7 +320,7 @@
 
 - type: entity
   id: ClothingNeckHeadphones
-  parent: ClothingNeckBase
+  parent: ClothingMultipleHeadphones
   name: headphones
 
 - type: entity
@@ -370,7 +370,7 @@
 
 - type: entity
   id: EZNutrientChemistryBottle
-  parent: BaseChemistryEmptyBottle
+  parent: ChemistryBottleOil
   name: EZ nutrient bottle
 
 - type: entity
@@ -380,12 +380,12 @@
 
 - type: entity
   id: EpinephrineChemistryBottle
-  parent: BaseChemistryEmptyBottle
+  parent: ChemistryBottleOil
   name: epinephrine bottle
 
 - type: entity
   id: FaceHuggerPlushie
-  parent: BasePlushie
+  parent: PlushieSlime
   name: facehugger plushie
 
 - type: entity
@@ -400,7 +400,7 @@
 
 - type: entity
   id: GoldenRose
-  parent: GoldRingBase
+  parent: FoodPoppy
   name: golden rose
 
 - type: entity
@@ -565,7 +565,7 @@
 
 - type: entity
   id: RobustHarvestChemistryBottle
-  parent: BaseChemistryEmptyBottle
+  parent: ChemistryBottleOil
   name: robust harvest bottle
 
 - type: entity
