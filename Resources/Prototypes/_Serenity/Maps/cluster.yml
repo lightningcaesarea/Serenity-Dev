@@ -1,0 +1,74 @@
+# Serenity Cluster: the Starlight Cluster station (a compact map for small populations), converted for Serenity.
+# Same setup as the Outpost: standard station prototype, safe zone, no roundstart evac, cargo, mining or salvage
+# shuttles, trade station and VGRoid via GridSpawn (kept in sync with SerenityOutpost in outpost.yml).
+# Jobs: only roundstart roles; roles without their own spawn point share one via additionalJobs on the spawners in
+# Entities/Markers/Spawners/jobs.yml (Station Officer spawns with the Station Commander on the bridge).
+- type: gameMap
+  id: SerenityCluster
+  mapName: 'Serenity Cluster'
+  mapPath: /Maps/_Serenity/Cluster/cluster.yml
+  minPlayers: 0
+  maxPlayers: 40
+  randomRotation: false
+  maxRandomOffset: 0
+  stations:
+    SerenityCluster:
+      stationProto: StandardNanotrasenStation
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Serenity Cluster'
+        - type: SafeZone # No fighting on the station itself; docked ships are their own grids.
+          exemptDepartments:
+          - Command
+          - Security # Marines
+          - CentralCommand # Marine Raiders, ERT
+        - type: StationCargoShuttle # No roundstart cargo shuttle; orders are delivered via the trade station.
+          enabled: false
+          path: /Maps/_Starlight/Shuttles/Cargo/cargo.yml
+        - type: GridSpawn
+          groups:
+            trade: !type:GridSpawnGroup
+              addComponents:
+                - type: TradeStation
+              paths:
+                - /Maps/_Starlight/trading_outpost.yml
+              minimumDistance: 100
+              maximumDistance: 200
+            vgroid: !type:DungeonSpawnGroup
+              minimumDistance: 600
+              maximumDistance: 650
+              directDungeonSpawn: true
+              nameDataset: NamesBorer
+              stationGrid: false
+              addComponents:
+              - type: Gravity
+                enabled: true
+                inherent: true
+              - type: VGRoidSpawnMarker
+              protos:
+              - VGRoid
+        - type: StationJobs
+          availableJobs:
+            Assistant: [ -1, -1 ]
+            HeadOfPersonnel: [ 1, 1 ]
+            AssistantManager: [ 1, 1 ]
+            Bartender: [ 1, 1 ]
+            Chef: [ 1, 1 ]
+            Botanist: [ 1, 1 ]
+            ServiceWorker: [ 1, 2 ]
+            RadioHost: [ 1, 1 ]
+            MailTech: [ 1, 1 ]
+            HeadOfSecurity: [ 1, 1 ]
+            Warden: [ 1, 1 ]
+            SeniorOfficer: [ 1, 1 ]
+            SecurityOfficer: [ 2, 3 ]
+            SecurityCadet: [ 1, 2 ]
+            Brigmedic: [ 1, 1 ]
+            MedicalDoctor: [ 2, 3 ]
+            MedicalIntern: [ 1, 2 ]
+            Paramedic: [ 1, 1 ]
+            StationEngineer: [ 2, 3 ]
+            TechnicalAssistant: [ 1, 2 ]
+            Scientist: [ 2, 3 ]
+            ResearchAssistant: [ 1, 2 ]
+            Borg: [ 1, 2 ]
