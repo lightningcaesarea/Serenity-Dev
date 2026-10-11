@@ -1107,3 +1107,10 @@ Entries:
   id: 18501
   time: '2026-10-11T04:31:00.000000+00:00'
   url: https://github.com/lightningcaesarea/Serenity-Dev/pull/185
+- author: Inny
+  changes:
+  - message: Goob-style ID card bases for every ID card.
+    type: Tweak
+  id: 17401
+  time: '2026-10-11T04:31:58.000000+00:00'
+  url: https://github.com/lightningcaesarea/Serenity-Dev/pull/174
