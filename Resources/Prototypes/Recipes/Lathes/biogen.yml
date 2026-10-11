@@ -78,7 +78,7 @@
     state: plantbgone
   completetime: 1
   materials:
-    Biomass: 12
+    Biomass: 4 # Serenity: was 12
 
 - type: latheRecipe
   id: BioGenWeedKiller
@@ -91,7 +91,7 @@
     state: weedspray
   completetime: 1
   materials:
-    Biomass: 8
+    Biomass: 3 # Serenity: was 8
 
 - type: latheRecipe
   id: BioGenPestKiller
@@ -104,7 +104,7 @@
     state: weedspray
   completetime: 1
   materials:
-    Biomass: 12
+    Biomass: 4 # Serenity: was 12
 
 - type: latheRecipe
   id: BioGenLeft4Zed
@@ -117,7 +117,7 @@
     state: bottle-1
   completetime: 1
   materials:
-    Biomass: 12
+    Biomass: 4 # Serenity: was 12
 
 - type: latheRecipe
   id: BioGenEZNutrient
@@ -130,7 +130,7 @@
     state: bottle-1
   completetime: 1
   materials:
-    Biomass: 15
+    Biomass: 5 # Serenity: was 15
 
 - type: latheRecipe
   id: BioGenRobustHarvest
@@ -143,7 +143,7 @@
     state: bottle-1
   completetime: 1
   materials:
-    Biomass: 15
+    Biomass: 5 # Serenity: was 15
 
 - type: latheRecipe
   id: BioGenMilk

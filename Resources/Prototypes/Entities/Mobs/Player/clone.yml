@@ -172,6 +172,7 @@
   - PlantConsumeExudeGas
   - PlantWeedPest
   - PlantToxins
+  - PlantInstability # Serenity
   # traits
   - PlantTraitKudzu
   - PlantTraitLigneous

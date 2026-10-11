@@ -394,6 +394,8 @@
   - !type:PlantAdjustMutationLevel
     amount: 1
     mutationTable: RandomPlantMutations
+  - !type:PlantMutagenOutcome # Serenity
+    probability: 0.3
   metabolisms:
     Bloodstream:
       effects:

@@ -41,6 +41,7 @@
   - type: PlantAtmospheric
   - type: PlantGrowth
   - type: PlantConsumeExudeGas
+  - type: PlantInstability # Serenity
 
 - type: entity
   parent: BasePlant

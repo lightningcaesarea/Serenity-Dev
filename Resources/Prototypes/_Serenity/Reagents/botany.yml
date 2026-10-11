@@ -1,0 +1,53 @@
+# Stat-shaping botany reagents. Plant effects run every few seconds while a unit is in the tray's soil, so the
+# amounts here are small and mostly rolled by probability.
+
+- type: reagent
+  id: Rootbinder
+  name: reagent-name-rootbinder
+  group: Botanical
+  desc: reagent-desc-rootbinder
+  flavor: bitter
+  color: "#6b4e2e"
+  physicalDesc: reagent-physical-desc-thick
+  plantMetabolism:
+  - !type:PlantAdjustNutrition
+    amount: 0.1
+  - !type:PlantAdjustEndurance
+    probability: 0.3
+    amount: 2
+  - !type:PlantAdjustLifespan
+    probability: 0.3
+    amount: 1
+  - !type:PlantAdjustPotency
+    probability: 0.3
+    amount: -3
+  - !type:PlantAdjustYield
+    probability: 0.1
+    amount: -1
+  - !type:PlantAdjustInstability
+    probability: 0.3
+    amount: -1
+
+- type: reagent
+  id: GrowthAccelerant
+  name: reagent-name-growth-accelerant
+  group: Botanical
+  desc: reagent-desc-growth-accelerant
+  flavor: bitter
+  color: "#9bd13a"
+  physicalDesc: reagent-physical-desc-bubbling
+  plantMetabolism:
+  - !type:PlantAdjustNutrition
+    amount: -0.5
+  - !type:PlantAdjustWeeds
+    probability: 0.5
+    amount: -1
+  - !type:PlantAdjustMaturation
+    probability: 0.3
+    amount: -1
+  - !type:PlantAdjustProduction
+    probability: 0.3
+    amount: -1
+  - !type:PlantAdjustInstability
+    probability: 0.1
+    amount: 1

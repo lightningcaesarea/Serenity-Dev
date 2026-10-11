@@ -1,0 +1,38 @@
+- type: latheRecipe
+  id: BioGenRootbinder
+  resultReagents:
+    Rootbinder: 10
+  categories:
+  - Chemicals
+  icon:
+    sprite: Objects/Specific/Chemistry/bottle.rsi
+    state: bottle-1
+  completetime: 1
+  materials:
+    Biomass: 3
+
+- type: latheRecipe
+  id: BioGenGrowthAccelerant
+  resultReagents:
+    GrowthAccelerant: 10
+  categories:
+  - Chemicals
+  icon:
+    sprite: Objects/Specific/Chemistry/bottle.rsi
+    state: bottle-1
+  completetime: 1
+  materials:
+    Biomass: 3
+
+- type: latheRecipe
+  id: BioGenDiethylamine
+  resultReagents:
+    Diethylamine: 10
+  categories:
+  - Chemicals
+  icon:
+    sprite: Objects/Specific/Chemistry/bottle.rsi
+    state: bottle-1
+  completetime: 1
+  materials:
+    Biomass: 4
