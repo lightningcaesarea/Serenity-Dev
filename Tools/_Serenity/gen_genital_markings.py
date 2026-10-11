@@ -35,7 +35,8 @@ PENIS_SHAPES = [  # (id fragment, display name, state pattern)
     ("Hemiknot", "Knotted hemipenes", "m_penis_hemiknot_{n}_{e}_front_primary"),
     ("Tentacle", "Tentacle", "m_penis_tentacle_{n}_{e}_front_primary"),
 ]
-PENIS_SIZES = {2: "Small", 4: "Average", 6: "Large"}
+PENIS_SIZES = range(1, 8)
+LEGACY_PENISES = {2: "Small", 4: "Average", 6: "Large"}  # every shape; keeps saved characters' ids
 # Testicles, butts and breasts offer every size the source art has. Sizes that shipped before keep their old
 # marking ids (LEGACY_*) so saved characters don't lose them; every other size gets a numbered/cup id.
 TESTICLE_SHAPES = [  # (id fragment, display name, state prefix)
@@ -125,12 +126,12 @@ def main():
     # penises: flaccid (0) is the marking; erect (1) is copied too, ready for arousal-driven visuals later
     penis_states = []
     for frag, name, pat in PENIS_SHAPES:
-        for n, size in PENIS_SIZES.items():
+        for n in PENIS_SIZES:
             flaccid, erect = pat.format(n=n, e=0), pat.format(n=n, e=1)
             penis_states += [flaccid, erect]
-            mid = f"GenitalPenis{frag}{size}"
+            mid = f"GenitalPenis{frag}{LEGACY_PENISES.get(n, n)}"
             yml.append(marking(mid, "Penis", "Penis", "penises.rsi", flaccid) + "\n")
-            ftl.append(f"marking-{mid} = {name}, {size.lower()}\n")
+            ftl.append(f"marking-{mid} = {name}, size {n}\n")
     write_rsi(src, "penises.rsi", "penises.rsi", penis_states)
     ftl.append("\n")
 
