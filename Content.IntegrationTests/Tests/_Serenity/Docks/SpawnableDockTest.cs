@@ -136,13 +136,13 @@ public sealed class SpawnableDockTest
                 return mixture!.Pressure;
             }
 
-            // Hall corners and middle, power room, atmos room: all sealed and breathable.
-            foreach (var (x, y) in new[] { (0, 0), (-4, -16), (3, 15), (-3, -22), (3, -18), (-3, 18), (3, 20) })
+            // Hall corners and middle, power closet, atmos room and mixer closet: all sealed and breathable.
+            foreach (var (x, y) in new[] { (0, 0), (-4, -16), (3, 15), (-3, -19), (-4, -20), (-3, 18), (3, 20), (0, 18), (-1, 19) })
                 Assert.That(Pressure(x, y), Is.GreaterThan(90f), $"pressure at {x},{y}");
 
             // The miners have filled their sealed chambers.
-            Assert.That(Pressure(-3, 27), Is.GreaterThan(150f), "nitrogen chamber");
-            Assert.That(Pressure(2, 27), Is.GreaterThan(150f), "oxygen chamber");
+            Assert.That(Pressure(-3, 24), Is.GreaterThan(150f), "nitrogen chamber");
+            Assert.That(Pressure(2, 24), Is.GreaterThan(150f), "oxygen chamber");
 
             var vents = 0;
             var query = entMan.EntityQueryEnumerator<GasVentPumpComponent, ApcPowerReceiverComponent, TransformComponent>();

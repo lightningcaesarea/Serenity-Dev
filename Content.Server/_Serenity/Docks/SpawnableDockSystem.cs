@@ -36,8 +36,8 @@ public sealed partial class SpawnableDockSystem : EntitySystem
 
     /// <summary>
     /// Half-width, in tiles, of the square that must be free of other grids before a dock is loaded.
-    /// The dock (power room, hall and atmos room) is 10 wide and 56 long and spans 25 tiles south and
-    /// 31 north of its origin, so this keeps every tile of it inside the checked square.
+    /// The dock (power closet, hall and atmos room) is 10 wide and 49 long and spans 21 tiles south and
+    /// 27 north of its origin, so this keeps every tile of it inside the checked square.
     /// </summary>
     public const float ClearanceRadius = 36f;
 
