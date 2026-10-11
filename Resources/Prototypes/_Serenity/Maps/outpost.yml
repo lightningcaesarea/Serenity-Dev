@@ -3,9 +3,8 @@
 # derelicts, the `wrecks` dungeons and the roundstart salvage, mining and cargo shuttles (the shuttle maps stay
 # in the repo for manual loading/purchase): derelicts are off for this map, and wrecks now come from worldgen as
 # DungeonDebris instead of a fixed ring around the station. Keep the remaining groups in sync with base.yml.
-# Jobs: every enabled role that has a home on the Outpost. Chef, Botanist, Scientist and Research Assistant stay
-# off until the map has a kitchen, hydroponics and a science area. Roles without their own spawn point on the map
-# share one via additionalJobs on the spawners in Entities/Markers/Spawners/jobs.yml.
+# Jobs: every enabled role that has a home on the Outpost (kitchen, hydroponics and science included). Roles without
+# their own spawn point on the map share one via additionalJobs on the spawners in Entities/Markers/Spawners/jobs.yml.
 - type: gameMap
   id: SerenityOutpost
   mapName: 'Serenity Outpost'
@@ -16,6 +15,78 @@
   maxRandomOffset: 0
   stations:
     SerenityOutpost:
+      stationProto: StandardNanotrasenStation
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Serenity Outpost'
+        - type: SafeZone # No fighting on the outpost itself; docked ships are their own grids.
+          exemptDepartments:
+          - Command
+          - Security # Marines
+          - CentralCommand # Marine Raiders, ERT
+        - type: StationCargoShuttle # No roundstart cargo shuttle; orders are delivered via the trade station. Map kept for manual loading.
+          enabled: false
+          path: /Maps/_Starlight/Shuttles/Cargo/cargo.yml
+        - type: GridSpawn
+          groups:
+            trade: !type:GridSpawnGroup
+              addComponents:
+                - type: TradeStation
+              paths:
+                - /Maps/_Starlight/trading_outpost.yml
+              minimumDistance: 100
+              maximumDistance: 200
+            vgroid: !type:DungeonSpawnGroup
+              minimumDistance: 600
+              maximumDistance: 650
+              directDungeonSpawn: true
+              nameDataset: NamesBorer
+              stationGrid: false
+              addComponents:
+              - type: Gravity
+                enabled: true
+                inherent: true
+              - type: VGRoidSpawnMarker
+              protos:
+              - VGRoid
+        - type: StationJobs
+          availableJobs:
+            Assistant: [ -1, -1 ]
+            HeadOfPersonnel: [ 1, 1 ]
+            AssistantManager: [ 2, 2 ]
+            Bartender: [ 1, 2 ]
+            Chef: [ 1, 2 ]
+            Botanist: [ 1, 2 ]
+            ServiceWorker: [ 2, 3 ]
+            RadioHost: [ 1, 1 ]
+            MailTech: [ 1, 1 ]
+            HeadOfSecurity: [ 1, 1 ]
+            Warden: [ 1, 1 ]
+            SeniorOfficer: [ 1, 1 ]
+            SecurityOfficer: [ 2, 3 ]
+            SecurityCadet: [ 1, 2 ]
+            Brigmedic: [ 1, 1 ]
+            MedicalDoctor: [ 2, 3 ]
+            MedicalIntern: [ 1, 2 ]
+            Paramedic: [ 1, 1 ]
+            StationEngineer: [ 2, 3 ]
+            TechnicalAssistant: [ 1, 2 ]
+            Scientist: [ 2, 3 ]
+            ResearchAssistant: [ 1, 2 ]
+            Borg: [ 1, 2 ]
+
+# The original (Frontier-derived) Outpost, kept so it can be swapped back: put SerenityOutpostOriginal in
+# pool.yml (or set game.map) instead of SerenityOutpost. Not in any pool, so it never loads on its own.
+- type: gameMap
+  id: SerenityOutpostOriginal
+  mapName: 'Serenity Outpost (Original)'
+  mapPath: /Maps/_Serenity/Outpost/outpost-original.yml
+  minPlayers: 0
+  maxPlayers: 100
+  randomRotation: false
+  maxRandomOffset: 0
+  stations:
+    SerenityOutpostOriginal:
       stationProto: StandardNanotrasenStation
       components:
         - type: StationNameSetup
