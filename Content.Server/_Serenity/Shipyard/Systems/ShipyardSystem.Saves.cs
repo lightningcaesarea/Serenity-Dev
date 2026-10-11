@@ -479,10 +479,11 @@ public sealed partial class ShipyardSystem
         if (TryComp<PhysicsComponent>(ent, out var physics) && physics.BodyType == BodyType.Static)
             return true;
 
-        return HasComp<SolutionComponent>(ent)
-               || HasComp<ContainedSolutionComponent>(ent)
-               || HasComp<Content.Shared.Wall.WallMountComponent>(ent)
-               || HasComp<Robust.Shared.Map.Components.MapGridComponent>(ent);
+        if (HasComp<SolutionComponent>(ent) || HasComp<ContainedSolutionComponent>(ent))
+            return true;
+
+        return HasComp<Content.Shared.Wall.WallMountComponent>(ent)
+            || HasComp<Robust.Shared.Map.Components.MapGridComponent>(ent);
     }
 
     /// <summary>
