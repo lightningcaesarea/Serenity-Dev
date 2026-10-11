@@ -1,0 +1,49 @@
+<Document>
+  # Hazards and shutdown
+
+  ## Instability
+  The console shows the plasma's [bold]instability[/bold] as a percentage. At 100% the field ruptures. It rises from:
+  - A stronger field. Above a field strength of roughly 75 it grows even with an empty plasma.
+  - Every unit of fuel burned. Transmutation and hydrogen-boron are the worst.
+  - Too much helium ash in the plasma.
+  - Plasma hotter than 2,000,000 K, which grows worse the hotter it gets.
+  - [bold]People.[/bold] Anyone, or any creature, standing within about two and a half tiles of the core disturbs the field once the plasma is warm. Each one adds more instability than the field can shed.
+
+  Instability falls on its own when none of these push it. It falls faster once the field is switched off.
+
+  ## Warnings
+  The core announces itself on the Engineering radio channel and sounds an alarm as instability climbs:
+  - 50%: the field is wobbling. The alarm sounds every few seconds.
+  - 75%: the field is failing. The alarm is faster. Think about a SCRAM.
+  - 90%: the field is about to rupture. Evacuate.
+
+  To bring instability down, remove its causes: reduce the field strength, turn gyrotrons down or off so the plasma cools, stop the injectors, and clear everyone away from the core.
+
+  ## Rupture
+  If instability reaches 100%, the field ruptures:
+  - A radioactive explosion centred on the core. It is stronger the more plasma and heat the field held, and can destroy the core and nearby machines.
+  - An electromagnetic pulse that disables electronics in a wide radius for about half a minute.
+  - A burst of radiation from the lost plasma.
+  - The field shuts off and the plasma is gone.
+
+  ## Radiation
+  The core is a radiation source while it burns fuel, and the amount depends on the reaction. It fades quickly once the reactions stop. Deuterium-tritium and the transmutation reactions are the dirtiest. Hydrogen-boron and deuterium-helium-3 are the cleanest.
+
+  ## Losing power
+  The field needs APC power. If the core loses its APC supply while running, the field collapses at once: the plasma is lost, the area gets a small burst of radiation and the plasma cools quickly. It is messy but does not explode. Supplying the core, gyrotrons and console from a protected network or a battery stops this.
+
+  The core's own output goes to the grid, not to its APC, so the tokamak does not power itself.
+
+  ## Shutting down
+  - [bold]Stop field[/bold] turns the field off. The plasma is dumped at once and the rest cools down quickly. Power output ends immediately. Instability fades away over a few seconds, so stopping a field that is about to rupture can be too slow.
+  - [bold]SCRAM[/bold] dumps the plasma the same way and also clears instability to zero immediately, but releases a burst of radiation in proportion to how much plasma was in the field, and locks the field magnets out for five minutes. The field cannot be started again until the lockout ends. Use it when the field is failing, not as a normal off switch.
+  - Turning the gyrotrons and injectors off first leaves the plasma to fade out gradually, but the plasma is still there until it burns off or you stop the field.
+
+  After a normal stop the core can be started again straight away. After a rupture it is left at 50% instability, so give it time to settle before restarting.
+
+  ## Safety checklist
+  - Keep the room empty while the field is running. Control it from the console, from outside the room.
+    - Use a modest field strength and stay below the hot-plasma threshold of 2,000,000 K. The 5 MW cap is reached well before that.
+  - Check gyrotron and injector alignment before every start.
+  - Keep a backup power supply for the core and the console.
+</Document>

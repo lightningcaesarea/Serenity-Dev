@@ -1,0 +1,57 @@
+<Document>
+  # Fuels and reactions
+
+  ## Fuel rods
+  Each injector takes one sealed fuel rod holding 100 units of fuel. Examining a rod shows what is inside.
+
+  <Box>
+    <GuideEntityEmbed Entity="TokamakFuelRodHydrogen"/>
+    <GuideEntityEmbed Entity="TokamakFuelRodDeuterium"/>
+    <GuideEntityEmbed Entity="TokamakFuelRodTritium"/>
+    <GuideEntityEmbed Entity="TokamakFuelRodDeuteriumTritium"/>
+  </Box>
+  <Box>
+    <GuideEntityEmbed Entity="TokamakFuelRodHelium3"/>
+    <GuideEntityEmbed Entity="TokamakFuelRodLithium"/>
+    <GuideEntityEmbed Entity="TokamakFuelRodBoron"/>
+    <GuideEntityEmbed Entity="TokamakFuelRodIron"/>
+  </Box>
+
+  Rods are printed at a lathe once Fusion Power is researched. They cost steel and glass, and tritium, deuterium-tritium and helium-3 rods also cost plasma. Iron rods cost extra steel.
+
+  Several injectors can feed different fuels into the same plasma at once. That is how you mix fuels such as lithium and deuterium.
+
+  ## Reactions
+  Every reaction runs at the same time as long as the plasma holds both reactants and is hot enough for it. Each one burns at most a few units per second, and a stronger field makes them faster. Reactions that give heat make the plasma hotter, and the ones that take heat cool it down.
+
+  [color=#999999][italic]Temperatures are plasma temperature in kelvin. Heat is kelvin gained per unit burned.[/italic][/color]
+
+  - [bold]Deuterium + tritium[/bold]. Ignites at 100,000 K. Heat +5,000. Low instability. Makes helium ash. The easiest reaction.
+  - [bold]Deuterium + deuterium[/bold]. Ignites at 400,000 K. Heat +6,000. Makes helium-3.
+  - [bold]Lithium + deuterium[/bold]. Ignites at 250,000 K. Costs a little heat (-1,000). Breeds tritium and helium ash, which keeps a deuterium-tritium reaction supplied.
+  - [bold]Deuterium + helium-3[/bold]. Ignites at 800,000 K. Heat +12,000. Very little radiation.
+  - [bold]Hydrogen + boron[/bold]. Ignites at 2,500,000 K. Heat +20,000, hardly any radiation, but it adds a lot of instability and makes three units of helium ash per unit burned.
+  - [bold]Iron + helium ash[/bold]. Ignites at 5,000,000 K. Costs heat. Makes silver. Extremely unstable and radioactive.
+  - [bold]Silver + helium ash[/bold]. Ignites at 8,000,000 K. Costs a lot of heat. Makes gold. Even more unstable and radioactive.
+
+  The helium used by the transmutation reactions is the helium ash made by the other reactions, so you cannot start them from iron alone.
+
+  ## Helium ash
+  Fusion leaves behind helium ash. It slowly vents out of the plasma, about 3% every second, but if more than 100 units pile up it crowds the plasma and adds instability. Burning fuel fast, or burning hydrogen and boron, makes ash faster than it vents, so keep an eye on it.
+
+  ## Power output
+  The core supplies power onto its HV cable. Output depends on plasma temperature and field strength and is capped at 5 MW:
+  - About 100,000 K gives roughly 180 kW at the default field strength.
+  - About 1,000,000 K gives roughly 3.7 MW.
+  - At about 1,300,000 K the core is already at its 5 MW cap, so heating it further only adds risk.
+
+  The field and the devices around it draw a small amount of APC power. Output is zero when the plasma is empty, even if it is still hot.
+
+  ## Harvester
+  <Box>
+    <GuideEntityEmbed Entity="TokamakHarvester"/>
+  </Box>
+  Hot enough plasma turns iron into silver, and silver into gold. A powered, switched-on harvester within 8 tiles of the running core pulls silver and gold out of the plasma and presses them into sheets, one sheet per ten units, dropped where the harvester stands. A harvester only works while the core's field is running, and shuts itself off if it loses power.
+
+  Making metals needs 5,000,000 K or more and a plasma that is extremely unstable. Treat it as a stunt, not a power plan.
+</Document>

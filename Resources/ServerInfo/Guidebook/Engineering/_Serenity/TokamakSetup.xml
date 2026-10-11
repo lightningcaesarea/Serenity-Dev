@@ -1,0 +1,50 @@
+<Document>
+  # Building and starting a tokamak
+
+  ## Layout
+  Place the core and put an [color=orange]HV cable[/color] under it so it joins the grid. The core, gyrotrons, injectors, harvesters and console all also need ordinary APC power. Anchor everything with a wrench.
+
+  Gyrotrons and injectors fire in a straight line in the direction they face. For one to work:
+  - It must face the core along a row or column, in one of the four cardinal directions.
+  - The core must be between one and seven tiles in front of it, and within about half a tile of the beam's centre line.
+  - Rotate it with the rotate verb. It can be rotated while anchored.
+
+  The console lists every gyrotron and injector with an [bold]Aligned[/bold] or [bold]Not aligned[/bold] label, so check that before starting. A device that is not aligned does nothing.
+
+  Harvesters do not need to face anything but must be within 8 tiles of the core. The console finds the nearest core within 40 tiles of itself and controls every device within 40 tiles of that core.
+
+  ## The console
+  <Box>
+    <GuideEntityEmbed Entity="TokamakConsole"/>
+  </Box>
+  The console shows the field state, plasma temperature, power output and draw, radiation, how full the field is, instability, and the contents of the plasma. Below that is a list of devices.
+
+  - [bold]Start field / Stop field[/bold] turns the magnetic field on or off.
+  - [bold]Field strength[/bold] runs from 1 to 100. A stronger field raises power output and speeds up every reaction, but draws more APC power and adds instability.
+  - [bold]SCRAM[/bold] dumps the field in an emergency. See [textlink="Hazards and shutdown" link="TokamakSafety"].
+  - Each gyrotron has an on/off toggle, a pulse rate (0.5 to 5 per second) and a pulse energy (1 to 10 MeV).
+  - Each injector has an on/off toggle and an injection rate (0.5 to 10 units per second) and shows how full its rod is.
+  - Each harvester has an on/off toggle.
+
+  You can also switch a gyrotron, injector or harvester on or off by using it directly. Examining one shows its settings. The console needs power like any computer.
+
+  ## Heating
+  Each gyrotron adds [bold]pulse rate × pulse energy × 400 kelvin[/bold] per second to the plasma. The plasma loses about 1% of its heat every second, so it settles at roughly 100 times the total heating per second. One gyrotron on its default settings (1 pulse per second at 1 MeV) only reaches about 40,000 K, which is not enough to ignite any fuel. Turn the settings up, or use more gyrotrons.
+
+  Gyrotrons draw APC power in proportion to what they fire, and injectors draw in proportion to their rate, so very high settings are not free.
+
+  Gyrotrons and injectors only act while the core's field is running.
+
+  ## Start-up routine
+  1. Check the APC feeding the core and the devices is charged and has a backup. If the core loses power the field collapses. See [textlink="Hazards and shutdown" link="TokamakSafety"].
+  2. Put a fuel rod in each injector. Deuterium-tritium rods are the easiest first fuel.
+  3. Open the console. Check every gyrotron and injector reads [bold]Aligned[/bold].
+  4. Keep everyone away from the core, and wear radiation protection if anyone must stay close.
+  5. Set the field strength to a modest value, around 10 to 30, and press [bold]Start field[/bold]. The core hums and glows.
+  6. Turn the gyrotrons on, with enough pulse rate and energy to heat past the fuel's ignition temperature.
+  7. Turn the injectors on. Fuel enters the plasma at the injector's rate, up to the 400 unit limit.
+  8. Watch the temperature and instability. Once fusion starts, the reaction heats the plasma itself, so you can turn the gyrotrons down.
+  9. Power only appears on the grid while there is fuel in the plasma, and it rises as the plasma heats up.
+
+  An empty rod does nothing, so swap in a fresh rod before the plasma starves. A DT rod holds 100 units and lasts about 50 seconds at the default injection rate.
+</Document>
