@@ -1,6 +1,5 @@
-// Ship saving, after Hardlight's ShipyardGridSaveSystem (fenndragon/HardLight, MIT licensed), reworked for
-// Serenity: saves stay on the server instead of being handed to the client, so a player can only ever load back a
-// ship the server wrote for their own character.
+// Ship saving for Serenity. Saves stay on the server and the client only ever sends a save id, so a player can only
+// load back a ship the server wrote for their own character.
 
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
@@ -280,8 +279,7 @@ public sealed partial class ShipyardSystem
 
     /// <summary>
     /// Saves a ship docked to the station for its owner's character and removes it from the round.
-    /// Loose items, cargo and anything inside machines are left behind, as on Hardlight: what persists is the
-    /// ship itself.
+    /// Loose items, cargo and anything inside machines are left behind: what persists is the ship itself.
     /// </summary>
     private bool TrySaveShuttle(EntityUid stationUid, EntityUid shuttleUid, NetUserId user, int profile, string name,
         [NotNullWhen(true)] out SavedShipInfo? info)
@@ -304,8 +302,8 @@ public sealed partial class ShipyardSystem
         }
 
         _docking.UndockDocks(shuttleUid);
-        PurgeTransientEntities(shuttleUid);
-        CleanupBrokenDeviceLinks(shuttleUid);
+        StripToStructure(shuttleUid);
+        DropDanglingLinks(shuttleUid);
 
         // The deed points at the owner's body, which isn't part of the ship. Loading adds a fresh one.
         RemComp<ShuttleDeedComponent>(shuttleUid);
@@ -427,66 +425,70 @@ public sealed partial class ShipyardSystem
     }
 
     /// <summary>
-    /// Deletes everything on the ship that isn't part of it: anything unanchored, whether loose or inside a
-    /// container. Anchored fixtures, wall mounts, static bodies and solutions stay. Machines get fresh boards and
-    /// parts when the ship is loaded again.
+    /// Strips the ship down to its structure before it is written out. Anything unanchored is removed, whether it
+    /// lies on the floor or sits in a container, except entities that other systems own (see
+    /// <see cref="IsStructural"/>). Machines are given fresh boards and parts when the ship is loaded again.
     /// </summary>
-    private void PurgeTransientEntities(EntityUid shuttleUid)
+    private void StripToStructure(EntityUid shuttleUid)
     {
-        var toDelete = new HashSet<EntityUid>();
+        var doomed = new HashSet<EntityUid>();
         var query = EntityQueryEnumerator<TransformComponent>();
         while (query.MoveNext(out var ent, out var xform))
         {
             if (ent == shuttleUid || xform.GridUid != shuttleUid)
                 continue;
 
-            if (IsTransient(ent, xform))
-                toDelete.Add(ent);
+            if (!IsStructural(ent, xform))
+                doomed.Add(ent);
 
             if (TryComp<ContainerManagerComponent>(ent, out var manager))
-                CollectContained(manager, toDelete);
+                GatherContents(manager, doomed);
         }
 
-        foreach (var ent in toDelete)
+        foreach (var ent in doomed)
         {
             if (!TerminatingOrDeleted(ent))
                 Del(ent);
         }
     }
 
-    private void CollectContained(ContainerManagerComponent manager, HashSet<EntityUid> toDelete)
+    private void GatherContents(ContainerManagerComponent manager, HashSet<EntityUid> doomed)
     {
         foreach (var container in manager.Containers.Values)
         {
             foreach (var contained in container.ContainedEntities)
             {
-                if (IsTransient(contained, Transform(contained)))
-                    toDelete.Add(contained);
+                if (!IsStructural(contained, Transform(contained)))
+                    doomed.Add(contained);
 
                 if (TryComp<ContainerManagerComponent>(contained, out var inner))
-                    CollectContained(inner, toDelete);
+                    GatherContents(inner, doomed);
             }
         }
     }
 
-    private bool IsTransient(EntityUid ent, TransformComponent xform)
+    /// <summary>
+    /// Whether an entity is part of the ship's build and must survive the strip: anchored things, static bodies,
+    /// and entities that are only meaningful attached to something else (wall mounts, solution holders).
+    /// </summary>
+    private bool IsStructural(EntityUid ent, TransformComponent xform)
     {
         if (xform.Anchored)
-            return false;
+            return true;
 
-        if (HasComp<Robust.Shared.Map.Components.MapGridComponent>(ent)
-            || HasComp<Content.Shared.Wall.WallMountComponent>(ent)
-            || HasComp<SolutionComponent>(ent)
-            || HasComp<ContainedSolutionComponent>(ent))
-            return false;
+        if (TryComp<PhysicsComponent>(ent, out var physics) && physics.BodyType == BodyType.Static)
+            return true;
 
-        return !TryComp<PhysicsComponent>(ent, out var physics) || physics.BodyType != BodyType.Static;
+        return HasComp<SolutionComponent>(ent)
+               || HasComp<ContainedSolutionComponent>(ent)
+               || HasComp<Content.Shared.Wall.WallMountComponent>(ent)
+               || HasComp<Robust.Shared.Map.Components.MapGridComponent>(ent);
     }
 
     /// <summary>
-    /// Drops device links to anything the purge deleted, which would otherwise fail to serialize.
+    /// Unlinks any device link whose target was removed by the strip, since a dangling link cannot be serialized.
     /// </summary>
-    private void CleanupBrokenDeviceLinks(EntityUid shuttleUid)
+    private void DropDanglingLinks(EntityUid shuttleUid)
     {
         var query = EntityQueryEnumerator<DeviceLinkSourceComponent, TransformComponent>();
         while (query.MoveNext(out var source, out var comp, out var xform))

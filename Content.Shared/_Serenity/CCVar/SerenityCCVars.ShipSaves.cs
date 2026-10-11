@@ -20,11 +20,11 @@ public sealed partial class SerenityCCVars
     /// Fraction of a saved ship's value charged to load it again.
     /// </summary>
     public static readonly CVarDef<float> ShipSaveLoadFee =
-        CVarDef.Create("serenity.ship_saves.load_fee", 0.1f, CVar.SERVERONLY);
+        CVarDef.Create("serenity.ship_saves.load_fee", 0.15f, CVar.SERVERONLY);
 
     /// <summary>
     /// Seconds a player has to wait between loading saved ships.
     /// </summary>
     public static readonly CVarDef<float> ShipSaveLoadCooldown =
-        CVarDef.Create("serenity.ship_saves.load_cooldown", 300f, CVar.SERVERONLY);
+        CVarDef.Create("serenity.ship_saves.load_cooldown", 600f, CVar.SERVERONLY);
 }

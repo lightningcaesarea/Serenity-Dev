@@ -58,7 +58,7 @@
   id: ClothingOuterCoatStirlingTrench
   parent: ClothingOuterStorageFoldableBase
   name: Stirling flak trenchcoat
-  description: A flak trenchcoat produced by Stirling Synthetics, enhanced with a bulletproof alloy for some extra protection.
+  description: A long coat with flak plating sewn into the lining, cut by Stirling Synthetics for people who expect trouble.
   components:
   - type: Sprite
     sprite: _Serenity/Clothing/OuterClothing/Coats/arcadia_trench.rsi
@@ -79,7 +79,7 @@
   id: ClothingOuterEVASuitStirling
   parent: ClothingOuterEVASuitBase
   name: Stirling EVA suit
-  description: An EVA suit with a built-in helmet commonly issued to Stirling Synthetics personnel.
+  description: A pressure suit with the helmet folded into the collar, standard kit for Stirling Synthetics staff.
   components:
   # Serenity: the ToggleableClothing below needs a matching container declared up front, or the
   # prototype's own YAML doesn't reflect the container ToggleableClothingSystem creates on spawn.

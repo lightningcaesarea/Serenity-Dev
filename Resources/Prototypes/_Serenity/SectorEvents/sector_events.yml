@@ -11,10 +11,10 @@
   - type: BasicStationEventScheduler
     scheduledGameRules: !type:NestedSelector
       tableId: SectorEventsTable
-    minimumTimeUntilFirstEvent: 2700 # 45 minutes
+    minimumTimeUntilFirstEvent: 2700 # 2700s, so the first one lands after three quarters of an hour
     minMaxEventTiming:
-      min: 2700 # 45 minutes between events
-      max: 4500 # 75 minutes between events
+      min: 2700 # shortest gap between events, in seconds
+      max: 4500 # longest gap between events, in seconds
 
 - type: entityTable
   id: SectorEventsTable
