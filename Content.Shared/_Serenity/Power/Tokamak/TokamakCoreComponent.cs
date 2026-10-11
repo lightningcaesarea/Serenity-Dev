@@ -119,6 +119,17 @@ public sealed partial class TokamakCoreComponent : Component
     [DataField]
     public float DisturbanceRange = 2.5f;
 
+    /// <summary>
+    /// How long the field magnets stay locked out after a SCRAM.
+    /// </summary>
+    [DataField]
+    public TimeSpan ScramLockout = TimeSpan.FromMinutes(5);
+
+    /// <summary>
+    /// The field cannot be switched on again before this time.
+    /// </summary>
+    public TimeSpan ScramLockedUntil;
+
     [DataField]
     public string EngineeringChannel = "Engineering";
 

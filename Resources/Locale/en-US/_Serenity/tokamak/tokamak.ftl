@@ -21,6 +21,7 @@ tokamak-reactant-silver = Silver
 tokamak-reactant-gold = Gold
 
 # Core
+tokamak-core-scram-lockout = The field magnets are locked out after a SCRAM. { $seconds } seconds until they can be restarted.
 tokamak-core-no-power = The core has no power to hold a field with.
 tokamak-core-warning-1 = {CAPITALIZE(THE($core))} field is wobbling. Instability at { $instability }%.
 tokamak-core-warning-2 = {CAPITALIZE(THE($core))} field is failing! Instability at { $instability }%. Consider a SCRAM.
@@ -52,7 +53,7 @@ tokamak-ui-field-strength = Field strength
 tokamak-ui-field-on = Start field
 tokamak-ui-field-off = Stop field
 tokamak-ui-scram = SCRAM
-tokamak-ui-scram-tooltip = Dump the field and settle the plasma at once, clearing all instability. Releases some radiation.
+tokamak-ui-scram-tooltip = Dump the field and settle the plasma at once, clearing all instability. Releases some radiation and locks the field out for five minutes.
 tokamak-ui-devices = Devices
 tokamak-ui-no-devices = No devices in range.
 tokamak-ui-state-on = Active

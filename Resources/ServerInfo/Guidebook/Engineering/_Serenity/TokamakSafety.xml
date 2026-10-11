@@ -36,10 +36,10 @@
 
   ## Shutting down
   - [bold]Stop field[/bold] turns the field off. The plasma is dumped at once and the rest cools down quickly. Power output ends immediately. Instability fades away over a few seconds, so stopping a field that is about to rupture can be too slow.
-  - [bold]SCRAM[/bold] dumps the plasma the same way and also clears instability to zero immediately, but releases a burst of radiation in proportion to how much plasma was in the field. Use it when the field is failing.
+  - [bold]SCRAM[/bold] dumps the plasma the same way and also clears instability to zero immediately, but releases a burst of radiation in proportion to how much plasma was in the field, and locks the field magnets out for five minutes. The field cannot be started again until the lockout ends. Use it when the field is failing, not as a normal off switch.
   - Turning the gyrotrons and injectors off first leaves the plasma to fade out gradually, but the plasma is still there until it burns off or you stop the field.
 
-  The core can be switched on again after a shutdown. After a rupture it is left at 50% instability, so give it time to settle before restarting.
+  After a normal stop the core can be started again straight away. After a rupture it is left at 50% instability, so give it time to settle before restarting.
 
   ## Safety checklist
   - Keep the room empty while the field is running. Control it from the console, from outside the room.
