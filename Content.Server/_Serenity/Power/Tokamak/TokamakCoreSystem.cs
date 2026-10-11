@@ -109,6 +109,17 @@ public sealed partial class TokamakCoreSystem : EntitySystem
         if (ent.Comp.Active == active)
             return false;
 
+        if (active && _timing.CurTime < ent.Comp.ScramLockedUntil)
+        {
+            if (user != null)
+            {
+                var remaining = ent.Comp.ScramLockedUntil - _timing.CurTime;
+                _popup.PopupEntity(Loc.GetString("tokamak-core-scram-lockout", ("seconds", (int) Math.Ceiling(remaining.TotalSeconds))), ent.Owner, user.Value);
+            }
+
+            return false;
+        }
+
         if (active && !_receiver.IsPowered(ent.Owner))
         {
             if (user != null)
@@ -143,7 +154,9 @@ public sealed partial class TokamakCoreSystem : EntitySystem
     }
 
     /// <summary>
-    /// Emergency shutdown. The field is dumped, which irradiates the area in proportion to the plasma lost.
+    /// Emergency shutdown. The field is dumped, which irradiates the area in proportion to the plasma lost,
+    /// but the plasma is settled at once, so instability drops to zero. The field magnets are then locked out for a while.
+    /// A normal stop leaves instability to decay and can be restarted straight away.
     /// </summary>
     public void Scram(Entity<TokamakCoreComponent> ent, EntityUid? user = null)
     {
@@ -151,6 +164,8 @@ public sealed partial class TokamakCoreSystem : EntitySystem
             return;
 
         ent.Comp.RadiationLevel += Total(ent.Comp.Reactants) * 0.1f;
+        ent.Comp.Instability = 0f;
+        ent.Comp.ScramLockedUntil = _timing.CurTime + ent.Comp.ScramLockout;
         SetActive(ent, false, user);
     }
 
