@@ -72,6 +72,10 @@ Serenity is built on Starlight and attributes the Starlight project as its sourc
 > (`LICENSE.TXT`). Starlight tracks relicensing in
 > [ss14Starlight/space-station-14#3499](https://github.com/ss14Starlight/space-station-14/issues/3499).
 
+Content taken from New Frontiers 14 (ship maps, vessels, shipyard and bounty-contract code and locale) comes from
+its last MIT-licensed commit (`5be37d18c2`, 2024-07-01); its notice is in `LICENSE-NewFrontiers.TXT`. Later New
+Frontiers content is AGPL and is never copied, only reimplemented.
+
 Non-code assets (sprites, sounds, and other content) are licensed under
 [Creative Commons 3.0 BY-SA](https://creativecommons.org/licenses/by-sa/3.0/) unless a folder or file
 states otherwise; per-file attributions are recorded in `attributions.yml` files and RSI `meta.json`.

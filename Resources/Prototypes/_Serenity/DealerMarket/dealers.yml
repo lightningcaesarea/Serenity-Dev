@@ -551,7 +551,7 @@
   id: DealerHumanSteve
   name: Human Steve
   trade: Odds, ends and anything with a use
-  greeting: Hello. I am a normal human, and I would like to buy normal things. Do you have any.
+  greeting: Good day. Just an ordinary person here, shopping for ordinary goods. What have you got in stock?
   portrait:
     sprite: _Serenity/Interface/Dealers/goonstation.rsi
     state: human_steve

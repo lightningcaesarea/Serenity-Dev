@@ -20,7 +20,7 @@
   parent: BaseArmorPlate
   id: ArmorPlateTrauma
   name: trauma plate
-  description: Plasteel over crush-foam. Shrugs off blunt and slash damage, but does nothing against bullets or burns.
+  description: A plasteel insert on a foam backing. Good at taking knocks and cuts; bullets and flame go straight through it.
   components:
   - type: Sprite
     sprite: _Mono/Clothing/ArmorPlate/armor_plates.rsi
@@ -51,7 +51,7 @@
   parent: BaseArmorPlate
   id: ArmorPlateBallistic
   name: ballistic plate
-  description: A thick plastitanium slab that stops piercing damage outright. Heat ruins it quickly.
+  description: A heavy plastitanium insert built to catch bullets. It softens badly once it gets hot.
   components:
   - type: Sprite
     sprite: _Mono/Clothing/ArmorPlate/armor_plates.rsi
@@ -79,7 +79,7 @@
   parent: BaseArmorPlate
   id: ArmorPlateDiffusion
   name: diffusion plate
-  description: Layered shielding and copper heat sinks. Soaks up heat and blunts shock and radiation, but cracks under bullets.
+  description: Shielding layers sandwiched with copper sinks. It bleeds off heat, shock and radiation, but a hard hit will crack it.
   components:
   - type: Sprite
     sprite: _Mono/Clothing/ArmorPlate/armor_plates.rsi
