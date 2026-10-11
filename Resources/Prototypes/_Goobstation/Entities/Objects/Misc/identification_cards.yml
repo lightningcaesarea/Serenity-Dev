@@ -4,9 +4,9 @@
   name: radio host ID card
   components:
   - type: Sprite
-    sprite: _Goobstation/Objects/Misc/id_cards.rsi
     layers:
-    - state: default
+    - sprite: _Serenity/Objects/Misc/id_card_bases.rsi
+      state: default
     - sprite: _Serenity/Objects/Misc/id_card_icons.rsi
       state: idradiohost
   - type: PresetIdCard

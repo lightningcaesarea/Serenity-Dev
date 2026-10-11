@@ -16372,13 +16372,6 @@ entities:
       canCollide: False
     - type: InsideEntityStorage
       storage: 2063
-- proto: SalvageLeadIDCard
-  entities:
-  - uid: 2395
-    components:
-    - type: Transform
-      parent: 1
-      pos: 37.510544,1.8588953
 - proto: SalvageSpawnerScrapCommon
   entities:
   - uid: 2396
