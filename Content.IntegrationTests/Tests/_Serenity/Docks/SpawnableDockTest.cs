@@ -215,6 +215,17 @@ public sealed class SpawnableDockTest
             Assert.That(counts.GetValueOrDefault("ComputerShipyardSalvage"), Is.EqualTo(2));
             Assert.That(counts.GetValueOrDefault("SerenityATMFrontier"), Is.EqualTo(2));
 
+            // The atmos end is wrapped in a meteor shield of grilles.
+            var grilles = 0;
+            var shield = entMan.EntityQueryEnumerator<MetaDataComponent, TransformComponent>();
+            while (shield.MoveNext(out _, out var md, out var gx))
+            {
+                if (gx.GridUid == dock && md.EntityPrototype?.ID == "Grille")
+                    grilles++;
+            }
+
+            Assert.That(grilles, Is.GreaterThan(30), "meteor shield grilles");
+
             var pads = 0;
             var pad = entMan.EntityQueryEnumerator<DockTeleporterComponent, TransformComponent>();
             while (pad.MoveNext(out _, out var comp, out var xform))
