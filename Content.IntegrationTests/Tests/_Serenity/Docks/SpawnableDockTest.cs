@@ -224,7 +224,7 @@ public sealed class SpawnableDockTest
                     grilles++;
             }
 
-            Assert.That(grilles, Is.GreaterThan(30), "meteor shield grilles");
+            Assert.That(grilles, Is.EqualTo(21), "one layer of meteor shield grilles");
 
             var pads = 0;
             var pad = entMan.EntityQueryEnumerator<DockTeleporterComponent, TransformComponent>();
